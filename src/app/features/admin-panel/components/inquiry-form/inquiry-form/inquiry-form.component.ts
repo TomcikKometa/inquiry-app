@@ -299,7 +299,7 @@ export class InquiryFormComponent {
     };
   }
 
-  public addSingleSelectForm(singleSelectQuestion?: SingleSelectQuestion, inquiry?: Inquiry) {
+  protected addSingleSelectForm(singleSelectQuestion?: SingleSelectQuestion, inquiry?: Inquiry) {
     this.isAnswerToMultiSelect = false;
     this.isAnswerToSingleSelect = true;
     this.lastIDquestionsArrayReverse = 0;
@@ -371,7 +371,7 @@ export class InquiryFormComponent {
     answers.push(this.formBuilder.control('', Validators.required));
   }
 
-  public saveInquary(): void {
+  protected saveInquary(): void {
     const inquiryFormQuestionsForm = this._inquiryForm.get('questions') as FormArray;
     if (this._inquiryForm.valid && inquiryFormQuestionsForm.length > 0) {
       const inquiry: Inquiry = InquiryMapper.map(this._inquiryForm);
@@ -383,19 +383,19 @@ export class InquiryFormComponent {
     }
   }
 
-  public removeQuestion(index: any): void {
+  protected removeQuestion(index: any): void {
     this.questionsFormArray.removeAt(index);
     this.questionsFormArray;
   }
 
-  public removeAnswer(itemIndex: number, index: number): void {
+  protected removeAnswer(itemIndex: number, index: number): void {
     const formArray = this.questionsFormArray.controls[index].get('answers') as FormArray;
     if (formArray.length > 2) {
       formArray.removeAt(itemIndex);
     }
   }
 
-  public trackItem(item: AbstractControl): number {
+  protected trackItem(item: AbstractControl): number {
     return item.get('id')?.value;
   }
 
@@ -410,23 +410,23 @@ export class InquiryFormComponent {
     this.lastIDquestionsArrayReverse = +lastIDquestionsArrayReverse;
   }
 
-  public get inquiryForm(): FormGroup {
+  protected get inquiryForm(): FormGroup {
     return this._inquiryForm;
   }
 
-  public get inquiryFormName(): typeof InquiryFormName {
+  protected get inquiryFormName(): typeof InquiryFormName {
     return InquiryFormName;
   }
 
-  public get questionsFormArray(): FormArray {
+  protected get questionsFormArray(): FormArray {
     return this.inquiryForm.get(InquiryFormName.QUESTIONS) as FormArray;
   }
 
-  public get shortTextQuestionFormName(): typeof ShortTextQuestionFormName {
+  protected get shortTextQuestionFormName(): typeof ShortTextQuestionFormName {
     return ShortTextQuestionFormName;
   }
 
-  public get questionType(): typeof QuestionType {
+  protected get questionType(): typeof QuestionType {
     return QuestionType;
   }
 }
