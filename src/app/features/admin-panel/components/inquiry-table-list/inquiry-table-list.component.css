@@ -1,0 +1,42 @@
+.inquiryTable {
+  text-align:center;
+  padding: 20px 20vw 0px 20vw;
+  opacity: 0.8;
+}
+
+.title{
+  padding:2px;
+  font-size: 26px;
+  margin: 0px;
+  color: #7699bb;
+}
+
+.stressLine {
+  padding: 5px 10vw 0px 30vw;
+  width: 40%;
+}
+
+.borderLine{
+  border-top: 1px solid rgb(212, 179, 231);
+}
+
+
+.tableAction {
+  padding: 20px 20px 20px 0;
+  gap: 10px;
+}
+
+.button {
+  margin-right: 15px;
+}
+
+.table{
+    box-shadow: 2px 2px 2px 2px rgb(189, 187, 207);
+}
+
+.borderTitle{
+  width: 30%;
+}
+
+
+

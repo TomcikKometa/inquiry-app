@@ -1,0 +1,19 @@
+@if (isViewed) {
+  <form [formGroup]="form">
+    <div class="questionInput" formArrayName="{{ inquiryFormName.QUESTIONS }}">
+      <div class="row" align="center" [formGroupName]="itemIndex">
+        <span class="questionMargin">Question no. {{ 1 }}</span>
+        <mat-form-field appearance="outline" class="questionInputWidth">
+          <mat-label>Text of the Question</mat-label>
+          <input matInput type="text" formControlName="{{ shortTextQuestionFormName.QUESTION }}" />
+        </mat-form-field>
+
+        <button class="questionMargin" color="primary" mat-raised-button (click)="removeQuestion()">Remove question</button>
+        <mat-form-field appearance="outline" class="answerInputWidth" ngDefaultControl>
+          <mat-label>Text of the Answer</mat-label>
+          <input matInput type="text" formControlName="{{ shortTextQuestionFormName.ANSWER }}" />
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+}

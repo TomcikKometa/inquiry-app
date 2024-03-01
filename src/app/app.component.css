@@ -1,0 +1,8 @@
+@import 'ngx-toastr/toastr';
+
+.container{
+    height: 100%;
+    width: 100%;
+    background-image: url('/assets/images/stacked-peaks-haikei.png');
+    background-size: 100%;
+}

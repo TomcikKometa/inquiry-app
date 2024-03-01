@@ -1,0 +1,64 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "rules": {
+    "@typescript-eslint/explicit-function-return-type": "off"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["./../tomasz/tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "plugins": ["simple-import-sort"],
+      "rules": {
+        "semi": [1, "always"],
+        "arrow-spacing": "error",
+        "no-console": "warn",
+        "comma-spacing": "error",
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error",
+        "quotes": [2, "single"],
+        "max-len": [
+          "error",
+          {
+            "code": 140,
+            "tabWidth": 2,
+            "ignoreComments": true,
+            "ignoreUrls": true,
+            "ignoreStrings": true,
+            "ignoreTemplateLiterals": true
+          }
+        ],
+        "@typescript-eslint/explicit-function-return-type": "error",
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "inq",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "inq",
+            "style": "kebab-case"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+
+}

@@ -1,0 +1,34 @@
+
+.headInput{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.headInputWidth{
+  width: 320px;
+}
+
+.questionInput{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.questionMargin{
+  margin: 10px;
+}
+
+.questionInputWidth {
+  width: 500px;
+}
+
+.answerInputWidth {
+  width: 300px;
+}
+
+.footerBotton {
+  text-align: center;
+  gap: 10px;
+  margin: 10px;
+}
+
+

@@ -1,0 +1,65 @@
+@if (inquiryForm) {
+  <ng-container [formGroup]="inquiryForm">
+    <div class="headInput">
+      <mat-form-field class="headInputWidth" appearance="outline">
+        <mat-label>Nazwa ankiety</mat-label>
+        <input matInput type="text" formControlName="{{ inquiryFormName.INQUIRY_NAME }}" />
+      </mat-form-field>
+    </div>
+    <div class="questionInput" formArrayName="{{ inquiryFormName.QUESTIONS }}">
+      @for (item of questionsFormArray.controls; track trackItem(item); let index = $index) {
+        <div class="row">
+
+          <inq-question [itemIndex]="index" [item]="item" (removeQuestionEvent)="removeQuestion($event)"></inq-question>
+
+          <inq-multi-select
+            [itemIndex]="index"
+            [item]="item"
+            (removeAnswer)="removeAnswer($event, index)"
+            (removeQuestionEvent)="removeQuestion($event)"
+          ></inq-multi-select>
+          @if (item.get('type')?.value === questionType.MULTISELECT) {
+            @if (index + 1 === lastIDquestionsArrayReverse) {
+              @if (isAnswerToMultiSelect) {
+                <inq-button-add-answer (addAnswer)="addAnswerInMultiSelectForm(index)"></inq-button-add-answer>
+              }
+            }
+          }
+
+          <inq-single-select
+            [itemIndex]="index"
+            [item]="item"
+            (removeAnswer)="removeAnswer($event, index)"
+            (removeQuestionEvent)="removeQuestion($event)"
+          ></inq-single-select>
+          @if (item.get('type')?.value === questionType.SINGLE_SELECT) {
+            @if (index + 1 === lastIDquestionsArrayReverse) {
+              @if (isAnswerToSingleSelect) {
+                <inq-button-add-answer (addAnswer)="addAnswerInSingleSelectForm(index)"></inq-button-add-answer>
+              }
+            }
+          }
+
+          <inq-scale-select [itemIndex]="index" [item]="item" (removeQuestionEvent)="removeQuestion($event)"></inq-scale-select>
+          
+        </div>
+      }
+    </div>
+    <div class="footerBotton">
+      <button mat-button [matMenuTriggerFor]="menu" class="button" color="primary" mat-raised-button>Add question</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="addMultiSelectForm()">Multi scelect</button>
+        <button mat-menu-item (click)="addSingleSelectForm()">Single select</button>
+        <button mat-menu-item (click)="addScaleSelectForm()">Scale</button>
+        <button mat-menu-item (click)="addShortTextQuestionForm()">ShortTextQuestion</button>
+      </mat-menu>
+    </div>
+  </ng-container>
+  @if (questionsFormArray.length > 0) {
+    <span align="center" class="questionMargin">Number of questions {{ questionsFormArray.length }}</span>
+  }
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close mat-raised-button>Cancel</button>
+    <button mat-button (click)="saveInquary()" mat-raised-button>Save</button>
+  </mat-dialog-actions>
+}

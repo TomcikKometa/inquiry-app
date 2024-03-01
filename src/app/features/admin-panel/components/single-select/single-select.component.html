@@ -1,0 +1,26 @@
+@if (isViewed) {
+  <form [formGroup]="form">
+    <div class="questionInput" formArrayName="{{ inquiryFormName.QUESTIONS }}">
+      <div class="row" align="center" [formGroupName]="itemIndex">
+        <span class="questionMargin">Question no. {{ 1 }}</span>
+        <mat-form-field appearance="outline" class="questionInputWidth">
+          <mat-label>Text of the Question</mat-label>
+          <input matInput type="text" formControlName="{{ singleSelectQuestionFormName.QUESTION }}" />
+        </mat-form-field>
+        <button class="questionMargin" color="primary" mat-raised-button (click)="removeQuestion()">Remove question</button>
+        <div class="row" formArrayName="{{ singleSelectQuestionFormName.ANSWERS }}">
+          @for (answers of answersFormArray.controls; track answers; let index = $index) {
+            <div class="d-flex row" style="gap: 20px">
+              <mat-radio-button></mat-radio-button>
+              <mat-form-field appearance="outline" class="answerInputWidth">
+                <mat-label>Answer</mat-label>
+                <input matInput type="text" formControlName="{{ index }}" />
+              </mat-form-field>
+              <button class="questionMargin" color="primary" mat-raised-button (click)="removeAnswerAtForm(index)">Remove</button>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </form>
+}
