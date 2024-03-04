@@ -384,7 +384,7 @@ export class InquiryFormComponent {
       this.dialogRef.close(true);
     } else {
         this.toastService.error(ToastrServiceMesseges.INVALID_FORM, '', {
-          positionClass: 'toast-center-center',
+          positionClass: 'toast-top-right',
           tapToDismiss: true,
           closeButton: true
         })
