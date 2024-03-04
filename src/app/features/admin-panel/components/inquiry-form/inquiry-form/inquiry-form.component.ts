@@ -42,6 +42,7 @@ import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs';
 import { MultiselectQuestion, Question, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../../../@models/question';
 import { MultiSelectComponent } from '../../multi-select/multi-select.component';
+import { ToastrServiceMesseges } from '../../../../../@enums/toastr-messeges';
 
 @Component({
   selector: 'inq-inquiry-form',
@@ -76,6 +77,7 @@ export class InquiryFormComponent {
   private readonly inquiryService: InquiryService = inject(InquiryService);
   private readonly dialogRef: MatDialogRef<InquiryFormComponent> = inject(MatDialogRef);
   protected readonly editInquiryID: string | undefined = inject(MAT_DIALOG_DATA);
+  private readonly toastService: ToastrService = inject(ToastrService);
 
   public ngOnInit(): void {
     if (!this.editInquiryID) {
@@ -380,6 +382,12 @@ export class InquiryFormComponent {
         this.inquiryService.deleteInquiry(this.editInquiryID!);
       }
       this.dialogRef.close(true);
+    } else {
+        this.toastService.error(ToastrServiceMesseges.INVALID_FORM, '', {
+          positionClass: 'toast-center-center',
+          tapToDismiss: true,
+          closeButton: true
+        })
     }
   }
 
