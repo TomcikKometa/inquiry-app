@@ -19,8 +19,8 @@ export class MultiSelectComponent implements OnInit {
   protected isViewed:boolean = false;
   @Input({ required: true }) public itemIndex!: number;
   @Input({ required: true }) public item!: AbstractControl;
-  @Output() public addAnswer: EventEmitter<boolean> = new EventEmitter();
-  @Output() public removeAnswer: EventEmitter<number>= new EventEmitter();
+  @Output() public addAnswerEvent: EventEmitter<boolean> = new EventEmitter();
+  @Output() public removeAnswerEvent: EventEmitter<number>= new EventEmitter();
   @Output() public removeQuestionEvent: EventEmitter<number> = new EventEmitter();
 
   private readonly rootFormGroup: FormGroupDirective = inject(FormGroupDirective);
@@ -37,11 +37,11 @@ export class MultiSelectComponent implements OnInit {
   }
 
   protected addAnswerInItem(): void {
-    this.addAnswer.emit(true);
+    this.addAnswerEvent.emit(true);
   }
 
   protected removeAnswerAtForm(itemIndex: number): void {
-    this.removeAnswer.emit(itemIndex);
+    this.removeAnswerEvent.emit(itemIndex);
   }
 
   

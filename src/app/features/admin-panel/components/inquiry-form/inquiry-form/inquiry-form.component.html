@@ -15,7 +15,7 @@
           <inq-multi-select
             [itemIndex]="index"
             [item]="item"
-            (removeAnswer)="removeAnswer($event, index)"
+            (removeAnswerEvent)="removeAnswer($event, index)"
             (removeQuestionEvent)="removeQuestion($event)"
           ></inq-multi-select>
           @if (item.get(typeQuestion.TYPE)?.value === questionType.MULTISELECT) {
@@ -29,7 +29,7 @@
           <inq-single-select
             [itemIndex]="index"
             [item]="item"
-            (removeAnswer)="removeAnswer($event, index)"
+            (removeAnswerEvent)="removeAnswer($event, index)"
             (removeQuestionEvent)="removeQuestion($event)"
           ></inq-single-select>
           @if (item.get(typeQuestion.TYPE)?.value === questionType.SINGLE_SELECT) {

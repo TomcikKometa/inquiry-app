@@ -22,7 +22,7 @@ export class SingleSelectComponent {
 
   @Input({ required: true }) public itemIndex!: number;
   @Input({ required: true }) public item!: AbstractControl;
-  @Output() public removeAnswer: EventEmitter<number> = new EventEmitter();
+  @Output() public removeAnswerEvent: EventEmitter<number> = new EventEmitter();
   @Output() public removeQuestionEvent: EventEmitter<number> = new EventEmitter();
 
   private readonly rootFormGroup: FormGroupDirective = inject(FormGroupDirective);
@@ -35,7 +35,7 @@ export class SingleSelectComponent {
   }
 
   protected removeAnswerAtForm(itemIndex: number): void {
-    this.removeAnswer.emit(itemIndex);
+    this.removeAnswerEvent.emit(itemIndex);
   }
 
   protected removeQuestion(): void {
