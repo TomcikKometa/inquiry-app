@@ -429,4 +429,8 @@ export class InquiryFormComponent {
   protected get questionType(): typeof QuestionType {
     return QuestionType;
   }
+
+  protected get typeQuestion(): typeof TypeQuestion {
+    return TypeQuestion
+  }
 }

@@ -18,7 +18,7 @@
             (removeAnswer)="removeAnswer($event, index)"
             (removeQuestionEvent)="removeQuestion($event)"
           ></inq-multi-select>
-          @if (item.get('type')?.value === questionType.MULTISELECT) {
+          @if (item.get(typeQuestion.TYPE)?.value === questionType.MULTISELECT) {
             @if (index + 1 === lastIDquestionsArrayReverse) {
               @if (isAnswerToMultiSelect) {
                 <inq-button-add-answer (addAnswer)="addAnswerInMultiSelectForm(index)"></inq-button-add-answer>
@@ -32,7 +32,7 @@
             (removeAnswer)="removeAnswer($event, index)"
             (removeQuestionEvent)="removeQuestion($event)"
           ></inq-single-select>
-          @if (item.get('type')?.value === questionType.SINGLE_SELECT) {
+          @if (item.get(typeQuestion.TYPE)?.value === questionType.SINGLE_SELECT) {
             @if (index + 1 === lastIDquestionsArrayReverse) {
               @if (isAnswerToSingleSelect) {
                 <inq-button-add-answer (addAnswer)="addAnswerInSingleSelectForm(index)"></inq-button-add-answer>
