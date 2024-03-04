@@ -22,16 +22,8 @@ export class AdminPanelContainerComponent {
     const dialogRef = this.dialog.open(InquiryFormComponent, {data:id, ...DIALOG_OPTIONS});
 
     dialogRef.afterClosed().subscribe((isInquirySaved:boolean) => {
-      console.log(isInquirySaved);
-      
       if (isInquirySaved) {
         this.toastService.success(ToastrServiceMesseges.INVALID_FORM, '', {
-          positionClass: 'toast-center-center',
-          tapToDismiss: true,
-          closeButton: true
-        })
-      } else {
-        this.toastService.error(ToastrServiceMesseges.INVALID_FORM, '', {
           positionClass: 'toast-center-center',
           tapToDismiss: true,
           closeButton: true
