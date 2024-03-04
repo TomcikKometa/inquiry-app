@@ -5,6 +5,7 @@ import { DIALOG_OPTIONS } from '../../../../@config/form-config';
 import { InquiryFormComponent } from '../../components/inquiry-form/inquiry-form/inquiry-form.component';
 import { InquiryTableListComponent } from '../../components/inquiry-table-list/inquiry-table-list.component';
 import { ToastrService } from 'ngx-toastr';
+import { ToastrServiceMesseges } from '../../../../@enums/toastr-messeges';
 
 @Component({
   selector: 'inq-admin-panel-container',
@@ -21,9 +22,17 @@ export class AdminPanelContainerComponent {
     const dialogRef = this.dialog.open(InquiryFormComponent, {data:id, ...DIALOG_OPTIONS});
 
     dialogRef.afterClosed().subscribe((isInquirySaved:boolean) => {
+      console.log(isInquirySaved);
+      
       if (isInquirySaved) {
-        this.toastService.success('Pomyślnie zapisano ankietę', '', {
-          positionClass: 'toast-top-right',
+        this.toastService.success(ToastrServiceMesseges.INVALID_FORM, '', {
+          positionClass: 'toast-center-center',
+          tapToDismiss: true,
+          closeButton: true
+        })
+      } else {
+        this.toastService.error(ToastrServiceMesseges.INVALID_FORM, '', {
+          positionClass: 'toast-center-center',
           tapToDismiss: true,
           closeButton: true
         })
