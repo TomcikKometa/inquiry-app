@@ -23,8 +23,8 @@ export class AdminPanelContainerComponent {
 
     dialogRef.afterClosed().subscribe((isInquirySaved:boolean) => {
       if (isInquirySaved) {
-        this.toastService.success(ToastrServiceMesseges.INVALID_FORM, '', {
-          positionClass: 'toast-center-center',
+        this.toastService.success(ToastrServiceMesseges.VALID_FORM, '', {
+          positionClass: 'toast-top-right',
           tapToDismiss: true,
           closeButton: true
         })
