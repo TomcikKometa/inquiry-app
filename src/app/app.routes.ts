@@ -1,19 +1,27 @@
 import { Routes } from '@angular/router';
 
 export enum RoutesPaths {
-  ADMIN_PANEL = 'admin-panel'
+  TABLE_PANEL = 'admin-panel',
+  LOGIN = 'login'
 }
 
 export const routes: Routes = [
   {
-    path: RoutesPaths.ADMIN_PANEL,
+    path: RoutesPaths.LOGIN,
     loadComponent: () =>
-      import('./features/admin-panel/containers/admin-panel-container/admin-panel-container.component').then(
-        c => c.AdminPanelContainerComponent
+      import('./features/admin-panel/components/login/login.component').then(
+        c => c.LoginComponent
+      )
+  },
+  {
+    path: RoutesPaths.TABLE_PANEL,
+    loadComponent: () =>
+      import('./features/admin-panel/containers/dashboard-panel-container/dashboard-panel-container.component').then(
+        c => c.DashboardPanelContainerComponent
       )
   },
   {
     path: '**',
-    redirectTo: RoutesPaths.ADMIN_PANEL
+    redirectTo: RoutesPaths.LOGIN
   }
 ];

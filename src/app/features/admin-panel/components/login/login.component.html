@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="center d-flex">
+    <mat-card class="settingPageCard">
+      <div class="hightDiv">
+        <h2 class="title">Welcome in Inquiry App</h2>
+        <div class="cardImage"></div>
+        <mat-form-field appearance="outline" class="matFormDiv">
+          <mat-label>Choose account</mat-label>
+          <mat-select [(ngModel)]="choosedAccount" (selectionChange)="chooseUserAccount()" name="food">
+            @for (loginOption of loginOptions; track loginOption.id) {
+              <mat-option [value]="loginOption.value">{{ loginOption.viewValue }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <mat-card-actions>
+        <button mat-button mat-raised-button color="primary" class="button" [disabled]="!choosedAccount"  (click)="logIn()">Log in</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
