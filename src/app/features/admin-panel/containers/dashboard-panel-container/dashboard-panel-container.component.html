@@ -1,0 +1,6 @@
+<div class="container">
+  <div class="menu">
+    <button class="button" color="primary" mat-raised-button (click)="openInquiryForm()" [disabled]="sessionStorageUser === accountsToken.USER_TOKEN">Add inquiry</button>
+  </div>
+  <inq-inquiry-table-list (editInquiryEvent)="openInquiryForm($event)"></inq-inquiry-table-list>
+</div>
