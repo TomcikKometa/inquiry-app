@@ -7,6 +7,7 @@ import { Inquiry } from '../../../../@models/inquiry';
 import { MatPaginator } from '@angular/material/paginator';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AccountsKey, AccountsToken } from '../../../../@core/services/token-enums';
+import { MatDialog } from '@angular/material/dialog';
 
 interface InquiryDataSource {
   name: string;
@@ -22,6 +23,7 @@ interface InquiryDataSource {
 })
 export class InquiryTableListComponent implements OnInit {
   @Output() public editInquiryEvent: EventEmitter<string> = new EventEmitter();
+  @Output() public fillInquiryEvent: EventEmitter<string> = new EventEmitter();
 
   protected displayedColumns: string[] = ['name', 'id', 'action'];
   protected dataSource!: MatTableDataSource<InquiryDataSource, MatPaginator>;
@@ -29,6 +31,7 @@ export class InquiryTableListComponent implements OnInit {
 
   private readonly inquiryService: InquiryService = inject(InquiryService);
   private readonly destroyReference: DestroyRef = inject(DestroyRef);
+  private readonly dialog: MatDialog = inject(MatDialog);
 
   public ngOnInit(): void {
     this.sessionStorageUser = window.sessionStorage.getItem(AccountsKey.TOKEN_KEY)!;
@@ -56,6 +59,10 @@ export class InquiryTableListComponent implements OnInit {
 
   protected editInquiry(id: string) {
     this.editInquiryEvent.emit(id);
+  }
+
+  protected fillInquiry(id: string): void {
+    this.fillInquiryEvent.emit(id);
   }
 
   get accountsToken(): typeof AccountsToken {

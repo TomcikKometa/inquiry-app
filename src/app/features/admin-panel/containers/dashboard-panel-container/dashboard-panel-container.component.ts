@@ -7,6 +7,7 @@ import { InquiryTableListComponent } from '../../components/inquiry-table-list/i
 import { ToastrService } from 'ngx-toastr';
 import { ToastrServiceMesseges } from '../../../../@enums/toastr-messeges';
 import { AccountsKey, AccountsToken } from '../../../../@core/services/token-enums';
+import { InquiryFormToFillComponent } from '../../components/inquiry-form-to-fill/inquiry-form-to-fill.component';
 
 @Component({
   selector: 'inq-admin-panel-container',
@@ -26,7 +27,7 @@ export class DashboardPanelContainerComponent implements OnInit {
     this.sessionStorageUser = window.sessionStorage.getItem(AccountsKey.TOKEN_KEY)!;
   } 
 
-  public openInquiryForm(id?:string) {
+  protected openInquiryForm(id?:string) {
     const dialogRef = this.dialog.open(InquiryFormComponent, {data:id, ...DIALOG_OPTIONS});
 
     dialogRef.afterClosed().subscribe((isInquirySaved:boolean) => {
@@ -38,6 +39,10 @@ export class DashboardPanelContainerComponent implements OnInit {
         })
       }
     });
+  }
+
+  protected openInquiryFormToFill(id:string): void{
+    this.dialog.open(InquiryFormToFillComponent, { data:id,...DIALOG_OPTIONS});
   }
 
   get accountsToken(): typeof AccountsToken{

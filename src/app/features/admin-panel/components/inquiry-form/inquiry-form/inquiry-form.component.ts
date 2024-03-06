@@ -86,7 +86,7 @@ export class InquiryFormComponent {
     } else {
       this.isEditForm = true;
       this.inquiryService
-        .editInqiry(this.editInquiryID)
+        .getInqiryById(this.editInquiryID)
         .pipe(first())
         .subscribe((inquiry: Inquiry) => {
           this.createForm(inquiry);
