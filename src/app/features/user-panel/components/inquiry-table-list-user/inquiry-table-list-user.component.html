@@ -1,0 +1,32 @@
+<div class="inquiryTable">
+    <p class="title m-5">List of inquiries</p>
+  </div>
+  <div class="stressLine"><p class="borderLine"></p></div>
+  
+  <div class="inquiryTable">
+    <table class="table" mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="tableAction">
+            <button class="button" color="accent" mat-raised-button >View scores</button>
+            <button class="button" color="primary" mat-raised-button (click)="openInquiryFormToFill(element.id)" >Fill inquiry</button>
+          </div>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  

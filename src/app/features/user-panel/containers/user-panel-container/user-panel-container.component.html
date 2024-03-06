@@ -1,0 +1,6 @@
+@if (sessionStorageUser === accountsToken.USER_TOKEN) {
+  <div class="container">
+    <div class="menu"></div>
+    <inq-inquiry-table-list-user (fillInquiryEvent)="openInquiryFormToFill($event)"></inq-inquiry-table-list-user>
+  </div>
+}

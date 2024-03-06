@@ -1,16 +1,9 @@
 import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
-import { Inquiry } from '../../../@models/inquiry';
-import { QuestionsForm } from '../../../features/admin-panel/components/inquiry-form/@models/questions-forms';
-import {
-  InquiryFormName,
-  MultiSelectQuestionFormName,
-  ScaleSelectQuestionFormName,
-  ShortTextQuestionFormName,
-  SingleSelectQuestionFormName,
-  TypeQuestion
-} from '../../../features/admin-panel/components/inquiry-form/@enum/form-enum';
-import { MultiselectQuestion, Question, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../@models/question';
 import { QuestionType } from '../../../@enums/question-type';
+import { Inquiry } from '../../../@models/inquiry';
+import { Question, MultiselectQuestion, SingleSelectQuestion, ShortTextQuestion, ScaleQuestion } from '../../../@models/question';
+import { InquiryFormName, TypeQuestion, MultiSelectQuestionFormName, SingleSelectQuestionFormName, ShortTextQuestionFormName, ScaleSelectQuestionFormName } from '../../../features/pollster-panel/components/inquiry-form/@enum/form-enum';
+import { QuestionsForm } from '../../../features/pollster-panel/components/inquiry-form/@models/questions-forms';
 
 export class InquiryMapper {
   public static map(inquiryForm: FormGroup<QuestionsForm>): Inquiry {

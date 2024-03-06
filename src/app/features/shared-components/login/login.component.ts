@@ -3,10 +3,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-import { StoreService } from '../../../../@core/services/store/store.service';
-import { AccountsToken } from '../../../../@core/services/token-enums';
+import { StoreService } from '../../../@core/services/store/store.service';
+import { AccountsKey, AccountsToken } from '../../../@core/services/token-enums';
 import { MatButtonModule } from '@angular/material/button';
-import { NavigationService } from '../../../../@core/services/navigation/navigation.service';
+import { NavigationService } from '../../../@core/services/navigation/navigation.service';
 
 @Component({
   selector: 'inq-login',
@@ -40,6 +40,12 @@ export class LoginComponent {
   }
 
   protected logIn(): void{
-      this.navigationService.navigateToTableList()  
+    const sessionStorageUserType: string = window.sessionStorage.getItem(AccountsKey.TOKEN_KEY)!;
+    if (sessionStorageUserType === AccountsToken.POLLSTER_TOKEN) {
+      this.navigationService.navigateToTableListPollster();
+    }
+    if (sessionStorageUserType === AccountsToken.USER_TOKEN) {
+      this.navigationService.navigateToTableListUser();
+    } 
   }
 }

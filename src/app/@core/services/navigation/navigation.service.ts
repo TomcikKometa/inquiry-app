@@ -8,7 +8,11 @@ import { RoutesPaths } from '../../../app.routes';
 export class NavigationService {
   private readonly router: Router = inject(Router);
 
-  public navigateToTableList(): void {
-    this.router.navigate([RoutesPaths.TABLE_PANEL]);
+  public navigateToTableListUser(): void {
+    this.router.navigate([RoutesPaths.USER_PANEL]);
+  }
+
+  public navigateToTableListPollster(): void {
+    this.router.navigate([RoutesPaths.POLLSTER_PANEL]);
   }
 }
