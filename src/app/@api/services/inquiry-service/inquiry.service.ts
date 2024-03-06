@@ -27,7 +27,7 @@ export class InquiryService {
     this.getAllInquiry();
   }
 
-  public editInqiry(id: string): Observable<Inquiry> {
+  public getInqiryById(id: string): Observable<Inquiry> {
     const jsonInquiry: string | null = localStorage.getItem(id);
     if (!jsonInquiry) {
       return throwError(() => new Error('Inquiry not found'));
