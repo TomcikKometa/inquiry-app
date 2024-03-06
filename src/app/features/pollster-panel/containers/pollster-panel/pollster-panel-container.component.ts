@@ -1,23 +1,22 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
+import { Component, inject } from '@angular/core';
+import { AccountsKey, AccountsToken } from '../../../../@core/services/token-enums';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { DIALOG_OPTIONS } from '../../../../@config/form-config';
 import { InquiryFormComponent } from '../../components/inquiry-form/inquiry-form/inquiry-form.component';
-import { InquiryTableListComponent } from '../../components/inquiry-table-list/inquiry-table-list.component';
-import { ToastrService } from 'ngx-toastr';
 import { ToastrServiceMesseges } from '../../../../@enums/toastr-messeges';
-import { AccountsKey, AccountsToken } from '../../../../@core/services/token-enums';
-import { InquiryFormToFillComponent } from '../../components/inquiry-form-to-fill/inquiry-form-to-fill.component';
+import { InquiryTableListPollsterComponent } from '../../components/inquiry-table-list/inquiry-table-list.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'inq-admin-panel-container',
   standalone: true,
-  imports: [MatButtonModule, InquiryTableListComponent],
-  templateUrl: './dashboard-panel-container.component.html',
-  styleUrl: './dashboard-panel-container.component.css'
+  imports: [InquiryTableListPollsterComponent, MatButtonModule],
+  templateUrl: './pollster-panel-container.component.html',
+  styleUrl: './pollster-panel-container.component.css'
 })
-export class DashboardPanelContainerComponent implements OnInit {
-  
+export class PollsterPanelContainerComponent {
+
   protected sessionStorageUser!:string;
 
   private readonly dialog: MatDialog = inject(MatDialog);
@@ -41,11 +40,8 @@ export class DashboardPanelContainerComponent implements OnInit {
     });
   }
 
-  protected openInquiryFormToFill(id:string): void{
-    this.dialog.open(InquiryFormToFillComponent, { data:id,...DIALOG_OPTIONS});
-  }
-
   get accountsToken(): typeof AccountsToken{
     return AccountsToken;
   }
+
 }

@@ -1,0 +1,12 @@
+@if(sessionStorageUser === accountsToken.POLLSTER_TOKEN){
+  <div class="container">
+    <div class="menu">
+      <button class="button" color="primary" mat-raised-button (click)="openInquiryForm()">Add inquiry</button>
+    </div>
+    <inq-inquiry-table-list-pollster (editInquiryEvent)="openInquiryForm($event)" (fillInquiryEvent)="openInquiryForm($event)"></inq-inquiry-table-list-pollster>
+  </div>
+}
+
+
+  
+  

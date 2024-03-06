@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardPanelContainerComponent } from './dashboard-panel-container.component';
+import { PollsterPanelContainerComponent } from './pollster-panel-container.component';
 
 describe('AdminPanelContainerComponent', () => {
-  let component: DashboardPanelContainerComponent;
-  let fixture: ComponentFixture<DashboardPanelContainerComponent>;
+  let component: PollsterPanelContainerComponent;
+  let fixture: ComponentFixture<PollsterPanelContainerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DashboardPanelContainerComponent]
+      imports: [PollsterPanelContainerComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(DashboardPanelContainerComponent);
+    fixture = TestBed.createComponent(PollsterPanelContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

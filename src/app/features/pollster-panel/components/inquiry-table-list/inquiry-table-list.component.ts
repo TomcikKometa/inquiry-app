@@ -15,19 +15,19 @@ interface InquiryDataSource {
 }
 
 @Component({
-  selector: 'inq-inquiry-table-list',
+  selector: 'inq-inquiry-table-list-pollster',
   standalone: true,
   imports: [MatTableModule, MatButtonModule],
   templateUrl: './inquiry-table-list.component.html',
   styleUrl: './inquiry-table-list.component.css'
 })
-export class InquiryTableListComponent implements OnInit {
+export class InquiryTableListPollsterComponent implements OnInit {
   @Output() public editInquiryEvent: EventEmitter<string> = new EventEmitter();
   @Output() public fillInquiryEvent: EventEmitter<string> = new EventEmitter();
 
   protected displayedColumns: string[] = ['name', 'id', 'action'];
   protected dataSource!: MatTableDataSource<InquiryDataSource, MatPaginator>;
-  sessionStorageUser: string = '';
+  protected sessionStorageUser: string = '';
 
   private readonly inquiryService: InquiryService = inject(InquiryService);
   private readonly destroyReference: DestroyRef = inject(DestroyRef);
@@ -59,10 +59,6 @@ export class InquiryTableListComponent implements OnInit {
 
   protected editInquiry(id: string) {
     this.editInquiryEvent.emit(id);
-  }
-
-  protected fillInquiry(id: string): void {
-    this.fillInquiryEvent.emit(id);
   }
 
   get accountsToken(): typeof AccountsToken {

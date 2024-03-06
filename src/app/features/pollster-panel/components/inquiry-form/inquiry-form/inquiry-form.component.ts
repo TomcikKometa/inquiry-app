@@ -33,7 +33,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { QuestionComponent } from '../../question/question.component';
 import { SingleSelectComponent } from '../../single-select/single-select.component';
 import { ScaleSelectComponent } from '../../scale-select/scale-select.component';
-import { ButtonAddAnswerComponent } from '../../button-multi-select/button-multi-select/button-add-answer.component';
 import { Inquiry } from '../../../../../@models/inquiry';
 import { QuestionType } from '../../../../../@enums/question-type';
 import { InquiryMapper } from '../../../../../@api/services/mapper/inquiry-mapper';
@@ -43,6 +42,7 @@ import { first } from 'rxjs';
 import { MultiselectQuestion, Question, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../../../@models/question';
 import { MultiSelectComponent } from '../../multi-select/multi-select.component';
 import { ToastrServiceMesseges } from '../../../../../@enums/toastr-messeges';
+import { ButtonAddAnswerComponent } from '../../../../shared-components/button-add-answer/button-add-answer.component';
 
 @Component({
   selector: 'inq-inquiry-form',
