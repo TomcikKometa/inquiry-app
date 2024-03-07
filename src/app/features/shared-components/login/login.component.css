@@ -17,6 +17,7 @@
 .settingPageCard {
   width: 350px;
   height: 400px;
+  box-shadow: #9fa6cf 0px 0px 4px 4px;
 }
 
 .hightDiv {
@@ -27,6 +28,7 @@
   text-align: center;
   margin-top: 30px;
   color: #7699bb;
+  text-shadow: #7699bb 0px 0px 10px ;
 }
 
 .cardImage {
@@ -42,7 +44,7 @@
   padding-left: 70px;
 }
 
-.button{
+.button {
   margin-top: 20px;
   width: 140px;
   margin-left: 100px;
@@ -50,9 +52,7 @@
 }
 
 ::ng-deeep .mat-card-actions {
-    width: 100%;
-    text-align:center;
-    display: flex;
- 
+  width: 100%;
+  text-align: center;
+  display: flex;
 }
-
