@@ -1,22 +1,175 @@
 @import 'ngx-toastr/toastr';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 .container {
   height: 100%;
 }
 
-.menu {
+
+.setButtons {
+  justify-content: space-between;
+  display: flex;
+  text-align: center;
   padding: 20px;
 }
-.button {
-  margin-right: 10px;
-}
 
-.inquiryTable {
-  text-align: center;
+.rowWidth{
+  margin-top: 20px;
+  padding-top: 20px;
+  width:8%
 }
 
 .toast-top-center {
   top: 0;
   right: 0;
   width: 100%;
+}
+
+
+.setMat {
+  display: flex;
+  text-align: center;
+  justify-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.cardImage {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-image: url('/assets/images/icons8-client-50.png');
+}
+
+.setImageRowText {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.setMatCartContent {
+  display: flex;
+  justify-content: center;
+  text-align: start;
+  font-weight: 400;
+  font-family: Roboto, sans-serif;
+  color: black;
+  width: 650px;
+  height: 100px;
+  padding-top: 20px;
+  padding-left: 10px;
+  text-align: center;
+  text-align: start;
+  background-image: linear-gradient(180deg, #dce2f2, #f4f4fc 400%, #a2bddc);
+  box-shadow: 0px 0px 5px 5px #a3bfd9;
+}
+.setUserInfo {
+  display: flex;
+  justify-content: center;
+  text-align: start;
+  padding-bottom: 10px;
+
+  & .title {
+    width: 580px;
+    font-size: 14px;
+    background-image: linear-gradient(45deg, #A3BFD9 30%, #DCE2F2, #DCE2F2);
+    border-radius: 5px;
+    /* box-shadow: 0px 1px 1px 1px #A3BFD9; */
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 0px 0px 10px #8097AB;
+    
+  }
+}
+
+.button-63 {
+  align-items: center;
+  background-image: linear-gradient(45deg, #a2bddc, #f4f4fc 190%, #a2bddc);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(217, 222, 240) 0px 0px 5px 5px;
+  box-sizing: border-box;
+  color: black;
+  display: flex;
+  font-family: Roboto, sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1em;
+  width: 150px;
+  height: 30px;
+  padding: 19px 24px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 0.8;
+  position: relative;
+  overflow: hidden;
+}
+
+.button-63:active,
+.button-63:hover {
+  outline: 0;
+  box-shadow: #9fa6cf 0px 0px 5px 5px;
+}
+
+@media (min-width: 768px) {
+  .button-63 {
+    font-size: 14px;
+    min-width: 150px;
+    font-family: 600;
+  }
+}
+
+#clockContainer {
+  position: relative;
+  margin: auto;
+  height: 40vw;
+  /*to make the height and width responsive*/
+  width: 40vw;
+  /* background: url(clock.png) no-repeat; */
+  /*setting our background image*/
+  background-size: 100%;
+}
+
+#hour,
+#minute,
+#second {
+  position: absolute;
+  background: black;
+  border-radius: 10px;
+  transform-origin: bottom;
+}
+
+#hour {
+  width: 1.8%;
+  height: 25%;
+  top: 25%;
+  left: 48.85%;
+  opacity: 0.8;
+}
+
+#minute {
+  width: 1.6%;
+  height: 30%;
+  top: 19%;
+  left: 48.9%;
+  opacity: 0.8;
+}
+
+#second {
+  width: 1%;
+  height: 40%;
+  top: 9%;
+  left: 49.25%;
+  opacity: 0.8;
 }

@@ -15,4 +15,8 @@ export class NavigationService {
   public navigateToTableListPollster(): void {
     this.router.navigate([RoutesPaths.POLLSTER_PANEL]);
   }
+
+  public navigateToLogin(): void {
+    this.router.navigate([RoutesPaths.LOGIN]);
+  }
 }

@@ -1,12 +1,37 @@
-@if(sessionStorageUser === accountsToken.POLLSTER_TOKEN){
+@if (sessionStorageUser === accountsToken.POLLSTER_TOKEN) {
   <div class="container">
-    <div class="menu">
-      <button class="button" color="primary" mat-raised-button (click)="openInquiryForm()">Add inquiry</button>
+    <div class="setButtons">
+      <button class="button-63" (click)="openInquiryForm()"><mat-icon fontIcon="add"></mat-icon>&nbsp;Add inquiry</button>
+      <mat-card class="setMatCartContent">
+        <div class="setMat">
+          <div class="setUserInfo">
+            <div>
+              <div class="title">Your profile info</div>
+              <div><span>Inquiries to accomplish:</span></div>
+              <div>
+                <span>Failed: {{ 'o' }} within last 1 months</span>
+              </div>
+              <div>
+                <span>Your local time: {{ clock() }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="setImageRow">
+            <div class="cardImage"></div>
+            <p class="setImageRowText">{{ userType }}</p>
+          </div>
+        </div>
+      </mat-card>
+
+      <button class="button-63" (click)="logOut()"><mat-icon fontIcon="logout"></mat-icon>&nbsp;Log out</button>
     </div>
-    <inq-inquiry-table-list-pollster (editInquiryEvent)="openInquiryForm($event)" (fillInquiryEvent)="openInquiryForm($event)"></inq-inquiry-table-list-pollster>
+
+    <div>
+      <inq-inquiry-table-list-pollster
+        (editInquiryEvent)="openInquiryForm($event)"
+        (fillInquiryEvent)="openInquiryForm($event)"
+      ></inq-inquiry-table-list-pollster>
+    </div>
   </div>
 }
-
-
-  
-  
