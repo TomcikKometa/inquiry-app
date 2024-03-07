@@ -1,4 +1,4 @@
-import { Component, LOCALE_ID, OnInit, Pipe, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { DIALOG_OPTIONS } from '../../../../@config/form-config';
@@ -16,46 +16,34 @@ export interface TimeClock {
   seconds: string;
 }
 
-
 @Component({
   selector: 'inq-admin-panel-container',
   standalone: true,
-  providers: [DatePipe
-  ],
+  providers:[DatePipe],
   imports: [MatButtonModule, InquiryTableListUserComponent, MatIconModule, MatCardModule],
   templateUrl: './user-panel-container.component.html',
   styleUrl: './user-panel-container.component.css'
 })
-
-
 export class UserPanelContainerComponent implements OnInit {
-
-  @Pipe({
-    name: 'dateFormat'
-})
   protected sessionStorageUser!: string;
   protected userType!: string;
   protected timeActual!: string;
-
-  hours!: number;
-  minutes!: number;
-  seconds!: number;
+  protected currentDate: Date = new Date();
 
   private readonly dialog: MatDialog = inject(MatDialog);
   private readonly navigationService: NavigationService = inject(NavigationService);
   private readonly datePipe: DatePipe = inject(DatePipe);
 
   public ngOnInit(): void {
+    this.clock();
+    setInterval(() => this.clock(), 1000);
     this.sessionStorageUser = window.sessionStorage.getItem(AccountsKey.TOKEN_KEY)!;
     window.sessionStorage.getItem(AccountsKey.TOKEN_KEY)! === 'pollsterToken' ? (this.userType = 'Pollster') : (this.userType = 'User');
-    setInterval(() => this.clock(), 1000);
   }
 
-  clock(): string {
-    const now = Date.now();
-    const time: string = `${this.datePipe.transform(now,'HH:mm:ss')}`;
-    this.timeActual = time;
-    return time;
+  private clock(): void {
+    this.currentDate.setSeconds(this.currentDate.getSeconds() + 1);
+    this.timeActual = this.datePipe.transform(this.currentDate,'HH:mm:ss') as string;
   }
 
   protected openInquiryFormToFill(id: Event): void {

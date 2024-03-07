@@ -17,7 +17,9 @@
 }
 
 .borderLine{
-  border-top: 1px solid rgb(212, 179, 231);
+  border-top: 2px solid rgb(212, 179, 231);
+  box-shadow: 1px 5px 5px 1px rgb(163, 191, 217);
+  border-radius: 120%;
 }
 
 
