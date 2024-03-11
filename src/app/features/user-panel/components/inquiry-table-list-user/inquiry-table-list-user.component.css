@@ -17,7 +17,9 @@
   }
   
   .borderLine{
-    border-top: 1px solid rgb(212, 179, 231);
+    border-top: 2px solid rgb(212, 179, 231);
+    box-shadow: 1px 5px 5px 1px rgb(163, 191, 217);
+    border-radius: 120%;
   }
   
   
@@ -39,5 +41,14 @@
   }
   
   
+  .tableRow{
+    background-image: linear-gradient(180, #edf1f7 250%, #ffffff, #ffffff,#cfdae9);
+    box-shadow: 1px 8px 10px 10px rgb(163, 191, 217);
+    border-radius: 12px !important;
+  }
   
+  .teableHeader{
+    background-image: linear-gradient(180deg, #ffffff, #ffffff, #ffffff,#D9DEF0 0%);
+    box-shadow: 1px 8px 10px 10px rgb(163, 191, 217);
+  }
   
