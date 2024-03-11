@@ -28,7 +28,7 @@ export enum TypeQuestion {
 export enum ScaleSelectQuestionFormName {
   QUESTION = 'question',
   ID = 'id',
-  MIN_VALUE = 'min-value',
-  MAX_VALUE = 'max-value',
-  STEP_SIZE = 'step-size'
+  MIN_VALUE = 'minValue',
+  MAX_VALUE = 'maxValue',
+  STEP_SIZE = 'stepSize'
 }
