@@ -27,8 +27,8 @@
 .title {
   text-align: center;
   margin-top: 30px;
-  color: #7699bb;
-  text-shadow: #7699bb 0px 0px 10px ;
+  color: #A2A6F2;
+  text-shadow: #A2A6F2 0px 0px 10px ;
 }
 
 .cardImage {
@@ -36,7 +36,7 @@
   height: 100px;
   margin-top: 30px;
   margin-left: 130px;
-  background-image: url('/assets/images/icons8-survey-100.png');
+  background-image: url('/assets/images/icons8-inquiry-96.png');
 }
 
 .matFormDiv {
@@ -55,4 +55,9 @@
   width: 100%;
   text-align: center;
   display: flex;
+}
+
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white;
 }

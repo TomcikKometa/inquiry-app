@@ -42,13 +42,13 @@
   width: 30%;
 }
 
-.gh{
+.tableRow{
   background-image: linear-gradient(180, #edf1f7 250%, #ffffff, #ffffff,#cfdae9);
   box-shadow: 1px 8px 10px 10px rgb(163, 191, 217);
   border-radius: 12px !important;
 }
 
-.header{
+.teableHeader{
   background-image: linear-gradient(180deg, #ffffff, #ffffff, #ffffff,#D9DEF0 0%);
   box-shadow: 1px 8px 10px 10px rgb(163, 191, 217);
 }
