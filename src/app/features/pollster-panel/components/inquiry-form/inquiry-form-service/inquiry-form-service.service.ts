@@ -1,6 +1,6 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { QuestionType } from '../../../../../@enums/question-type';
-import { MultiselectQuestion, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../../../@models/question';
+import { MultiselectQuestion, Question, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../../../@models/question';
 import { Validators, FormArray, FormGroup, NonNullableFormBuilder, AbstractControl, ValidatorFn } from '@angular/forms';
 import {
   InquiryFormName,
@@ -12,33 +12,54 @@ import {
 } from '../@enum/form-enum';
 import {
   MultiSelectQuestionForm,
+  QuestionsForm,
   ScaleSelectQuestionForm,
   ShortTextQuestionForm,
   SingleSelectQuestionForm
 } from '../@models/questions-forms';
+import { Inquiry } from '../../../../../@models/inquiry';
 
-@Injectable({
-  providedIn: 'root',
-  useFactory: () => {
-    const formBuilder: NonNullableFormBuilder = inject(NonNullableFormBuilder);
-    return new InquiryFormServiceService(formBuilder);
-  }
-})
+@Injectable()
 export class InquiryFormServiceService {
-  static lastIDquestionsArrayReverse: number = 0;
-  static isAnswerToMultiSelect: boolean = false;
-  static isAnswerToSingleSelect: boolean = false;
-  static isEditForm: boolean = false;
-  static _inquiryForm: FormGroup;
-  static formBuilder: NonNullableFormBuilder;
+  public _inquiryForm: FormGroup;
 
-  constructor(formBuilder: NonNullableFormBuilder) {
-    InquiryFormServiceService.formBuilder = formBuilder;
+  constructor(private readonly formBuilder: NonNullableFormBuilder) {
+    this._inquiryForm = this.createForm();
   }
 
-  public static addShortTextQuestionForm(_inquiryForm: FormGroup, shortTextQuestion?: ShortTextQuestion): FormArray {
-    this._inquiryForm = _inquiryForm;
-    const questions: FormArray = this._inquiryForm.get(InquiryFormName.QUESTIONS) as FormArray;
+  private createForm(): FormGroup<QuestionsForm> {
+    return this.formBuilder.group<QuestionsForm>({
+      [InquiryFormName.INQUIRY_NAME]: this.formBuilder.control<string>('', Validators.required),
+      [InquiryFormName.QUESTIONS]: this.formBuilder.array([])
+    });
+  }
+
+  public fillEditForm(inquiry?: Inquiry): void {
+    if (inquiry) {
+      this._inquiryForm.get(InquiryFormName.INQUIRY_NAME)?.patchValue(inquiry.name);
+      inquiry.questions.forEach((question: Question) => {
+        switch (question.type) {
+          case QuestionType.MULTISELECT:
+            this.addMultiSelectForm(question as MultiselectQuestion);
+            break;
+          case QuestionType.SCALE:
+            this.addScaleSelectForm(question as ScaleQuestion);
+            break;
+          case QuestionType.SHORT_TEXT:
+            this.addShortTextQuestionForm(question as ShortTextQuestion);
+            break;
+          case QuestionType.SINGLE_SELECT:
+            this.addSingleSelectForm(question as SingleSelectQuestion);
+            break;
+          default:
+            console.error('Unknown queston type');
+        }
+      });
+    }
+  }
+
+  public addShortTextQuestionForm(shortTextQuestion?: ShortTextQuestion): void {
+    const questions: FormArray = this._inquiryForm?.get(InquiryFormName.QUESTIONS) as FormArray;
     questions.push(
       this.formBuilder.group<ShortTextQuestionForm>({
         [ShortTextQuestionFormName.QUESTION]: this.formBuilder.control<string>(
@@ -53,22 +74,10 @@ export class InquiryFormServiceService {
         [TypeQuestion.TYPE]: this.formBuilder.control<QuestionType.SHORT_TEXT>(QuestionType.SHORT_TEXT)
       })
     );
-    return questions;
   }
 
-  public static addMultiSelectForm(_inquiryForm: FormGroup, multiselectQuestion?: MultiselectQuestion): FormArray {
-    this._inquiryForm = _inquiryForm;
-    const answerFormArray: FormArray = this.formBuilder.array([], { validators: [this.validatorSelectForm()] });
-
-    if (!multiselectQuestion) {
-      answerFormArray.push(this.formBuilder.control('', Validators.required));
-      answerFormArray.push(this.formBuilder.control('', Validators.required));
-    } else {
-      multiselectQuestion.answers.forEach((answer: string) => {
-        answerFormArray.push(this.formBuilder.control(answer, Validators.required));
-      });
-    }
-    const questions: FormArray = this._inquiryForm.get(InquiryFormName.QUESTIONS) as FormArray;
+  public addMultiSelectForm(multiselectQuestion?: MultiselectQuestion): void {
+    const questions: FormArray = this._inquiryForm?.get(InquiryFormName.QUESTIONS) as FormArray;
     questions.push(
       this.formBuilder.group<MultiSelectQuestionForm>({
         [MultiSelectQuestionFormName.QUESTION]: this.formBuilder.control<string>(
@@ -77,25 +86,26 @@ export class InquiryFormServiceService {
         ),
         [MultiSelectQuestionFormName.ID]: this.formBuilder.control<string>((questions.controls.length + 1).toString()),
         [TypeQuestion.TYPE]: this.formBuilder.control<QuestionType.MULTISELECT>(QuestionType.MULTISELECT),
-        [MultiSelectQuestionFormName.ANSWERS]: answerFormArray
+        [MultiSelectQuestionFormName.ANSWERS]: this.handleAddMultiSelectForm(multiselectQuestion)
       })
     );
-    return questions;
   }
 
-  private static validatorSelectForm(): ValidatorFn {
-    return (control: AbstractControl) => {
-      const answerFromArray: FormArray = control as FormArray;
-      if (answerFromArray.controls.length < 2) {
-        return { error: 'Error values' };
-      }
-      return null;
-    };
+  private handleAddMultiSelectForm(multiselectQuestion: any) {
+    const answerFormArray: FormArray = this.formBuilder.array([], { validators: [this.validatorSelectForm()] });
+    if (!multiselectQuestion) {
+      answerFormArray.push(this.formBuilder.control('', Validators.required));
+      answerFormArray.push(this.formBuilder.control('', Validators.required));
+    } else {
+      multiselectQuestion.answers.forEach((answer: string) => {
+        answerFormArray.push(this.formBuilder.control(answer, Validators.required));
+      });
+    }
+    return answerFormArray;
   }
 
-  public static addScaleSelectForm(_inquiryForm: FormGroup, scaleQuestion?: ScaleQuestion) {
-    this._inquiryForm = _inquiryForm;
-    const questions: FormArray = this._inquiryForm.get(InquiryFormName.QUESTIONS) as FormArray;
+  public addScaleSelectForm(scaleQuestion?: ScaleQuestion): void {
+    const questions: FormArray = this._inquiryForm?.get(InquiryFormName.QUESTIONS) as FormArray;
     questions.push(
       this.formBuilder.group<ScaleSelectQuestionForm>(
         {
@@ -112,10 +122,9 @@ export class InquiryFormServiceService {
         { validators: [this.validateScaleSelectForm()] }
       )
     );
-    return questions;
   }
 
-  private static validateScaleSelectForm(): ValidatorFn {
+  private validateScaleSelectForm(): ValidatorFn {
     return (control: AbstractControl) => {
       const maxValue = control.get(ScaleSelectQuestionFormName.MAX_VALUE)?.value;
       const minValue = control.get(ScaleSelectQuestionFormName.MIN_VALUE)?.value;
@@ -143,8 +152,22 @@ export class InquiryFormServiceService {
     };
   }
 
-  public static addSingleSelectForm(_inquiryForm: FormGroup, singleSelectQuestion?: SingleSelectQuestion) {
-    this._inquiryForm = _inquiryForm;
+  public addSingleSelectForm(singleSelectQuestion?: SingleSelectQuestion): void {
+    const questions: FormArray = this._inquiryForm?.get(InquiryFormName.QUESTIONS) as FormArray;
+    questions.push(
+      this.formBuilder.group<SingleSelectQuestionForm>({
+        [SingleSelectQuestionFormName.QUESTION]: this.formBuilder.control<string>(
+          singleSelectQuestion ? singleSelectQuestion.label : '',
+          Validators.required
+        ),
+        [SingleSelectQuestionFormName.ID]: this.formBuilder.control<string>((questions.controls.length + 1).toString()),
+        [TypeQuestion.TYPE]: this.formBuilder.control<QuestionType.SINGLE_SELECT>(QuestionType.SINGLE_SELECT),
+        [SingleSelectQuestionFormName.ANSWERS]: this.handleAddSingleSelectForm(singleSelectQuestion)
+      })
+    );
+  }
+
+  private handleAddSingleSelectForm(singleSelectQuestion?: SingleSelectQuestion): FormArray {
     const answerFormArray: FormArray = this.formBuilder.array([], { validators: [this.validatorSelectForm()] });
 
     if (!singleSelectQuestion) {
@@ -155,35 +178,16 @@ export class InquiryFormServiceService {
         answerFormArray.push(this.formBuilder.control(answer, Validators.required));
       });
     }
-    const questions: FormArray = this._inquiryForm.get(InquiryFormName.QUESTIONS) as FormArray;
-
-    questions.push(
-      this.formBuilder.group<SingleSelectQuestionForm>({
-        [SingleSelectQuestionFormName.QUESTION]: this.formBuilder.control<string>(
-          singleSelectQuestion ? singleSelectQuestion.label : '',
-          Validators.required
-        ),
-        [SingleSelectQuestionFormName.ID]: this.formBuilder.control<string>((questions.controls.length + 1).toString()),
-        [TypeQuestion.TYPE]: this.formBuilder.control<QuestionType.SINGLE_SELECT>(QuestionType.SINGLE_SELECT),
-        [SingleSelectQuestionFormName.ANSWERS]: answerFormArray
-      })
-    );
-    this.countQuestionControls(questions);
-    return questions;
-    
+    return answerFormArray
   }
-
-  public static countQuestionControls(questions: FormArray): number {
-    const questionsLength = +questions.controls['length'];
-    const questionsArray: SingleSelectQuestionForm | MultiSelectQuestionForm[] = [];
-    for (let i = 0; i < questionsLength; i++) {
-      questionsArray.push(questions.controls[i].value);
-    }
-    const questionsArrayReverse = questionsArray?.reverse();
-    const lastIDquestionsArrayReverse = questionsArrayReverse[0]?.id;
-    this.lastIDquestionsArrayReverse = +lastIDquestionsArrayReverse;
-    console.log(lastIDquestionsArrayReverse);
-    
-    return +lastIDquestionsArrayReverse
+  
+  private validatorSelectForm(): ValidatorFn {
+    return (control: AbstractControl) => {
+      const answerFromArray: FormArray = control as FormArray;
+      if (answerFromArray.controls.length < 2) {
+        return { error: 'Error values' };
+      }
+      return null;
+    };
   }
 }
