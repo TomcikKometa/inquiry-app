@@ -21,7 +21,7 @@
           @if (item.get(typeQuestion.TYPE)?.value === questionType.MULTISELECT) {
             @if (index + 1 === lastIDquestionsArrayReverse) {
               @if (isAnswerToMultiSelect) {
-                <inq-button-add-answer (addAnswer)="addAnswerInMultiSelectForm(index)"></inq-button-add-answer>
+                <inq-button-add-answer (addAnswer)="addAnswerInSelectForm(index,'multiSelect')"></inq-button-add-answer>
               }
             }
           }
@@ -35,7 +35,7 @@
           @if (item.get(typeQuestion.TYPE)?.value === questionType.SINGLE_SELECT) {
             @if (index + 1 === lastIDquestionsArrayReverse) {
               @if (isAnswerToSingleSelect) {
-                <inq-button-add-answer (addAnswer)="addAnswerInSingleSelectForm(index)"></inq-button-add-answer>
+                <inq-button-add-answer (addAnswer)="addAnswerInSelectForm(index,'singleSelect')"></inq-button-add-answer>
               }
             }
           }

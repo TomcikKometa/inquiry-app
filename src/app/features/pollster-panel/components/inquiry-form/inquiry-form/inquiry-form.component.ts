@@ -1,34 +1,11 @@
 import { Component, inject } from '@angular/core';
-import {
-  FormGroup,
-  ReactiveFormsModule,
-  FormArray,
-  NonNullableFormBuilder,
-  AbstractControl,
-  ValidatorFn,
-  Validators,
-  Form
-} from '@angular/forms';
+import { FormGroup, ReactiveFormsModule, FormArray, NonNullableFormBuilder, AbstractControl, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import {
-  InquiryFormName,
-  MultiSelectQuestionFormName,
-  ScaleSelectQuestionFormName,
-  ShortTextQuestionFormName,
-  SingleSelectQuestionFormName,
-  TypeQuestion
-} from '../@enum/form-enum';
-import {
-  MultiSelectQuestionForm,
-  QuestionsForm,
-  ScaleSelectQuestionForm,
-  ShortTextQuestionForm,
-  SingleSelectQuestionForm
-} from '../@models/questions-forms';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { InquiryFormName, MultiSelectQuestionFormName, SingleSelectQuestionFormName, TypeQuestion } from '../@enum/form-enum';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { QuestionComponent } from '../../question/question.component';
 import { SingleSelectComponent } from '../../single-select/single-select.component';
@@ -39,7 +16,6 @@ import { InquiryMapper } from '../../../../../@api/services/mapper/inquiry-mappe
 import { InquiryService } from '../../../../../@api/services/inquiry-service/inquiry.service';
 import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs';
-import { MultiselectQuestion, Question, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../../../@models/question';
 import { MultiSelectComponent } from '../../multi-select/multi-select.component';
 import { ToastrServiceMesseges } from '../../../../../@enums/toastr-messeges';
 import { ButtonAddAnswerComponent } from '../../../../shared-components/button-add-answer/button-add-answer.component';
@@ -62,7 +38,7 @@ import { InquiryFormServiceService } from '../inquiry-form-service/inquiry-form-
     ButtonAddAnswerComponent,
     MultiSelectComponent
   ],
-  providers: [ToastrService],
+  providers: [ToastrService, InquiryFormServiceService],
   templateUrl: './inquiry-form.component.html',
   styleUrl: './inquiry-form.component.css'
 })
@@ -82,113 +58,54 @@ export class InquiryFormComponent {
   public readonly inquiryFormServiceService: InquiryFormServiceService = inject(InquiryFormServiceService);
 
   public ngOnInit(): void {
+    this._inquiryForm = this.inquiryFormServiceService._inquiryForm;
     if (!this.editInquiryID) {
       this.isEditForm = false;
-      this._inquiryForm = this.createNewForm();
     } else {
       this.isEditForm = true;
       this.inquiryService
         .getInqiryById(this.editInquiryID)
         .pipe(first())
         .subscribe((inquiry: Inquiry) => {
-          this.createEditForm(inquiry);
+          this.inquiryFormServiceService.fillEditForm(inquiry);
         });
     }
   }
 
-  private createEditForm(inquiry?: Inquiry): void {
-    if (inquiry) {
-      inquiry.questions.forEach((question: Question) => {
-        switch (question.type) {
-          case QuestionType.MULTISELECT:
-            this.addMultiSelectForm(question as MultiselectQuestion, inquiry);
-            break;
-          case QuestionType.SCALE:
-            this.addScaleSelectForm(question as ScaleQuestion, inquiry);
-            break;
-          case QuestionType.SHORT_TEXT:
-            this.addShortTextQuestionForm(question as ShortTextQuestion, inquiry);
-            break;
-          case QuestionType.SINGLE_SELECT:
-            this.addSingleSelectForm(question as SingleSelectQuestion, inquiry);
-            break;
-          default:
-            console.error('Unknown queston type');
-        }
-      });
-    }
-  }
-
-  private createNewForm(): FormGroup<QuestionsForm> {
-    return (this._inquiryForm = this.formBuilder.group<QuestionsForm>({
-      [InquiryFormName.INQUIRY_NAME]: this.formBuilder.control<string>('', Validators.required),
-      [InquiryFormName.QUESTIONS]: this.formBuilder.array([])
-    }));
-  }
-
-  protected addShortTextQuestionForm(shortTextQuestion?: ShortTextQuestion, inquiry?: Inquiry): void {
+  protected addShortTextQuestionForm(): void {
     this.isAnswerToMultiSelect = false;
     this.isAnswerToSingleSelect = false;
-    if (this.isEditForm && !this._inquiryForm) {
-      this._inquiryForm = this.formBuilder.group<QuestionsForm>({
-        [InquiryFormName.INQUIRY_NAME]: this.formBuilder.control<string>(inquiry ? inquiry.name : '', Validators.required),
-        [InquiryFormName.QUESTIONS]: this.formBuilder.array([])
-      });
-    }
-    InquiryFormServiceService.addShortTextQuestionForm(this._inquiryForm, shortTextQuestion) as FormArray;
+    this.inquiryFormServiceService.addShortTextQuestionForm();
   }
 
-  protected addMultiSelectForm(multiselectQuestion?: MultiselectQuestion, inquiry?: Inquiry) {
+  protected addMultiSelectForm(): void {
     this.isAnswerToSingleSelect = false;
     this.isAnswerToMultiSelect = true;
-
-    if (this.isEditForm && !this._inquiryForm) {
-      this._inquiryForm = this.formBuilder.group<QuestionsForm>({
-        [InquiryFormName.INQUIRY_NAME]: this.formBuilder.control<string>(inquiry ? inquiry.name : '', Validators.required),
-        [InquiryFormName.QUESTIONS]: this.formBuilder.array([])
-      });
-    } 
-    InquiryFormServiceService.addMultiSelectForm(this._inquiryForm, multiselectQuestion);
+    this.inquiryFormServiceService.addMultiSelectForm();
     this.countQuestionControls();
   }
 
-  protected addScaleSelectForm(scaleQuestion?: ScaleQuestion, inquiry?: Inquiry) {
+  protected addScaleSelectForm(): void {
     this.isAnswerToMultiSelect = false;
     this.isAnswerToSingleSelect = false;
     this.lastIDquestionsArrayReverse = 0;
-
-    if (this.isEditForm && !this._inquiryForm) {
-      this._inquiryForm = this.formBuilder.group<QuestionsForm>({
-        [InquiryFormName.INQUIRY_NAME]: this.formBuilder.control<string>(inquiry ? inquiry.name : '', Validators.required),
-        [InquiryFormName.QUESTIONS]: this.formBuilder.array([])
-      });
-    } 
-    InquiryFormServiceService.addScaleSelectForm(this._inquiryForm, scaleQuestion);
+    this.inquiryFormServiceService.addScaleSelectForm();
   }
 
-  protected addSingleSelectForm(singleSelectQuestion?: SingleSelectQuestion, inquiry?: Inquiry) {
+  protected addSingleSelectForm(): void {
     this.isAnswerToMultiSelect = false;
     this.isAnswerToSingleSelect = true;
     this.lastIDquestionsArrayReverse = 0;
-
-    if (this.isEditForm && !this._inquiryForm) {
-      this._inquiryForm = this.formBuilder.group<QuestionsForm>({
-        [InquiryFormName.INQUIRY_NAME]: this.formBuilder.control<string>(inquiry ? inquiry.name : '', Validators.required),
-        [InquiryFormName.QUESTIONS]: this.formBuilder.array([])
-      });
-    } 
-    InquiryFormServiceService.addSingleSelectForm(this._inquiryForm, singleSelectQuestion);
+    this.inquiryFormServiceService.addSingleSelectForm();
     this.countQuestionControls();
   }
 
-  protected addAnswerInMultiSelectForm(index: number): void {
-    const answers = this.questionsFormArray.controls[index].get(MultiSelectQuestionFormName.ANSWERS) as FormArray;
-    answers.push(this.formBuilder.control('', Validators.required));
-  }
-
-  protected addAnswerInSingleSelectForm(index: number): void {
-    const answers = this.questionsFormArray.controls[index].get(SingleSelectQuestionFormName.ANSWERS) as FormArray;
-    answers.push(this.formBuilder.control('', Validators.required));
+  protected addAnswerInSelectForm(index: number, answerType: string): void {
+    const answersMulti = this.questionsFormArray.controls[index].get(MultiSelectQuestionFormName.ANSWERS) as FormArray;
+    const answersSelect = this.questionsFormArray.controls[index].get(SingleSelectQuestionFormName.ANSWERS) as FormArray;
+    answerType === 'multiSelect'
+      ? answersMulti.push(this.formBuilder.control('', Validators.required))
+      : answersSelect.push(this.formBuilder.control('', Validators.required));
   }
 
   protected saveInquary(): void {
@@ -225,8 +142,8 @@ export class InquiryFormComponent {
     return item.get('id')?.value;
   }
 
-  protected countQuestionControls(){
-    const  arrayControl = this.inquiryForm.get('questions') as FormArray;
+  protected countQuestionControls() {
+    const arrayControl = this.inquiryForm.get('questions') as FormArray;
     this.lastIDquestionsArrayReverse = arrayControl.length;
   }
 
@@ -240,10 +157,6 @@ export class InquiryFormComponent {
 
   protected get questionsFormArray(): FormArray {
     return this.inquiryForm.get(InquiryFormName.QUESTIONS) as FormArray;
-  }
-
-  protected get shortTextQuestionFormName(): typeof ShortTextQuestionFormName {
-    return ShortTextQuestionFormName;
   }
 
   protected get questionType(): typeof QuestionType {

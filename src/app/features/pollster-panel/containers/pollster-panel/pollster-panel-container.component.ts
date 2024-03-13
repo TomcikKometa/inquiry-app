@@ -28,6 +28,7 @@ export class PollsterPanelContainerComponent {
   protected sessionStorageUser!:string;
   protected userType!:string;
   protected timeActual!:string;
+  protected currentDate: Date = new Date();
 
   private readonly dialog: MatDialog = inject(MatDialog);
   private readonly toastService: ToastrService = inject(ToastrService);
@@ -35,16 +36,15 @@ export class PollsterPanelContainerComponent {
   private readonly datePipe: DatePipe = inject(DatePipe);
 
   public ngOnInit(): void {
+    this.clock();
     this.sessionStorageUser = window.sessionStorage.getItem(AccountsKey.TOKEN_KEY)!;
     window.sessionStorage.getItem(AccountsKey.TOKEN_KEY)! === 'pollsterToken' ? (this.userType = 'Pollster') : (this.userType = 'User');
     setInterval(() => this.clock(), 1000);
   }
 
-  clock(): string {
-    const now = Date.now();
-    const time: string = `${this.datePipe.transform(now,'HH:mm:ss')}`;
-    this.timeActual = time;
-    return time;
+  private clock(): void {
+    this.currentDate.setSeconds(this.currentDate.getSeconds() + 1);
+    this.timeActual = this.datePipe.transform(this.currentDate,'HH:mm:ss') as string;
   }
 
   protected openInquiryForm(id?:string) {
@@ -67,5 +67,4 @@ export class PollsterPanelContainerComponent {
   get accountsToken(): typeof AccountsToken{
     return AccountsToken;
   }
-
 }

@@ -1,10 +1,10 @@
 import { Injectable, inject } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, NonNullableFormBuilder } from '@angular/forms';
+import { Form, FormArray, FormBuilder, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { Inquiry } from '../../../../../@models/inquiry';
-import { MultiselectQuestion, Question, ShortTextQuestion, SingleSelectQuestion } from '../../../../../@models/question';
+import { MultiselectQuestion, Question, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../../../@models/question';
 import { QuestionType } from '../../../../../@enums/question-type';
-import { MultiSelectAnswerFormName, SingleSelectAnswerFormName, ShortTextQuestionAnswerFormName } from './enums/inquiry-form-to-fill-enums';
-import { SingleSelectAnswerForm, ShortTextQuestionAnswerForm, MultiSelectAnswerForm } from './models/inquiry-form-to-fill-model';
+import { MultiSelectAnswerFormName, SingleSelectAnswerFormName, ShortTextQuestionAnswerFormName, ScaleSelectAnswerFormName } from './enums/inquiry-form-to-fill-enums';
+import { SingleSelectAnswerForm, ShortTextQuestionAnswerForm, MultiSelectAnswerForm, ScaleSelectAnswerForm } from './models/inquiry-form-to-fill-model';
 
 @Injectable()
 export class InquiryFormToFillServiceService {
@@ -15,14 +15,19 @@ export class InquiryFormToFillServiceService {
     inquiry.questions.forEach((question: Question) => {
       switch (question.type) {
         case QuestionType.MULTISELECT:
-          // formArray.push(this.createMultiSelectForm(question as MultiselectQuestion));
+          formArray.push(this.createMultiSelectForm(question as MultiselectQuestion));
           break;
         case QuestionType.SHORT_TEXT:
-          // formArray.push(this.createShortTextQuestionForm(question as ShortTextQuestion));
+          formArray.push(this.createShortTextQuestionForm(question as ShortTextQuestion));
+          break;
         case QuestionType.SCALE:
-
+          formArray.push(this.createScleSelectForm(question as ScaleQuestion));
+          break;
         case QuestionType.SINGLE_SELECT:
-          // formArray.push(this.createSingleSelectForm(question as SingleSelectQuestion))
+          formArray.push(this.createSingleSelectForm(question as SingleSelectQuestion));
+          break;
+        default:
+          console.error('Error type of question type')
       }
     });
     return formArray;
@@ -50,5 +55,13 @@ export class InquiryFormToFillServiceService {
       [ShortTextQuestionAnswerFormName.TYPE]: this.formBuilder.control<QuestionType.SHORT_TEXT>(QuestionType.SHORT_TEXT),
       [ShortTextQuestionAnswerFormName.ANSWER]: this.formBuilder.array([])
     });
+  }
+
+  private createScleSelectForm(scaleQuestion: ScaleQuestion): FormGroup {
+    return this.formBuilder.group<ScaleSelectAnswerForm>({
+      [ScaleSelectAnswerFormName.QUESTION]:this.formBuilder.control<string>(scaleQuestion.label),
+      [ScaleSelectAnswerFormName.TYPE]:this.formBuilder.control<QuestionType.SCALE>(QuestionType.SCALE),
+      [ScaleSelectAnswerFormName.VALUE]: this.formBuilder.control<string>('')
+    })
   }
 }
