@@ -1,8 +1,12 @@
-import { MatDialogConfig } from "@angular/material/dialog";
+import { MatDialogConfig } from '@angular/material/dialog';
 
 export const DIALOG_OPTIONS: MatDialogConfig = {
-    width: '48vw',
-    maxHeight:'35vw',
-    enterAnimationDuration: '500ms',
-    exitAnimationDuration: '500ms'
-  };
+  width: '48vw',
+  maxHeight: '35vw',
+  enterAnimationDuration: '500ms',
+  exitAnimationDuration: '500ms',
+  position: {
+    top: '100px'
+  },
+  autoFocus:false
+};

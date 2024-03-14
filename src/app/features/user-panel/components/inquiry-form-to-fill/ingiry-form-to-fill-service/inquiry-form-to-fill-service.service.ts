@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Form, FormArray, FormBuilder, FormGroup, NonNullableFormBuilder } from '@angular/forms';
+import { AbstractControl, Form, FormArray, FormBuilder, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { Inquiry } from '../../../../../@models/inquiry';
 import { MultiselectQuestion, Question, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../../../@models/question';
 import { QuestionType } from '../../../../../@enums/question-type';
@@ -37,8 +37,21 @@ export class InquiryFormToFillServiceService {
     return this.formBuilder.group<MultiSelectAnswerForm>({
       [MultiSelectAnswerFormName.QUESTION]: this.formBuilder.control<string>(multiselectQuestion.label),
       [MultiSelectAnswerFormName.TYPE]: this.formBuilder.control<QuestionType.MULTISELECT>(QuestionType.MULTISELECT),
-      [MultiSelectAnswerFormName.ANSWERS]: this.formBuilder.array([])
+      [MultiSelectAnswerFormName.ANSWERS]: this.handleAddMultiSelectForm(multiselectQuestion)
     });
+  }
+
+  private handleAddMultiSelectForm(multiselectQuestion: MultiselectQuestion) {
+    const answerFormArray: FormArray = this.formBuilder.array([], { validators: [this.validatorSelectForm()] });
+    if (!multiselectQuestion) {
+      answerFormArray.push(this.formBuilder.control('', Validators.required));
+      answerFormArray.push(this.formBuilder.control('', Validators.required));
+    } else {
+      multiselectQuestion.answers.forEach((answer: string) => {
+        answerFormArray.push(this.formBuilder.control({value:answer,disabled:true}, Validators.required));
+      });
+    }
+    return answerFormArray;
   }
 
   private createSingleSelectForm(singleSelectQuestion: SingleSelectQuestion): FormGroup {
@@ -63,5 +76,15 @@ export class InquiryFormToFillServiceService {
       [ScaleSelectAnswerFormName.TYPE]:this.formBuilder.control<QuestionType.SCALE>(QuestionType.SCALE),
       [ScaleSelectAnswerFormName.VALUE]: this.formBuilder.control<string>('')
     })
+  }
+
+  private validatorSelectForm(): ValidatorFn {
+    return (control: AbstractControl) => {
+      const answerFromArray: FormArray = control as FormArray;
+      if (answerFromArray.controls.length < 2) {
+        return { error: 'Error values' };
+      }
+      return null;
+    };
   }
 }

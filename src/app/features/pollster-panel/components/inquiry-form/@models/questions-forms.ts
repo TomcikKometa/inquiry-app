@@ -1,6 +1,6 @@
 import { FormArray, FormControl } from '@angular/forms';
 import {
-  InquiryFormName,
+  InquiryQuestionsFormName,
   MultiSelectQuestionFormName,
   ScaleSelectQuestionFormName,
   ShortTextQuestionFormName,
@@ -10,8 +10,8 @@ import {
 import { QuestionType } from '../../../../../@enums/question-type';
 
 export interface QuestionsForm {
-  [InquiryFormName.INQUIRY_NAME]: FormControl<string>;
-  [InquiryFormName.QUESTIONS]: FormArray;
+  [InquiryQuestionsFormName.INQUIRY_NAME]: FormControl<string>;
+  [InquiryQuestionsFormName.QUESTIONS]: FormArray;
 }
 
 export interface ShortTextQuestionForm {

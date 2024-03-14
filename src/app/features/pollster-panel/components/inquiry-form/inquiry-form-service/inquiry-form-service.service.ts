@@ -3,7 +3,7 @@ import { QuestionType } from '../../../../../@enums/question-type';
 import { MultiselectQuestion, Question, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../../../@models/question';
 import { Validators, FormArray, FormGroup, NonNullableFormBuilder, AbstractControl, ValidatorFn } from '@angular/forms';
 import {
-  InquiryFormName,
+  InquiryQuestionsFormName,
   MultiSelectQuestionFormName,
   ScaleSelectQuestionFormName,
   ShortTextQuestionFormName,
@@ -29,14 +29,14 @@ export class InquiryFormServiceService {
 
   private createForm(): FormGroup<QuestionsForm> {
     return this.formBuilder.group<QuestionsForm>({
-      [InquiryFormName.INQUIRY_NAME]: this.formBuilder.control<string>('', Validators.required),
-      [InquiryFormName.QUESTIONS]: this.formBuilder.array([])
+      [InquiryQuestionsFormName.INQUIRY_NAME]: this.formBuilder.control<string>('', Validators.required),
+      [InquiryQuestionsFormName.QUESTIONS]: this.formBuilder.array([])
     });
   }
 
   public fillEditForm(inquiry?: Inquiry): void {
     if (inquiry) {
-      this._inquiryForm.get(InquiryFormName.INQUIRY_NAME)?.patchValue(inquiry.name);
+      this._inquiryForm.get(InquiryQuestionsFormName.INQUIRY_NAME)?.patchValue(inquiry.name);
       inquiry.questions.forEach((question: Question) => {
         switch (question.type) {
           case QuestionType.MULTISELECT:
@@ -59,7 +59,7 @@ export class InquiryFormServiceService {
   }
 
   public addShortTextQuestionForm(shortTextQuestion?: ShortTextQuestion): void {
-    const questions: FormArray = this._inquiryForm?.get(InquiryFormName.QUESTIONS) as FormArray;
+    const questions: FormArray = this._inquiryForm?.get(InquiryQuestionsFormName.QUESTIONS) as FormArray;
     questions.push(
       this.formBuilder.group<ShortTextQuestionForm>({
         [ShortTextQuestionFormName.QUESTION]: this.formBuilder.control<string>(
@@ -77,7 +77,7 @@ export class InquiryFormServiceService {
   }
 
   public addMultiSelectForm(multiselectQuestion?: MultiselectQuestion): void {
-    const questions: FormArray = this._inquiryForm?.get(InquiryFormName.QUESTIONS) as FormArray;
+    const questions: FormArray = this._inquiryForm?.get(InquiryQuestionsFormName.QUESTIONS) as FormArray;
     questions.push(
       this.formBuilder.group<MultiSelectQuestionForm>({
         [MultiSelectQuestionFormName.QUESTION]: this.formBuilder.control<string>(
@@ -105,7 +105,7 @@ export class InquiryFormServiceService {
   }
 
   public addScaleSelectForm(scaleQuestion?: ScaleQuestion): void {
-    const questions: FormArray = this._inquiryForm?.get(InquiryFormName.QUESTIONS) as FormArray;
+    const questions: FormArray = this._inquiryForm?.get(InquiryQuestionsFormName.QUESTIONS) as FormArray;
     questions.push(
       this.formBuilder.group<ScaleSelectQuestionForm>(
         {
@@ -153,7 +153,7 @@ export class InquiryFormServiceService {
   }
 
   public addSingleSelectForm(singleSelectQuestion?: SingleSelectQuestion): void {
-    const questions: FormArray = this._inquiryForm?.get(InquiryFormName.QUESTIONS) as FormArray;
+    const questions: FormArray = this._inquiryForm?.get(InquiryQuestionsFormName.QUESTIONS) as FormArray;
     questions.push(
       this.formBuilder.group<SingleSelectQuestionForm>({
         [SingleSelectQuestionFormName.QUESTION]: this.formBuilder.control<string>(

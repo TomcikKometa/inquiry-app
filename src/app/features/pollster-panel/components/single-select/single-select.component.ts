@@ -5,7 +5,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
-import { InquiryFormName, SingleSelectQuestionFormName, TypeQuestion } from '../inquiry-form/@enum/form-enum';
+import { InquiryQuestionsFormName, SingleSelectQuestionFormName, TypeQuestion } from '../inquiry-form/@enum/form-enum';
 import { QuestionType } from '../../../../@enums/question-type';
 
 @Component({
@@ -50,7 +50,7 @@ export class SingleSelectComponent {
     return SingleSelectQuestionFormName;
   }
 
-  protected get inquiryFormName(): typeof InquiryFormName {
-    return InquiryFormName;
+  protected get inquiryFormName(): typeof InquiryQuestionsFormName {
+    return InquiryQuestionsFormName;
   }
 }
