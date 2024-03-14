@@ -1,1 +1,25 @@
+<div class="container">
+  <div class="question">
+    <span>Question no.{{ indexItem + 1 }}</span>
+  </div>
+  <div class="questionContent">
+    <span class="questionSpan">{{ questionName }}</span>
+  </div>
+  <form [formGroup]="form">
+    <div formArrayName="{{ inquiryFormName.ANSWERS }}">
+      <div [formGroupName]="indexItem">
+        <div formArrayName="{{ multiSelectAnswerFormName.ANSWERS }}" class="answers">
+          @for (answer of answersFormArray.controls; track $index) {
+            <div class="d-flex row answers">
+              <mat-checkbox class="matCheckbox"></mat-checkbox>
+              <mat-form-field appearance="outline" class="answerInputWidth">
+                <input matInput type="text" formControlName="{{ $index }}" class="disabled" />
+              </mat-form-field>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
 

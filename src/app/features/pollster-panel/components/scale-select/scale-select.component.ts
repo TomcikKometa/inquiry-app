@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatSliderModule} from '@angular/material/slider';
-import { InquiryFormName, ScaleSelectQuestionFormName } from '../inquiry-form/@enum/form-enum';
+import { InquiryQuestionsFormName, ScaleSelectQuestionFormName } from '../inquiry-form/@enum/form-enum';
 import { QuestionType } from '../../../../@enums/question-type';
 
 @Component({
@@ -37,8 +37,8 @@ export class ScaleSelectComponent {
       this.removeQuestionEvent.emit(this.itemIndex);
     }
 
-    public get inquiryFormName(): typeof InquiryFormName {
-      return InquiryFormName;
+    public get inquiryFormName(): typeof InquiryQuestionsFormName {
+      return InquiryQuestionsFormName;
     }
 
     public get scaleSelectQuestionFormName() : typeof ScaleSelectQuestionFormName {

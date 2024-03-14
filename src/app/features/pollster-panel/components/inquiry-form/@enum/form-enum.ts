@@ -1,4 +1,4 @@
-export enum InquiryFormName {
+export enum InquiryQuestionsFormName {
   INQUIRY_NAME = 'inquiryName',
   QUESTIONS = 'questions'
 }

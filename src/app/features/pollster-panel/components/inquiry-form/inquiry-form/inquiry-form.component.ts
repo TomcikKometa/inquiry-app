@@ -4,7 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { InquiryFormName, MultiSelectQuestionFormName, SingleSelectQuestionFormName, TypeQuestion } from '../@enum/form-enum';
+import { InquiryQuestionsFormName, MultiSelectQuestionFormName, SingleSelectQuestionFormName, TypeQuestion } from '../@enum/form-enum';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { QuestionComponent } from '../../question/question.component';
@@ -151,12 +151,12 @@ export class InquiryFormComponent {
     return this._inquiryForm;
   }
 
-  protected get inquiryFormName(): typeof InquiryFormName {
-    return InquiryFormName;
+  protected get inquiryFormName(): typeof InquiryQuestionsFormName {
+    return InquiryQuestionsFormName;
   }
 
   protected get questionsFormArray(): FormArray {
-    return this.inquiryForm.get(InquiryFormName.QUESTIONS) as FormArray;
+    return this.inquiryForm.get(InquiryQuestionsFormName.QUESTIONS) as FormArray;
   }
 
   protected get questionType(): typeof QuestionType {

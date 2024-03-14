@@ -1,3 +1,7 @@
+export enum InquiryAnswersFormName {
+    ANSWERS = 'answers'
+  }
+
 export enum MultiSelectAnswerFormName {
     QUESTION = 'question',
     TYPE = 'type',

@@ -1,4 +1,21 @@
-<form [formGroup]="formGroup">
-<!-- <div formArrayName="answers">
-    @for (answer of answers; track $index) {}
-</div></form> -->
+<div class="container">
+  <div class="title">Inquiry name: {{ inquiry.name }}</div>
+  <p class="borderLine"></p>
+
+  <form [formGroup]="formGroup" class="formGroup">
+    <div formArrayName="answers">
+      @for (answer of formArrayControls.controls; track $index) {
+        <inq-multiselect-answer [item]="answer" [indexItem]="$index"></inq-multiselect-answer>
+        <inq-scale-answer></inq-scale-answer>
+        <inq-shortquestion-answer></inq-shortquestion-answer>
+        <inq-singleselect-answer></inq-singleselect-answer>
+      }
+    </div>
+  </form>
+  <div class="matDialogActions">
+    <mat-dialog-actions align="end">
+      <button class="buttonCustom" mat-button mat-dialog-close>Cancel</button>
+      <button class="buttonCustom" mat-button mat-dialog-close>Save</button>
+    </mat-dialog-actions>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import { InquiryFormToFillComponent } from '../../components/inquiry-form-to-fil
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { DatePipe } from '@angular/common';
+import { InquiryFormComponent } from '../../../pollster-panel/components/inquiry-form/inquiry-form/inquiry-form.component';
 
 export interface TimeClock {
   hours: string;
@@ -46,8 +47,8 @@ export class UserPanelContainerComponent implements OnInit {
     this.timeActual = this.datePipe.transform(this.currentDate,'HH:mm:ss') as string;
   }
 
-  protected openInquiryFormToFill(id: Event): void {
-    this.dialog.open(InquiryFormToFillComponent, { data: id, ...DIALOG_OPTIONS });
+  protected openInquiryFormToFill(id: string): void {
+    this.dialog.open(InquiryFormToFillComponent, {data:id, ...DIALOG_OPTIONS});
   }
 
   protected logOut(): void {

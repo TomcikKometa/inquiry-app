@@ -3,7 +3,7 @@ import { AbstractControl, FormArray, FormGroup, FormGroupDirective, ReactiveForm
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { InquiryFormName, MultiSelectQuestionFormName, TypeQuestion } from '../inquiry-form/@enum/form-enum';
+import { InquiryQuestionsFormName, MultiSelectQuestionFormName, TypeQuestion } from '../inquiry-form/@enum/form-enum';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { QuestionType } from '../../../../@enums/question-type';
 
@@ -30,6 +30,8 @@ export class MultiSelectComponent implements OnInit {
     if (this.item.get(TypeQuestion.TYPE)?.value === QuestionType.MULTISELECT) {
       if (this.itemIndex + 1 === +this.item.get(MultiSelectQuestionFormName.ID)?.value) this.isViewed = true;
     }
+    console.log(this.form);
+    
   }
 
   protected removeQuestion(): void {
@@ -50,8 +52,8 @@ export class MultiSelectComponent implements OnInit {
     return MultiSelectQuestionFormName
   }
 
-  public get inquiryFormName(): typeof InquiryFormName {
-    return InquiryFormName;
+  public get inquiryFormName(): typeof InquiryQuestionsFormName {
+    return InquiryQuestionsFormName;
   }
 
   public get answersFormArray(): FormArray {

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { AbstractControl, FormGroup, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { InquiryFormName, ShortTextQuestionFormName, TypeQuestion } from '../inquiry-form/@enum/form-enum';
+import { InquiryQuestionsFormName, ShortTextQuestionFormName, TypeQuestion } from '../inquiry-form/@enum/form-enum';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { QuestionType } from '../../../../@enums/question-type';
@@ -39,7 +39,7 @@ export class QuestionComponent implements OnInit {
     return ShortTextQuestionFormName;
   }
 
-  protected get inquiryFormName(): typeof InquiryFormName {
-    return InquiryFormName;
+  protected get inquiryFormName(): typeof InquiryQuestionsFormName {
+    return InquiryQuestionsFormName;
   }
 }
