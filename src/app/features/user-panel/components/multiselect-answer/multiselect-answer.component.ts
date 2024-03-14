@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { AbstractControl, FormArray, FormGroup, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
-import { InquiryAnswersFormName, MultiSelectAnswerFormName } from '../inquiry-form-to-fill/ingiry-form-to-fill-service/enums/inquiry-form-to-fill-enums';
+import { InquiryAnswersFormName, MultiSelectAnswerFormName } from '../inquiry-form-to-fill/ingiry-form-to-fill-service/@enums/inquiry-form-to-fill-enums';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';

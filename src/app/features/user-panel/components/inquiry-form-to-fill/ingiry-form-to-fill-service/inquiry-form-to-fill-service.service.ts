@@ -3,8 +3,8 @@ import { AbstractControl, Form, FormArray, FormBuilder, FormGroup, NonNullableFo
 import { Inquiry } from '../../../../../@models/inquiry';
 import { MultiselectQuestion, Question, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../../../@models/question';
 import { QuestionType } from '../../../../../@enums/question-type';
-import { MultiSelectAnswerFormName, SingleSelectAnswerFormName, ShortTextQuestionAnswerFormName, ScaleSelectAnswerFormName } from './enums/inquiry-form-to-fill-enums';
-import { SingleSelectAnswerForm, ShortTextQuestionAnswerForm, MultiSelectAnswerForm, ScaleSelectAnswerForm } from './models/inquiry-form-to-fill-model';
+import { MultiSelectAnswerFormName, SingleSelectAnswerFormName, ShortTextQuestionAnswerFormName, ScaleSelectAnswerFormName } from './@enums/inquiry-form-to-fill-enums';
+import { MultiSelectAnswerForm, SingleSelectAnswerForm, ShortTextQuestionAnswerForm, ScaleSelectAnswerForm } from './@models/inquiry-form-to-fill-model';
 
 @Injectable()
 export class InquiryFormToFillServiceService {
@@ -51,7 +51,7 @@ export class InquiryFormToFillServiceService {
         answerFormArray.push(this.formBuilder.control({value:answer,disabled:true}, Validators.required));
       });
     }
-    return answerFormArray;
+    return answerFormArray as FormArray;
   }
 
   private createSingleSelectForm(singleSelectQuestion: SingleSelectQuestion): FormGroup {

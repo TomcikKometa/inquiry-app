@@ -1,11 +1,17 @@
 import { FormArray, FormControl } from '@angular/forms';
 import { QuestionType } from '../../../../../../@enums/question-type';
 import {
+  InquiryAnswersFormName,
   MultiSelectAnswerFormName,
   ScaleSelectAnswerFormName,
   ShortTextQuestionAnswerFormName,
   SingleSelectAnswerFormName
-} from '../enums/inquiry-form-to-fill-enums';
+} from '../@enums/inquiry-form-to-fill-enums';
+
+
+export interface AnswersForm {
+  [InquiryAnswersFormName.ANSWERS]: FormArray;
+}
 
 export interface MultiSelectAnswerForm {
   [MultiSelectAnswerFormName.QUESTION]: FormControl<string>;
