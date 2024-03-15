@@ -1,8 +1,22 @@
 import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
 import { QuestionType } from '../../../@enums/question-type';
 import { Inquiry } from '../../../@models/inquiry';
-import { Question, MultiselectQuestion, SingleSelectQuestion, ShortTextQuestion, ScaleQuestion } from '../../../@models/question';
-import { InquiryQuestionsFormName, TypeQuestion, MultiSelectQuestionFormName, SingleSelectQuestionFormName, ShortTextQuestionFormName, ScaleSelectQuestionFormName } from '../../../features/pollster-panel/components/inquiry-form/@enum/form-enum';
+import {
+  Question,
+  MultiselectQuestion,
+  SingleSelectQuestion,
+  ShortTextQuestion,
+  ScaleQuestion,
+  InquiryAnswer
+} from '../../../@models/question';
+import {
+  InquiryQuestionsFormName,
+  TypeQuestion,
+  MultiSelectQuestionFormName,
+  SingleSelectQuestionFormName,
+  ShortTextQuestionFormName,
+  ScaleSelectQuestionFormName
+} from '../../../features/pollster-panel/components/inquiry-form/@enum/form-enum';
 import { QuestionsForm } from '../../../features/pollster-panel/components/inquiry-form/@models/questions-forms';
 
 export class InquiryMapper {
@@ -23,7 +37,7 @@ export class InquiryMapper {
           const multiSelectQuestion: MultiselectQuestion = {
             label: question.get(MultiSelectQuestionFormName.QUESTION)?.value,
             type: QuestionType.MULTISELECT,
-            answers: question.get(MultiSelectQuestionFormName.ANSWERS)?.value
+            answers: this.mapAnswers(question.get(MultiSelectQuestionFormName.ANSWERS)?.value)
           };
           questions.push(multiSelectQuestion);
           break;
@@ -31,7 +45,7 @@ export class InquiryMapper {
           const singleSelectQuestion: SingleSelectQuestion = {
             label: question.get(SingleSelectQuestionFormName.QUESTION)?.value,
             type: QuestionType.SINGLE_SELECT,
-            answers: question.get(SingleSelectQuestionFormName.ANSWERS)?.value
+            answers: this.mapAnswers(question.get(SingleSelectQuestionFormName.ANSWERS)?.value)
           };
           questions.push(singleSelectQuestion);
           break;
@@ -53,10 +67,18 @@ export class InquiryMapper {
           };
           questions.push(scaleQuestion);
           break;
-          default:
+        default:
           throw Error('Unknown question type');
       }
     });
     return questions;
+  }
+
+  private static mapAnswers(answers: string[]): InquiryAnswer[] {
+    return answers.map((answer: string) => {
+      return {
+        answer: answer
+      };
+    });
   }
 }

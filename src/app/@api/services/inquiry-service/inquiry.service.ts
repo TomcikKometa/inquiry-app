@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { Inquiry } from '../../../@models/inquiry';
 import { v4 as uuidv4 } from 'uuid';
+import { InquiryAnswer, MultiselectQuestion, Question, SingleSelectQuestion } from '../../../@models/question';
+import { QuestionType } from '../../../@enums/question-type';
+import { ScaleAnswerComponent } from '../../../features/user-panel/components/scale-answer/scale-answer.component';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +19,23 @@ export class InquiryService {
   }
 
   public createInquiry(inquiry: Inquiry): void {
+    inquiry.questions.forEach((question: Question) => {
+      if (question.type === QuestionType.MULTISELECT) {
+        console.log(question);
+        
+        (question as MultiselectQuestion).answers.forEach((answer: InquiryAnswer) => {
+          answer.id = uuidv4();
+          answer.isSelected = false;
+        });
+      }
+      if (question.type === QuestionType.SINGLE_SELECT) {
+        (question as SingleSelectQuestion).answers.forEach((answer: InquiryAnswer) => {
+          answer.id = uuidv4();
+          answer.isSelected = false;
+        });
+      }
+    });
+
     const id: string = uuidv4();
     inquiry.id = id;
     localStorage.setItem(id, JSON.stringify(inquiry));
@@ -44,6 +64,6 @@ export class InquiryService {
       const changedToObjects = JSON.parse(localStorage.getItem(key)!);
       inquiriesArray.push(changedToObjects);
     });
-      this.inquiries.next(inquiriesArray)
+    this.inquiries.next(inquiriesArray);
   }
 }
