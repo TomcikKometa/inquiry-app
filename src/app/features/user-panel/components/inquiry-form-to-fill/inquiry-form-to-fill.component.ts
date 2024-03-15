@@ -52,9 +52,13 @@ export class InquiryFormToFillComponent implements OnInit {
       .subscribe((inquiry: Inquiry) => {
         (this.inquiry = inquiry), (this.formGroup = new FormGroup({ answers: this.inquiryFormService.createFormToFill(inquiry) }));
       });
-    
   }
+
   get formArrayControls(): FormArray {
     return this.formGroup.controls['answers'] as FormArray;
+  }
+
+  protected saveAnswerForm(){
+    console.log(this.formGroup);
   }
 }

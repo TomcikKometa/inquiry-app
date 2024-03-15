@@ -30,8 +30,6 @@ export class MultiSelectComponent implements OnInit {
     if (this.item.get(TypeQuestion.TYPE)?.value === QuestionType.MULTISELECT) {
       if (this.itemIndex + 1 === +this.item.get(MultiSelectQuestionFormName.ID)?.value) this.isViewed = true;
     }
-    console.log(this.form);
-    
   }
 
   protected removeQuestion(): void {
@@ -59,5 +57,5 @@ export class MultiSelectComponent implements OnInit {
   public get answersFormArray(): FormArray {
     return this.item.get(MultiSelectQuestionFormName.ANSWERS) as FormArray;
   }
-
 }
+
