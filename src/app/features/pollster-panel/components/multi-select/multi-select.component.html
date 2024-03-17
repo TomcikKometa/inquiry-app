@@ -10,14 +10,28 @@
         <button class="questionMargin" color="primary" mat-raised-button (click)="removeQuestion()">Remove question</button>
         <div class="row" formArrayName="{{ multiSelectQuestionFormName.ANSWERS }}">
           @for (answers of answersFormArray.controls; track answers; let index = $index) {
-            <div class="d-flex row" style="gap: 20px">
-              <mat-checkbox></mat-checkbox>
-              <mat-form-field appearance="outline" class="answerInputWidth">
-                <mat-label>Answer</mat-label>
-                <input matInput type="text" formControlName="{{ index }}"/>
-              </mat-form-field>
-              <button class="questionMargin" color="primary" mat-raised-button (click)="removeAnswerAtForm(index)">Remove</button>
-            </div>
+            @if (isEditedControl) {
+              <div class="row" align="center" [formGroupName]="index">
+                <div class="d-flex row" style="gap: 20px">
+                  <mat-checkbox></mat-checkbox>
+                  <mat-form-field appearance="outline" class="answerInputWidth">
+                    <mat-label>Answer</mat-label>
+                    <input matInput type="text" formControlName="{{ 'label' }}" />
+                  </mat-form-field>
+                  <button class="questionMargin" color="primary" mat-raised-button (click)="removeAnswerAtForm(index)">Remove</button>
+                </div>
+              </div>
+            }
+            @if (isEmptyQuestion) {
+              <div class="d-flex row" style="gap: 20px">
+                <mat-checkbox></mat-checkbox>
+                <mat-form-field appearance="outline" class="answerInputWidth">
+                  <mat-label>Answer</mat-label>
+                  <input matInput type="text" formControlName="{{ index }}" />
+                </mat-form-field>
+                <button class="questionMargin" color="primary" mat-raised-button (click)="removeAnswerAtForm(index)">Remove</button>
+              </div>
+            }
           }
         </div>
       </div>

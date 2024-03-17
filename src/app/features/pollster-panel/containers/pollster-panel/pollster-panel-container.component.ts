@@ -7,27 +7,26 @@ import { InquiryFormComponent } from '../../components/inquiry-form/inquiry-form
 import { ToastrServiceMesseges } from '../../../../@enums/toastr-messeges';
 import { InquiryTableListPollsterComponent } from '../../components/inquiry-table-list/inquiry-table-list.component';
 import { MatButtonModule } from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { NavigationService } from '../../../../@core/services/navigation/navigation.service';
-import { MatCardModule } from '@angular/material/card';
 import { DatePipe, registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
+import { MatCardModule } from '@angular/material/card';
+import { InquirySavedInfo } from '../@models/pollster-containers-models';
 registerLocaleData(localePl);
 
 @Component({
   selector: 'inq-admin-panel-container',
   standalone: true,
-  providers: [DatePipe
-  ],
+  providers: [DatePipe],
   imports: [InquiryTableListPollsterComponent, MatButtonModule, MatIconModule, MatCardModule],
   templateUrl: './pollster-panel-container.component.html',
   styleUrl: './pollster-panel-container.component.css'
 })
 export class PollsterPanelContainerComponent {
-
-  protected sessionStorageUser!:string;
-  protected userType!:string;
-  protected timeActual!:string;
+  protected sessionStorageUser!: string;
+  protected userType!: string;
+  protected timeActual!: string;
   protected currentDate: Date = new Date();
 
   private readonly dialog: MatDialog = inject(MatDialog);
@@ -44,27 +43,37 @@ export class PollsterPanelContainerComponent {
 
   private clock(): void {
     this.currentDate.setSeconds(this.currentDate.getSeconds() + 1);
-    this.timeActual = this.datePipe.transform(this.currentDate,'HH:mm:ss') as string;
+    this.timeActual = this.datePipe.transform(this.currentDate, 'HH:mm:ss') as string;
   }
 
-  protected openInquiryForm(id?:string) {
-    const dialogRef = this.dialog.open(InquiryFormComponent, {data:id, ...DIALOG_OPTIONS});
+  protected openInquiryForm(id?: string) {
+    const dialogRef = this.dialog.open(InquiryFormComponent, { data: id, ...DIALOG_OPTIONS });
 
-    dialogRef.afterClosed().subscribe((isInquirySaved:boolean) => {
-      if (isInquirySaved) {
-        this.toastService.success(ToastrServiceMesseges.VALID_FORM, '', {
+    dialogRef.afterClosed().subscribe((inquirySavedInfo: InquirySavedInfo) => {
+      const isSaved = inquirySavedInfo.isSaved;
+      const inquiryName = inquirySavedInfo.inquiryName;
+      if (isSaved) {
+        this.toastService.success(ToastrServiceMesseges.VALID_FORM, `Inquiry: ${inquiryName}`, {
           positionClass: 'toast-top-right',
           tapToDismiss: true,
           closeButton: true
-        })
+        });
       }
     });
   }
 
-  protected logOut():void{
+  protected logOut(): void {
     this.navigationService.navigateToLogin();
   }
-  get accountsToken(): typeof AccountsToken{
+
+  public showDeleteToastr(name: string) {
+    this.toastService.error(ToastrServiceMesseges.DELETE, `Inquiry: ${name}`, {
+      positionClass: 'toast-top-right',
+      tapToDismiss: true,
+      closeButton: true
+    });
+  }
+  get accountsToken(): typeof AccountsToken {
     return AccountsToken;
   }
 }
