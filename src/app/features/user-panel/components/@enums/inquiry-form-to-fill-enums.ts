@@ -17,7 +17,7 @@ export enum SingleSelectAnswerFormName {
 export enum ShortTextQuestionAnswerFormName {
     QUESTION = 'question',
     TYPE = 'type',
-    ANSWER = 'answer'    
+    ANSWER = 'answer'
 }
 
 export enum ScaleSelectAnswerFormName {

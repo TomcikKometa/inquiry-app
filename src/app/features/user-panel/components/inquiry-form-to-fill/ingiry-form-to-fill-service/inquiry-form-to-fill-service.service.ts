@@ -1,20 +1,37 @@
 import { Injectable, inject } from '@angular/core';
-import { AbstractControl, Form, FormArray, FormBuilder, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  Form,
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NonNullableFormBuilder,
+  ValidatorFn,
+  Validators
+} from '@angular/forms';
 import { Inquiry } from '../../../../../@models/inquiry';
-import { InquiryAnswer, MultiselectQuestion, Question, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../../../@models/question';
+import {
+  InquiryAnswer,
+  MultiselectQuestion,
+  Question,
+  ScaleQuestion,
+  ShortTextQuestion,
+  SingleSelectQuestion
+} from '../../../../../@models/question';
 import { QuestionType } from '../../../../../@enums/question-type';
 import {
   MultiSelectAnswerFormName,
   SingleSelectAnswerFormName,
   ShortTextQuestionAnswerFormName,
   ScaleSelectAnswerFormName
-} from './@enums/inquiry-form-to-fill-enums';
+} from '../../@enums/inquiry-form-to-fill-enums';
 import {
   MultiSelectAnswerForm,
   SingleSelectAnswerForm,
   ShortTextQuestionAnswerForm,
   ScaleSelectAnswerForm
-} from './@models/inquiry-form-to-fill-model';
+} from '../../@models/inquiry-form-to-fill-model';
 
 @Injectable()
 export class InquiryFormToFillServiceService {
@@ -54,11 +71,13 @@ export class InquiryFormToFillServiceService {
   private handleAddMultiSelectForm(multiselectQuestion: MultiselectQuestion) {
     const answerFormArray: FormArray = this.formBuilder.array([]);
     multiselectQuestion.answers.forEach((answer: InquiryAnswer) => {
-      answerFormArray.push(this.formBuilder.group<any>({
-        'label': this.formBuilder.control<string>(answer.answer),
-        'isSelected': this.formBuilder.control<boolean>(answer.isSelected!),
-        'id': this.formBuilder.control<string>(answer.id!),
-      }))
+      answerFormArray.push(
+        this.formBuilder.group<any>({
+          label: this.formBuilder.control<string>({value:answer.answer,disabled:true}),
+          isSelected: this.formBuilder.control<boolean>(answer.isSelected!),
+          id: this.formBuilder.control<string>(answer.id!)
+        })
+      );
     });
     return answerFormArray as FormArray;
   }
@@ -73,9 +92,11 @@ export class InquiryFormToFillServiceService {
 
   private createShortTextQuestionForm(shortTextQuestion: ShortTextQuestion): FormGroup {
     return this.formBuilder.group<ShortTextQuestionAnswerForm>({
-      [ShortTextQuestionAnswerFormName.QUESTION]: this.formBuilder.control<string>(shortTextQuestion.label),
+      [ShortTextQuestionAnswerFormName.QUESTION]: this.formBuilder.control<string>({ value: shortTextQuestion ? shortTextQuestion.answer : '', disabled: true }),
       [ShortTextQuestionAnswerFormName.TYPE]: this.formBuilder.control<QuestionType.SHORT_TEXT>(QuestionType.SHORT_TEXT),
-      [ShortTextQuestionAnswerFormName.ANSWER]: this.formBuilder.array([])
+      [ShortTextQuestionAnswerFormName.ANSWER]: this.formBuilder.control<string>(
+        { value: shortTextQuestion ? shortTextQuestion.answer : '', disabled: false },
+      )
     });
   }
 

@@ -3,10 +3,12 @@ import { AbstractControl, FormArray, FormGroup, FormGroupDirective, FormsModule,
 import {
   InquiryAnswersFormName,
   MultiSelectAnswerFormName
-} from '../inquiry-form-to-fill/ingiry-form-to-fill-service/@enums/inquiry-form-to-fill-enums';
+} from '../@enums/inquiry-form-to-fill-enums';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { QuestionType } from '../../../../@enums/question-type';
+import { TypeQuestion } from '../../../pollster-panel/components/inquiry-form/@enum/form-enum';
 @Component({
   selector: 'inq-multiselect-answer',
   standalone: true,
@@ -16,18 +18,19 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 })
 export class MultiselectAnswerComponent implements OnInit {
   public form!: FormGroup;
+  protected isViewed:boolean = false;
   protected multiselectAnswerFormName: typeof MultiSelectAnswerFormName = MultiSelectAnswerFormName;
-  value!: number;
 
   @Input({ required: true }) public item!: AbstractControl;
   @Input({ required: true }) public indexItem!: number;
-
   private readonly rootFormGroup: FormGroupDirective = inject(FormGroupDirective);
-id: any;
 
   public ngOnInit(): void {
     this.form = this.rootFormGroup.control;
-    console.log(this.item);
+    if (this.item.get(TypeQuestion.TYPE)?.value === QuestionType.MULTISELECT) {
+        this.isViewed = true;
+        console.log('multiSelectComponent');
+    }
     
   }
 
