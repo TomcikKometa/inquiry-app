@@ -24,6 +24,7 @@ interface InquiryDataSource {
 export class InquiryTableListPollsterComponent implements OnInit {
   @Output() public editInquiryEvent: EventEmitter<string> = new EventEmitter();
   @Output() public fillInquiryEvent: EventEmitter<string> = new EventEmitter();
+  @Output() public deleteInquiryEvent: EventEmitter<string> = new EventEmitter();
 
   protected displayedColumns: string[] = ['name', 'id', 'action'];
   protected dataSource!: MatTableDataSource<InquiryDataSource, MatPaginator>;
@@ -31,7 +32,6 @@ export class InquiryTableListPollsterComponent implements OnInit {
 
   private readonly inquiryService: InquiryService = inject(InquiryService);
   private readonly destroyReference: DestroyRef = inject(DestroyRef);
-  private readonly dialog: MatDialog = inject(MatDialog);
 
   public ngOnInit(): void {
     this.sessionStorageUser = window.sessionStorage.getItem(AccountsKey.TOKEN_KEY)!;
@@ -53,8 +53,9 @@ export class InquiryTableListPollsterComponent implements OnInit {
       });
   }
 
-  protected deleteInquiry(id: string) {
+  protected deleteInquiry(id: string, name: string ) {
     this.inquiryService.deleteInquiry(id);
+    this.deleteInquiryEvent.emit(name)
   }
 
   protected editInquiry(id: string) {

@@ -21,8 +21,6 @@ export class InquiryService {
   public createInquiry(inquiry: Inquiry): void {
     inquiry.questions.forEach((question: Question) => {
       if (question.type === QuestionType.MULTISELECT) {
-        console.log(question);
-        
         (question as MultiselectQuestion).answers.forEach((answer: InquiryAnswer) => {
           answer.id = uuidv4();
           answer.isSelected = false;

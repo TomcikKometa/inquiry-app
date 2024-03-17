@@ -98,8 +98,12 @@ export class InquiryFormServiceService {
       answerFormArray.push(this.formBuilder.control('', Validators.required));
       answerFormArray.push(this.formBuilder.control('', Validators.required));
     } else {
-      multiselectQuestion.answers.forEach((answer: string) => {
-        answerFormArray.push(this.formBuilder.control(answer, Validators.required));
+      multiselectQuestion.answers.forEach((answer: InquiryAnswer) => {
+        answerFormArray.push(this.formBuilder.group<any>({
+            'label': this.formBuilder.control<string>(answer.answer),
+            'isSelected': this.formBuilder.control<boolean>(answer.isSelected!),
+            'id': this.formBuilder.control<string>(answer.id!),
+          }))
       });
     }
     return answerFormArray;

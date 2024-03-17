@@ -8,7 +8,6 @@ import {
   SingleSelectAnswerFormName
 } from '../@enums/inquiry-form-to-fill-enums';
 
-
 export interface AnswersForm {
   [InquiryAnswersFormName.ANSWERS]: FormArray;
 }

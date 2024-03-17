@@ -20,6 +20,7 @@ import { MultiSelectComponent } from '../../multi-select/multi-select.component'
 import { ToastrServiceMesseges } from '../../../../../@enums/toastr-messeges';
 import { ButtonAddAnswerComponent } from '../../../../shared-components/button-add-answer/button-add-answer.component';
 import { InquiryFormServiceService } from '../inquiry-form-service/inquiry-form-service.service';
+import { InquirySavedInfo } from '../../../containers/@models/pollster-containers-models';
 
 @Component({
   selector: 'inq-inquiry-form',
@@ -116,7 +117,11 @@ export class InquiryFormComponent {
       if (this.isEditForm) {
         this.inquiryService.deleteInquiry(this.editInquiryID!);
       }
-      this.dialogRef.close(true);
+      const inquirySavedInfo: InquirySavedInfo = {
+        isSaved: true,
+        inquiryName: this.inquiryForm.get('inquiryName')?.value
+      };
+      this.dialogRef.close(inquirySavedInfo);
     } else {
       this.toastService.error(ToastrServiceMesseges.INVALID_FORM, '', {
         positionClass: 'toast-top-right',
