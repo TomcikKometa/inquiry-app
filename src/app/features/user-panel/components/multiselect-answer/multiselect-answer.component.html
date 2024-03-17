@@ -1,26 +1,28 @@
-<div class="container">
-  <div class="question">
-    <span>Question no.{{ indexItem + 1 }}</span>
-  </div>
-  <div class="questionContent">
-    <span class="questionSpan">{{ questionName }}</span>
-  </div>
-  <form [formGroup]="form">
-    <div formArrayName="{{ multiSelectAnswerFormName.ANSWERS }}" class="answers">
-      <div [formGroupName]="indexItem">
-        <div formArrayName="{{ multiSelectAnswerFormName.ANSWERS }}" class="answers">
-          @for (answer of answersFormArray.controls; track $index) {
-            <div [formGroupName]="$index">
-              <div class="d-flex row answers">
-                <mat-checkbox class="matCheckbox" formControlName="{{ 'isSelected' }}"></mat-checkbox>
-                <mat-form-field appearance="outline" class="answerInputWidth">
-                  <input matInput type="text" formControlName="{{ 'label' }}" class="disabled" />
-                </mat-form-field>
+@if (isViewed) {
+  <div class="container">
+    <div class="question">
+      <span>Question no.{{ indexItem + 1 }}</span>
+    </div>
+    <div class="questionContent">
+      <span class="questionSpan">{{ questionName }}</span>
+    </div>
+    <form [formGroup]="form">
+      <div formArrayName="{{ multiSelectAnswerFormName.ANSWERS }}" class="answers">
+        <div [formGroupName]="indexItem">
+          <div formArrayName="{{ multiSelectAnswerFormName.ANSWERS }}" class="answers">
+            @for (answer of answersFormArray.controls; track $index) {
+              <div [formGroupName]="$index">
+                <div class="d-flex row answers">
+                  <mat-checkbox class="matCheckbox" formControlName="{{ 'isSelected' }}"></mat-checkbox>
+                  <mat-form-field appearance="outline" class="answerInputWidth">
+                    <input matInput type="text" formControlName="{{ 'label' }}" class="disabled" />
+                  </mat-form-field>
+                </div>
               </div>
-            </div>
-          }
+            }
+          </div>
         </div>
       </div>
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
+}

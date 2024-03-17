@@ -1,5 +1,5 @@
 import { FormArray, FormControl } from '@angular/forms';
-import { QuestionType } from '../../../../../../@enums/question-type';
+import { QuestionType } from '../../../../@enums/question-type';
 import {
   InquiryAnswersFormName,
   MultiSelectAnswerFormName,
@@ -27,7 +27,7 @@ export interface SingleSelectAnswerForm {
 export interface ShortTextQuestionAnswerForm {
   [ShortTextQuestionAnswerFormName.QUESTION]: FormControl<string>;
   [ShortTextQuestionAnswerFormName.TYPE]: FormControl<QuestionType.SHORT_TEXT>;
-  [ShortTextQuestionAnswerFormName.ANSWER]: FormArray;
+  [ShortTextQuestionAnswerFormName.ANSWER]: FormControl<string>;
 }
 
 export interface ScaleSelectAnswerForm {

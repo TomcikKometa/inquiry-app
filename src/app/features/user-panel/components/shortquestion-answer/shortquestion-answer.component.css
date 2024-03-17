@@ -1,0 +1,17 @@
+.questionInput {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.questionMargin {
+  margin: 10px;
+}
+
+.questionInputWidth {
+  width: 500px;
+  padding-right: 14%;
+}
+
+.answerInputWidth {
+  width: 300px;
+}
