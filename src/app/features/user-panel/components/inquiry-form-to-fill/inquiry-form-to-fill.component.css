@@ -5,6 +5,7 @@
   text-align: center;
   justify-content: center;
   font-family: Roboto, sans-serif;
+  background-color: rgba(220, 226, 242, 1) !important;
 }
 
 .title {

@@ -1,44 +1,99 @@
 .headInput {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .headInputWidth {
-    width: 320px;
-  }
-  
-  .questionInput {
-    width: 100%;
-  }
-  
-  .questionMargin {
-    margin: 10px;
-  }
-  
-  .questionInputWidth {
-    width: 500px;
-  }
-  
-  .answerInputWidth {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.headInputWidth {
+  width: 320px;
+}
+
+.questionInput {
+  width: 100%;
+}
+
+.questionMargin {
+  margin: 10px;
+}
+
+.questionInputWidth {
+  width: 500px;
+}
+
+.answerInputWidth {
+  width: 300px;
+}
+
+.footerBotton {
+  text-align: center;
+  gap: 10px;
+}
+
+.questionMargin {
+  margin: 10px;
+}
+
+.scaleInputs {
+  margin: 20px;
+}
+
+.steperInfo {
+  display: block;
+  justify-content: start;
+  grid-template-areas: 'main right';
+  gap: 10px;
+  background-color: #2196f3;
+  padding: 10px;
+}
+
+.steperSpanInfo {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: end;
+  padding: 20px 0;
+  font-size: 30px;
+}
+.jk {
+  display: block;
+  justify-content: center;
+  text-align: center;
+  margin-left: 30%;
+  margin-right: 30%;
+  border-radius: 8px;
+  background-image: linear-gradient(25deg, #DDE8F9 10%, #a6b9d8 , #DDE8F9);
+  box-shadow: 5px 0px 5px 0px #a6b9d8;
+  padding: 8px;
+  width: 35%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas: 'main right';
+  width: 20%;
+  justify-content: start;
+  justify-items: start;
+  gap: 20px;
+
+  .item1 {
     width: 300px;
+    justify-content: start;
+    grid-area: 'main right';
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
   }
-  
-  .footerBotton {
-    text-align: center;
-    gap: 10px;
+  .item2 {
+    width: 300px;
+    justify-content: start;
+    grid-area: 'main';
   }
-  
-  .questionMargin {
-    margin: 10px;
-  }
-  
-  .scaleInputs{
-    margin:20px;
+  .item3 {
+    width: 300px;
+    justify-content: start;
+    grid-area: 'main';
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
 
-  .j {
-    display: block;
-    text-align: center;
-    justify-content: last baseline;
+
+  .my_class{
+    font-size: 20px;
   }
-  
+}
