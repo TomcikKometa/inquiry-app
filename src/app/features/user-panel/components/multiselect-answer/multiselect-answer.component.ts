@@ -29,8 +29,8 @@ export class MultiselectAnswerComponent implements OnInit {
     this.form = this.rootFormGroup.control;
     if (this.item.get(TypeQuestion.TYPE)?.value === QuestionType.MULTISELECT) {
         this.isViewed = true;
-    
-  }
+    }
+  };
 
   protected get questionName(): string {
     return this.item.get('question')?.value;
