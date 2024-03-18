@@ -5,28 +5,44 @@ import { ScaleSelectAnswerFormName, InquiryAnswersFormName } from '../@enums/inq
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
+import { CommonModule } from '@angular/common';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'inq-scale-answer',
   standalone: true,
-  imports: [MatSliderModule,MatFormFieldModule, ReactiveFormsModule, MatInputModule],
+  imports: [MatSliderModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, CommonModule],
   templateUrl: './scale-answer.component.html',
   styleUrl: './scale-answer.component.css'
 })
 export class ScaleAnswerComponent {
-
   protected form!: FormGroup;
   protected isViewed: boolean = false;
+  minSteperValue: number = 0;
+  maxSteperValue: number = 0;
+  stepSizeValue: number = 0;
+
   @Input({ required: true }) public itemIndex!: number;
   @Input({ required: true }) public item!: AbstractControl;
 
   private readonly rootFormGroup: FormGroupDirective = inject(FormGroupDirective);
+  private readonly _destroy: Subject<void> = new Subject<void>();
+  
   ngOnInit(): void {
     this.form = this.rootFormGroup.control;
     const formGroup: FormGroup = this.item as FormGroup;
     if (formGroup.controls['type'].value === QuestionType.SCALE) {
       this.isViewed = true;
+      this.item ? this.pripareSliderValues() : 0;
     }
+    this.form.valueChanges.pipe(takeUntil(this._destroy)).subscribe((z) => {
+    });
+  }
+
+  private pripareSliderValues(): void {
+    this.minSteperValue = this.item.get('minValue')?.value;
+    this.maxSteperValue = this.item.get('maxValue')?.value;
+    this.stepSizeValue = this.item.get('stepSize')?.value;
   }
 
   protected get scaleSelectAnswerFormName(): typeof ScaleSelectAnswerFormName {
@@ -34,6 +50,6 @@ export class ScaleAnswerComponent {
   }
 
   protected get inquiryAnswersFormName(): typeof InquiryAnswersFormName {
-    return InquiryAnswersFormName
+    return InquiryAnswersFormName;
   }
 }

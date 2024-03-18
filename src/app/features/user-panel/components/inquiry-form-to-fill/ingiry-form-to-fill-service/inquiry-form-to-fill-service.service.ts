@@ -101,10 +101,15 @@ export class InquiryFormToFillServiceService {
   }
 
   private createScleSelectForm(scaleQuestion: ScaleQuestion): FormGroup {
+    console.log(scaleQuestion);
+    
     return this.formBuilder.group<ScaleSelectAnswerForm>({
       [ScaleSelectAnswerFormName.QUESTION]: this.formBuilder.control<string>(scaleQuestion.label),
       [ScaleSelectAnswerFormName.TYPE]: this.formBuilder.control<QuestionType.SCALE>(QuestionType.SCALE),
-      [ScaleSelectAnswerFormName.VALUE]:this.formBuilder.control<number>(scaleQuestion.min)
+      [ScaleSelectAnswerFormName.VALUE]:this.formBuilder.control<number>(scaleQuestion.min),
+      [ScaleSelectAnswerFormName.MAX_VALUE]:this.formBuilder.control<number>(scaleQuestion.max),
+      [ScaleSelectAnswerFormName.MIN_VALUE]:this.formBuilder.control<number>({value:scaleQuestion.min,disabled:true}),
+      [ScaleSelectAnswerFormName.STEP_SIZE]:this.formBuilder.control<number>(scaleQuestion.stepSize),
     });
   }
 

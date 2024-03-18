@@ -23,5 +23,8 @@ export enum ShortTextQuestionAnswerFormName {
 export enum ScaleSelectAnswerFormName {
     QUESTION = 'question',
     TYPE = 'type',
-    VALUE = 'value'  
+    VALUE = 'value',
+    MIN_VALUE = 'minValue',
+    MAX_VALUE = 'maxValue',
+    STEP_SIZE = 'stepSize'
 }

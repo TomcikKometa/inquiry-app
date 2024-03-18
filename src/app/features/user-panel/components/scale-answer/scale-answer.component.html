@@ -9,11 +9,47 @@
             <input matInput type="text" formControlName="{{ scaleSelectAnswerFormName.QUESTION }}" />
           </mat-form-field>
         </div>
-        <mat-slider [min]="1" [max]="11" [step]="2" >
+        <div class="jk">
+          <div class="grid-container">
+            <div class="grid-container item1">
+              <span>Minimum value:</span>
+            </div>
+            <div class="item4">
+              <span>{{ minSteperValue }}</span>
+            </div>
+          </div>
+          <div class="grid-container">
+            <div class="grid-container item2">
+              <span> Max steper value:</span>
+            </div>
+            <div class="item4">
+              <span>{{ maxSteperValue }}</span>
+            </div>
+          </div>
+          <div class="grid-container">
+            <div class="grid-container item3">
+              <span> Step size value:</span>
+            </div>
+            <div class="item4">
+              <span>{{ stepSizeValue }}</span>
+            </div>
+          </div>
+          <mat-hint></mat-hint>
+          <div class="grid-container">
+            <div class="grid-container item3">
+              
+              <span> Your answer </span>
+            </div>
+            <div class="item4">
+              <span [ngClass]="{'my_class': isViewed === true}"> {{ slider.value }} </span>
+            </div>
+          </div>
+        </div>
+        <mat-slider [min]="minSteperValue" [max]="maxSteperValue" [step]="stepSizeValue">
           <input formControlName="value" matSliderThumb #slider />
         </mat-slider>
-        <span>{{ slider.value }}</span>
       </div>
+      
     </div>
   </form>
 }
