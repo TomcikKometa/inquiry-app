@@ -29,8 +29,6 @@ export class MultiselectAnswerComponent implements OnInit {
     this.form = this.rootFormGroup.control;
     if (this.item.get(TypeQuestion.TYPE)?.value === QuestionType.MULTISELECT) {
         this.isViewed = true;
-        console.log('multiSelectComponent');
-    }
     
   }
 

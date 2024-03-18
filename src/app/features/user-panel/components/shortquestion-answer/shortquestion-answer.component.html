@@ -7,7 +7,7 @@
           <mat-label>Text of the Question</mat-label>
           <input matInput type="text" formControlName="{{ shortTextQuestionAnswerFormName.QUESTION }}" />
         </mat-form-field>
-        <mat-form-field appearance="outline" class="answerInputWidth">
+        <mat-form-field appearance="outline" class="{{shortTextQuestionAnswerFormName.ANSWER}}">
           <mat-label>Text of the Answer</mat-label>
           <input matInput type="text" formControlName="answer" />
         </mat-form-field>

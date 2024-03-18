@@ -15,8 +15,8 @@ import { QuestionType } from '../../../../@enums/question-type';
   styleUrl: './scale-select.component.css'
 })
 export class ScaleSelectComponent {
-  public form!:FormGroup;
-  isViewed = false;
+  protected form!:FormGroup;
+  protected isViewed = false;
     @Input({ required: true }) public itemIndex!: number;
     @Input({ required: true }) public item!: AbstractControl;
     @Output() public removeQuestionEvent: EventEmitter<number> = new EventEmitter();
