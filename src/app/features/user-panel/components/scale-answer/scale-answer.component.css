@@ -1,0 +1,44 @@
+.headInput {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .headInputWidth {
+    width: 320px;
+  }
+  
+  .questionInput {
+    width: 100%;
+  }
+  
+  .questionMargin {
+    margin: 10px;
+  }
+  
+  .questionInputWidth {
+    width: 500px;
+  }
+  
+  .answerInputWidth {
+    width: 300px;
+  }
+  
+  .footerBotton {
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .questionMargin {
+    margin: 10px;
+  }
+  
+  .scaleInputs{
+    margin:20px;
+  }
+
+  .j {
+    display: block;
+    text-align: center;
+    justify-content: last baseline;
+  }
+  

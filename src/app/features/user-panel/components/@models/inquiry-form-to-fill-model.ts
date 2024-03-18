@@ -33,5 +33,5 @@ export interface ShortTextQuestionAnswerForm {
 export interface ScaleSelectAnswerForm {
   [ScaleSelectAnswerFormName.QUESTION]: FormControl<string>;
   [ScaleSelectAnswerFormName.TYPE]: FormControl<QuestionType.SCALE>;
-  [ScaleSelectAnswerFormName.VALUE]: FormControl<string>;
+  [ScaleSelectAnswerFormName.VALUE]: FormControl<number>
 }

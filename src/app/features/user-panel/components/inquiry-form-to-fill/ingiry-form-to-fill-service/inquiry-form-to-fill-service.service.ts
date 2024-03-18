@@ -104,7 +104,7 @@ export class InquiryFormToFillServiceService {
     return this.formBuilder.group<ScaleSelectAnswerForm>({
       [ScaleSelectAnswerFormName.QUESTION]: this.formBuilder.control<string>(scaleQuestion.label),
       [ScaleSelectAnswerFormName.TYPE]: this.formBuilder.control<QuestionType.SCALE>(QuestionType.SCALE),
-      [ScaleSelectAnswerFormName.VALUE]: this.formBuilder.control<string>('')
+      [ScaleSelectAnswerFormName.VALUE]:this.formBuilder.control<number>(scaleQuestion.min)
     });
   }
 

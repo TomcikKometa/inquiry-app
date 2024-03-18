@@ -51,6 +51,9 @@ export class InquiryFormToFillComponent implements OnInit {
       .pipe(first())
       .subscribe((inquiry: Inquiry) => {
         (this.inquiry = inquiry), (this.formGroup = new FormGroup({ answers: this.inquiryFormService.createFormToFill(inquiry) }));
+        console.log(inquiry);
+        
+        
       });
   }
 

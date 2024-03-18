@@ -1,1 +1,19 @@
-
+@if (this.isViewed) {
+  <form [formGroup]="form">
+    <div formArrayName="{{ inquiryAnswersFormName.ANSWERS }}">
+      <div [formGroupName]="itemIndex">
+        <span class="questionMargin">Question no. {{ itemIndex + 1 }}</span>
+        <div class="questionInput">
+          <mat-form-field appearance="outline" class="questionInputWidth">
+            <mat-label>Text of the Question</mat-label>
+            <input matInput type="text" formControlName="{{ scaleSelectAnswerFormName.QUESTION }}" />
+          </mat-form-field>
+        </div>
+        <mat-slider [min]="1" [max]="11" [step]="2" >
+          <input formControlName="value" matSliderThumb #slider />
+        </mat-slider>
+        <span>{{ slider.value }}</span>
+      </div>
+    </div>
+  </form>
+}
