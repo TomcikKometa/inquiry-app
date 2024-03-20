@@ -1,9 +1,9 @@
-<div class="inquiryTable">
+<div class="content_setting">
   <p class="title m-5">List of inquiries</p>
 </div>
-<div class="stressLine"><p class="borderLine"></p></div>
+<div class="stress_line"><p class="border_line"></p></div>
 
-<div class="inquiryTable">
+<div class="content_setting">
   <table class="table" mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>ID</th>
@@ -26,7 +26,7 @@
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="teableHeader"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns" class="tableRow"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="teable_header"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" class="table_row"></tr>
   </table>
 </div>

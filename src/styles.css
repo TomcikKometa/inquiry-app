@@ -12,15 +12,13 @@ html {
   --mainOne-color-dce2f2: #dce2f2;
   --mainTwo-color-a2bddc: #a2bddc;
   --mainThree-color-f4f4fc: #f4f4fc;
-  --boxShadowOne-color-0377ba: #a3bfd9;
-
-  /* Font/text values */
-  --main-font-family-open-sans: Open Sans;
-  --additional-font-family-montserrat: Montserrat;
-  --unnamed-font-style-normal: normal;
-  --unnamed-font-weight-600: 600px;
-  --unnamed-font-size-10: 10px;
-  --unnamed-line-spacing-42: 42px;
+  --boxShadowOne-color-a3bfd9: #a3bfd9;
+  --boxShadowTwo-color-BDBBCF: #BDBBCF;
+  --tableOne-color-ffffff: #ffffff;
+  --tableTwo-color-d9def0: #d9def0;
+  --tableThree-color-cfdae9: #cfdae9;
+  --tableFour-color-edf1f7: #edf1f7;
+  --tableTitle-color-7699bb: #7699bb;
 }
 
 .button_app {
@@ -91,4 +89,12 @@ html {
 
 .answer_input_width {
   width: 500px;
+}
+
+.question_margin {
+  margin: 10px;
+}
+
+.question_input_width {
+  width: 60%;
 }

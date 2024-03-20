@@ -1,15 +1,15 @@
 @if (isViewed) {
   <form [formGroup]="form">
-    <div class="questionInput" formArrayName="{{ inquiryFormName.QUESTIONS }}">
-      <div class="row" align="center" [formGroupName]="itemIndex">
-        <span class="questionMargin">Question no. {{ itemIndex + 1 }}</span>
-        <mat-form-field appearance="outline" class="questionInputWidth">
+    <div formArrayName="{{ inquiryFormName.QUESTIONS }}">
+      <div [formGroupName]="itemIndex">
+        <span class="question_margin">Question no. {{ itemIndex + 1 }}</span>
+        <mat-form-field appearance="outline" class="question_input_width">
           <mat-label>Text of the Question</mat-label>
           <input matInput type="text" formControlName="{{ shortTextQuestionFormName.QUESTION }}" />
         </mat-form-field>
 
-        <button class="questionMargin" color="primary" mat-raised-button (click)="removeQuestion()">Remove question</button>
-        <mat-form-field appearance="outline" class="answerInputWidth" ngDefaultControl>
+        <button class="question_margin" color="primary" mat-raised-button (click)="removeQuestion()">Remove question</button>
+        <mat-form-field appearance="outline" class="answer_input_width" ngDefaultControl>
           <mat-label>Text of the Answer</mat-label>
           <input matInput type="text" formControlName="{{ shortTextQuestionFormName.ANSWER }}" />
         </mat-form-field>
