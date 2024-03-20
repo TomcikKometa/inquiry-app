@@ -1,4 +1,4 @@
-.questionMargin {
+.question_margin {
   margin: 10px;
 }
 
@@ -6,6 +6,3 @@
   width: 500px;
 }
 
-.answerInputWidth {
-  width: 300px;
-}
