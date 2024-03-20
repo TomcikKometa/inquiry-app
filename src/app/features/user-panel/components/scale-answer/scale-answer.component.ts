@@ -55,4 +55,8 @@ export class ScaleAnswerComponent {
   protected get inquiryAnswersFormName(): typeof InquiryAnswersFormName {
     return InquiryAnswersFormName;
   }
+
+  protected get questionLabel() : string {
+    return this.item.get(ScaleSelectAnswerFormName.QUESTION)?.value
+  }
 }

@@ -49,4 +49,8 @@ export class SingleselectAnswerComponent implements OnInit {
   protected get formItem(): FormGroup {
     return this.item as FormGroup;
   }
+
+  protected get questionLabel() : string {
+    return this.item.get(SingleSelectAnswerFormName.QUESTION)?.value
+  }
 }

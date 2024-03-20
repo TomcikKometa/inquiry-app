@@ -2,12 +2,11 @@
   <form [formGroup]="form">
     <div formArrayName="{{ inquiryAnswersFormName.ANSWERS }}">
       <div [formGroupName]="itemIndex">
-        <span class="questionMargin">Question no. {{ itemIndex + 1 }}</span>
-        <div class="questionInput">
-          <mat-form-field appearance="outline" class="questionInputWidth">
-            <mat-label>Text of the Question</mat-label>
-            <input matInput type="text" formControlName="{{ scaleSelectAnswerFormName.QUESTION }}" />
-          </mat-form-field>
+        <div class="question">
+          <span>Question no.{{ itemIndex + 1 }}</span>
+        </div>
+        <div class="questionContent">
+          <span class="questionSpan">{{questionLabel}}</span>
         </div>
         <div class="jk">
           <div class="grid-container">
