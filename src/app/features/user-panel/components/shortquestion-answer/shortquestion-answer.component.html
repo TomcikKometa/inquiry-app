@@ -1,17 +1,20 @@
 @if (isViewed) {
-  <form [formGroup]="form">
-    <div class="questionInput" formArrayName="{{ inquiryAnswersFormName.ANSWERS }}">
-      <div class="row" align="center" [formGroupName]="itemIndex">
-        <span class="questionMargin">Question no. {{ itemIndex + 1 }}</span>
-        <mat-form-field appearance="outline" class="questionInputWidth">
-          <mat-label>Text of the Question</mat-label>
-          <input matInput type="text" formControlName="{{ shortTextQuestionAnswerFormName.QUESTION }}" />
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="{{shortTextQuestionAnswerFormName.ANSWER}}">
-          <mat-label>Text of the Answer</mat-label>
-          <input matInput type="text" formControlName="answer" />
-        </mat-form-field>
+  <div class="container">
+    <form [formGroup]="form">
+      <div class="questionInput" formArrayName="{{ inquiryAnswersFormName.ANSWERS }}">
+        <div class="row" align="center" [formGroupName]="itemIndex">
+          <div class="question">
+            <span>Question no.{{ itemIndex + 1 }}</span>
+          </div>
+          <div class="questionContent">
+            <span matInput type="text">xxxx</span>
+          </div>
+          <mat-form-field appearance="outline" class="{{ shortTextQuestionAnswerFormName.ANSWER }}" class="answerInputWidth">
+            <mat-label>Text of the Answer</mat-label>
+            <input matInput type="text" formControlName="answer" />
+          </mat-form-field>
+        </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 }

@@ -1,14 +1,14 @@
 @if (isViewed) {
   <div class="container">
     <div class="question">
-      <span>Question no.{{ indexItem + 1 }}</span>
+      <span>Question no.{{ itemIndex + 1 }}</span>
     </div>
     <div class="questionContent">
       <span class="questionSpan">{{ questionName }}</span>
     </div>
     <form [formGroup]="form">
       <div formArrayName="{{ multiSelectAnswerFormName.ANSWERS }}" class="answers">
-        <div [formGroupName]="indexItem">
+        <div [formGroupName]="itemIndex">
           <div formArrayName="{{ multiSelectAnswerFormName.ANSWERS }}" class="answers">
             @for (answer of answersFormArray.controls; track $index) {
               <div [formGroupName]="$index">

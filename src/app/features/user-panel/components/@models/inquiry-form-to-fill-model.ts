@@ -22,6 +22,7 @@ export interface SingleSelectAnswerForm {
   [SingleSelectAnswerFormName.QUESTION]: FormControl<string>;
   [SingleSelectAnswerFormName.TYPE]: FormControl<QuestionType.SINGLE_SELECT>;
   [SingleSelectAnswerFormName.ANSWERS]: FormArray;
+  [SingleSelectAnswerFormName.SELECTED_ANSWER]: FormControl<string>;
 }
 
 export interface ShortTextQuestionAnswerForm {
@@ -33,8 +34,18 @@ export interface ShortTextQuestionAnswerForm {
 export interface ScaleSelectAnswerForm {
   [ScaleSelectAnswerFormName.QUESTION]: FormControl<string>;
   [ScaleSelectAnswerFormName.TYPE]: FormControl<QuestionType.SCALE>;
-  [ScaleSelectAnswerFormName.VALUE]: FormControl<number>;
+  [ScaleSelectAnswerFormName.ANSWER]: FormControl<number>;
   [ScaleSelectAnswerFormName.MAX_VALUE]: FormControl<number>;
   [ScaleSelectAnswerFormName.MIN_VALUE]: FormControl<number>;
   [ScaleSelectAnswerFormName.STEP_SIZE]: FormControl<number>;
+}
+
+export interface SingleSelectFormCheckobox {
+  [SingleSelectAnswerFormName.ID]: FormControl<string>;
+  [SingleSelectAnswerFormName.LABEL]: FormControl<string>;
+}
+
+export interface MultiSelectFormRadioButton {
+  [MultiSelectAnswerFormName.ID]: FormControl<string>;
+  [MultiSelectAnswerFormName.LABEL]: FormControl<string>;
 }

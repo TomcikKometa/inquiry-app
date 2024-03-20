@@ -1,14 +1,10 @@
 import { Injectable, inject } from '@angular/core';
 import {
   AbstractControl,
-  Form,
   FormArray,
-  FormBuilder,
-  FormControl,
   FormGroup,
   NonNullableFormBuilder,
   ValidatorFn,
-  Validators
 } from '@angular/forms';
 import { Inquiry } from '../../../../../@models/inquiry';
 import {
@@ -27,10 +23,12 @@ import {
   ScaleSelectAnswerFormName
 } from '../../@enums/inquiry-form-to-fill-enums';
 import {
-  MultiSelectAnswerForm,
   SingleSelectAnswerForm,
   ShortTextQuestionAnswerForm,
-  ScaleSelectAnswerForm
+  ScaleSelectAnswerForm,
+  SingleSelectFormCheckobox,
+  MultiSelectFormRadioButton,
+  MultiSelectAnswerForm,
 } from '../../@models/inquiry-form-to-fill-model';
 
 @Injectable()
@@ -61,7 +59,7 @@ export class InquiryFormToFillServiceService {
   }
 
   private createMultiSelectForm(multiselectQuestion: MultiselectQuestion): FormGroup {
-    return this.formBuilder.group<any>({
+    return this.formBuilder.group<MultiSelectAnswerForm>({
       [MultiSelectAnswerFormName.QUESTION]: this.formBuilder.control<string>(multiselectQuestion.label),
       [MultiSelectAnswerFormName.TYPE]: this.formBuilder.control<QuestionType.MULTISELECT>(QuestionType.MULTISELECT),
       [MultiSelectAnswerFormName.ANSWERS]: this.handleAddMultiSelectForm(multiselectQuestion)
@@ -72,10 +70,9 @@ export class InquiryFormToFillServiceService {
     const answerFormArray: FormArray = this.formBuilder.array([]);
     multiselectQuestion.answers.forEach((answer: InquiryAnswer) => {
       answerFormArray.push(
-        this.formBuilder.group<any>({
-          label: this.formBuilder.control<string>({value:answer.answer,disabled:true}),
-          isSelected: this.formBuilder.control<boolean>(answer.isSelected!),
-          id: this.formBuilder.control<string>(answer.id!)
+        this.formBuilder.group<MultiSelectFormRadioButton>({
+          [MultiSelectAnswerFormName.LABEL]: this.formBuilder.control<string>({value:answer.answer,disabled:true}),
+          [MultiSelectAnswerFormName.ID]: this.formBuilder.control<string>(answer.id!)
         })
       );
     });
@@ -86,8 +83,22 @@ export class InquiryFormToFillServiceService {
     return this.formBuilder.group<SingleSelectAnswerForm>({
       [SingleSelectAnswerFormName.QUESTION]: this.formBuilder.control<string>(singleSelectQuestion.label),
       [SingleSelectAnswerFormName.TYPE]: this.formBuilder.control<QuestionType.SINGLE_SELECT>(QuestionType.SINGLE_SELECT),
-      [SingleSelectAnswerFormName.ANSWERS]: this.formBuilder.array([])
+      [SingleSelectAnswerFormName.ANSWERS]: this.handleAddSingleSelectForm(singleSelectQuestion),
+      [SingleSelectAnswerFormName.SELECTED_ANSWER]: this.formBuilder.control<string>(''),
     });
+  }
+
+  private handleAddSingleSelectForm(singleSelectQuestion: SingleSelectQuestion) {
+    const answerFormArray: FormArray = this.formBuilder.array([]);
+    singleSelectQuestion.answers.forEach((answer: InquiryAnswer) => {
+      answerFormArray.push(
+        this.formBuilder.group<SingleSelectFormCheckobox>({
+          [SingleSelectAnswerFormName.LABEL]:this.formBuilder.control<string>(answer.answer),
+          [SingleSelectAnswerFormName.ID]: this.formBuilder.control<string>(answer.id!)
+        })
+      );
+    });
+    return answerFormArray as FormArray;
   }
 
   private createShortTextQuestionForm(shortTextQuestion: ShortTextQuestion): FormGroup {
@@ -101,12 +112,10 @@ export class InquiryFormToFillServiceService {
   }
 
   private createScleSelectForm(scaleQuestion: ScaleQuestion): FormGroup {
-    console.log(scaleQuestion);
-    
     return this.formBuilder.group<ScaleSelectAnswerForm>({
       [ScaleSelectAnswerFormName.QUESTION]: this.formBuilder.control<string>(scaleQuestion.label),
       [ScaleSelectAnswerFormName.TYPE]: this.formBuilder.control<QuestionType.SCALE>(QuestionType.SCALE),
-      [ScaleSelectAnswerFormName.VALUE]:this.formBuilder.control<number>(scaleQuestion.min),
+      [ScaleSelectAnswerFormName.ANSWER]:this.formBuilder.control<number>(scaleQuestion.min),
       [ScaleSelectAnswerFormName.MAX_VALUE]:this.formBuilder.control<number>(scaleQuestion.max),
       [ScaleSelectAnswerFormName.MIN_VALUE]:this.formBuilder.control<number>({value:scaleQuestion.min,disabled:true}),
       [ScaleSelectAnswerFormName.STEP_SIZE]:this.formBuilder.control<number>(scaleQuestion.stepSize),

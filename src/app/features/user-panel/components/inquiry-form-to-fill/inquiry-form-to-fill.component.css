@@ -5,13 +5,14 @@
   text-align: center;
   justify-content: center;
   font-family: Roboto, sans-serif;
-  background-color: rgba(220, 226, 242, 1) !important;
+  background-color: rgb(251, 252, 255) !important;
 }
 
-.title {
-  font-size: 20px;
-  color: black;
-  padding-top: 15px;
+.title{
+  padding-top:15px;
+  font-size: 26px;
+  margin: 0px;
+  color: #7699bb;
 }
 
 .stressLine {
@@ -20,20 +21,10 @@
   justify-content: center;
 }
 
-.borderLine {
-  border-top: 2px solid rgb(212, 179, 231);
-  box-shadow: 1px 4px 4px 1px rgb(163, 191, 217);
-  border-radius: 120%;
-  text-align: center;
-  justify-content: center;
-  display: flex;
-  margin-left: 30%;
-  margin-right: 30%;
-  margin-top: 5px;
-}
-
 .formGroup {
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top:20px;
 }
 
 .matDialogActions{
