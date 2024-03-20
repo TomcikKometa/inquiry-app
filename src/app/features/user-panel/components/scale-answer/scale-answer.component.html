@@ -2,13 +2,13 @@
   <form [formGroup]="form">
     <div formArrayName="{{ inquiryAnswersFormName.ANSWERS }}">
       <div [formGroupName]="itemIndex">
-        <div class="question">
+        <div class="question_form_to_fill">
           <span>Question no.{{ itemIndex + 1 }}</span>
         </div>
-        <div class="questionContent">
-          <span class="questionSpan">{{questionLabel}}</span>
+        <div class="question_content_form_to_fill">
+          <span>{{ questionLabel }}</span>
         </div>
-        <div class="jk">
+        <div class="box_mat_slider">
           <div class="grid-container">
             <div class="grid-container item1">
               <span>Minimum value:</span>
@@ -36,17 +36,15 @@
           <mat-hint></mat-hint>
           <div class="grid-container">
             <div class="grid-container item3">
-              
               <span> Your answer </span>
             </div>
             <div class="item4">
-              <span [ngClass]="{'sliderMaxValue': isChosenMaxValue,'textUnderline': isChosenMaxValue}"> {{ slider.value }} </span>
-              <!-- <span [class.sliderMaxValue]="isChosenMaxValue"> {{ slider.value }} </span> -->
+              <span [ngClass]="{ sliderMaxValue: isChosenMaxValue, textUnderline: isChosenMaxValue }"> {{ slider.value }} </span>
             </div>
           </div>
         </div>
         <mat-slider [min]="minSteperValue" [max]="maxSteperValue" [step]="stepSizeValue">
-          <input formControlName="answer" matSliderThumb #slider />
+          <input formControlName="{{ scaleSelectAnswerFormName.ANSWER }}" matSliderThumb #slider />
         </mat-slider>
       </div>
     </div>
