@@ -7,11 +7,11 @@
             <span>Question no.{{ itemIndex + 1 }}</span>
           </div>
           <div class="questionContent">
-            <span matInput type="text">xxxx</span>
+            <span matInput type="text">{{questionLabel}}</span>
           </div>
-          <mat-form-field appearance="outline" class="{{ shortTextQuestionAnswerFormName.ANSWER }}" class="answerInputWidth">
+          <mat-form-field appearance="outline" class="answerInputWidth">
             <mat-label>Text of the Answer</mat-label>
-            <input matInput type="text" formControlName="answer" />
+            <input matInput type="text" formControlName="{{ shortTextQuestionAnswerFormName.ANSWER }}" />
           </mat-form-field>
         </div>
       </div>

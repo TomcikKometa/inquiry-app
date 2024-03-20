@@ -94,7 +94,7 @@ export class InquiryFormToFillServiceService {
     singleSelectQuestion.answers.forEach((answer: InquiryAnswer) => {
       answerFormArray.push(
         this.formBuilder.group<SingleSelectFormRadioButton>({
-          [SingleSelectAnswerFormName.LABEL]:this.formBuilder.control<string>(answer.answer),
+          [SingleSelectAnswerFormName.LABEL]:this.formBuilder.control<string>({value:answer.answer,disabled:true}),
           [SingleSelectAnswerFormName.ID]: this.formBuilder.control<string>(answer.id!)
         })
       );
@@ -106,9 +106,7 @@ export class InquiryFormToFillServiceService {
     return this.formBuilder.group<ShortTextQuestionAnswerForm>({
       [ShortTextQuestionAnswerFormName.QUESTION]: this.formBuilder.control<string>({ value: shortTextQuestion ? shortTextQuestion.answer : '', disabled: true }),
       [ShortTextQuestionAnswerFormName.TYPE]: this.formBuilder.control<QuestionType.SHORT_TEXT>(QuestionType.SHORT_TEXT),
-      [ShortTextQuestionAnswerFormName.ANSWER]: this.formBuilder.control<string>(
-        { value: shortTextQuestion ? shortTextQuestion.answer : '', disabled: false },
-      )
+      [ShortTextQuestionAnswerFormName.ANSWER]: this.formBuilder.control<string>('')
     });
   }
 

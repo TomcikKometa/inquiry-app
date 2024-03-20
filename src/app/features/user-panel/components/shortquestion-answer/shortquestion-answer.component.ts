@@ -36,4 +36,9 @@ export class ShortquestionAnswerComponent {
   protected get inquiryAnswersFormName(): typeof InquiryAnswersFormName{
     return InquiryAnswersFormName
   }
+
+  protected get questionLabel() : string {
+    return this.item.get(ShortTextQuestionAnswerFormName.QUESTION)?.value
+  }
+  
 }

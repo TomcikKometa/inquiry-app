@@ -4,7 +4,7 @@
       <span>Question no.{{ itemIndex + 1 }}</span>
     </div>
     <div class="questionContent">
-      <span class="questionSpan">x</span>
+      <span class="questionSpan">{{questionLabel}}</span>
     </div>
     <form [formGroup]="formItem">
       <mat-radio-group formControlName="{{ singleSelectAnswerFormName.SELECTED_ANSWER }}">
