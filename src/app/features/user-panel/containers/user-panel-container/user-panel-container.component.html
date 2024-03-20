@@ -1,8 +1,8 @@
 @if (sessionStorageUser === accountsToken.USER_TOKEN) {
   <div class="container">
-    <div class="setButtons">
+    <div class="set_menu_buttons">
       <div class="rowWidth"></div>
-      <mat-card class="setMatCartContent">
+      <mat-card class="mat_cart_content">
         <div class="setMat">
           <div class="setUserInfo">
             <div>
@@ -23,7 +23,7 @@
           </div>
         </div>
       </mat-card>
-      <button class="button-63" (click)="logOut()"><mat-icon fontIcon="logout"></mat-icon>&nbsp;Log out</button>
+      <button class="button_app" (click)="logOut()"><mat-icon fontIcon="logout"></mat-icon>&nbsp;Log out</button>
     </div>
     <inq-inquiry-table-list-user (openInquiryFormToFillEvent)="openInquiryFormToFill($event)"></inq-inquiry-table-list-user>
   </div>

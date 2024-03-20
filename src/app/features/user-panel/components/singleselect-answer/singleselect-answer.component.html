@@ -1,23 +1,21 @@
 @if (isViewed) {
-  <div class="container">
-    <div class="question">
+    <div class="question_form_to_fill">
       <span>Question no.{{ itemIndex + 1 }}</span>
     </div>
-    <div class="questionContent">
-      <span class="questionSpan">{{questionLabel}}</span>
+    <div class="question_content_form_to_fill">
+      <span>{{questionLabel}}</span>
     </div>
     <form [formGroup]="formItem">
       <mat-radio-group formControlName="{{ singleSelectAnswerFormName.SELECTED_ANSWER }}">
-        <div formArrayName="{{ singleSelectAnswerFormName.ANSWERS }}" class="answers">
+        <div formArrayName="{{ singleSelectAnswerFormName.ANSWERS }}">
           @for (answer of answersFormArray.controls; track $index) {
             <div [formGroupName]="$index">
-              <div class="d-flex row answers">
+              <div class="d-flex row">
                 <mat-radio-button
-                  class="matCheckbox"
                   value="{{ answersFormArray.get($index.toString())?.get('id')?.value }} "
                 ></mat-radio-button>
-                <mat-form-field appearance="outline" class="answerInputWidth">
-                  <input matInput type="text" formControlName="{{ 'label' }}" class="disabled" />
+                <mat-form-field appearance="outline" class="answer_input_width">
+                  <input matInput type="text" formControlName="{{ singleSelectAnswerFormName.LABEL }}" />
                 </mat-form-field>
               </div>
             </div>
@@ -25,5 +23,4 @@
         </div>
       </mat-radio-group>
     </form>
-  </div>
 }
