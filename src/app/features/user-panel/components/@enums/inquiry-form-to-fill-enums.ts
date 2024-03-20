@@ -7,7 +7,8 @@ export enum MultiSelectAnswerFormName {
     TYPE = 'type',
     ANSWERS = 'answers',
     LABEL = 'label',
-    ID = 'id'
+    ID = 'id',
+    IS_SELECTED = 'isSelected'
 }
 
 export enum SingleSelectAnswerFormName {
