@@ -11,9 +11,9 @@
         <div class="row" formArrayName="{{ multiSelectQuestionFormName.ANSWERS }}">
           @for (answers of answersFormArray.controls; track answers; let index = $index) {
             @if (isEditedControl) {
-              <div class="row" [formGroupName]="index">
+              <div class="d-flex row" [formGroupName]="index">
                   <mat-checkbox></mat-checkbox>
-                  <mat-form-field appearance="outline" class="answer_input_width">
+                  <mat-form-field appearance="outline" class="answer_input_width" >
                     <mat-label>Answer</mat-label>
                     <input matInput type="text" formControlName="{{ 'label' }}" />
                   </mat-form-field>
@@ -21,11 +21,11 @@
                 </div>
             }
             @if (isEmptyQuestion) {
-              <div class="d-flex row" style="gap: 20px">
+              <div class="d-flex row">
                 <mat-checkbox></mat-checkbox>
                 <mat-form-field appearance="outline" class="answer_input_width">
                   <mat-label>Answer</mat-label>
-                  <input matInput type="text" formControlName="{{ index }}" />
+                  <input matInput type="text" formControlName="{{ index }}" class="answer_input_width"/>
                 </mat-form-field>
                 <button class="question_margin" color="primary" mat-raised-button (click)="removeAnswerAtForm(index)">Remove</button>
               </div>
