@@ -41,15 +41,15 @@
               <span> Your answer </span>
             </div>
             <div class="item4">
-              <span [ngClass]="{'my_class': isViewed === true}"> {{ slider.value }} </span>
+              <span [ngClass]="{'sliderMaxValue': isChosenMaxValue,'textUnderline': isChosenMaxValue}"> {{ slider.value }} </span>
+              <!-- <span [class.sliderMaxValue]="isChosenMaxValue"> {{ slider.value }} </span> -->
             </div>
           </div>
         </div>
         <mat-slider [min]="minSteperValue" [max]="maxSteperValue" [step]="stepSizeValue">
-          <input formControlName="value" matSliderThumb #slider />
+          <input formControlName="answer" matSliderThumb #slider />
         </mat-slider>
       </div>
-      
     </div>
   </form>
 }

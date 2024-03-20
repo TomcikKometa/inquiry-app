@@ -30,7 +30,9 @@ export class SingleSelectComponent {
   public ngOnInit() {
     this.form = this.rootFormGroup.control;
     if (this.item.get(TypeQuestion.TYPE)?.value === QuestionType.SINGLE_SELECT) {
-      if (this.itemIndex + 1 === +this.item.get(SingleSelectQuestionFormName.ID)?.value) this.isViewed = true;
+      if (this.itemIndex + 1 === +this.item.get(SingleSelectQuestionFormName.ID)?.value) {
+        this.isViewed = true;
+      }
     }
   }
 

@@ -5,13 +5,18 @@ export enum InquiryAnswersFormName {
 export enum MultiSelectAnswerFormName {
     QUESTION = 'question',
     TYPE = 'type',
-    ANSWERS = 'answers'    
+    ANSWERS = 'answers',
+    LABEL = 'label',
+    ID = 'id'
 }
 
 export enum SingleSelectAnswerFormName {
     QUESTION = 'question',
     TYPE = 'type',
-    ANSWERS = 'answers'    
+    ANSWERS = 'answers',
+    SELECTED_ANSWER = 'selectedAnswer',
+    LABEL = 'label',
+    ID = 'id'
 }
 
 export enum ShortTextQuestionAnswerFormName {
@@ -23,7 +28,7 @@ export enum ShortTextQuestionAnswerFormName {
 export enum ScaleSelectAnswerFormName {
     QUESTION = 'question',
     TYPE = 'type',
-    VALUE = 'value',
+    ANSWER = 'answer',
     MIN_VALUE = 'minValue',
     MAX_VALUE = 'maxValue',
     STEP_SIZE = 'stepSize'

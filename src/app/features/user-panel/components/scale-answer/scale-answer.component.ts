@@ -6,7 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { CommonModule } from '@angular/common';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, pipe, takeUntil } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'inq-scale-answer',
@@ -21,6 +22,7 @@ export class ScaleAnswerComponent {
   minSteperValue: number = 0;
   maxSteperValue: number = 0;
   stepSizeValue: number = 0;
+  protected isChosenMaxValue:boolean = false;
 
   @Input({ required: true }) public itemIndex!: number;
   @Input({ required: true }) public item!: AbstractControl;
@@ -35,8 +37,9 @@ export class ScaleAnswerComponent {
       this.isViewed = true;
       this.item ? this.pripareSliderValues() : 0;
     }
-    this.form.valueChanges.pipe(takeUntil(this._destroy)).subscribe((z) => {
-    });
+    this.item.get('answer')?.valueChanges.pipe(takeUntil(this._destroy)).subscribe((answer:number) =>{
+      this.isChosenMaxValue = answer === this.item.get('maxValue')?.value;
+    })
   }
 
   private pripareSliderValues(): void {

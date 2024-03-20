@@ -1,14 +1,12 @@
 <div class="container">
   <div class="title">Inquiry name: {{ inquiry.name }}</div>
-  <p class="borderLine"></p>
-
   <form [formGroup]="formGroup" class="formGroup">
     <div formArrayName="answers">
       @for (answer of formArrayControls.controls; track $index) {
-        <inq-multiselect-answer [item]="answer" [indexItem]="$index"></inq-multiselect-answer>
+        <inq-multiselect-answer [item]="answer" [itemIndex]="$index"></inq-multiselect-answer>
         <inq-scale-answer [item]="answer" [itemIndex]="$index"></inq-scale-answer>
         <inq-shortquestion-answer [item]="answer" [itemIndex]="$index"></inq-shortquestion-answer>
-        <inq-singleselect-answer></inq-singleselect-answer>
+        <inq-singleselect-answer [item]="answer" [itemIndex]="$index"></inq-singleselect-answer>
       }
     </div>
   </form>

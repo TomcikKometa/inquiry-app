@@ -22,7 +22,7 @@ export class MultiselectAnswerComponent implements OnInit {
   protected multiselectAnswerFormName: typeof MultiSelectAnswerFormName = MultiSelectAnswerFormName;
 
   @Input({ required: true }) public item!: AbstractControl;
-  @Input({ required: true }) public indexItem!: number;
+  @Input({ required: true }) public itemIndex!: number;
   private readonly rootFormGroup: FormGroupDirective = inject(FormGroupDirective);
 
   public ngOnInit(): void {
