@@ -40,12 +40,13 @@ export interface ScaleSelectAnswerForm {
   [ScaleSelectAnswerFormName.STEP_SIZE]: FormControl<number>;
 }
 
-export interface SingleSelectFormCheckobox {
+export interface SingleSelectFormRadioButton {
   [SingleSelectAnswerFormName.ID]: FormControl<string>;
   [SingleSelectAnswerFormName.LABEL]: FormControl<string>;
 }
 
-export interface MultiSelectFormRadioButton {
+export interface MultiSelectFormCheckbox {
   [MultiSelectAnswerFormName.ID]: FormControl<string>;
   [MultiSelectAnswerFormName.LABEL]: FormControl<string>;
+  [MultiSelectAnswerFormName.IS_SELECTED]: FormControl<boolean>;
 }

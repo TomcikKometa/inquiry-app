@@ -32,7 +32,6 @@ export class SingleselectAnswerComponent implements OnInit {
     this.form = this.rootFormGroup.control;
     if (this.item.get(TypeQuestion.TYPE)?.value === QuestionType.SINGLE_SELECT) {
       this.isViewed = true;
-      console.log(this.item);
     }
   }
 

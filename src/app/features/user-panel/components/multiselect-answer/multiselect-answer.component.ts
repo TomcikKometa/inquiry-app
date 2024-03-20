@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { QuestionType } from '../../../../@enums/question-type';
 import { TypeQuestion } from '../../../pollster-panel/components/inquiry-form/@enum/form-enum';
+import { MultiSelectFormCheckbox } from '../@models/inquiry-form-to-fill-model'
 @Component({
   selector: 'inq-multiselect-answer',
   standalone: true,
@@ -36,15 +37,15 @@ export class MultiselectAnswerComponent implements OnInit {
     return this.item.get('question')?.value;
   }
 
-  public get inquiryFormName(): typeof InquiryAnswersFormName {
+  protected get inquiryFormName(): typeof InquiryAnswersFormName {
     return InquiryAnswersFormName;
   }
 
-  public get multiSelectAnswerFormName(): typeof MultiSelectAnswerFormName {
+  protected get multiSelectAnswerFormName(): typeof MultiSelectAnswerFormName {
     return MultiSelectAnswerFormName;
   }
 
-  public get answersFormArray(): FormArray {
+  protected get answersFormArray(): FormArray {
     return this.item.get(MultiSelectAnswerFormName.ANSWERS) as FormArray;
   }
 }

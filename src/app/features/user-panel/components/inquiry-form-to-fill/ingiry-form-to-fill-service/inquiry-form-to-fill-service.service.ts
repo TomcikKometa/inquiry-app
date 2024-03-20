@@ -26,8 +26,8 @@ import {
   SingleSelectAnswerForm,
   ShortTextQuestionAnswerForm,
   ScaleSelectAnswerForm,
-  SingleSelectFormCheckobox,
-  MultiSelectFormRadioButton,
+  SingleSelectFormRadioButton,
+  MultiSelectFormCheckbox,
   MultiSelectAnswerForm,
 } from '../../@models/inquiry-form-to-fill-model';
 
@@ -70,9 +70,10 @@ export class InquiryFormToFillServiceService {
     const answerFormArray: FormArray = this.formBuilder.array([]);
     multiselectQuestion.answers.forEach((answer: InquiryAnswer) => {
       answerFormArray.push(
-        this.formBuilder.group<MultiSelectFormRadioButton>({
+        this.formBuilder.group<MultiSelectFormCheckbox>({
           [MultiSelectAnswerFormName.LABEL]: this.formBuilder.control<string>({value:answer.answer,disabled:true}),
-          [MultiSelectAnswerFormName.ID]: this.formBuilder.control<string>(answer.id!)
+          [MultiSelectAnswerFormName.ID]: this.formBuilder.control<string>(answer.id!),
+          [MultiSelectAnswerFormName.IS_SELECTED]: this.formBuilder.control<boolean>(false)
         })
       );
     });
@@ -92,7 +93,7 @@ export class InquiryFormToFillServiceService {
     const answerFormArray: FormArray = this.formBuilder.array([]);
     singleSelectQuestion.answers.forEach((answer: InquiryAnswer) => {
       answerFormArray.push(
-        this.formBuilder.group<SingleSelectFormCheckobox>({
+        this.formBuilder.group<SingleSelectFormRadioButton>({
           [SingleSelectAnswerFormName.LABEL]:this.formBuilder.control<string>(answer.answer),
           [SingleSelectAnswerFormName.ID]: this.formBuilder.control<string>(answer.id!)
         })
