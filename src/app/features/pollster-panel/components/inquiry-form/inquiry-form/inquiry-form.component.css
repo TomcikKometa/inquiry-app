@@ -1,31 +1,19 @@
 
-.headInput{
+.inquiry_input{
   text-align: center;
   margin-top: 20px;
 }
 
-.headInputWidth{
+.inquiry_input_width{
   width: 320px;
 }
 
-.questionInput{
+.forms_section {
   text-align: center;
   margin-top: 20px;
 }
 
-.questionMargin{
-  margin: 10px;
-}
-
-.questionInputWidth {
-  width: 500px;
-}
-
-.answerInputWidth {
-  width: 300px;
-}
-
-.footerBotton {
+.footer_botton {
   text-align: center;
   gap: 10px;
   margin: 10px;

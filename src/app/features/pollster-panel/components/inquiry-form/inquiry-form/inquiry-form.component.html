@@ -1,12 +1,12 @@
 @if (inquiryForm) {
   <ng-container [formGroup]="inquiryForm">
-    <div class="headInput">
-      <mat-form-field class="headInputWidth" appearance="outline">
+    <div class="inquiry_input">
+      <mat-form-field class="inquiry_input_width" appearance="outline">
         <mat-label>Inquiry name</mat-label>
         <input matInput type="text" formControlName="{{ inquiryFormName.INQUIRY_NAME }}" />
       </mat-form-field>
     </div>
-    <div class="questionInput" formArrayName="{{ inquiryFormName.QUESTIONS }}">
+    <div class="forms_section" formArrayName="{{ inquiryFormName.QUESTIONS }}">
       @for (item of questionsFormArray.controls; track trackItem(item); let index = $index) {
         <div class="row">
 
@@ -45,7 +45,7 @@
         </div>
       }
     </div>
-    <div class="footerBotton">
+    <div class="footer_botton">
       <button mat-button [matMenuTriggerFor]="menu" class="button" color="primary" mat-raised-button>Add question</button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="addMultiSelectForm()">Multi scelect</button>
@@ -56,7 +56,7 @@
     </div>
   </ng-container>
   @if (questionsFormArray.length > 0) {
-    <span align="center" class="questionMargin">Number of questions {{ questionsFormArray.length }}</span>
+    <span align="center" class="question_margin">Number of questions {{ questionsFormArray.length }}</span>
   }
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close mat-raised-button>Cancel</button>
