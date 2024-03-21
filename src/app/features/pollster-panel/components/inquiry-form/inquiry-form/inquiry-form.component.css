@@ -1,10 +1,9 @@
-
-.inquiry_input{
+.inquiry_input {
   text-align: center;
   margin-top: 20px;
 }
 
-.inquiry_input_width{
+.inquiry_input_width {
   width: 320px;
 }
 
@@ -18,5 +17,3 @@
   gap: 10px;
   margin: 10px;
 }
-
-
