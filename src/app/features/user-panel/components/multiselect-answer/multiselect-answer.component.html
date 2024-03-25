@@ -1,8 +1,8 @@
 @if (isViewed) {
     <div class="question_content_form_to_fill">
-      <span>{{ questionName }}</span>
+      <span>{{ questionLabel }}</span>
     </div>
-    <form [formGroup]="form">
+    <form [formGroup]="form" class="answer_form_iterator">
       <div formArrayName="{{ multiSelectAnswerFormName.ANSWERS }}">
         <div [formGroupName]="itemIndex">
           <div formArrayName="{{ multiSelectAnswerFormName.ANSWERS }}">

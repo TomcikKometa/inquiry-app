@@ -13,7 +13,7 @@ html {
   --mainTwo-color-a2bddc: #a2bddc;
   --mainThree-color-f4f4fc: #f4f4fc;
   --boxShadowOne-color-a3bfd9: #a3bfd9;
-  --boxShadowTwo-color-BDBBCF: #BDBBCF;
+  --boxShadowTwo-color-BDBBCF: #bdbbcf;
   --tableOne-color-ffffff: #ffffff;
   --tableTwo-color-d9def0: #d9def0;
   --tableThree-color-cfdae9: #cfdae9;
@@ -22,46 +22,46 @@ html {
 }
 
 .button_app {
-    align-items: center;
-    background-image: linear-gradient(45deg, #a2bddc, #f4f4fc 190%, #a2bddc);
-    border: 0;
-    border-radius: 8px;
-    box-shadow: rgba(217, 222, 240) 0px 0px 5px 5px;
-    box-sizing: border-box;
-    color: black;
-    display: flex;
-    font-family: Roboto, sans-serif;
-    font-size: 19px;
-    font-weight: 600;
-    justify-content: center;
-    line-height: 1em;
-    width: 150px;
-    height: 30px;
-    padding: 19px 24px;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    white-space: nowrap;
-    cursor: pointer;
-    transition: 0.8;
-    position: relative;
-    overflow: hidden;
+  align-items: center;
+  background-image: linear-gradient(45deg, #a2bddc, #f4f4fc 190%, #a2bddc);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(217, 222, 240) 0px 0px 5px 5px;
+  box-sizing: border-box;
+  color: black;
+  display: flex;
+  font-family: Roboto, sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1em;
+  width: 150px;
+  height: 30px;
+  padding: 19px 24px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 0.8;
+  position: relative;
+  overflow: hidden;
+}
+
+.button-63:active,
+.button-63:hover {
+  outline: 0;
+  box-shadow: #9fa6cf 0px 0px 5px 5px;
+}
+
+@media (min-width: 768px) {
+  .button-63 {
+    font-size: 14px;
+    min-width: 150px;
+    font-family: 600;
   }
-  
-  .button-63:active,
-  .button-63:hover {
-    outline: 0;
-    box-shadow: #9fa6cf 0px 0px 5px 5px;
-  }
-  
-  @media (min-width: 768px) {
-    .button-63 {
-      font-size: 14px;
-      min-width: 150px;
-      font-family: 600;
-    }
-  }
+}
 
 .container_fom_to_fill {
   width: 100%;
@@ -74,12 +74,12 @@ html {
 .question_form_to_fill {
   font-size: 18px;
 }
-.question_content_form_to_fill  {
+.question_content_form_to_fill {
   font-size: 16px;
   font-weight: 400;
   border-radius: 6px;
   background-image: linear-gradient(180deg, var(--mainOne-color-dce2f2), var(--mainThree-color-f4f4fc) 400%, var(--mainTwo-color-a2bddc));
-  box-shadow: 0px 0px 2px 2px var(--boxShadowOne-color-0377ba);
+  box-shadow: 0px 0px 2px 2px var(--boxShadowOne-color-a3bfd9);
   padding: 10px;
   margin: 10px;
   display: inline-block;
@@ -97,4 +97,8 @@ html {
 
 .question_input_width {
   width: 60%;
+}
+
+.answer_form_iterator {
+  margin-top: 15px;
 }
