@@ -40,5 +40,9 @@ export class ShortquestionAnswerComponent {
   protected get questionLabel() : string {
     return this.item.get(ShortTextQuestionAnswerFormName.QUESTION)?.value
   }
+
+  protected get formItem(): FormGroup {
+    return this.item as FormGroup;
+  }
   
 }

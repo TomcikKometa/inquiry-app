@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { AccountsKey, AccountsToken } from '../../../../@core/services/token-enums';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { DIALOG_OPTIONS } from '../../../../@config/form-config';
 import { InquiryFormComponent } from '../../components/inquiry-form/inquiry-form/inquiry-form.component';
 import { ToastrServiceMesseges } from '../../../../@enums/toastr-messeges';
 import { InquiryTableListPollsterComponent } from '../../components/inquiry-table-list/inquiry-table-list.component';
@@ -13,6 +12,7 @@ import { DatePipe, registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import { MatCardModule } from '@angular/material/card';
 import { InquirySavedInfo } from '../@models/pollster-containers-models';
+import { DIALOG_OPTIONS_FORM } from '../../../../@config/form-config';
 registerLocaleData(localePl);
 
 @Component({
@@ -47,7 +47,7 @@ export class PollsterPanelContainerComponent {
   }
 
   protected openInquiryForm(id?: string) {
-    const dialogRef = this.dialog.open(InquiryFormComponent, { data: id, ...DIALOG_OPTIONS });
+    const dialogRef = this.dialog.open(InquiryFormComponent, { data: id, ...DIALOG_OPTIONS_FORM });
 
     dialogRef.afterClosed().subscribe((inquirySavedInfo: InquirySavedInfo) => {
       const isSaved = inquirySavedInfo.isSaved;

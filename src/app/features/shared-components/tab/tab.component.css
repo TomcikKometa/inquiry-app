@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100% !;
+}
+
+.hide-display {
+    display: none;
+}
+
+.content {
+    height: 100%;
+}
+
+.question_number{
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #7699bb;
+}
