@@ -3,7 +3,7 @@
     <div class="question_content_form_to_fill">
       <span>{{questionLabel}}</span>
     </div>
-    <form [formGroup]="formItem">
+    <form [formGroup]="formItem" class="answer_form_iterator">
       <mat-radio-group formControlName="{{ singleSelectAnswerFormName.SELECTED_ANSWER }}">
         <div formArrayName="{{ singleSelectAnswerFormName.ANSWERS }}">
           @for (answer of answersFormArray.controls; track $index) {

@@ -33,7 +33,7 @@ export class MultiselectAnswerComponent implements OnInit {
     }
   };
 
-  protected get questionName(): string {
+  protected get questionLabel(): string {
     return this.item.get('question')?.value;
   }
 

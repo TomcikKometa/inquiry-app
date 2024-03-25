@@ -1,13 +1,15 @@
 @if (isViewed) {
   <div class="form">
     <form [formGroup]="formItem">
-        <div class="question_content_form_to_fill">
-          <span matInput type="text">{{ questionLabel }}</span>
-        </div>
+      <div class="question_content_form_to_fill">
+        <span matInput type="text">{{ questionLabel }}</span>
+      </div>
+      <div class="answer_form_iterator">
         <mat-form-field appearance="outline" class="answer_input_width">
           <mat-label>Text of the Answer</mat-label>
           <input matInput type="text" formControlName="{{ shortTextQuestionAnswerFormName.ANSWER }}" />
         </mat-form-field>
+      </div>
     </form>
   </div>
 }
