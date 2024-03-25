@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
-import { DIALOG_OPTIONS } from '../../../../@config/form-config';
+import { DIALOG_OPTIONS_FORM_TO_FILL } from '../../../../@config/form-config';
 import { NavigationService } from '../../../../@core/services/navigation/navigation.service';
 import { AccountsKey, AccountsToken } from '../../../../@core/services/token-enums';
 import { InquiryTableListUserComponent } from '../../components/inquiry-table-list-user/inquiry-table-list-user.component';
@@ -48,7 +48,7 @@ export class UserPanelContainerComponent implements OnInit {
   }
 
   protected openInquiryFormToFill(id: string): void {
-    this.dialog.open(InquiryFormToFillComponent, {data:id, ...DIALOG_OPTIONS});
+    this.dialog.open(InquiryFormToFillComponent, {data:id, ...DIALOG_OPTIONS_FORM_TO_FILL});
   }
 
   protected logOut(): void {

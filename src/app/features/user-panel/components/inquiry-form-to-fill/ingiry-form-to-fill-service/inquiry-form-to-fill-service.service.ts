@@ -103,8 +103,9 @@ export class InquiryFormToFillServiceService {
   }
 
   private createShortTextQuestionForm(shortTextQuestion: ShortTextQuestion): FormGroup {
+    console.log(shortTextQuestion);
     return this.formBuilder.group<ShortTextQuestionAnswerForm>({
-      [ShortTextQuestionAnswerFormName.QUESTION]: this.formBuilder.control<string>({ value: shortTextQuestion ? shortTextQuestion.answer : '', disabled: true }),
+      [ShortTextQuestionAnswerFormName.QUESTION]: this.formBuilder.control<string>({ value: shortTextQuestion ? shortTextQuestion.label : '', disabled: true }),
       [ShortTextQuestionAnswerFormName.TYPE]: this.formBuilder.control<QuestionType.SHORT_TEXT>(QuestionType.SHORT_TEXT),
       [ShortTextQuestionAnswerFormName.ANSWER]: this.formBuilder.control<string>('')
     });

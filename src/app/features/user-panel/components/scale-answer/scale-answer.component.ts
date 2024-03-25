@@ -22,27 +22,30 @@ export class ScaleAnswerComponent {
   minSteperValue: number = 0;
   maxSteperValue: number = 0;
   stepSizeValue: number = 0;
-  protected isChosenMaxValue:boolean = false;
+  protected isChosenMaxValue: boolean = false;
 
   @Input({ required: true }) public itemIndex!: number;
   @Input({ required: true }) public item!: AbstractControl;
 
   private readonly rootFormGroup: FormGroupDirective = inject(FormGroupDirective);
   private readonly _destroy: Subject<void> = new Subject<void>();
-  
+
   ngOnInit(): void {
     this.form = this.rootFormGroup.control;
     const formGroup: FormGroup = this.item as FormGroup;
     if (formGroup.controls['type'].value === QuestionType.SCALE) {
       this.isViewed = true;
-      this.item ? this.pripareSliderValues() : 0;
+      this.item ? this.prepareSliderValues() : 0;
     }
-    this.item.get('answer')?.valueChanges.pipe(takeUntil(this._destroy)).subscribe((answer:number) =>{
-      this.isChosenMaxValue = answer === this.item.get('maxValue')?.value;
-    })
+    this.item
+      .get('answer')
+      ?.valueChanges.pipe(takeUntil(this._destroy))
+      .subscribe((answer: number) => {
+        this.isChosenMaxValue = answer === this.item.get('maxValue')?.value;
+      });
   }
 
-  private pripareSliderValues(): void {
+  private prepareSliderValues(): void {
     this.minSteperValue = this.item.get('minValue')?.value;
     this.maxSteperValue = this.item.get('maxValue')?.value;
     this.stepSizeValue = this.item.get('stepSize')?.value;
@@ -56,7 +59,11 @@ export class ScaleAnswerComponent {
     return InquiryAnswersFormName;
   }
 
-  protected get questionLabel() : string {
-    return this.item.get(ScaleSelectAnswerFormName.QUESTION)?.value
+  protected get questionLabel(): string {
+    return this.item.get(ScaleSelectAnswerFormName.QUESTION)?.value;
+  }
+
+  protected get formItem(): FormGroup {
+    return this.item as FormGroup;
   }
 }

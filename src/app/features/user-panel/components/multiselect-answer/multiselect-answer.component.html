@@ -1,7 +1,4 @@
 @if (isViewed) {
-    <div class="question_form_to_fill">
-      <span>Question no.{{ itemIndex + 1 }}</span>
-    </div>
     <div class="question_content_form_to_fill">
       <span>{{ questionName }}</span>
     </div>
@@ -14,7 +11,7 @@
                 <div class="d-flex row">
                   <mat-checkbox formControlName="{{ multiSelectAnswerFormName.IS_SELECTED }}"></mat-checkbox>
                   <mat-form-field appearance="outline" class="answer_input_width">
-                    <input matInput type="text" formControlName="{{ multiSelectAnswerFormName.LABEL }}"/>
+                    <input matInput type="text" formControlName="{{ multiSelectAnswerFormName.LABEL }}" />
                   </mat-form-field>
                 </div>
               </div>
