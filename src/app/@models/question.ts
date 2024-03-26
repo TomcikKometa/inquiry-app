@@ -6,7 +6,7 @@ export interface Question {
 }
 
 export interface MultiselectQuestion extends Question {
-  answers: InquiryAnswer[];
+  answers: MultiSingleInquiryAnswer[];
 }
 
 export interface ScaleQuestion extends Question {
@@ -20,10 +20,10 @@ export interface ShortTextQuestion extends Question {
 }
 
 export interface SingleSelectQuestion extends Question {
-  answers: InquiryAnswer[];
+  answers: MultiSingleInquiryAnswer[];
 }
 
-export interface InquiryAnswer {
+export interface MultiSingleInquiryAnswer {
   answer: string;
   id?:string;
   isSelected?:boolean;

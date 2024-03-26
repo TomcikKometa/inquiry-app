@@ -12,8 +12,8 @@
           </mat-tab>
         }
       </mat-tab-group> -->
-      <inq-tab-group [selectedIndex]="tabIndex"  [@fadeIn]="state">
-        @for (answer of formArrayControls.controls; track answer;let index = $index) {
+      <inq-tab-group [selectedIndex]="tabIndex" [@fadeIn]="state">
+        @for (answer of formArrayControls.controls; track answer; let index = $index) {
           <inq-tab [title]="index">
             <inq-multiselect-answer [item]="answer" [itemIndex]="index"></inq-multiselect-answer>
             <inq-scale-answer [item]="answer" [itemIndex]="index"></inq-scale-answer>
@@ -25,10 +25,18 @@
     </div>
   </form>
   <div class="mat_dialog_actions">
-    <mat-dialog-actions align="end">
-      @if(!isNextButton){<button class="buttonCustom" mat-button (click)="changeTabIndex()" [@fadeIn]="stateButton" [disabled]="isNoButtonNext">Next</button>}
+    <mat-dialog-actions style="justify-content: end">
       <button class="buttonCustom" mat-button mat-dialog-close>Cancel</button>
-      <button class="buttonCustom" mat-button mat-dialog-close (click)="saveAnswerForm()">Save</button>
+
+      @if (isNoButtonNext) {
+        <button class="buttonCustom" mat-button (click)="changeTabIndex()" [disabled]="!isNoButtonNext">
+          Next
+        </button>
+      }
+
+      @if (isNoButtonSave) {
+        <button class="buttonCustom" mat-button  (click)="saveAnswerForm()">Save</button>
+      }
     </mat-dialog-actions>
   </div>
 </div>

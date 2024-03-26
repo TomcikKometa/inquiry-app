@@ -1,5 +1,5 @@
 import { AfterContentChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { InquiryService } from '../../../../@api/services/inquiry-service/inquiry.service';
 import { first } from 'rxjs';
 import { Inquiry } from '../../../../@models/inquiry';
@@ -19,7 +19,8 @@ import { MAT_TABS_CONFIG, MatTabsModule } from '@angular/material/tabs';
 import { TabGroupComponent } from '../../../shared-components/tab-group/tab-group.component';
 import { TabComponent } from '../../../shared-components/tab/tab.component';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { ThisReceiver } from '@angular/compiler';
+import { ToastrService } from 'ngx-toastr';
+import { ToastrServiceMesseges } from '../../../../@enums/toastr-messeges';
 
 @Component({
   selector: 'inq-inquiry-form-to-fill',
@@ -47,10 +48,11 @@ import { ThisReceiver } from '@angular/compiler';
   animations: [
     trigger('fadeIn', [
       state('in', style({ 'opacity': '1' })),
-      state('out', style({ 'opacity': '0.1' })),
-      state('buttonState', style({ 'opacity': '0' })),
+      state('out', style({ 'opacity': '0' })),
+      state('buttonState', style({ 'opacity': '0.1' })),
+      state('stateSaveButton', style({ 'opacity': '1' })),
       transition('* => *', [
-        animate(1000)
+        animate(1000),
       ])
     ])
   ]
@@ -61,14 +63,16 @@ export class InquiryFormToFillComponent implements OnInit, AfterViewInit {
   protected formGropMatTab!: FormArray;
   protected tabIndex: number = 0;
   protected state = 'in';
-  protected isNextButton = false;
-  protected stateButton= 'in;';
-  protected isNoButtonNext = false;
+  protected isNoButtonNext = true;
+  
+  isNoButtonSave = false;
 
   private readonly inquiryID: string = inject(MAT_DIALOG_DATA);
   private readonly inquiryService: InquiryService = inject(InquiryService);
   private readonly inquiryFormService: InquiryFormToFillServiceService = inject(InquiryFormToFillServiceService);
   private readonly ref: ChangeDetectorRef = inject(ChangeDetectorRef);
+  private readonly dialogRef: MatDialogRef<InquiryFormToFillComponent> = inject(MatDialogRef);
+  private readonly toastService: ToastrService = inject(ToastrService);
 
   public ngOnInit(): void {
     this.inquiryService
@@ -77,11 +81,15 @@ export class InquiryFormToFillComponent implements OnInit, AfterViewInit {
       .subscribe((inquiry: Inquiry) => {
         (this.inquiry = inquiry), (this.formGroup = new FormGroup({ answers: this.inquiryFormService.createFormToFill(inquiry) }));
       });
-      const form = this.formGroup.controls['answers'] as FormArray;
-      if(form.length === 1){
-        this.isNoButtonNext = true;
-        this.stateButton = 'buttonState'
-      }
+      this.handleViewingButton();
+  }
+
+  private handleViewingButton(){
+    const form = this.formGroup.controls['answers'] as FormArray;
+    if(form.length === 1){
+      this.isNoButtonNext = false;
+    this.isNoButtonSave = true;
+    }
   }
 
   public ngAfterViewInit(): void {
@@ -89,18 +97,37 @@ export class InquiryFormToFillComponent implements OnInit, AfterViewInit {
   }
 
   protected saveAnswerForm() {
-    console.log('saved', this.formGroup);
+    if(this.formGroup.valid) {
+      console.log('saved', this.formGroup);
+      this.dialogRef.close();
+      this.toastService.success(ToastrServiceMesseges.SAVED_INQUIRY_ANSWER,'',{
+        positionClass: 'toast-top-right',
+        tapToDismiss: true,
+        closeButton: true,
+        timeOut:4000
+      });
+    }
   }
 
   protected changeTabIndex(){
-    this.state =  'out';
-    const form = this.formGroup.controls['answers'] as FormArray;
-    if(form.length == this.tabIndex + 2 ){
-      this.stateButton = 'buttonState',
-      this.isNoButtonNext = true;
+    if(this.formGroup.get('answers')?.get(this.tabIndex.toString())?.status == 'INVALID'){
+      this.toastService.error(ToastrServiceMesseges.NOT_CHOICED_ANSWER,'',{
+        positionClass: 'toast-top-right',
+        tapToDismiss: true,
+        closeButton: true,
+        timeOut:2000
+      });
+    } else {
+      this.state =  'out';
+      const form = this.formGroup.controls['answers'] as FormArray;
+      if(form.length == this.tabIndex + 2 ){
+        this.isNoButtonNext = false;
+        this.isNoButtonSave = true;
+      }
+      setTimeout(() =>{this.state = 'in',this.tabIndex++;
+      },(800));
     }
-    setTimeout(() =>{this.state = 'in',this.tabIndex++;
-    },(800));
+    
   }
 
   protected get formArrayControls(): FormArray {

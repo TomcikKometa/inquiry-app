@@ -7,7 +7,7 @@ import {
   SingleSelectQuestion,
   ShortTextQuestion,
   ScaleQuestion,
-  InquiryAnswer
+  MultiSingleInquiryAnswer
 } from '../../../@models/question';
 import {
   InquiryQuestionsFormName,
@@ -74,7 +74,7 @@ export class InquiryMapper {
     return questions;
   }
 
-  private static mapAnswers(answers: string[]): InquiryAnswer[] {
+  private static mapAnswers(answers: string[]): MultiSingleInquiryAnswer[] {
     return answers.map((answer: string) => {
       return {
         answer: answer

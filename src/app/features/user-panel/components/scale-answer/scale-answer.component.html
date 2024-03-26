@@ -29,19 +29,22 @@
             <span>{{ stepSizeValue }}</span>
           </div>
         </div>
-        <mat-hint></mat-hint>
-        <div class="grid-container">
-          <div class="grid-container item3">
-            <span> Your answer </span>
-          </div>
-          <div class="item4">
-            <span [ngClass]="{ sliderMaxValue: isChosenMaxValue, textUnderline: isChosenMaxValue }"> {{ slider.value }} </span>
-          </div>
-        </div>
       </div>
-      <mat-slider [min]="minSteperValue" [max]="maxSteperValue" [step]="stepSizeValue">
-        <input formControlName="{{ scaleSelectAnswerFormName.ANSWER }}" matSliderThumb #slider />
+
+      <div><span class="row" [@fadeIn]="stateSteper">Please touch steper to appoint yor answer</span></div>
+      <span>{{ minSteperValue }}</span>
+      <mat-slider [min]="minSteperValue" [max]="maxSteperValue" [step]="stepSizeValue" [disabled]="isDisbaled">
+        <input formControlName="{{ scaleSelectAnswerFormName.ANSWER }}" matSliderThumb #slider (mouseover)="isDisabledM()" />
       </mat-slider>
+      <span>{{ maxSteperValue }}</span>
+      <!-- <div class="item4">
+        <span [@fadeIn]="stateAnswer" class="steper_answer"> Your answer</span>
+      </div> -->
+      <div class="steper_answer">
+        <label [@fadeIn]="stateAnswer" for="input" class="label">Your answer:</label>
+        <span [@fadeIn]="stateAnswer" type="text"> {{sliderValue}} </span>
+      </div>
+      
     </div>
   </form>
 }
