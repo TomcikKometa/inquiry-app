@@ -8,13 +8,17 @@ import { MatSliderModule } from '@angular/material/slider';
 import { CommonModule } from '@angular/common';
 import { Subject, pipe, takeUntil } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'inq-scale-answer',
   standalone: true,
   imports: [MatSliderModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, CommonModule],
   templateUrl: './scale-answer.component.html',
-  styleUrl: './scale-answer.component.css'
+  styleUrl: './scale-answer.component.css',
+  animations: [
+    trigger('fadeIn', [state('in', style({ opacity: '1' })), state('out', style({ opacity: '0' })), transition('* => *', [animate(1000)])])
+  ]
 })
 export class ScaleAnswerComponent {
   protected form!: FormGroup;
@@ -23,6 +27,10 @@ export class ScaleAnswerComponent {
   maxSteperValue: number = 0;
   stepSizeValue: number = 0;
   protected isChosenMaxValue: boolean = false;
+  isDisbaled = true;
+  stateSteper = 'in';
+  stateAnswer = 'out'
+  sliderValue = 0;
 
   @Input({ required: true }) public itemIndex!: number;
   @Input({ required: true }) public item!: AbstractControl;
@@ -42,6 +50,7 @@ export class ScaleAnswerComponent {
       ?.valueChanges.pipe(takeUntil(this._destroy))
       .subscribe((answer: number) => {
         this.isChosenMaxValue = answer === this.item.get('maxValue')?.value;
+        this.sliderValue = answer;
       });
   }
 
@@ -49,6 +58,12 @@ export class ScaleAnswerComponent {
     this.minSteperValue = this.item.get('minValue')?.value;
     this.maxSteperValue = this.item.get('maxValue')?.value;
     this.stepSizeValue = this.item.get('stepSize')?.value;
+  }
+
+  protected isDisabledM() {
+    this.isDisbaled = false;
+    this.stateSteper = 'out';
+    this.stateAnswer = 'in';
   }
 
   protected get scaleSelectAnswerFormName(): typeof ScaleSelectAnswerFormName {

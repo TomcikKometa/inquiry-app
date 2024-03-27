@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { QuestionType } from '../../../../../@enums/question-type';
-import { InquiryAnswer, MultiselectQuestion, Question, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../../../@models/question';
+import { MultiSingleInquiryAnswer, MultiselectQuestion, Question, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../../../@models/question';
 import { Validators, FormArray, FormGroup, NonNullableFormBuilder, AbstractControl, ValidatorFn } from '@angular/forms';
 import {
   InquiryQuestionsFormName,
@@ -98,7 +98,7 @@ export class InquiryFormServiceService {
       answerFormArray.push(this.formBuilder.control('', Validators.required));
       answerFormArray.push(this.formBuilder.control('', Validators.required));
     } else {
-      multiselectQuestion.answers.forEach((answer: InquiryAnswer) => {
+      multiselectQuestion.answers.forEach((answer: MultiSingleInquiryAnswer) => {
         answerFormArray.push(this.formBuilder.group<any>({
             'label': this.formBuilder.control<string>(answer.answer),
             'isSelected': this.formBuilder.control<boolean>(answer.isSelected!),
@@ -179,7 +179,7 @@ export class InquiryFormServiceService {
       answerFormArray.push(this.formBuilder.control('', Validators.required));
       answerFormArray.push(this.formBuilder.control('', Validators.required));
     } else {
-      singleSelectQuestion.answers.forEach((answer: InquiryAnswer) => {
+      singleSelectQuestion.answers.forEach((answer: MultiSingleInquiryAnswer) => {
         answerFormArray.push(this.formBuilder.control(answer.answer, Validators.required));
       });
     }

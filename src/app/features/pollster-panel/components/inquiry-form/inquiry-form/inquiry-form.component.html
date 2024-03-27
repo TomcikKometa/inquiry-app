@@ -56,9 +56,9 @@
     </div>
   </ng-container>
   @if (questionsFormArray.length > 0) {
-    <span align="center" class="question_margin">Number of questions {{ questionsFormArray.length }}</span>
+    <span style="text-align: center" class="question_margin">Number of questions {{ questionsFormArray.length }}</span>
   }
-  <mat-dialog-actions align="end">
+  <mat-dialog-actions style="justify-content: end">
     <button mat-button mat-dialog-close mat-raised-button>Cancel</button>
     <button mat-button (click)="saveInquary()" mat-raised-button>Save</button>
   </mat-dialog-actions>

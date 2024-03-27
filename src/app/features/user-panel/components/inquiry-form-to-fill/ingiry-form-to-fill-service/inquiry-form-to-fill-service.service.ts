@@ -1,14 +1,8 @@
 import { Injectable, inject } from '@angular/core';
-import {
-  AbstractControl,
-  FormArray,
-  FormGroup,
-  NonNullableFormBuilder,
-  ValidatorFn,
-} from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { Inquiry } from '../../../../../@models/inquiry';
 import {
-  InquiryAnswer,
+  MultiSingleInquiryAnswer,
   MultiselectQuestion,
   Question,
   ScaleQuestion,
@@ -28,7 +22,7 @@ import {
   ScaleSelectAnswerForm,
   SingleSelectFormRadioButton,
   MultiSelectFormCheckbox,
-  MultiSelectAnswerForm,
+  MultiSelectAnswerForm
 } from '../../@models/inquiry-form-to-fill-model';
 
 @Injectable()
@@ -62,16 +56,16 @@ export class InquiryFormToFillServiceService {
     return this.formBuilder.group<MultiSelectAnswerForm>({
       [MultiSelectAnswerFormName.QUESTION]: this.formBuilder.control<string>(multiselectQuestion.label),
       [MultiSelectAnswerFormName.TYPE]: this.formBuilder.control<QuestionType.MULTISELECT>(QuestionType.MULTISELECT),
-      [MultiSelectAnswerFormName.ANSWERS]: this.handleAddMultiSelectForm(multiselectQuestion)
+      [MultiSelectAnswerFormName.ANSWERS]:  this.handleAddMultiSelectForm(multiselectQuestion)
     });
   }
 
   private handleAddMultiSelectForm(multiselectQuestion: MultiselectQuestion) {
-    const answerFormArray: FormArray = this.formBuilder.array([]);
-    multiselectQuestion.answers.forEach((answer: InquiryAnswer) => {
+    const answerFormArray: FormArray = this.formBuilder.array([],this.ValidateMultiControls());
+    multiselectQuestion.answers.forEach((answer: MultiSingleInquiryAnswer) => {
       answerFormArray.push(
         this.formBuilder.group<MultiSelectFormCheckbox>({
-          [MultiSelectAnswerFormName.LABEL]: this.formBuilder.control<string>({value:answer.answer,disabled:true}),
+          [MultiSelectAnswerFormName.LABEL]: this.formBuilder.control<string>({ value: answer.answer, disabled: true }),
           [MultiSelectAnswerFormName.ID]: this.formBuilder.control<string>(answer.id!),
           [MultiSelectAnswerFormName.IS_SELECTED]: this.formBuilder.control<boolean>(false)
         })
@@ -85,16 +79,16 @@ export class InquiryFormToFillServiceService {
       [SingleSelectAnswerFormName.QUESTION]: this.formBuilder.control<string>(singleSelectQuestion.label),
       [SingleSelectAnswerFormName.TYPE]: this.formBuilder.control<QuestionType.SINGLE_SELECT>(QuestionType.SINGLE_SELECT),
       [SingleSelectAnswerFormName.ANSWERS]: this.handleAddSingleSelectForm(singleSelectQuestion),
-      [SingleSelectAnswerFormName.SELECTED_ANSWER]: this.formBuilder.control<string>(''),
+      [SingleSelectAnswerFormName.SELECTED_ANSWER]: this.formBuilder.control<string>('',Validators.required)
     });
   }
 
   private handleAddSingleSelectForm(singleSelectQuestion: SingleSelectQuestion) {
     const answerFormArray: FormArray = this.formBuilder.array([]);
-    singleSelectQuestion.answers.forEach((answer: InquiryAnswer) => {
+    singleSelectQuestion.answers.forEach((answer: MultiSingleInquiryAnswer) => {
       answerFormArray.push(
         this.formBuilder.group<SingleSelectFormRadioButton>({
-          [SingleSelectAnswerFormName.LABEL]:this.formBuilder.control<string>({value:answer.answer,disabled:true}),
+          [SingleSelectAnswerFormName.LABEL]: this.formBuilder.control<string>({ value: answer.answer, disabled: true }),
           [SingleSelectAnswerFormName.ID]: this.formBuilder.control<string>(answer.id!)
         })
       );
@@ -103,11 +97,13 @@ export class InquiryFormToFillServiceService {
   }
 
   private createShortTextQuestionForm(shortTextQuestion: ShortTextQuestion): FormGroup {
-    console.log(shortTextQuestion);
     return this.formBuilder.group<ShortTextQuestionAnswerForm>({
-      [ShortTextQuestionAnswerFormName.QUESTION]: this.formBuilder.control<string>({ value: shortTextQuestion ? shortTextQuestion.label : '', disabled: true }),
+      [ShortTextQuestionAnswerFormName.QUESTION]: this.formBuilder.control<string>({
+        value: shortTextQuestion ? shortTextQuestion.label : '',
+        disabled: true
+      }),
       [ShortTextQuestionAnswerFormName.TYPE]: this.formBuilder.control<QuestionType.SHORT_TEXT>(QuestionType.SHORT_TEXT),
-      [ShortTextQuestionAnswerFormName.ANSWER]: this.formBuilder.control<string>('')
+      [ShortTextQuestionAnswerFormName.ANSWER]: this.formBuilder.control<string>('',Validators.required)
     });
   }
 
@@ -115,17 +111,35 @@ export class InquiryFormToFillServiceService {
     return this.formBuilder.group<ScaleSelectAnswerForm>({
       [ScaleSelectAnswerFormName.QUESTION]: this.formBuilder.control<string>(scaleQuestion.label),
       [ScaleSelectAnswerFormName.TYPE]: this.formBuilder.control<QuestionType.SCALE>(QuestionType.SCALE),
-      [ScaleSelectAnswerFormName.ANSWER]:this.formBuilder.control<number>(scaleQuestion.min),
-      [ScaleSelectAnswerFormName.MAX_VALUE]:this.formBuilder.control<number>(scaleQuestion.max),
-      [ScaleSelectAnswerFormName.MIN_VALUE]:this.formBuilder.control<number>({value:scaleQuestion.min,disabled:true}),
-      [ScaleSelectAnswerFormName.STEP_SIZE]:this.formBuilder.control<number>(scaleQuestion.stepSize),
+      [ScaleSelectAnswerFormName.ANSWER]: this.formBuilder.control<number>(0,this.ValidateScaleControls()),
+      [ScaleSelectAnswerFormName.MAX_VALUE]: this.formBuilder.control<number>(scaleQuestion.max),
+      [ScaleSelectAnswerFormName.MIN_VALUE]: this.formBuilder.control<number>({ value: scaleQuestion.min, disabled: true }),
+      [ScaleSelectAnswerFormName.STEP_SIZE]: this.formBuilder.control<number>(scaleQuestion.stepSize)
     });
   }
 
-  private validatorSelectForm(): ValidatorFn {
+  private ValidateMultiControls(): ValidatorFn {
     return (control: AbstractControl) => {
       const answerFromArray: FormArray = control as FormArray;
-      if (answerFromArray.controls.length < 2) {
+      const answers = [];
+      for (let i = 0; i < answerFromArray.controls.length; i++) {
+        if(answerFromArray.get(i.toString())?.get('isSelected')?.value === true){
+          answers.push('answer')
+        }
+      }
+      if(answers.length < 1) {
+        return { error: 'Error values' };
+      }
+      return null;
+    };
+  }
+
+  private ValidateScaleControls(): ValidatorFn {
+    return (control: AbstractControl) => {
+      console.log(control);
+      
+      
+      if(!control.value) {
         return { error: 'Error values' };
       }
       return null;
