@@ -41,6 +41,10 @@
   }
 }
 
+.steper_span {
+  padding: 10px;
+}
+
 .steper_answer {
   font-size: 16px;
   font-weight: 500;
