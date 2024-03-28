@@ -47,13 +47,11 @@ import { ToastrServiceMesseges } from '../../../../@enums/toastr-messeges';
   styleUrl: './inquiry-form-to-fill.component.css',
   animations: [
     trigger('fadeIn', [
-      state('in', style({ 'opacity': '1' })),
-      state('out', style({ 'opacity': '0' })),
-      state('buttonState', style({ 'opacity': '0.1' })),
-      state('stateSaveButton', style({ 'opacity': '1' })),
-      transition('* => *', [
-        animate(1000),
-      ])
+      state('in', style({ opacity: '1' })),
+      state('out', style({ opacity: '0' })),
+      state('buttonState', style({ opacity: '0.1' })),
+      state('stateSaveButton', style({ opacity: '1' })),
+      transition('* => *', [animate(1000)])
     ])
   ]
 })
@@ -64,7 +62,8 @@ export class InquiryFormToFillComponent implements OnInit, AfterViewInit {
   protected tabIndex: number = 0;
   protected state = 'in';
   protected isNoButtonNext = true;
-  
+  protected numberOfQuestions :number  = 0;
+
   isNoButtonSave = false;
 
   private readonly inquiryID: string = inject(MAT_DIALOG_DATA);
@@ -81,14 +80,16 @@ export class InquiryFormToFillComponent implements OnInit, AfterViewInit {
       .subscribe((inquiry: Inquiry) => {
         (this.inquiry = inquiry), (this.formGroup = new FormGroup({ answers: this.inquiryFormService.createFormToFill(inquiry) }));
       });
-      this.handleViewingButton();
+    const answersFormArray: FormArray = this.formGroup.get('answers') as FormArray;
+    this.numberOfQuestions = answersFormArray.length;
+    this.handleViewingButton();
   }
 
-  private handleViewingButton(){
+  private handleViewingButton() {
     const form = this.formGroup.controls['answers'] as FormArray;
-    if(form.length === 1){
+    if (form.length === 1) {
       this.isNoButtonNext = false;
-    this.isNoButtonSave = true;
+      this.isNoButtonSave = true;
     }
   }
 
@@ -97,41 +98,46 @@ export class InquiryFormToFillComponent implements OnInit, AfterViewInit {
   }
 
   protected saveAnswerForm() {
-    if(this.formGroup.valid) {
-      console.log('saved', this.formGroup);
+    if (this.formGroup.valid) {
       this.dialogRef.close();
-      this.toastService.success(ToastrServiceMesseges.SAVED_INQUIRY_ANSWER,'',{
+      this.toastService.success(ToastrServiceMesseges.SAVED_INQUIRY_ANSWER, '', {
         positionClass: 'toast-top-right',
         tapToDismiss: true,
         closeButton: true,
-        timeOut:4000
+        timeOut: 4000
+      });
+    } else {
+      this.toastService.error(ToastrServiceMesseges.NOT_CHOICED_ANSWER, '', {
+        positionClass: 'toast-top-right',
+        tapToDismiss: true,
+        closeButton: true,
+        timeOut: 2000
       });
     }
   }
 
-  protected changeTabIndex(){
-    if(this.formGroup.get('answers')?.get(this.tabIndex.toString())?.status == 'INVALID'){
-      this.toastService.error(ToastrServiceMesseges.NOT_CHOICED_ANSWER,'',{
+  protected changeTabIndex() {
+    if (this.formGroup.get('answers')?.get(this.tabIndex.toString())?.status == 'INVALID') {
+      this.toastService.error(ToastrServiceMesseges.NOT_CHOICED_ANSWER, '', {
         positionClass: 'toast-top-right',
         tapToDismiss: true,
         closeButton: true,
-        timeOut:2000
+        timeOut: 2000
       });
     } else {
-      this.state =  'out';
+      this.state = 'out';
       const form = this.formGroup.controls['answers'] as FormArray;
-      if(form.length == this.tabIndex + 2 ){
+      if (form.length == this.tabIndex + 2) {
         this.isNoButtonNext = false;
         this.isNoButtonSave = true;
       }
-      setTimeout(() =>{this.state = 'in',this.tabIndex++;
-      },(800));
+      setTimeout(() => {
+        (this.state = 'in'), this.tabIndex++;
+      }, 800);
     }
-    
   }
 
   protected get formArrayControls(): FormArray {
     return this.formGroup.controls['answers'] as FormArray;
   }
-
 }

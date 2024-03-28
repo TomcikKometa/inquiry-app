@@ -4,7 +4,7 @@
     <div formArrayName="answers">
       <inq-tab-group [selectedIndex]="tabIndex" [@fadeIn]="state">
         @for (answer of formArrayControls.controls; track answer; let index = $index) {
-          <inq-tab [title]="index">
+          <inq-tab [title]="index" [numberOfQuestions]="numberOfQuestions">
             <inq-multiselect-answer [item]="answer" [itemIndex]="index"></inq-multiselect-answer>
             <inq-scale-answer [item]="answer" [itemIndex]="index"></inq-scale-answer>
             <inq-shortquestion-answer [item]="answer" [itemIndex]="index"></inq-shortquestion-answer>
