@@ -9,7 +9,6 @@ import { InquiryFormToFillComponent } from '../../components/inquiry-form-to-fil
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { DatePipe } from '@angular/common';
-import { InquiryFormComponent } from '../../../pollster-panel/components/inquiry-form/inquiry-form/inquiry-form.component';
 
 export interface TimeClock {
   hours: string;
