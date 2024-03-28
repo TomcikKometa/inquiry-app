@@ -10,4 +10,5 @@ import { Component, HostBinding, Input } from '@angular/core';
 export class TabComponent {
   @Input() public isActive: boolean = false;
   @Input({ required: true }) public title!: number;
+  @Input() public numberOfQuestions!: number;
 }

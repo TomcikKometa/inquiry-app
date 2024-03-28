@@ -1,7 +1,7 @@
 
 
     <div class="container" [class.hide-display]="!isActive">
-        <span class="question_number">Question no.{{title + 1}}</span>
+        <span class="question_number">Question no.{{title + 1}}  / {{ numberOfQuestions }} </span>
         <ng-content class="content"></ng-content>
     </div>
 
