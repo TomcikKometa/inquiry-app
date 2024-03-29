@@ -9,19 +9,19 @@
   box-shadow: 5px 5px 5px 0px #a6b9d8;
   padding: 8px;
   width: 35%;
-  
+
   .grid-container {
     display: grid;
-    grid-template-areas: 'main right';
+    grid-template-areas: "main right";
     width: 20%;
     justify-content: start;
     justify-items: start;
     gap: 20px;
-    
+
     .item1 {
       width: 300px;
       justify-content: start;
-      grid-area: 'main right';
+      grid-area: "main right";
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
     }
@@ -29,12 +29,12 @@
     .item2 {
       width: 300px;
       justify-content: start;
-      grid-area: 'main';
+      grid-area: "main";
     }
     .item3 {
       width: 300px;
       justify-content: start;
-      grid-area: 'main';
+      grid-area: "main";
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
     }
@@ -42,7 +42,7 @@
 }
 
 .steper_span {
-  padding: 10px;
+  margin-top: 15px;
 }
 
 .steper_answer {
@@ -50,4 +50,20 @@
   font-weight: 500;
 }
 
+@keyframes mymove {
+  0% {
+    opacity: 0;
+  }
+}
+.is_answer {
+  animation: mymove 2s normal;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 15px;
+}
 
+.no_answer {
+  display: none;
+}
