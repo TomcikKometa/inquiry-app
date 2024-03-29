@@ -136,9 +136,6 @@ export class InquiryFormToFillServiceService {
 
   private ValidateScaleControls(): ValidatorFn {
     return (control: AbstractControl) => {
-      console.log(control);
-      
-      
       if(!control.value) {
         return { error: 'Error values' };
       }

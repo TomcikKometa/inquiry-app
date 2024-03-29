@@ -6,8 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { CommonModule } from '@angular/common';
-import { Subject, pipe, takeUntil } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Subject, takeUntil } from 'rxjs';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -17,20 +16,24 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   templateUrl: './scale-answer.component.html',
   styleUrl: './scale-answer.component.css',
   animations: [
-    trigger('fadeIn', [state('in', style({ opacity: '1' })), state('out', style({ opacity: '0' })), transition('* => *', [animate(1000)])])
+    trigger('fadeIn', [
+      state('in', style({ opacity: '1' })),
+      state('out', style({ opacity: '0' })),
+      transition('* => *', [animate(1000)])
+    ])
   ]
 })
 export class ScaleAnswerComponent {
   protected form!: FormGroup;
   protected isViewed: boolean = false;
-  minSteperValue: number = 0;
-  maxSteperValue: number = 0;
-  stepSizeValue: number = 0;
+  protected minSteperValue: number = 0;
+  protected maxSteperValue: number = 0;
+  protected stepSizeValue: number = 0;
   protected isChosenMaxValue: boolean = false;
-  isDisbaled = true;
-  stateSteper = 'in';
-  stateAnswer = 'out'
-  sliderValue = 0;
+  protected isDisbaled = true;
+  protected stateSteper = '';
+  protected sliderValue = 0;
+  protected  isAnswer: boolean = false;
 
   @Input({ required: true }) public itemIndex!: number;
   @Input({ required: true }) public item!: AbstractControl;
@@ -60,10 +63,10 @@ export class ScaleAnswerComponent {
     this.stepSizeValue = this.item.get('stepSize')?.value;
   }
 
-  protected isDisabledM() {
-    this.isDisbaled = false;
-    this.stateSteper = 'out';
-    this.stateAnswer = 'in';
+  protected invisibleSpan() {
+      this.isDisbaled = false;
+      this.stateSteper = 'out';
+      this.isAnswer = true;
   }
 
   protected get scaleSelectAnswerFormName(): typeof ScaleSelectAnswerFormName {
