@@ -34,14 +34,13 @@
       <div class="steper_span"><span class="row" [@fadeIn]="stateSteper">Please touch steper to appoint yor answer</span></div>
       <span>{{ minSteperValue }}</span>
       <mat-slider [min]="minSteperValue" [max]="maxSteperValue" [step]="stepSizeValue" [disabled]="isDisbaled">
-        <input formControlName="{{ scaleSelectAnswerFormName.ANSWER }}" matSliderThumb #slider (mouseover)="invisibleSpan()" />
+        <input formControlName="{{ scaleSelectAnswerFormName.ANSWER }}" matSliderThumb #slider (mouseover)="invisibleSpan()"/>
       </mat-slider>
       <span>{{ maxSteperValue }}</span>
       <div [ngClass]="{'is_answer': isAnswer === true, 'no_answer' : isAnswer === false }">
         <span>Your answer:</span>
         <span>&nbsp;{{ sliderValue }}</span>
       </div>
-      
     </div>
   </form>
 }
