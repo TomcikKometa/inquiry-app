@@ -30,9 +30,9 @@ export class ScaleAnswerComponent {
   protected maxSteperValue: number = 0;
   protected stepSizeValue: number = 0;
   protected isChosenMaxValue: boolean = false;
-  protected isDisbaled = true;
-  protected stateSteper = '';
-  protected sliderValue = 0;
+  protected isDisbaled: boolean= true;
+  protected stateSteper: string = '';
+  protected sliderValue: number = 0;
   protected  isAnswer: boolean = false;
 
   @Input({ required: true }) public itemIndex!: number;
