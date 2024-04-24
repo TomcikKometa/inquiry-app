@@ -54,7 +54,7 @@ export class InquiryFormComponent {
   private readonly formBuilder: NonNullableFormBuilder = inject(NonNullableFormBuilder);
   private readonly inquiryService: InquiryService = inject(InquiryService);
   private readonly dialogRef: MatDialogRef<InquiryFormComponent> = inject(MatDialogRef);
-  protected readonly editInquiryID: string | undefined = inject(MAT_DIALOG_DATA);
+  protected readonly editInquiryID: number | undefined = inject(MAT_DIALOG_DATA);
   private readonly toastService: ToastrService = inject(ToastrService);
   public readonly inquiryFormServiceService: InquiryFormServiceService = inject(InquiryFormServiceService);
 
@@ -65,7 +65,7 @@ export class InquiryFormComponent {
     } else {
       this.isEditForm = true;
       this.inquiryService
-        .getInqiryById(this.editInquiryID)
+        .getInquiryById(this.editInquiryID)
         .pipe(first())
         .subscribe((inquiry: Inquiry) => {
           this.inquiryFormServiceService.fillEditForm(inquiry);

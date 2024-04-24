@@ -15,7 +15,6 @@ export interface TimeClock {
   muntes: string;
   seconds: string;
 }
-
 @Component({
   selector: 'inq-admin-panel-container',
   standalone: true,
