@@ -53,7 +53,7 @@ export class InquiryTableListPollsterComponent implements OnInit {
       });
   }
 
-  protected deleteInquiry(id: string, name: string ) {
+  protected deleteInquiry(id: number, name: string ) {
     this.inquiryService.deleteInquiry(id);
     this.deleteInquiryEvent.emit(name)
   }

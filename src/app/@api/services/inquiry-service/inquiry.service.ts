@@ -4,12 +4,10 @@ import { Inquiry } from '../../../@models/inquiry';
 import { v4 as uuidv4 } from 'uuid';
 import { MultiSingleInquiryAnswer, MultiselectQuestion, Question, SingleSelectQuestion } from '../../../@models/question';
 import { QuestionType } from '../../../@enums/question-type';
-import { ScaleAnswerComponent } from '../../../features/user-panel/components/scale-answer/scale-answer.component';
+import { InquiryApiInterface } from './inquiry-api-interface';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class InquiryService {
+@Injectable()
+export class InquiryService implements InquiryApiInterface{
   private inquiries: BehaviorSubject<Inquiry[]> = new BehaviorSubject<Inquiry[]>([]);
   public get inquiries$(): Observable<Inquiry[]> {
     return this.inquiries.asObservable();
@@ -40,13 +38,13 @@ export class InquiryService {
     this.getAllInquiry();
   }
 
-  public deleteInquiry(id: string): void {
-    localStorage.removeItem(id);
+  public deleteInquiry(id: number): void {
+    localStorage.removeItem(id.toString());
     this.getAllInquiry();
   }
 
-  public getInqiryById(id: string): Observable<Inquiry> {
-    const jsonInquiry: string | null = localStorage.getItem(id);
+  public getInquiryById(id: number): Observable<Inquiry> {
+    const jsonInquiry: string | null = localStorage.getItem(id.toString());
     if (!jsonInquiry) {
       return throwError(() => new Error('Inquiry not found'));
     } else {

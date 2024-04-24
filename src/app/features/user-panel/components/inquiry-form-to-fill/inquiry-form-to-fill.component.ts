@@ -66,7 +66,7 @@ export class InquiryFormToFillComponent implements OnInit, AfterViewInit {
 
   isNoButtonSave = false;
 
-  private readonly inquiryID: string = inject(MAT_DIALOG_DATA);
+  private readonly inquiryID: number = inject(MAT_DIALOG_DATA);
   private readonly inquiryService: InquiryService = inject(InquiryService);
   private readonly inquiryFormService: InquiryFormToFillServiceService = inject(InquiryFormToFillServiceService);
   private readonly ref: ChangeDetectorRef = inject(ChangeDetectorRef);
@@ -75,7 +75,7 @@ export class InquiryFormToFillComponent implements OnInit, AfterViewInit {
 
   public ngOnInit(): void {
     this.inquiryService
-      .getInqiryById(this.inquiryID)
+      .getInquiryById(this.inquiryID)
       .pipe(first())
       .subscribe((inquiry: Inquiry) => {
         (this.inquiry = inquiry), (this.formGroup = new FormGroup({ answers: this.inquiryFormService.createFormToFill(inquiry) }));
