@@ -9,8 +9,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## Backend server
 
-Backend server is based currently on local and session storage data.Which is sufficient to this project at this moment.
-Get forked to this project to be upgraded to server based on MySQL and NX platform.
+Backend server is availabale under public repository https://github.com/TomcikKometa/inquiry-app-backend
+Is based on NX platform and technology used to create it is Nest JS.
+In InquiryApp is also the old service based on local storage which will bee subsequently replacing by that based in Nest JS.
 
 ## Build
 
