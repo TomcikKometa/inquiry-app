@@ -21,7 +21,8 @@ export class InquiryApiService implements InquiryApiInterface {
 
   public createInquiry(inquiry: Inquiry): void {
     const createInquiryRequest: CreateInquiryRequest = {
-      name: inquiry.name
+      name: inquiry.name,
+      questions:inquiry.questions
     };
     this.httpClient.post(ApiUrls.prepareCreateInquiryUrl(), createInquiryRequest).pipe(first(),tap(() => this.getAllInquiry())).subscribe();
   }
