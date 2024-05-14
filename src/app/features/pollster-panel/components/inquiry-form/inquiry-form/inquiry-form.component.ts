@@ -19,7 +19,7 @@ import { first } from 'rxjs';
 import { MultiSelectComponent } from '../../multi-select/multi-select.component';
 import { ToastrServiceMesseges } from '../../../../../@enums/toastr-messeges';
 import { ButtonAddAnswerComponent } from '../../../../shared-components/button-add-answer/button-add-answer.component';
-import { InquiryFormServiceService } from '../inquiry-form-service/inquiry-form-service.service';
+import { InquiryFormService } from '../inquiry-form-service/inquiry-form-service.service';
 import { InquirySavedInfo } from '../../../containers/@models/pollster-containers-models';
 
 @Component({
@@ -39,7 +39,7 @@ import { InquirySavedInfo } from '../../../containers/@models/pollster-container
     ButtonAddAnswerComponent,
     MultiSelectComponent
   ],
-  providers: [ToastrService, InquiryFormServiceService],
+  providers: [ToastrService, InquiryFormService],
   templateUrl: './inquiry-form.component.html',
   styleUrl: './inquiry-form.component.css'
 })
@@ -56,7 +56,7 @@ export class InquiryFormComponent {
   private readonly dialogRef: MatDialogRef<InquiryFormComponent> = inject(MatDialogRef);
   protected readonly editInquiryID: number | undefined = inject(MAT_DIALOG_DATA);
   private readonly toastService: ToastrService = inject(ToastrService);
-  public readonly inquiryFormServiceService: InquiryFormServiceService = inject(InquiryFormServiceService);
+  public readonly inquiryFormServiceService: InquiryFormService = inject(InquiryFormService);
 
   public ngOnInit(): void {
     this._inquiryForm = this.inquiryFormServiceService._inquiryForm;

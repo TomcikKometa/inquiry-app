@@ -20,7 +20,7 @@ import {
 import { Inquiry } from '../../../../../@models/inquiry';
 
 @Injectable()
-export class InquiryFormServiceService {
+export class InquiryFormService {
   public _inquiryForm: FormGroup;
 
   constructor(private readonly formBuilder: NonNullableFormBuilder) {

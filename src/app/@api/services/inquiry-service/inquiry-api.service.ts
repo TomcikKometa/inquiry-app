@@ -22,12 +22,24 @@ export class InquiryApiService implements InquiryApiInterface {
   public createInquiry(inquiry: Inquiry): void {
     const createInquiryRequest: CreateInquiryRequest = {
       name: inquiry.name,
-      questions:inquiry.questions
+      questions: inquiry.questions
     };
-    this.httpClient.post(ApiUrls.prepareCreateInquiryUrl(), createInquiryRequest).pipe(first(),tap(() => this.getAllInquiry())).subscribe();
+    this.httpClient
+      .post(ApiUrls.prepareCreateInquiryUrl(), createInquiryRequest)
+      .pipe(
+        first(),
+        tap(() => this.getAllInquiry())
+      )
+      .subscribe();
   }
   public deleteInquiry(id: number): void {
-    this.httpClient.delete(ApiUrls.prepareDeleteInquiryUrl(id)).pipe(first(),tap(() => this.getAllInquiry())).subscribe();
+    this.httpClient
+      .delete(ApiUrls.prepareDeleteInquiryUrl(id))
+      .pipe(
+        first(),
+        tap(() => this.getAllInquiry())
+      )
+      .subscribe();
   }
   public getInquiryById(id: number): Observable<Inquiry> {
     return this.httpClient
