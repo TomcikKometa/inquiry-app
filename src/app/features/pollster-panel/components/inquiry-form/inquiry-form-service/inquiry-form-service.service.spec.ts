@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { InquiryFormServiceService } from './inquiry-form-service.service';
+import { InquiryFormService } from './inquiry-form-service.service';
 
 describe('InquiryFormServiceService', () => {
-  let service: InquiryFormServiceService;
+  let service: InquiryFormService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(InquiryFormServiceService);
+    service = TestBed.inject(InquiryFormService);
   });
 
   it('should be created', () => {

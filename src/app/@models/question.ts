@@ -4,11 +4,6 @@ export interface Question {
   label: string;
   type: QuestionType;
 }
-
-export interface MultiselectQuestion extends Question {
-  answers: MultiSingleInquiryAnswer[];
-}
-
 export interface ScaleQuestion extends Question {
   stepSize: number;
   max: number;
@@ -20,6 +15,9 @@ export interface ShortTextQuestion extends Question {
 }
 
 export interface SingleSelectQuestion extends Question {
+  answers: MultiSingleInquiryAnswer[];
+}
+export interface MultiselectQuestion extends Question {
   answers: MultiSingleInquiryAnswer[];
 }
 
