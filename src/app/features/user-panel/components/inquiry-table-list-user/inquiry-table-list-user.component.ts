@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 interface InquiryDataSource {
   name: string;
-  id: string;
+  id: number;
 }
 
 @Component({

@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 interface InquiryDataSource {
   name: string;
-  id: string;
+  id: number;
 }
 
 @Component({
@@ -43,7 +43,7 @@ export class InquiryTableListPollsterComponent implements OnInit {
           return inquiries.map((inquiry: Inquiry) => {
             return {
               name: inquiry.name,
-              id: inquiry.id
+              id: inquiry.id!
             } as InquiryDataSource;
           });
         })
