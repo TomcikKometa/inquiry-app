@@ -33,7 +33,6 @@ export class InquiryService implements InquiryApiInterface{
     });
 
     const id: string = uuidv4();
-    inquiry.id = id;
     localStorage.setItem(id, JSON.stringify(inquiry));
     this.getAllInquiry();
   }
