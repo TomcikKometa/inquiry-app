@@ -13,4 +13,8 @@ export class ApiUrls {
   public static prepareGetAllInquiryUrl(): string {
     return `${this.INQUIRY_PREFIX}/all`;
   }
+
+  public static prepareEditInquiryUrl(id:number): string {
+    return `${this.INQUIRY_PREFIX}/edit/${id}`;
+  }
 }
