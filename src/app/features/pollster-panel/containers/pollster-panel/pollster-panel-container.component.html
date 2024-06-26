@@ -1,7 +1,7 @@
 @if (sessionStorageUser === accountsToken.POLLSTER_TOKEN) {
   <div class="container">
     <div class="setButtons">
-      <button class="button-63" (click)="openInquiryForm()"><mat-icon fontIcon="add"></mat-icon>&nbsp;Add inquiry</button>
+      <button class="button-63" (click)="openSaveInquiryForm()"><mat-icon fontIcon="add"></mat-icon>&nbsp;Add inquiry</button>
       <mat-card class="setMatCartContent">
         <div class="setMat">
           <div class="setUserInfo">
@@ -29,8 +29,8 @@
 
     <div>
       <inq-inquiry-table-list-pollster
-        (editInquiryEvent)="openInquiryForm($event)"
-        (fillInquiryEvent)="openInquiryForm($event)"
+        (editInquiryEvent)="openEditInquiryForm($event)"
+        (fillInquiryEvent)="openSaveInquiryForm()"
         (deleteInquiryEvent)="showDeleteToastr($event)"
       ></inq-inquiry-table-list-pollster>
     </div>

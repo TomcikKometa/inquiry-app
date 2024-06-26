@@ -13,12 +13,15 @@ import localePl from '@angular/common/locales/pl';
 import { MatCardModule } from '@angular/material/card';
 import { InquirySavedInfo } from '../@models/pollster-containers-models';
 import { DIALOG_OPTIONS_FORM } from '../../../../@config/form-config';
+import { Inquiry } from '../../../../@models/inquiry';
+import { first } from 'rxjs';
+import { InquiryApiService } from '../../../../@api/services/inquiry-service/inquiry-api.service';
 registerLocaleData(localePl);
 
 @Component({
   selector: 'inq-admin-panel-container',
   standalone: true,
-  providers: [DatePipe],
+  providers: [DatePipe,InquiryApiService],
   imports: [InquiryTableListPollsterComponent, MatButtonModule, MatIconModule, MatCardModule],
   templateUrl: './pollster-panel-container.component.html',
   styleUrl: './pollster-panel-container.component.css'
@@ -33,6 +36,7 @@ export class PollsterPanelContainerComponent {
   private readonly toastService: ToastrService = inject(ToastrService);
   private readonly navigationService: NavigationService = inject(NavigationService);
   private readonly datePipe: DatePipe = inject(DatePipe);
+  private readonly inquiryApiService: InquiryApiService = inject(InquiryApiService);
 
   public ngOnInit(): void {
     this.clock();
@@ -46,20 +50,30 @@ export class PollsterPanelContainerComponent {
     this.timeActual = this.datePipe.transform(this.currentDate, 'HH:mm:ss') as string;
   }
 
-  protected openInquiryForm(id?: string) {
-    const dialogRef = this.dialog.open(InquiryFormComponent, { data: id, ...DIALOG_OPTIONS_FORM });
+  protected openSaveInquiryForm(): void{
+    const dialogRef = this.dialog.open(InquiryFormComponent, { ...DIALOG_OPTIONS_FORM });
 
-    dialogRef.afterClosed().subscribe((inquirySavedInfo: InquirySavedInfo) => {
-      const isSaved = inquirySavedInfo.isSaved;
-      const inquiryName = inquirySavedInfo.inquiryName;
-      if (isSaved) {
-        this.toastService.success(ToastrServiceMesseges.VALID_FORM, `Inquiry: ${inquiryName}`, {
-          positionClass: 'toast-top-right',
-          tapToDismiss: true,
-          closeButton: true
-        });
-      }
-    });
+    dialogRef
+      .afterClosed()
+      .pipe(first())
+      .subscribe((inquiry: Inquiry) => {
+        if (inquiry) {
+          this.inquiryApiService.createInquiry(inquiry);
+        }
+      });
+  }
+
+  protected openEditInquiryForm(id:string):void{
+    const dialogRef = this.dialog.open(InquiryFormComponent, { data:id, ...DIALOG_OPTIONS_FORM });
+
+    dialogRef
+      .afterClosed()
+      .pipe(first())
+      .subscribe((inquiry: Inquiry) => {
+        if (inquiry) {
+          this.inquiryApiService.createInquiry(inquiry);
+        }
+      });
   }
 
   protected logOut(): void {
