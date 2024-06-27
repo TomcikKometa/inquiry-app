@@ -112,7 +112,7 @@ export class InquiryFormComponent {
   protected saveInquary(): void {
     const inquiryFormQuestionsForm = this._inquiryForm.get('questions') as FormArray;
     if (this._inquiryForm.valid && inquiryFormQuestionsForm.length > 0) {
-      this.dialogRef.close(InquiryMapper.map(this._inquiryForm));
+      this.dialogRef.close(InquiryMapper.map(this._inquiryForm,this.editInquiryID));
     } else {
       this.toastService.error(ToastrServiceMesseges.INVALID_FORM, '', {
         positionClass: 'toast-top-right',
