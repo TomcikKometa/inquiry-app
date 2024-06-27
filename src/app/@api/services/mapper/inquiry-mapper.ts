@@ -20,10 +20,11 @@ import {
 import { QuestionsForm } from '../../../features/pollster-panel/components/inquiry-form/@models/questions-forms';
 
 export class InquiryMapper {
-  public static map(inquiryForm: FormGroup<QuestionsForm>): Inquiry {
+  public static map(inquiryForm: FormGroup<QuestionsForm>,id?:number): Inquiry {
     return {
       name: inquiryForm.get(InquiryQuestionsFormName.INQUIRY_NAME)!.value,
-      questions: this.mapQuestions(inquiryForm.get(InquiryQuestionsFormName.QUESTIONS) as FormArray)
+      questions: this.mapQuestions(inquiryForm.get(InquiryQuestionsFormName.QUESTIONS) as FormArray),
+      id:id
     };
   }
 
