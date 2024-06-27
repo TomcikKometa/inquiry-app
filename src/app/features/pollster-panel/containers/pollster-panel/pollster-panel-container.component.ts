@@ -71,7 +71,7 @@ export class PollsterPanelContainerComponent {
       .pipe(first())
       .subscribe((inquiry: Inquiry) => {
         if (inquiry) {
-          this.inquiryApiService.createInquiry(inquiry);
+          this.inquiryApiService.editInquiry(inquiry);
         }
       });
   }
