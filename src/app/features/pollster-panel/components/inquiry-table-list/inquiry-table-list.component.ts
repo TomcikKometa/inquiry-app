@@ -8,6 +8,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AccountsKey, AccountsToken } from '../../../../@core/services/token-enums';
 import { MatDialog } from '@angular/material/dialog';
+import { InquiryApiService } from '../../../../@api/services/inquiry-service/inquiry-api.service';
 
 interface InquiryDataSource {
   name: string;
@@ -30,7 +31,7 @@ export class InquiryTableListPollsterComponent implements OnInit {
   protected dataSource!: MatTableDataSource<InquiryDataSource, MatPaginator>;
   protected sessionStorageUser: string = '';
 
-  private readonly inquiryService: InquiryService = inject(InquiryService);
+  private readonly inquiryService: InquiryApiService = inject(InquiryApiService);
   private readonly destroyReference: DestroyRef = inject(DestroyRef);
 
   public ngOnInit(): void {
@@ -49,6 +50,8 @@ export class InquiryTableListPollsterComponent implements OnInit {
         })
       )
       .subscribe((dataSource: InquiryDataSource[]) => {
+        console.log(dataSource);
+        
         this.dataSource = new MatTableDataSource(dataSource);
       });
   }

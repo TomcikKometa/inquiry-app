@@ -20,7 +20,6 @@ import { MultiSelectComponent } from '../../multi-select/multi-select.component'
 import { ToastrServiceMesseges } from '../../../../../@enums/toastr-messeges';
 import { ButtonAddAnswerComponent } from '../../../../shared-components/button-add-answer/button-add-answer.component';
 import { InquiryFormService } from '../inquiry-form-service/inquiry-form-service.service';
-import { InquirySavedInfo } from '../../../containers/@models/pollster-containers-models';
 
 @Component({
   selector: 'inq-inquiry-form',
