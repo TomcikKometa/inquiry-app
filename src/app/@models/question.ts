@@ -15,14 +15,22 @@ export interface ShortTextQuestion extends Question {
 }
 
 export interface SingleSelectQuestion extends Question {
-  answers: MultiSingleInquiryAnswer[];
+  answers: SingleSelectAnswer[];
 }
-export interface MultiselectQuestion extends Question {
-  answers: MultiSingleInquiryAnswer[];
+export interface MultiSelectQuestion extends Question {
+  answers: MultiSelectAnswer[];
 }
-
-export interface MultiSingleInquiryAnswer {
+export interface SingleSelectAnswer {
   answer: string;
   id?:string;
-  isSelected?:boolean;
+}
+
+export interface MultiSelectAnswer {
+  answer: string;
+  id?:string;
+}
+
+export interface SingleSelectAnswerForm {
+  label: string;
+  id?:string;
 }
