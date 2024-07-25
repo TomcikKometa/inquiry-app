@@ -3,11 +3,12 @@ import { QuestionType } from '../../../@enums/question-type';
 import { Inquiry } from '../../../@models/inquiry';
 import {
   Question,
-  MultiselectQuestion,
+  MultiSelectQuestion,
   SingleSelectQuestion,
   ShortTextQuestion,
   ScaleQuestion,
-  MultiSingleInquiryAnswer
+  SingleSelectAnswer,
+  SingleSelectAnswerForm
 } from '../../../@models/question';
 import {
   InquiryQuestionsFormName,
@@ -20,11 +21,11 @@ import {
 import { QuestionsForm } from '../../../features/pollster-panel/components/inquiry-form/@models/questions-forms';
 
 export class InquiryMapper {
-  public static map(inquiryForm: FormGroup<QuestionsForm>,id?:number): Inquiry {
+  public static map(inquiryForm: FormGroup<QuestionsForm>, id?: number): Inquiry {
     return {
       name: inquiryForm.get(InquiryQuestionsFormName.INQUIRY_NAME)!.value,
       questions: this.mapQuestions(inquiryForm.get(InquiryQuestionsFormName.QUESTIONS) as FormArray),
-      id:id
+      id: id
     };
   }
 
@@ -35,18 +36,19 @@ export class InquiryMapper {
 
       switch (questionType) {
         case QuestionType.MULTISELECT:
-          const multiSelectQuestion: MultiselectQuestion = {
+          const multiSelectQuestion: MultiSelectQuestion = {
             label: question.get(MultiSelectQuestionFormName.QUESTION)?.value,
             type: QuestionType.MULTISELECT,
-            answers: this.mapAnswers(question.get(MultiSelectQuestionFormName.ANSWERS)?.value)
+            answers: this.mapAnswersMulti(question.get(MultiSelectQuestionFormName.ANSWERS)?.value)
           };
           questions.push(multiSelectQuestion);
+          console.log(questions);
           break;
         case QuestionType.SINGLE_SELECT:
           const singleSelectQuestion: SingleSelectQuestion = {
             label: question.get(SingleSelectQuestionFormName.QUESTION)?.value,
             type: QuestionType.SINGLE_SELECT,
-            answers: this.mapAnswers(question.get(SingleSelectQuestionFormName.ANSWERS)?.value)
+            answers: this.mapAnswersSingle(question.get(SingleSelectQuestionFormName.ANSWERS)?.value)
           };
           questions.push(singleSelectQuestion);
           break;
@@ -75,11 +77,15 @@ export class InquiryMapper {
     return questions;
   }
 
-  private static mapAnswers(answers: string[]): MultiSingleInquiryAnswer[] {
+  private static mapAnswersSingle(answers: string[]): SingleSelectAnswer[] {
+    console.log(answers);
     return answers.map((answer: string) => {
       return {
         answer: answer
       };
     });
+  }
+  private static mapAnswersMulti(answers: SingleSelectAnswerForm[]): SingleSelectAnswer[] {
+    return answers.map((answer: SingleSelectAnswerForm) => {return {answer: answer.label}});
   }
 }
