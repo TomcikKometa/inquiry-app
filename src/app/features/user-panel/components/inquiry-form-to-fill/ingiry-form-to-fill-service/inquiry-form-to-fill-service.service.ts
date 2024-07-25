@@ -2,8 +2,8 @@ import { Injectable, inject } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { Inquiry } from '../../../../../@models/inquiry';
 import {
-  MultiSingleInquiryAnswer,
-  MultiselectQuestion,
+  SingleSelectAnswer,
+  MultiSelectQuestion,
   Question,
   ScaleQuestion,
   ShortTextQuestion,
@@ -34,7 +34,7 @@ export class InquiryFormToFillServiceService {
     inquiry.questions.forEach((question: Question) => {
       switch (question.type) {
         case QuestionType.MULTISELECT:
-          formArray.push(this.createMultiSelectForm(question as MultiselectQuestion));
+          formArray.push(this.createMultiSelectForm(question as MultiSelectQuestion));
           break;
         case QuestionType.SHORT_TEXT:
           formArray.push(this.createShortTextQuestionForm(question as ShortTextQuestion));
@@ -52,7 +52,7 @@ export class InquiryFormToFillServiceService {
     return formArray;
   }
 
-  private createMultiSelectForm(multiselectQuestion: MultiselectQuestion): FormGroup {
+  private createMultiSelectForm(multiselectQuestion: MultiSelectQuestion): FormGroup {
     return this.formBuilder.group<MultiSelectAnswerForm>({
       [MultiSelectAnswerFormName.QUESTION]: this.formBuilder.control<string>(multiselectQuestion.label),
       [MultiSelectAnswerFormName.TYPE]: this.formBuilder.control<QuestionType.MULTISELECT>(QuestionType.MULTISELECT),
@@ -60,9 +60,9 @@ export class InquiryFormToFillServiceService {
     });
   }
 
-  private handleAddMultiSelectForm(multiselectQuestion: MultiselectQuestion) {
+  private handleAddMultiSelectForm(multiselectQuestion: MultiSelectQuestion) {
     const answerFormArray: FormArray = this.formBuilder.array([],this.ValidateMultiControls());
-    multiselectQuestion.answers.forEach((answer: MultiSingleInquiryAnswer) => {
+    multiselectQuestion.answers.forEach((answer: SingleSelectAnswer) => {
       answerFormArray.push(
         this.formBuilder.group<MultiSelectFormCheckbox>({
           [MultiSelectAnswerFormName.LABEL]: this.formBuilder.control<string>({ value: answer.answer, disabled: true }),
@@ -85,7 +85,7 @@ export class InquiryFormToFillServiceService {
 
   private handleAddSingleSelectForm(singleSelectQuestion: SingleSelectQuestion) {
     const answerFormArray: FormArray = this.formBuilder.array([]);
-    singleSelectQuestion.answers.forEach((answer: MultiSingleInquiryAnswer) => {
+    singleSelectQuestion.answers.forEach((answer: SingleSelectAnswer) => {
       answerFormArray.push(
         this.formBuilder.group<SingleSelectFormRadioButton>({
           [SingleSelectAnswerFormName.LABEL]: this.formBuilder.control<string>({ value: answer.answer, disabled: true }),

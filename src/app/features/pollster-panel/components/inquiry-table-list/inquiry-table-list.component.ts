@@ -41,6 +41,8 @@ export class InquiryTableListPollsterComponent implements OnInit {
         takeUntilDestroyed(this.destroyReference),
         map((inquiries: Inquiry[]) => {
           return inquiries.map((inquiry: Inquiry) => {
+            console.log(inquiries);
+            
             return {
               name: inquiry.name,
               id: inquiry.id!

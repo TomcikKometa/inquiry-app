@@ -1,5 +1,5 @@
 import { QuestionType } from '../../../../@enums/question-type';
-import { MultiSingleInquiryAnswer } from '../../../../@models/question';
+import { SingleSelectAnswer } from '../../../../@models/question';
 
 export interface Answers {
   [key:string]:Answer
