@@ -42,7 +42,6 @@ export class InquiryMapper {
             answers: this.mapAnswersMulti(question.get(MultiSelectQuestionFormName.ANSWERS)?.value)
           };
           questions.push(multiSelectQuestion);
-          console.log(questions);
           break;
         case QuestionType.SINGLE_SELECT:
           const singleSelectQuestion: SingleSelectQuestion = {
@@ -78,7 +77,6 @@ export class InquiryMapper {
   }
 
   private static mapAnswersSingle(answers: string[]): SingleSelectAnswer[] {
-    console.log(answers);
     return answers.map((answer: string) => {
       return {
         answer: answer
