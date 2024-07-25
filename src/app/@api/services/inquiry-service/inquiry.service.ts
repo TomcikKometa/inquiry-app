@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { Inquiry } from '../../../@models/inquiry';
 import { v4 as uuidv4 } from 'uuid';
-import { MultiSingleInquiryAnswer, MultiselectQuestion, Question, SingleSelectQuestion } from '../../../@models/question';
+import { SingleSelectAnswer, MultiSelectQuestion, Question, SingleSelectQuestion } from '../../../@models/question';
 import { QuestionType } from '../../../@enums/question-type';
 import { InquiryApiInterface } from './inquiry-api-interface';
 
@@ -19,15 +19,13 @@ export class InquiryService implements InquiryApiInterface{
   public createInquiry(inquiry: Inquiry): void {
     inquiry.questions.forEach((question: Question) => {
       if (question.type === QuestionType.MULTISELECT) {
-        (question as MultiselectQuestion).answers.forEach((answer: MultiSingleInquiryAnswer) => {
+        (question as MultiSelectQuestion).answers.forEach((answer: SingleSelectAnswer) => {
           answer.id = uuidv4();
-          answer.isSelected = false;
         });
       }
       if (question.type === QuestionType.SINGLE_SELECT) {
-        (question as SingleSelectQuestion).answers.forEach((answer: MultiSingleInquiryAnswer) => {
+        (question as SingleSelectQuestion).answers.forEach((answer: SingleSelectAnswer) => {
           answer.id = uuidv4();
-          answer.isSelected = false;
         });
       }
     });

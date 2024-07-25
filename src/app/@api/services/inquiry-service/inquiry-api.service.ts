@@ -85,7 +85,7 @@ export class InquiryApiService implements InquiryApiInterface {
   private fetchInquiryList(): Observable<GetAllInquiryResponse> {
     return this.httpClient.get<GetAllInquiryResponse>(ApiUrls.prepareGetAllInquiryUrl()).pipe(
       first(),
-      tap((value: GetAllInquiryResponse) => this.inquiries.next(value.inquiryList))
+      tap((value: GetAllInquiryResponse) => this.inquiries.next([...value.inquiryList]))
     );
   }
 
