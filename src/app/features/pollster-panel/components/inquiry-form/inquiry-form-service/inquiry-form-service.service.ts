@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { QuestionType } from '../../../../../@enums/question-type';
-import { MultiSingleInquiryAnswer, MultiselectQuestion, Question, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../../../@models/question';
+import { SingleSelectAnswer, MultiSelectQuestion, Question, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../../../@models/question';
 import { Validators, FormArray, FormGroup, NonNullableFormBuilder, AbstractControl, ValidatorFn } from '@angular/forms';
 import {
   InquiryQuestionsFormName,
@@ -40,7 +40,7 @@ export class InquiryFormService {
       inquiry.questions.forEach((question: Question) => {
         switch (question.type) {
           case QuestionType.MULTISELECT:
-            this.addMultiSelectForm(question as MultiselectQuestion);
+            this.addMultiSelectForm(question as MultiSelectQuestion);
             break;
           case QuestionType.SCALE:
             this.addScaleSelectForm(question as ScaleQuestion);
@@ -76,7 +76,7 @@ export class InquiryFormService {
     );
   }
 
-  public addMultiSelectForm(multiselectQuestion?: MultiselectQuestion): void {
+  public addMultiSelectForm(multiselectQuestion?: MultiSelectQuestion): void {
     const questions: FormArray = this._inquiryForm?.get(InquiryQuestionsFormName.QUESTIONS) as FormArray;
     
     questions.push(
@@ -98,10 +98,9 @@ export class InquiryFormService {
       answerFormArray.push(this.formBuilder.control('', Validators.required));
       answerFormArray.push(this.formBuilder.control('', Validators.required));
     } else {
-      multiselectQuestion.answers.forEach((answer: MultiSingleInquiryAnswer) => {
+      multiselectQuestion.answers.forEach((answer: SingleSelectAnswer) => {
         answerFormArray.push(this.formBuilder.group<any>({
             'label': this.formBuilder.control<string>(answer.answer),
-            'isSelected': this.formBuilder.control<boolean>(answer.isSelected!),
             'id': this.formBuilder.control<string>(answer.id!),
           }))
       });
@@ -179,7 +178,7 @@ export class InquiryFormService {
       answerFormArray.push(this.formBuilder.control('', Validators.required));
       answerFormArray.push(this.formBuilder.control('', Validators.required));
     } else {
-      singleSelectQuestion.answers.forEach((answer: MultiSingleInquiryAnswer) => {
+      singleSelectQuestion.answers.forEach((answer: SingleSelectAnswer) => {
         answerFormArray.push(this.formBuilder.control(answer.answer, Validators.required));
       });
     }
