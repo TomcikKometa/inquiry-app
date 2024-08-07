@@ -1,5 +1,5 @@
-export class ApiUrls {
-  private static readonly INQUIRY_PREFIX: string = '/inquiry';
+export class PollsterUrls {
+  private static readonly INQUIRY_PREFIX: string = '/pollster/inquiry';
 
   public static prepareCreateInquiryUrl(): string {
     return `${this.INQUIRY_PREFIX}/save`;

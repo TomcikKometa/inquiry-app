@@ -3,7 +3,7 @@ import { InquiryApiInterface } from './inquiry-api-interface';
 import { BehaviorSubject, Observable, first, map, switchMap, tap } from 'rxjs';
 import { Inquiry } from '../../../@models/inquiry';
 import { HttpClient } from '@angular/common/http';
-import { ApiUrls } from './api-urls';
+import { PollsterUrls } from './api-urls';
 import { CreateInquiryRequest } from './models/request/create-inquiry-request';
 import { GetAllInquiryResponse } from './models/response/get-all-inquiry-response';
 import { GetOneInquiryResponse } from './models/response/get-one-inquiry-response';
@@ -31,7 +31,7 @@ export class InquiryApiService implements InquiryApiInterface {
       questions: inquiry.questions
     };
     this.httpClient
-      .post(ApiUrls.prepareCreateInquiryUrl(), createInquiryRequest)
+      .post(PollsterUrls.prepareCreateInquiryUrl(), createInquiryRequest)
       .pipe(
         first(),
         switchMap(() => this.fetchInquiryList()),
@@ -49,7 +49,7 @@ export class InquiryApiService implements InquiryApiInterface {
   }
   public deleteInquiry(id: number): void {
     this.httpClient
-      .delete(ApiUrls.prepareDeleteInquiryUrl(id))
+      .delete(PollsterUrls.prepareDeleteInquiryUrl(id))
       .pipe(
         first(),
         tap({
@@ -74,7 +74,7 @@ export class InquiryApiService implements InquiryApiInterface {
   }
   public getInquiryById(id: number): Observable<Inquiry> {
     return this.httpClient
-      .get<GetOneInquiryResponse>(ApiUrls.prepareGetInquryByIdUrl(id))
+      .get<GetOneInquiryResponse>(PollsterUrls.prepareGetInquryByIdUrl(id))
       .pipe(map((response: GetOneInquiryResponse) => response.inquiry));
   }
 
@@ -83,7 +83,7 @@ export class InquiryApiService implements InquiryApiInterface {
   }
 
   private fetchInquiryList(): Observable<GetAllInquiryResponse> {
-    return this.httpClient.get<GetAllInquiryResponse>(ApiUrls.prepareGetAllInquiryUrl()).pipe(
+    return this.httpClient.get<GetAllInquiryResponse>(PollsterUrls.prepareGetAllInquiryUrl()).pipe(
       first(),
       tap((value: GetAllInquiryResponse) => this.inquiries.next([...value.inquiryList]))
     );
@@ -96,7 +96,7 @@ export class InquiryApiService implements InquiryApiInterface {
       questions: inquiry.questions
     };
     this.httpClient
-      .patch<void>(ApiUrls.prepareEditInquiryUrl(inquiry.id!), editInquiryRequest)
+      .patch<void>(PollsterUrls.prepareEditInquiryUrl(inquiry.id!), editInquiryRequest)
       .pipe(
         first(),
         switchMap(() => this.fetchInquiryList()),
