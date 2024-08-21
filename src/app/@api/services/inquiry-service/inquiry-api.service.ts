@@ -3,14 +3,13 @@ import { InquiryApiInterface } from './inquiry-api-interface';
 import { BehaviorSubject, Observable, first, map, switchMap, tap } from 'rxjs';
 import { Inquiry } from '../../../@models/inquiry';
 import { HttpClient } from '@angular/common/http';
-import { PollsterUrls } from './api-urls';
-import { CreateInquiryRequest } from './models/request/create-inquiry-request';
-import { GetAllInquiryResponse } from './models/response/get-all-inquiry-response';
-import { GetOneInquiryResponse } from './models/response/get-one-inquiry-response';
-import { EditInquiryRequest } from './models/request/edit-inquiry-request';
 import { ToastrService } from 'ngx-toastr';
 import { ToastrServiceMesseges } from '../../../@enums/toastr-messeges';
-
+import { PollsterUrls } from './api-pollster-urls';
+import { CreateInquiryRequest } from './models/pollster-request/create-inquiry-request';
+import { EditInquiryRequest } from './models/pollster-request/edit-inquiry-request';
+import { GetAllInquiryResponse } from './models/pollster-response/get-all-inquiry-response';
+import { GetOneInquiryResponse } from './models/pollster-response/get-one-inquiry-response';
 @Injectable()
 export class InquiryApiService implements InquiryApiInterface {
   private inquiries: BehaviorSubject<Inquiry[]> = new BehaviorSubject<Inquiry[]>([]);

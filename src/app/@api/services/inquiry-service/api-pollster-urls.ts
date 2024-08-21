@@ -10,11 +10,10 @@ export class PollsterUrls {
   public static prepareGetInquryByIdUrl(id: number): string {
     return `${this.INQUIRY_PREFIX}/${id}`;
   }
-  public static prepareGetAllInquiryUrl(): string {
-    return `${this.INQUIRY_PREFIX}/all`;
-  }
-
   public static prepareEditInquiryUrl(id:number): string {
     return `${this.INQUIRY_PREFIX}/edit/${id}`;
+  }
+  public static prepareGetAllInquiryUrl(): string {
+    return `${this.INQUIRY_PREFIX}/all`;
   }
 }
