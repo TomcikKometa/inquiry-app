@@ -3,6 +3,13 @@
 .container{
     height: 100%;
     width: 100%;
-    background-image: url('/assets/images/stacked-peaks-haikei.png');
-    background-size: 100%;
+    background-color: #DEE2E6;
+}
+
+.header{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 5px 5px 0px;
+}
+
+.background{
+    min-height: 100%;
 }
