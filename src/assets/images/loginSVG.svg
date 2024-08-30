@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+
+<svg
+   width="800"
+   height="800"
+   viewBox="-2.4 -2.4 28.8 28.8"
+   fill="none"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="login-svgrepo-com.svg"
+   inkscape:export-filename="..\..\..\zadanieRekrutacyjneAnkieta\inquiryApp\src\assets\images\loginSVG.svg"
+   inkscape:export-xdpi="6.5999999"
+   inkscape:export-ydpi="6.5999999"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <g
+     id="SVGRepo_bgCarrier"
+     stroke-width="0"
+     style="fill:#ececec"
+     inkscape:export-filename="..\..\..\zadanieRekrutacyjneAnkieta\inquiryApp\src\assets\images\loginSVG.svg"
+     inkscape:export-xdpi="7.1999998"
+     inkscape:export-ydpi="7.1999998"
+     transform="matrix(0.7140567,0,0,0.68821845,3.0840536,3.2700889)">
+    <rect
+       x="-2.4000001"
+       y="-2.4000001"
+       width="28.799999"
+       height="28.799999"
+       rx="14.4"
+       fill="#DEE2E6"
+       strokewidth="0"
+       id="rect1"
+       style="fill:#ececec" />
+  </g>
+  <g
+     id="SVGRepo_iconCarrier"
+     transform="matrix(0.71895113,0,0,0.67893117,1.2273678,3.2249264)"
+     inkscape:export-filename="..\..\..\zadanieRekrutacyjneAnkieta\inquiryApp\src\assets\images\loginSVG.svg"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96"
+     style="fill:#666666">
+    <path
+       fill-rule="evenodd"
+       clip-rule="evenodd"
+       d="M 8,6 C 8,3.79086 9.79086,2 12,2 h 5.5 C 19.9853,2 22,4.01472 22,6.5 v 11 C 22,19.9853 19.9853,22 17.5,22 H 12 C 9.79086,22 8,20.2091 8,18 v -1 c 0,-0.5523 0.44772,-1 1,-1 0.55228,0 1,0.4477 1,1 v 1 c 0,1.1046 0.8954,2 2,2 h 5.5 C 18.8807,20 20,18.8807 20,17.5 V 6.5 C 20,5.11929 18.8807,4 17.5,4 H 12 C 10.8954,4 10,4.89543 10,6 V 7 C 10,7.55228 9.55228,8 9,8 8.44772,8 8,7.55228 8,7 Z m 4.2929,2.29289 c 0.3905,-0.39052 1.0237,-0.39052 1.4142,0 l 3,3.00001 c 0.3905,0.3905 0.3905,1.0237 0,1.4142 l -3,3 c -0.3905,0.3905 -1.0237,0.3905 -1.4142,0 -0.3905,-0.3905 -0.3905,-1.0237 0,-1.4142 L 13.5858,13 H 5 C 4.44772,13 4,12.5523 4,12 4,11.4477 4.44772,11 5,11 h 8.5858 L 12.2929,9.70711 c -0.3905,-0.39053 -0.3905,-1.02369 0,-1.41422 z"
+       fill="#0f1729"
+       id="path1"
+       style="fill:#666666" />
+  </g>
+</svg>
