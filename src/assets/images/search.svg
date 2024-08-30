@@ -1,7 +1,63 @@
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-<svg width="800px" height="800px" viewBox="-2.5 -2.5 30.00 30.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#DEE2E6">
-<g id="SVGRepo_bgCarrier" stroke-width="0"/>
-<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-<g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 11.1455C5.49956 8.21437 7.56975 5.69108 10.4445 5.11883C13.3193 4.54659 16.198 6.08477 17.32 8.79267C18.4421 11.5006 17.495 14.624 15.058 16.2528C12.621 17.8815 9.37287 17.562 7.3 15.4895C6.14763 14.3376 5.50014 12.775 5.5 11.1455Z" stroke="#DEE2E6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path d="M15.989 15.4905L19.5 19.0015" stroke="#DEE2E6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
-</svg>
+
+<svg
+   width="800"
+   height="800"
+   viewBox="0 0 32 32"
+   version="1.1"
+   fill="#dee2e6"
+   stroke="#dee2e6"
+   id="svg1"
+   sodipodi:docname="search-svgrepo-com.svg"
+   inkscape:export-filename="search.svg"
+   inkscape:export-xdpi="7.1999998"
+   inkscape:export-ydpi="7.1999998"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <g
+     id="SVGRepo_iconCarrier"
+     style="fill:#ffffff;stroke:#4d4d4d">
+    <title
+       id="title1">search</title>
+    <desc
+       id="desc1">Created with Sketch Beta.</desc>
+    <defs
+       id="defs1" />
+    <g
+       id="Page-1"
+       stroke-width="0.384"
+       fill="none"
+       fill-rule="evenodd"
+       sketch:type="MSPage"
+       style="fill:#cccccc;stroke:#cccccc"
+       transform="matrix(0.54891786,0,0.01321778,0.52562764,5.9000594,7.1586442)">
+      <g
+         id="Icon-Set"
+         sketch:type="MSLayerGroup"
+         transform="translate(-256,-1139)"
+         fill="#dee2e6"
+         style="fill:#cccccc;stroke:#cccccc">
+        <path
+           d="m 269.46,1163.45 c -6.29,0 -11.389,-5.01 -11.389,-11.2 0,-6.19 5.099,-11.21 11.389,-11.21 6.29,0 11.39,5.02 11.39,11.21 0,6.19 -5.1,11.2 -11.39,11.2 z m 18.228,5.8 -8.259,-8.13 c 2.162,-2.35 3.491,-5.45 3.491,-8.87 0,-7.32 -6.026,-13.25 -13.46,-13.25 -7.434,0 -13.46,5.93 -13.46,13.25 0,7.31 6.026,13.24 13.46,13.24 3.212,0 6.158,-1.11 8.472,-2.96 l 8.292,8.16 c 0.405,0.4 1.06,0.4 1.464,0 0.405,-0.39 0.405,-1.04 0,-1.44 z"
+           id="search"
+           sketch:type="MSShapeGroup"
+           style="fill:#cccccc;stroke:#cccccc" />
+      </g>
+    </g>
+  </g>
+</svg>
