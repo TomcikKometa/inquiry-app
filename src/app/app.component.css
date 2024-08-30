@@ -1,11 +1,17 @@
-@import 'ngx-toastr/toastr';
-
-.container{
+.container {
     height: 100%;
     width: 100%;
-    background-color: #DEE2E6;
+    background-color: #dee2e6;
 }
 
-.background{
-    min-height: 100%;
+.bodyRoot {
+    width: 100%;
+}
+
+.sidebar {
+    z-index: -1;
+}
+
+.main-conten {
+    width: 100%;
 }
