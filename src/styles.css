@@ -11,6 +11,11 @@ html {
   font-family: Roboto, sans-serif;
 }
 
+app-root {
+  height: 100%;
+  width: 100%;
+}
+
 :root {
   /* Colors: */
   --mainOne-color-dce2f2: #dce2f2;
