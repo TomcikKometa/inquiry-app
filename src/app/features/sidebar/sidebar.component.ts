@@ -8,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+  protected isUserDetail = false;
 
+  protected showItems(details: string) {
+    console.log(1);
+    if (details) {
+      this.isUserDetail = !this.isUserDetail;
+    }
+  }
 }
