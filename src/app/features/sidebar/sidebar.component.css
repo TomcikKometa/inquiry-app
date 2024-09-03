@@ -2,30 +2,47 @@
     width: 25%;
 } */
 
-.hoover_item:hover {
-    background-color: lightgray;
+/* .user_detail:hover {
     height: 28px;
     cursor: pointer;
+    background-color: lightgray;
+} */
+
+.component_row {
+    height: 28px;
+    cursor: pointer;
+    padding-left: 4px;
+    background-color: lightgray;
+}
+
+.component_row_hover:hover {
+    height: 28px;
+    cursor: pointer;
+    background-color: lightgray;
+    font-weight: 700;
 }
 
 .d {
     overflow: hidden;
     white-space: nowrap;
+    cursor: pointer;
 }
 
-.d li :first-of-type {    
+.d li :first-of-type {
     animation: slidein 700ms normal;
-  }
+}
 
 .d li:last-of-type {
     animation: slidein 1s normal;
-  }
+}
 
 .d li {
-    margin-left: 27px;
+    margin-left: 25px;
+    padding-left: 4px;
     animation: slidein 1s normal;
     display: block;
     list-style: none;
+    width: 195px;
 }
 
 .d li:nth-child(1) {
@@ -48,19 +65,14 @@
     animation-duration: 1s;
 }
 
-@keyframes showup {
-    0% {
-        opacity: 0;
-    }
-    20% {
-        opacity: 0.6;
-    }
-    80% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 1;
-    }
+.li-details:hover {
+    background-color: rgb(218, 217, 217);
+    font-weight: 500;
+    width: fit-content;
+}
+
+.ff {
+    background-color: rgb(218, 217, 217);
 }
 
 @keyframes slidein {
@@ -70,70 +82,8 @@
     20% {
         margin-left: -800px;
     }
-    
+
     100% {
         margin-left: 27px;
     }
-}
-
-@keyframes to {
-    0% {
-        opacity: 0;
-        width: 0px;
-    }
-    20% {
-        opacity: 0.5;
-        width: 20px;
-    }
-    50% {
-        opacity: 1;
-        width: 30px;
-    }
-    100% {
-        opacity: 1;
-        width: 50px;
-    }
-}
-
-.di li {
-    position: absolute;
-    display: block;
-    list-style: none;
-    animation: animate 2s slidein;
-}
-
-.circles li:nth-child(3) {
-    left: 64%;
-    width: 25px;
-    height: 25px;
-    animation-delay: 1s;
-    animation-duration: 17s;
-    border-radius: 50% 20% / 10% 40%;
-}
-
-.circles li:nth-child(4) {
-    left: 66%;
-    width: 52px;
-    height: 52px;
-    animation-delay: 3s;
-    animation-duration: 20s;
-    border-radius: 50% 20% / 10% 40%;
-}
-
-.circles li:nth-child(5) {
-    left: 74%;
-    width: 20px;
-    height: 20px;
-    animation-delay: 4s;
-    animation-duration: 12;
-    border-radius: 8px;
-}
-
-.circles li:nth-child(6) {
-    left: 79%;
-    width: 54px;
-    height: 54px;
-    animation-delay: 0s;
-    animation-duration: 34s;
-    border-radius: 8px;
 }
