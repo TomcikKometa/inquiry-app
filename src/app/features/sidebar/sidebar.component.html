@@ -41,7 +41,7 @@
       </div>
 
       @if (isComponentUser) {
-        <ul class="d text-sm">
+        <ul class="text-sm">
           @for (detail of userDatailList; track $index) {
             <li
               class="li_hover mt-1 w-64 rounded"
@@ -78,7 +78,7 @@
       </div>
 
       @if (isInquiryDetail) {
-        <ul class="d text-sm">
+        <ul class="text-sm">
           @for (detail of inquiryDetailList; track $index) {
             <li
               class="li_hover mt-1 w-64 rounded"
@@ -91,9 +91,11 @@
         </ul>
       }
 
-      <div class="col-start-1 flex flex-row gap-16 justify-between mr-4 rounded mt-1 h-7 hoover_item">
+      <div class="col-start-1 flex flex-row gap-16 justify-between mr-4 rounded mt-1 h-7 component_row_hover"
+      [ngClass]="{ component_row: isTableDetail && isComponentTableHoover }"
+        (click)="showComponent('tableDetail')">
         <div class="flex flex-row items-center gap-2 h-6 pt-1">
-          <img src="../assets/images/tables.svg" width="22" height="30" class="" alt="" />
+          <img src="../assets/images/tables.svg" width="20" height="30" class="" alt="" />
           <span class="font-normal text-sm w-full">Tables</span>
         </div>
         <svg
@@ -108,6 +110,20 @@
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </div>
+
+      @if (isTableDetail) {
+        <ul class="text-sm">
+          @for (detail of inquiryDetailList; track $index) {
+            <li
+              class="li_hover mt-1 w-64 rounded"
+              [ngClass]="{ li_details: detail.id == componentTableId && isComponentTableHoover }"
+              (click)="setHoover('table', $index + 1)"
+            >
+              <span>{{ detail.text }}</span>
+            </li>
+          }
+        </ul>
+      }
       <div class="col-start-1 flex flex-row gap-16 justify-between mr-4 rounded mt-1 h-7 hoover_item">
         <div class="flex flex-row items-center gap-2 h-6 pt-1">
           <img src="../assets/images/charts.svg" width="22" height="30" class="" alt="" />

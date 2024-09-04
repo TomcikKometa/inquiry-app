@@ -11,28 +11,44 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   protected isComponentUser = false;
   protected isInquiryDetail = false;
+  protected isTableDetail = false;
   protected isComponentUserHoover = false;
   protected isComponentInquiryHoover = false;
-  componentUserId: number = 0;
-  componentInquiryId:number = 0;
+  protected isComponentTableHoover = false;
+  protected componentUserId: number = 0;
+  protected componentInquiryId:number = 0;
+  protected componentTableId:number = 0;
 
-  userDatailList = [
+  protected userDatailList = [
     { id: 1, text: 'Profile' },
     { id: 2, text: 'Settings' }
   ];
 
-  inquiryDetailList = [
+  protected inquiryDetailList = [
     { id: 1, text: 'To fill' },
-    { id: 2, text: 'Done' },
-    { id: 3, text: 'Scores' }
+    { id: 2, text: 'Done' }
   ];
+
+  protected tablesList = [
+    {id:1,text:'To fill'},
+    {id:2,text:'Done'}
+  ]
+
+  protected chartsList = [
+    {id:1,text:'Done'},
+    {id:2,text:'Scores'}
+  ]
+
+
 
   protected showComponent(mainDetails: string, rowDetails?: string) {
     if (mainDetails === 'userDetail') {
-      this.isComponentInquiryHoover = false;
+      this.componentUserId = 0;
       this.isComponentUser = !this.isComponentUser;
-      this.isComponentUser == false ? (this.componentUserId = 0) : 0;
       this.isComponentUserHoover = true;
+      this.isComponentTableHoover = false;
+      this.isComponentInquiryHoover = false;
+
     }
 
     if (mainDetails === 'inquiryDetail') {
@@ -40,6 +56,19 @@ export class SidebarComponent {
       this.componentUserId = 0;
       this.isInquiryDetail = !this.isInquiryDetail;
       this.isComponentInquiryHoover = true;
+      this.componentInquiryId = 0;
+      this.isComponentTableHoover = false;
+    }
+
+    if (mainDetails === 'tableDetail') {
+      this.isComponentUserHoover = false;
+      this.isComponentInquiryHoover = false;
+      this.isComponentTableHoover = true;
+      this.componentUserId = 0;
+      this.componentInquiryId = 0;
+      this.componentTableId = 0;
+      this.isTableDetail = !this.isTableDetail;
+      
     }
   }
 
@@ -49,12 +78,23 @@ export class SidebarComponent {
       this.componentUserId = 0;
       this.isComponentInquiryHoover = true;
       this.isComponentUserHoover = false;
+      this.isComponentTableHoover = false;
     }
     if(componentRow === 'user'){
       this.componentUserId = id;
       this.componentInquiryId = 0;
       this.isComponentInquiryHoover = false;
       this.isComponentUserHoover = true;
+      this.isComponentTableHoover = false;
+    }
+
+    if(componentRow === 'table'){
+      this.componentUserId = 0;
+      this.componentInquiryId = 0;
+      this.componentTableId = id;
+      this.isComponentTableHoover = true;
+      this.isComponentInquiryHoover = false;
+      this.isComponentUserHoover = false;
     }
   }
 }
