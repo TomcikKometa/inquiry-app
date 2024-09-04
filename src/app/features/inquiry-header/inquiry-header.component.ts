@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'inq-inquiry-header',
@@ -8,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './inquiry-header.component.css'
 })
 export class InquiryHeaderComponent {
+
+  @Output() public openSidebar:EventEmitter<boolean> = new EventEmitter<boolean>();
+opened : boolean = false
 
 }
