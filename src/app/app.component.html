@@ -10,5 +10,5 @@
 </div> -->
 
 
-<header><inq-inquiry-header></inq-inquiry-header></header>
-<inq-sidebar></inq-sidebar>
+<header><inq-inquiry-header (openSidebar)="getSidenavEvent($event)"></inq-inquiry-header></header>
+<inq-sidebar  [ngClass]="{ sidebar: isSidebar }"></inq-sidebar>
