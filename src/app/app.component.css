@@ -16,6 +16,62 @@
     width: 100%;
 }
 
-.sidebar{
+.sidebar_show {
+    animation: slidein 2s normal;
+    visibility: inherit;
+    height: 100%;
+}
+
+.sidebar_hide {
+    height: 100%;
+    animation: slideout 2s reverse;
+    margin-left: -260px;
+}
+
+@keyframes slidein {
+    0% {
+        margin-left: -450px;
+    }
+    20% {
+        margin-left: -300px;
+    }
+
+    30%{
+        margin-left: -250px;
+    }
+
+    100% {
+        margin-left: 0px;
+    }
+}
+
+@keyframes slideout {
+    0% {
+        margin-left: -450px;
+    }
+    20% {
+        margin-left: -300px;
+    }
+
+    30%{
+        margin-left: -250px;
+    }
+
+    100% {
+        margin-left: -0px;
+    }
+}
+
+.hiddenn {
     visibility: hidden;
+}
+
+.sidebar_container {
+    height: 100%;
+}
+
+.container{
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
 }
