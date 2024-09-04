@@ -18,6 +18,8 @@ export class AppComponent {
   protected getSidenavEvent(event: boolean) {
     if (event) {
       this.isSidebar = !this.isSidebar;
+      console.log(this.isSidebar);
+      
     }
   }
 }
