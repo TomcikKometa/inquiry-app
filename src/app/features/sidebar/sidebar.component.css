@@ -1,24 +1,32 @@
-/* .container {
-    width: 25%;
-} */
-
-/* .user_detail:hover {
-    height: 28px;
-    cursor: pointer;
-    background-color: lightgray;
-} */
-
 .component_row {
     height: 28px;
     cursor: pointer;
     padding-left: 4px;
-    background-color: lightgray;
+    background: rgb(189, 192, 194);
+    background: linear-gradient(
+        232deg,
+        rgba(189, 192, 194, 1) 0%,
+        rgba(140, 142, 143, 1) 0%,
+        rgba(203, 203, 203, 1) 54%,
+        rgba(222, 226, 230, 1) 100%,
+        rgba(206, 210, 214, 1) 100%,
+        rgba(181, 185, 189, 1) 100%
+    );
 }
 
 .component_row_hover:hover {
     height: 28px;
     cursor: pointer;
-    background-color: lightgray;
+    background: rgb(189, 192, 194);
+    background: linear-gradient(
+        232deg,
+        rgba(189, 192, 194, 1) 0%,
+        rgba(190, 192, 193, 1) 10%,
+        rgba(222, 226, 230, 1) 75%,
+        rgba(222, 226, 230, 1) 100%,
+        rgba(206, 210, 214, 1) 100%,
+        rgba(181, 185, 189, 1) 100%
+    );
     font-weight: 700;
 }
 
@@ -65,14 +73,23 @@
     animation-duration: 1s;
 }
 
-.li-details:hover {
+.li_hover:hover {
     background-color: rgb(218, 217, 217);
     font-weight: 500;
     width: fit-content;
 }
 
-.ff {
-    background-color: rgb(218, 217, 217);
+.li_details {
+    background: rgb(189, 192, 194);
+    background: linear-gradient(
+        232deg,
+        rgba(189, 192, 194, 1) 0%,
+        rgba(140, 142, 143, 1) 0%,
+        rgba(203, 203, 203, 1) 54%,
+        rgba(222, 226, 230, 1) 100%,
+        rgba(206, 210, 214, 1) 100%,
+        rgba(181, 185, 189, 1) 100%
+    );
 }
 
 @keyframes slidein {
