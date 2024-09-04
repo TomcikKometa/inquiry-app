@@ -46,7 +46,7 @@ ul li:last-of-type {
 
 ul li {
     margin-left: 25px;
-    padding-left: 4px;
+    padding-left: 6px;
     animation: slidein 1s normal;
     display: block;
     list-style: none;
@@ -80,6 +80,7 @@ ul .li_hover:hover {
 }
 
 .li_details {
+    padding-left: 12px;
     background: rgb(189, 192, 194);
     background: linear-gradient(
         232deg,

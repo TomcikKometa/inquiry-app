@@ -23,7 +23,7 @@
         (click)="showComponent('userDetail')"
       >
         <div class="flex flex-row items-center gap-2 h-6 pt-1">
-          <img src="../assets/images/userSVG.svg" width="30" height="30" class="" alt="" />
+          <img src="../assets/images/userSVG.svg" width="23" height="30" class="" alt="" />
           <span class="font-normal text-sm w-full">User</span>
         </div>
 
@@ -60,7 +60,7 @@
         (click)="showComponent('inquiryDetail')"
       >
         <div class="flex flex-row items-center gap-2 h-6 pt-1">
-          <img src="../assets/images/questionnaire.svg" width="21" height="25" class="" alt="" />
+          <img src="../assets/images/questionnaire.svg" width="22" height="25" class="" alt="" />
           <span class="font-normal text-sm w-full">Inquires</span>
         </div>
 
@@ -91,11 +91,13 @@
         </ul>
       }
 
-      <div class="col-start-1 flex flex-row gap-16 justify-between mr-4 rounded mt-1 h-7 component_row_hover"
-      [ngClass]="{ component_row: isTableDetail && isComponentTableHoover }"
-        (click)="showComponent('tableDetail')">
+      <div
+        class="col-start-1 flex flex-row gap-16 justify-between mr-4 rounded mt-1 h-7 component_row_hover"
+        [ngClass]="{ component_row: isTableDetail && isComponentTableHoover }"
+        (click)="showComponent('tableDetail')"
+      >
         <div class="flex flex-row items-center gap-2 h-6 pt-1">
-          <img src="../assets/images/tables.svg" width="20" height="30" class="" alt="" />
+          <img src="../assets/images/tables.svg" width="22" height="30" class="" alt="" />
           <span class="font-normal text-sm w-full">Tables</span>
         </div>
         <svg
