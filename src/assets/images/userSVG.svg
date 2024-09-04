@@ -2,7 +2,7 @@
 <svg
    class="h-1 w-1 text-red-500"
    fill="none"
-   viewBox="0 0 20 20"
+   viewBox="0 0 21 20"
    stroke="currentColor"
    version="1.1"
    id="svg1"
@@ -10,7 +10,7 @@
    inkscape:export-filename="userSVG.svg"
    inkscape:export-xdpi="48"
    inkscape:export-ydpi="48"
-   width="20"
+   width="21"
    height="20"
    inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -30,8 +30,8 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="18.141708"
-     inkscape:cx="-1.5709656"
-     inkscape:cy="0.4685336"
+     inkscape:cx="6.090937"
+     inkscape:cy="11.272368"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -41,7 +41,7 @@
   <path
      stroke-linecap="round"
      stroke-linejoin="round"
-     stroke-width="1.97594"
-     d="m 3.0065516,15.544923 a 13.506846,14.036918 77.040199 0 1 6.9449335,-1.751834 c 2.5128709,0 4.8608739,0.636062 6.8838989,1.751834 M 13.068428,7.9665844 a 2.907408,3.0215079 77.040123 1 1 -6.0308858,0 2.907408,3.0215079 77.040123 0 1 6.0308858,0 z m 5.99706,1.9421684 a 8.7222232,9.0645235 77.040164 1 1 -18.09267004,0 8.7222232,9.0645235 77.040164 0 1 18.09267004,0 z"
+     stroke-width="1.67581"
+     d="M 2.6836542,14.633097 A 11.579976,11.776646 46.058348 0 1 8.474441,13.12188 c 2.095268,0 4.053068,0.548698 5.739895,1.511217 M 11.073393,8.0956524 a 2.4926405,2.5349747 46.058115 1 1 -5.0286401,0 2.4926405,2.5349747 46.058115 0 1 5.0286401,0 z m 5.000437,1.6754095 a 7.4779212,7.6049236 46.058242 1 1 -15.0859325,0 7.4779212,7.6049236 46.058242 0 1 15.0859325,0 z"
      id="path1" />
 </svg>
