@@ -9,17 +9,16 @@ import { Component } from '@angular/core';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
-  protected isUserDetail = false;
-  protected isUserDetailRow = false;
+  protected isComponentUser = false;
   protected isInquiryDetail = false;
-  protected isInquiryDetailRow = false;
   protected isComponentUserHoover = false;
   protected isComponentInquiryHoover = false;
-  idFor: number = 0;
+  componentUserId: number = 0;
+  componentInquiryId:number = 0;
 
   userDatailList = [
-    { id: 1, text: 'bla bla' },
-    { id: 2, text: 'la la la' }
+    { id: 1, text: 'Profile' },
+    { id: 2, text: 'Settings' }
   ];
 
   inquiryDetailList = [
@@ -28,25 +27,34 @@ export class SidebarComponent {
     { id: 3, text: 'Scores' }
   ];
 
-  protected showItems(mainDetails: string, rowDetails?: string) {
-    console.log(mainDetails);
+  protected showComponent(mainDetails: string, rowDetails?: string) {
     if (mainDetails === 'userDetail') {
       this.isComponentInquiryHoover = false;
-      this.isUserDetail = !this.isUserDetail;
-      this.isUserDetail == false ? (this.idFor = 0) : 0;
+      this.isComponentUser = !this.isComponentUser;
+      this.isComponentUser == false ? (this.componentUserId = 0) : 0;
       this.isComponentUserHoover = true;
     }
 
     if (mainDetails === 'inquiryDetail') {
-      this.idFor = 0;
       this.isComponentUserHoover = false;
+      this.componentUserId = 0;
       this.isInquiryDetail = !this.isInquiryDetail;
       this.isComponentInquiryHoover = true;
-      this.isUserDetail == false ? (this.idFor = 0) : 0;
     }
   }
 
-  id(id: number) {
-    this.idFor = id;
+  setHoover(componentRow:string,id: number) {
+    if(componentRow === 'inquiry'){
+      this.componentInquiryId = id;
+      this.componentUserId = 0;
+      this.isComponentInquiryHoover = true;
+      this.isComponentUserHoover = false;
+    }
+    if(componentRow === 'user'){
+      this.componentUserId = id;
+      this.componentInquiryId = 0;
+      this.isComponentInquiryHoover = false;
+      this.isComponentUserHoover = true;
+    }
   }
 }

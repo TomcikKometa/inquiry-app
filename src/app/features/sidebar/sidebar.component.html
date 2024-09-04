@@ -19,8 +19,8 @@
     <div class="pt-1">
       <div
         class="col-start-1 flex flex-row gap-16 justify-between mr-4 rounded mt-1 h-7 cursor-pointer component_row_hover"
-        [ngClass]="{ component_row: isUserDetail && isComponentUserHoover }"
-        (click)="showItems('userDetail')"
+        [ngClass]="{ component_row: isComponentUser && isComponentUserHoover }"
+        (click)="showComponent('userDetail')"
       >
         <div class="flex flex-row items-center gap-2 h-6 pt-1">
           <img src="../assets/images/userSVG.svg" width="30" height="30" class="" alt="" />
@@ -40,10 +40,14 @@
         </svg>
       </div>
 
-      @if (isUserDetail) {
+      @if (isComponentUser) {
         <ul class="d text-sm">
           @for (detail of userDatailList; track $index) {
-            <li class="li-details mt-1 w-64 rounded" [ngClass]="{ ff: detail.id == idFor && isComponentUserHoover}" (click)="id($index + 1)">
+            <li
+              class="li_hover mt-1 w-64 rounded"
+              [ngClass]="{ li_details: detail.id == componentUserId && isComponentUserHoover }"
+              (click)="setHoover('user', $index + 1)"
+            >
               <span>{{ detail.text }}</span>
             </li>
           }
@@ -52,8 +56,8 @@
 
       <div
         class="col-start-1 flex flex-row gap-16 justify-between mr-4 rounded mt-1 h-7 cursor-pointer component_row_hover"
-        [ngClass]="{ component_row: isInquiryDetail }"
-        (click)="showItems('inquiryDetail')"
+        [ngClass]="{ component_row: isInquiryDetail && isComponentInquiryHoover }"
+        (click)="showComponent('inquiryDetail')"
       >
         <div class="flex flex-row items-center gap-2 h-6 pt-1">
           <img src="../assets/images/questionnaire.svg" width="21" height="25" class="" alt="" />
@@ -76,7 +80,11 @@
       @if (isInquiryDetail) {
         <ul class="d text-sm">
           @for (detail of inquiryDetailList; track $index) {
-            <li class="li-details mt-1 w-64 rounded" [ngClass]="{ ff: detail.id == idFor && isComponentInquiryHoover }" (click)="id($index + 1)">
+            <li
+              class="li_hover mt-1 w-64 rounded"
+              [ngClass]="{ li_details: detail.id == componentInquiryId && isComponentInquiryHoover }"
+              (click)="setHoover('inquiry', $index + 1)"
+            >
               <span>{{ detail.text }}</span>
             </li>
           }
