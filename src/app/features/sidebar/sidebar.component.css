@@ -2,16 +2,8 @@
     height: 28px;
     cursor: pointer;
     padding-left: 4px;
-    background: rgb(189, 192, 194);
-    background: linear-gradient(
-        232deg,
-        rgba(189, 192, 194, 1) 0%,
-        rgba(140, 142, 143, 1) 0%,
-        rgba(203, 203, 203, 1) 54%,
-        rgba(222, 226, 230, 1) 100%,
-        rgba(206, 210, 214, 1) 100%,
-        rgba(181, 185, 189, 1) 100%
-    );
+    background: rgb(255,255,255);
+background: linear-gradient(37deg, rgba(255,255,255,1) 0%, rgba(243,244,246,1) 12%, rgba(156,163,175,1) 100%, rgba(156,163,175,1) 100%);
 }
 
 .component_row_hover:hover {
@@ -81,16 +73,13 @@ ul .li_hover:hover {
 
 .li_details {
     padding-left: 12px;
-    background: rgb(189, 192, 194);
-    background: linear-gradient(
-        232deg,
-        rgba(189, 192, 194, 1) 0%,
-        rgba(140, 142, 143, 1) 0%,
-        rgba(203, 203, 203, 1) 54%,
-        rgba(222, 226, 230, 1) 100%,
-        rgba(206, 210, 214, 1) 100%,
-        rgba(181, 185, 189, 1) 100%
-    );
+    background: rgb(255,255,255);
+    background: linear-gradient(37deg, rgba(255,255,255,1) 0%, rgba(243,244,246,1) 12%, rgba(156,163,175,1) 100%, rgba(156,163,175,1) 100%);
+}
+
+.main_colour{
+    background: rgb(255,255,255);
+background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(222,226,230,1) 76%, rgba(222,226,230,1) 88%, rgba(222,226,230,1) 100%);
 }
 
 @keyframes slidein {

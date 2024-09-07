@@ -1,21 +1,52 @@
-<div class="bg-amber-500">
-  <!-- <div class="center d-flex">
-    <mat-card class="settingPageCard">
-      <div class="hightDiv">
-        <h2 class="title">Welcome in Inquiry App</h2>
-        <div class="cardImage"></div>
-        <mat-form-field appearance="outline" class="matFormDiv">
-          <mat-label>Choose account</mat-label>
-          <mat-select [(ngModel)]="choosedAccount" (selectionChange)="chooseUserAccount()" name="food">
-            @for (loginOption of loginOptions; track loginOption.id) {
-              <mat-option [value]="loginOption.value">{{ loginOption.viewValue }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
+<div class="container">
+  <mat-card class="">
+    <div class="flex justify-center">
+      <!-- <img src="../assets/images/inquary_app.svg" width="150" height="27" class="flex flex-row justify-center mt-4" alt="" /> -->
+    </div>
+
+    <div class="flex justify-center pt-10">
+      <img src="../assets/images/sign-in2.svg" width="150" height="60" class="" alt="" />
+    </div>
+    <div><span class="flex justify-center text-2xl text-gray-400 font-extralight">Sign in</span></div>
+
+    <div class="flex flex-row justify-center">
+      <form class="w-full max-w-sm flex flex-row justify-center">
+        <div class="justify-center-center py-2 justify-center">
+          <div class="bordder-b border-gray-200 mt-2 mb-2">
+            <input
+              class="placeholder-style appearance-none bg-transparent border-b w-48 mr-3 py-1 px-2 leading-tight focus:outline-none border-stone-300 text-gray-400 font-extralight text-center"
+              type="text"
+              placeholder="Login"
+              aria-label="Full name"
+            />
+          </div>
+
+          <div class="bordder-b border-gray-200 mt-2 mb-2">
+            <input
+              class="placeholder-style appearance-none bg-transparent border-b w-48 text-gray-400 mr-3 py-1 px-2 leading-tight focus:outline-none border-stone-300 font-extralight text-center"
+              type="text"
+              placeholder="Password"
+              aria-label="Full name"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="flex row justify-end mt-16">
+      <div class="flex pt-4 justify-center mt-22">
+        <button
+          class="flex-shrink-0 bg-gray-400 hover:bg-gray-500 border-gray-400 hover:border-gray-500 text-sm border-4 text-white py-1 px-2 rounded"
+          type="button"
+        >
+          Sign in
+        </button>
+        <button
+          class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded"
+          type="button"
+        >
+          Cancel
+        </button>
       </div>
-      <mat-card-actions>
-        <button mat-button mat-raised-button color="primary" class="button" [disabled]="!choosedAccount"  (click)="logIn()">Log in</button>
-      </mat-card-actions>
-    </mat-card>
-  </div> -->
+    </div>
+  </mat-card>
 </div>
