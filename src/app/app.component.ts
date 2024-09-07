@@ -3,12 +3,13 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { InquiryHeaderComponent } from './features/inquiry-header/inquiry-header.component';
 import { SidebarComponent } from './features/sidebar/sidebar.component';
+import { LoginComponent } from './features/shared-components/login/login.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   providers: [],
-  imports: [RouterOutlet, InquiryHeaderComponent, SidebarComponent,CommonModule],
+  imports: [RouterOutlet, InquiryHeaderComponent, SidebarComponent,LoginComponent,CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
