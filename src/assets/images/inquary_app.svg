@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="21mm"
+   height="11.628001mm"
+   viewBox="0 0 21 11.628002"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="inquary_app.svg"
+   inkscape:export-xdpi="60.67757"
+   inkscape:export-ydpi="60.67757"
+   sodipodi:docname="inquary_app.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.66161524"
+     inkscape:cx="535.05418"
+     inkscape:cy="307.58058"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-36.772965,-77.053653)">
+    <text
+       xml:space="preserve"
+       style="font-size:16.9333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI, Normal';white-space:pre;inline-size:211.154;fill:#1a1a1a;stroke:#1a1a1a;stroke-width:0.264999"
+       x="35.715202"
+       y="89.563667"
+       id="text3"
+       transform="matrix(0.38372811,-6.7773323e-4,-0.00267234,0.39009993,24.360334,50.113548)"
+       inkscape:export-filename="inquary_app.svg"
+       inkscape:export-xdpi="95.163605"
+       inkscape:export-ydpi="95.163605"><tspan
+         x="35.715202"
+         y="89.563667"
+         id="tspan1">Sign in</tspan></text>
+  </g>
+</svg>
