@@ -9,9 +9,10 @@
 .container {
   margin: 0;
   padding: 0;
+  bottom: 0;
   width: 380px;
-  height: 520px;
-  padding-top: 30%;
+  height: 53%;
+  margin-bottom: 48%;
 }
 
 mat-card {
