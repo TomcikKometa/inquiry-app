@@ -8,7 +8,7 @@ import { debounceTime,Subject, Subscription, takeUntil } from 'rxjs';
 @Component({
   selector: 'inq-login',
   standalone: true,
-  imports: [MatCardModule, FormsModule, MatButtonModule, ReactiveFormsModule],
+  imports: [MatCardModule, FormsModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

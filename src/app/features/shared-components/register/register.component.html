@@ -1,0 +1,91 @@
+<mat-card class="container">
+  <div class="mt-5 mb-5">
+  <div class="flex justify-center">
+    <img src="../assets/images/register.svg" width="50" height="40" class="" alt="" />
+  </div>
+  <div><span class="flex justify-center text-2xl text-gray-400 font-extralight">Register</span></div>
+
+  <div class="flex flex-row justify-center">
+    <form class="w-full max-w-sm flex flex-row justify-center">
+      <div class="justify-center">
+        <div class="mt-2 mb-2 flex justify-center text-black">
+          <label>
+            <input
+              class="placeholder-style w-48 leading-tight focus:outline-none border-stone-300 text-black font-normal text-center bg-stone-200 rounded-md h-8 ... invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500"
+              type="text"
+              placeholder="Login name *"
+              aria-label="Login name"
+              formControlName="login"
+              required=""
+            />
+            <span class="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+              Please enter a valid login address
+            </span>
+          </label>
+        </div>
+
+        <div class="mt-2 mb-2 flex justify-center">
+          <input
+            class="placeholder-style w-48 leading-tight focus:outline-none border-stone-300 font-normal text-gray-400 text-center bg-stone-200 rounded-md h-8"
+            type="text"
+            placeholder="Email address *"
+            aria-label="Full name"
+            formControlName="password"
+          />
+        </div>
+        <div class="mt-2 mb-2 flex justify-center">
+          <input
+            class="placeholder-style w-48 leading-tight focus:outline-none border-stone-300 text-gray-400 font-normal text-center bg-stone-200 rounded-md h-8"
+            type="text"
+            placeholder="Password *"
+            aria-label="password"
+            formControlName="password"
+          />
+        </div>
+        <div class="mt-2 mb-2 flex justify-center">
+          <input
+            class="placeholder-style w-48 leading-tight focus:outline-none border-stone-300 text-gray-400 font-normal text-center bg-stone-200 rounded-md h-8"
+            type="text"
+            placeholder="Confirm Password *"
+            aria-label="Confirm Password"
+            formControlName="password"
+          />
+        </div>
+        <div class="mt-2 mb-2 flex justify-center">
+          <div class="mt-2 mb-2 flex justify-center">
+            <input
+              class="placeholder-style w-48 leading-tight focus:outline-none border-stone-300 text-gray-400 font-normal text-center bg-stone-200 rounded-md h-8"
+              type="text"
+              placeholder="First name"
+              aria-label="First name"
+              formControlName="password"
+            />
+          </div>
+        </div>
+        <div class="mt-2 mb-2 flex justify-center">
+          <input
+            class="placeholder-style w-48 leading-tight focus:outline-none border-stone-300 text-gray-400 font-normal text-center bg-stone-200 rounded-md h-8"
+            type="text"
+            placeholder="Last name"
+            aria-label="Last name"
+            formControlName="password"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="mt-2 mb-2 flex justify-center">
+    <button
+      class="flex-shrink-0 bg-gray-400 hover:bg-gray-500 border-gray-400 hover:border-gray-500 text-sm border-4 text-white py-1 rounded w-48"
+      type="button"
+    >
+      Register
+    </button>
+  </div>
+  <div class="flex justify-center">
+    <button class="flex-shrink-0 w-48 bg-stone-200 border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">
+      <span>Back to home page</span>
+    </button>
+  </div>
+</div>
+</mat-card>
