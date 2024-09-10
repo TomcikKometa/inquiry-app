@@ -1,21 +1,29 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnChanges, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { validate } from 'uuid';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginFormService {
+export class LoginFormService implements OnInit {
   public _loginForm!: FormGroup;
 
   constructor(private readonly formBuilder: NonNullableFormBuilder) {
     this._loginForm = this.createForm();
   }
 
+  ngOnInit() {
+    console.log(this._loginForm.get('login')?.valueChanges.subscribe((x) => console.log(x)));
+    
+    this._loginForm.get('login')?.valueChanges.pipe().subscribe(x => console.log(x));
+    console.log(this._loginForm.get('login')?.value);
+    
+  }
+
   private createForm(): FormGroup {
     return this.formBuilder.group({
-      ['login']: this.formBuilder.control<string>('', { validators: this.validateLogin() }),
-      ['password']: this.formBuilder.control<string>('',{validators:this.validatePaddword()})
+      ['login']: this.formBuilder.control<string>('', { validators: this.validateLogin(),updateOn:'blur' }),
+      ['password']: this.formBuilder.control<string>('')
     });
   }
 
@@ -23,8 +31,15 @@ export class LoginFormService {
     return (control: AbstractControl) => {
       const loginControl: FormControl<string> = control as FormControl;
 
-      const regexSpecialSigns = /[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/]/.test(loginControl.value);
-      if (loginControl.value.length < 4) {
+      const regexSpecialSigns = /[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/]|[\s]/.test(loginControl.value);
+      const firstFiveCharacters = loginControl.value.slice(0, 3);
+      const regexNoFirstNumbers = /^[a-zA-Z]{0,3}$|[\s]/.test(firstFiveCharacters);
+
+      if (loginControl.value.length < 4 || loginControl.value.length > 15) {
+        return { error: 'Error login lentgh' };
+      }
+
+      if (!regexNoFirstNumbers) {
         return { error: 'Error login lentgh' };
       }
       if (regexSpecialSigns) {
@@ -38,10 +53,10 @@ export class LoginFormService {
     return (control: AbstractControl) => {
       const passwordControl: FormControl = control as FormControl;
 
-      const regexSpecialSigns = /[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/]/.test(passwordControl.value);
-      const regexRegularLetters = /[a-z]/.test(passwordControl.value);
-      const regexCapitalLetters = /[A-Z]/.test(passwordControl.value);
-      const regexNumbers = /[0-9]/.test(passwordControl.value)
+      const regexSpecialSigns = /^[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/]$|[\s]/.test(passwordControl.value);
+      const regexRegularLetters = /^[a-z]$|[\s]/.test(passwordControl.value);
+      const regexCapitalLetters = /^[A-Z]|[\s]$/.test(passwordControl.value);
+      const regexNumbers = /^[0-9]$|[\s]/.test(passwordControl.value);
 
       if (passwordControl.value.length < 8) {
         return { error: 'Error password length' };
