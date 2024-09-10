@@ -1,29 +1,20 @@
-import { Injectable, OnChanges, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
-import { validate } from 'uuid';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginFormService implements OnInit {
+export class LoginFormService {
   public _loginForm!: FormGroup;
 
   constructor(private readonly formBuilder: NonNullableFormBuilder) {
     this._loginForm = this.createForm();
   }
 
-  ngOnInit() {
-    console.log(this._loginForm.get('login')?.valueChanges.subscribe((x) => console.log(x)));
-    
-    this._loginForm.get('login')?.valueChanges.pipe().subscribe(x => console.log(x));
-    console.log(this._loginForm.get('login')?.value);
-    
-  }
-
   private createForm(): FormGroup {
     return this.formBuilder.group({
       ['login']: this.formBuilder.control<string>('', { validators: this.validateLogin(),updateOn:'blur' }),
-      ['password']: this.formBuilder.control<string>('')
+      ['password']: this.formBuilder.control<string>('',{validators:this.validatePassword()})
     });
   }
 
@@ -49,7 +40,7 @@ export class LoginFormService implements OnInit {
     };
   }
 
-  private validatePaddword(): ValidatorFn {
+  private validatePassword(): ValidatorFn {
     return (control: AbstractControl) => {
       const passwordControl: FormControl = control as FormControl;
 
