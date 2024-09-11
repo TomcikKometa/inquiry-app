@@ -3,7 +3,12 @@
 
 .placeholder-style::placeholder {
   text-align: center;
-  color:black;
+  background:rgb(248, 247, 247);
+  height: 100%;
+  padding-top: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: black;
 }
 
 .container {
@@ -60,3 +65,40 @@ mat-card {
   margin-left: 100px;
   margin-top: 35px;
 }
+
+abbr {
+  font-style: normal;
+  position: relative
+}
+
+abbr:after {
+  background: #ffabab;
+  border-radius: 6px;
+  content: attr(title);
+  display: block;
+  left: 100%;
+  text-align: center;
+  bottom: -10px;
+  padding: 9px;
+  position: absolute;    
+  width: 280px;
+  margin-left: 10px;
+  z-index: 1;
+  height: 40px;
+  animation: 2s slidein;
+}
+
+@keyframes slidein {
+  0% {
+      margin-left: 800px;
+  }
+  20% {
+      margin-left: 800px;
+  }
+
+  100% {
+      margin-left: 10px;
+  }
+}
+
+
