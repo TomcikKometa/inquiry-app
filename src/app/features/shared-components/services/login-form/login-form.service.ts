@@ -26,7 +26,7 @@ export class LoginFormService {
       const firstFiveCharacters = loginControl.value.slice(0, 3);
       const regexNoFirstNumbers = /^[a-zA-Z]{0,3}$|[\s]/.test(firstFiveCharacters);
 
-      if (loginControl.value.length < 4 || loginControl.value.length > 15) {
+      if (loginControl.value.length < 4 || loginControl.value.length > 25) {
         return { error: 'Error login lentgh' };
       }
 
@@ -49,7 +49,7 @@ export class LoginFormService {
       const regexCapitalLetters = /^[A-Z]|[\s]$/.test(passwordControl.value);
       const regexNumbers = /^[0-9]$|[\s]/.test(passwordControl.value);
 
-      if (passwordControl.value.length < 8) {
+      if (passwordControl.value.length < 8 || passwordControl.value.length > 15) {
         return { error: 'Error password length' };
       }
       if (!regexRegularLetters) {
