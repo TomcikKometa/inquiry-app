@@ -6,7 +6,7 @@
   <div><span class="flex justify-center text-2xl text-gray-400 font-extralight">Register</span></div>
 
   <div class="flex flex-row justify-center">
-    <form class="w-full max-w-sm flex flex-row justify-center">
+    <form [formGroup]="registerForm"  class="w-full max-w-sm flex flex-row justify-center">
       <div class="justify-center">
         <div class="mt-2 mb-2 flex justify-center text-black">
           <label>
@@ -15,7 +15,7 @@
               type="text"
               placeholder="Login name *"
               aria-label="Login name"
-              formControlName="login"
+              formControlName="{{ registerFormName.USERNAME }}"
               required=""
             />
             <span class="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
@@ -30,7 +30,7 @@
             type="text"
             placeholder="Email address *"
             aria-label="Full name"
-            formControlName="password"
+            formControlName="{{registerFormName.EMAIL}}"
           />
         </div>
         <div class="mt-2 mb-2 flex justify-center">
