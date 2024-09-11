@@ -12,11 +12,18 @@ import { RegisterFormName, RegisterFormService } from '../services/register-form
 })
 export class RegisterComponent implements OnInit {
   protected _registerForm!: FormGroup;
+  isRequired = false;
+  place="ddd"
 
   private readonly registerFormService: RegisterFormService = inject(RegisterFormService);
 
   public ngOnInit(): void {
     this._registerForm = this.registerFormService._registerForm;
+    console.log(this._registerForm);
+  }
+
+  protected register(){
+    console.log(this._registerForm);
   }
 
   protected get registerForm(): FormGroup {
@@ -25,5 +32,10 @@ export class RegisterComponent implements OnInit {
 
   protected get registerFormName(): typeof RegisterFormName {
     return RegisterFormName;
+  }
+
+  invalid(event:any){
+    console.log(event);
+    
   }
 }
