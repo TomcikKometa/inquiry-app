@@ -6,20 +6,20 @@ export enum RegisterFormName {
   PASSWORD = 'password',
   PASSWORD_CONFIRMED = 'passwordConfirmed',
   FIRST_NAME = 'firstName',
-  LAST_NAME = 'lastName',
+  LAST_NAME = 'lastName'
 }
-
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterFormService {
-  public _registerForm!:FormGroup;
+  public _registerForm!: FormGroup;
 
-  private static readonly EMAIL_PATTERN : RegExp = new RegExp('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$');
-  protected maxPasswordLength: number = 15;
-  protected minPasswordLength:number = 8;
-  private maxLoginLength:number = 25;
-  private minLoginLength:number = 4;
+  private static readonly EMAIL_PATTERN: RegExp = new RegExp('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$');
+  protected maxPasswordLength: number = 20;
+  protected minPasswordLength: number = 8;
+  private maxLoginLength: number = 25;
+  private minLoginLength: number = 4;
+  private nameLength: number = 30;
 
   constructor(private readonly formBuilder: NonNullableFormBuilder) {
     this._registerForm = this.createForm();
@@ -27,12 +27,12 @@ export class RegisterFormService {
 
   private createForm(): FormGroup {
     return this.formBuilder.group({
-      [RegisterFormName.USERNAME]: this.formBuilder.control<string>('',{validators:this.validateLogin()}),
-      [RegisterFormName.EMAIL]: this.formBuilder.control<string>('',{validators:Validators.pattern(RegisterFormService.EMAIL_PATTERN)}),
-      [RegisterFormName.PASSWORD]: this.formBuilder.control<string>('',{validators:this.validatePassword()}),
-      [RegisterFormName.PASSWORD_CONFIRMED]: this.formBuilder.control<string>(''),
-      [RegisterFormName.FIRST_NAME]: this.formBuilder.control<string>(''),
-      [RegisterFormName.LAST_NAME]: this.formBuilder.control<string>(''),
+      [RegisterFormName.USERNAME]: this.formBuilder.control<string>('', { validators: this.validateLogin() }),
+      [RegisterFormName.EMAIL]: this.formBuilder.control<string>('', { validators: Validators.pattern(RegisterFormService.EMAIL_PATTERN) }),
+      [RegisterFormName.PASSWORD]: this.formBuilder.control<string>('', { validators: this.validatePassword() }),
+      [RegisterFormName.PASSWORD_CONFIRMED]: this.formBuilder.control<string>('', { validators: this.validConfirmedPassword() }),
+      [RegisterFormName.FIRST_NAME]: this.formBuilder.control<string>('', { validators: this.validateFirstLastName() }),
+      [RegisterFormName.LAST_NAME]: this.formBuilder.control<string>('', { validators: this.validateFirstLastName() })
     });
   }
 
@@ -40,16 +40,28 @@ export class RegisterFormService {
     return (control: AbstractControl) => {
       const passwordControl: FormControl = control as FormControl;
 
-      const regexSpecialSigns = /^[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/]$|[\s]/.test(passwordControl.value);
-      const regexPattern = /^[a-zA-Z0-9]$|[\s]/.test(passwordControl.value);
+      const regexSpecialSigns = /[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/].{0,20}$/.test(passwordControl.value);
+      const regexLowerLetters = /[a-z].{0,20}$/.test(passwordControl.value);
+      const regexCapitalLetters = /[A-Z].{0,20}$/.test(passwordControl.value);
+      const regexNumbers = /[0-9].{0,20}$/.test(passwordControl.value);
+      const noBlankSpace = /^$|[\s]/.test(passwordControl.value);
 
-      if (passwordControl.value.length < 8 || passwordControl.value.length > 15) {
+      if (passwordControl.value.length <= this.minPasswordLength || passwordControl.value.length > this.maxPasswordLength) {
         return { error: 'Error password length' };
       }
-      if (!regexPattern) {
+      if (!regexLowerLetters) {
+        return { error: 'Error password length' };
+      }
+      if (!regexNumbers) {
         return { error: 'Error password length' };
       }
       if (!regexSpecialSigns) {
+        return { error: 'Error password length' };
+      }
+      if (!regexCapitalLetters) {
+        return { error: 'Error password length' };
+      }
+      if (noBlankSpace) {
         return { error: 'Error password length' };
       }
       return null;
@@ -71,6 +83,32 @@ export class RegisterFormService {
         return { error: 'Error login lentgh' };
       }
       if (regexSpecialSigns) {
+        return { error: 'Error login lentgh' };
+      }
+      return null;
+    };
+  }
+
+  private validateFirstLastName() {
+    return (control: AbstractControl) => {
+      const name: FormControl<string> = control as FormControl;
+
+      if (name.value.length > this.nameLength) {
+        return { error: 'Error login lentgh' };
+      }
+      return null;
+    };
+  }
+
+  private validConfirmedPassword() {
+    return (control: AbstractControl) => {
+      const passwordConfirmed: FormControl<string> = control as FormControl;
+      const password = this._registerForm?.controls['password'] as FormControl;
+
+      if (!passwordConfirmed.value) {
+        return { error: 'Error login lentgh' };
+      }
+      if (!(password?.value == passwordConfirmed.value)) {
         return { error: 'Error login lentgh' };
       }
       return null;
