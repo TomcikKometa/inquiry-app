@@ -28,36 +28,6 @@ mat-card {
   background: linear-gradient(312deg, rgba(255, 255, 255, 1) 8%, rgba(238, 238, 241, 1) 17%, rgba(217, 217, 220, 1) 75%);
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
 }
-.settingPageCard {
-  width: 450px;
-  height: 600px;
-  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
-  /* box-shadow: #DEE2E6 0px 0px 4px 4px; */
-}
-
-.hightDiv {
-  height: 270px;
-}
-
-.title {
-  text-align: center;
-  margin-top: 30px;
-  color: #a2a6f2;
-  text-shadow: #a2a6f2 0px 0px 10px;
-}
-
-.cardImage {
-  width: 50px;
-  height: 50px;
-  margin-top: 30px;
-  margin-left: 130px;
-  background-image: url("/assets/images/sign-in.svg");
-}
-
-.matFormDiv {
-  padding-top: 40px;
-  padding-left: 70px;
-}
 
 .button {
   margin-top: 20px;
