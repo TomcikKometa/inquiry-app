@@ -9,18 +9,19 @@
       <form [formGroup]="registerForm" class="w-full max-w-sm flex flex-row justify-center novalidate" id="form">
         <div class="justify-center">
           <div class="mt-2 mb-2 flex justify-center">
-            <label>
-              <input
-                class="placeholder-style border-2 w-48 leading-tight focus:outline-none border-gray-100 text-gray-400 font-normal text-center bg-gray-200 rounded-md h-8"
-                type="text"
-                placeholder="Login name *"
-                aria-label="Login name"
-                formControlName="{{ registerFormName.USERNAME }}"
-              />
-            </label>
+            <input
+              class="placeholder-style border-2 w-48 leading-tight focus:outline-none border-gray-100 text-gray-400 font-normal text-center bg-gray-200 rounded-md h-8"
+              type="text"
+              placeholder="Login name *"
+              aria-label="Login name"
+              formControlName="{{ registerFormName.USERNAME }}"
+            />
+            <!-- @if (isPasswordValid$ | async) {
+              <abbr title="Email pattern not valid"></abbr>
+            } -->
           </div>
 
-          <div class="mt-2 mb-2">
+          <div class="mt-2 mb-2 flex justify-center">
             <input
               class="placeholder-style border-2 w-48 leading-tight focus:outline-none border-gray-100 text-gray-400 font-normal text-center bg-gray-200 rounded-md h-8"
               type="email"
@@ -29,17 +30,26 @@
               name="email"
               required
             />
-            <abbr title="Email pattern not valid"></abbr>
-            <span class="mt-2 hidden text-sm text-red-500" > Please enter a valid email address </span>
           </div>
 
-          <div class="mt-2 mb-2 flex justify-center">
+          <div class="mt-2 mb-2 flex justify-center ml-6 pt-1">
             <input
               class="placeholder-style border-2 w-48 leading-tight focus:outline-none border-gray-100 text-gray-400 font-normal text-center bg-gray-200 rounded-md h-8"
               placeholder="Password *"
               type="password"
               formControlName="{{ registerFormName.PASSWORD }}"
             />
+            
+            <abbr class="flex items-center opacity-10 h-4" title=""
+              ><img src="../assets/images/info.svg" width="20" height="20" class="ml-1" alt=""
+              /></abbr>
+            <abbr class="flex items-center" title="Pattern"
+            ></abbr>
+            @if (isPasswordValid) {
+                <div class="tooltip" style="opacity: 0.3"></div>
+               <div class="tooltip3 text-center" title="Email pattern not valid"></div>
+                
+            }
           </div>
 
           <div class="mt-2 mb-2 flex justify-center">
@@ -78,7 +88,7 @@
     </div>
     <div class="mt-2 mb-2 flex justify-center">
       <button
-        class="h-8 bg-gray-400 hover:bg-gray-500 border-gray-400 hover:border-gray-500  border-4 text-white rounded w-48 cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
+        class="h-8 bg-gray-400 hover:bg-gray-500 border-gray-400 hover:border-gray-500 border-4 text-white rounded w-48 cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
         type="submit"
         (click)="register()"
         [disabled]="!registerForm.valid"
@@ -87,7 +97,10 @@
       </button>
     </div>
     <div class="flex justify-center">
-      <button class="flex-shrink-0 w-48 bg-transparent h-8 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded hover:text-sm hover:h-8 hover:border-2 hover:border-gray-500" type="button">
+      <button
+        class="flex-shrink-0 w-48 bg-transparent h-8 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded hover:text-sm hover:h-8 hover:border-2 hover:border-gray-500"
+        type="button"
+      >
         <span>Back to home page</span>
       </button>
     </div>
