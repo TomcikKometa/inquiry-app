@@ -1,28 +1,31 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnChanges, OnInit } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { RegisterFormName, RegisterFormService } from '../services/register-form/register.service';
+import { debounceTime, Observable, Subject, Subscription, takeUntil } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'inq-register',
   standalone: true,
-  imports: [MatCardModule, FormsModule, ReactiveFormsModule],
+  imports: [MatCardModule, FormsModule, ReactiveFormsModule,CommonModule ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent implements OnInit {
   protected _registerForm!: FormGroup;
-  isRequired = false;
-  place="ddd"
+
+  protected isPasswordValid: boolean = false;
 
   private readonly registerFormService: RegisterFormService = inject(RegisterFormService);
 
   public ngOnInit(): void {
+    this.registerFormService.isPasswordValid$.subscribe((x: boolean) => (this.isPasswordValid = x));
     this._registerForm = this.registerFormService._registerForm;
-    console.log(this._registerForm);
+    console.log(this.isPasswordValid);
   }
 
-  protected register(){
+  protected register() {
     console.log(this._registerForm);
   }
 
@@ -34,8 +37,4 @@ export class RegisterComponent implements OnInit {
     return RegisterFormName;
   }
 
-  invalid(event:any){
-    console.log(event);
-    
-  }
 }
