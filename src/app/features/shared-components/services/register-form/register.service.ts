@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
+import { debounceTime, Observable, Subject, Subscription, takeUntil } from 'rxjs';
 export enum RegisterFormName {
   USERNAME = 'userName',
   EMAIL = 'email',
@@ -13,16 +14,38 @@ export enum RegisterFormName {
 })
 export class RegisterFormService {
   public _registerForm!: FormGroup;
-
+  public get isPasswordValid$(): Observable<boolean> {
+    return this.isPassowrdValid.asObservable();
+  }
   private static readonly EMAIL_PATTERN: RegExp = new RegExp('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$');
-  protected maxPasswordLength: number = 20;
-  protected minPasswordLength: number = 8;
+  private maxPasswordLength: number = 20;
+  private minPasswordLength: number = 8;
   private maxLoginLength: number = 25;
   private minLoginLength: number = 4;
   private nameLength: number = 30;
+  private readonly _destroy: Subject<boolean> = new Subject<boolean>();
+  private isPassowrdValid: Subject<boolean> = new Subject<boolean>();
 
   constructor(private readonly formBuilder: NonNullableFormBuilder) {
     this._registerForm = this.createForm();
+    this.setWarnings();
+  }
+
+  setWarnings(): void {
+    this._registerForm
+      .get(RegisterFormName.PASSWORD)
+      ?.valueChanges.pipe(takeUntil(this._destroy), debounceTime(1500))
+      .subscribe(() => {
+        if (this._registerForm.controls[RegisterFormName.PASSWORD]?.invalid || this._registerForm.controls['password'].updateOn) {
+          this.isPassowrdValid.next(true);
+        } else this.isPassowrdValid.next(false);
+
+        setTimeout(() => {
+          this.isPassowrdValid.next(false)
+        },4500)
+      });
+
+      
   }
 
   private createForm(): FormGroup {
