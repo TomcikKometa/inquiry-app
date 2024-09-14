@@ -40,9 +40,9 @@ export class RegisterFormService {
           this.isPassowrdValid.next(true);
         } else this.isPassowrdValid.next(false);
 
-        // setTimeout(() => {
-        //   this.isPassowrdValid.next(false)
-        // },4500)
+        setTimeout(() => {
+          this.isPassowrdValid.next(false)
+        },4500)
       });
 
       
@@ -68,7 +68,6 @@ export class RegisterFormService {
       const regexCapitalLetters = /[A-Z].{0,20}$/.test(passwordControl.value);
       const regexNumbers = /[0-9].{0,20}$/.test(passwordControl.value);
       const noBlankSpace = /^$|[\s]/.test(passwordControl.value);
-      const passwordConfirmed = this._registerForm?.controls[RegisterFormName.PASSWORD_CONFIRMED] as FormControl;
 
       if (passwordControl.value.length <= this.minPasswordLength || passwordControl.value.length > this.maxPasswordLength) {
         return { error: 'Error password length' };
@@ -87,13 +86,6 @@ export class RegisterFormService {
       }
       if (noBlankSpace) {
         return { error: 'Error password length' };
-      }
-
-      if (!(passwordControl.value == passwordConfirmed?.value)) {
-        console.log('jestemeeeeee');
-        return { error: 'Error login lentgh' };
-        
-        
       }
       return null;
     };
@@ -135,17 +127,11 @@ export class RegisterFormService {
     return (control: AbstractControl) => {
       const passwordConfirmed: FormControl<string> = control as FormControl;
       const password = this._registerForm?.controls['password'] as FormControl;
-console.log(!(password?.value == passwordConfirmed.value));
-console.log(this._registerForm?.controls[RegisterFormName.PASSWORD_CONFIRMED].value);
-
-console.log(this._registerForm);
-
 
       if (!passwordConfirmed.value) {
         return { error: 'Error login lentgh' };
       }
       if (!(password?.value == passwordConfirmed.value)) {
-        console.log('jestem');
         return { error: 'Error login lentgh' };
         
         
