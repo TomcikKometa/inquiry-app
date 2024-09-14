@@ -33,8 +33,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   protected signIn(): void {
-    if (this._loginForm.valid) {
-    } else console.log('not valid');
   }
 
   protected get loginForm(): FormGroup {
