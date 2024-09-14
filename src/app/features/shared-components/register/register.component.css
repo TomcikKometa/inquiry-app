@@ -3,7 +3,7 @@
 
 .placeholder-style::placeholder {
   text-align: center;
-  background:rgb(248, 247, 247);
+  background:#EFEFF1;
   height: 100%;
   padding-top: 10px;
   margin-top: 10px;
@@ -21,16 +21,16 @@
 }
 
 abbr[title]:hover::before {
-  background: rgb(2, 2, 2); /* Fallback color */
-  background: rgba(255, 255, 255, 0.4); /* Black background with 0.5 opacity */
+  background: rgb(2, 2, 2);
+  background: rgba(241, 240, 240, 0.521); /* Black background with 0.5 opacity */
   border-radius: 6px;
   bottom: -6x;
-  content: "Length: 8-20 | 1 - [!@#$ ...] | 1 - [0-9] | 1 - [a-z] | 1 - [A-Z]";
+  content: "Length: 8-20 | min: 1 - [!@#$ ...] and 1 - [0-9] and 1 - [a-z] and 1 - [A-Z]";
   display: block;
   left: 130%;
   padding: 5px;
   position: absolute;    
-  width: 480px;
+  width: 490px;
   z-index: 1;
 }
 
@@ -57,20 +57,25 @@ abbr {
 
 .tooltip:after {
   background: #ffabab;
-  display: inline-block;
+  background: rgb(223, 11, 11);
+  background: rgba(243, 96, 96, 0.678); /* Black background with 0.5 opacity */
   border-radius: 6px;
-  left: 31%;
-  position: fixed;
+  display: block;
+  left: -195px;
+  padding: 5px;
+  padding-right: 25px;
+  position: absolute;    
   width: 280px;
-  height: 35px;
-  animation: 2s slidein;
+  z-index: 1;
   content: attr(title);
+  height: 34px;
+  animation: 2s slidein;
 }
 
 .tooltip3:after {
   display: flex;
-  left: 34%;
-  position:fixed;    
+  left: -135px;
+  position:absolute;    
   text-align: center;
   align-items: center;
   align-content: center;
@@ -83,14 +88,18 @@ abbr {
 
 @keyframes slidein {
   0% {
-      top: -100px;
+      top: -220px;opacity: 0.1;
   }
   20% {
-      top: -50px;
+      top: 177px;opacity: 0.4;
+  }
+  30%{
+    top:180px;opacity: 0.7;
   }
 
   100% {
-      top:389px;
+      top:207px;
+      opacity: 1;
   }
 }
 
