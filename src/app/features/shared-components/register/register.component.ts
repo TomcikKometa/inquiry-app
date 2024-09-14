@@ -22,11 +22,9 @@ export class RegisterComponent implements OnInit {
   public ngOnInit(): void {
     this.registerFormService.isPasswordValid$.subscribe((x: boolean) => (this.isPasswordValid = x));
     this._registerForm = this.registerFormService._registerForm;
-    console.log(this.isPasswordValid);
   }
 
   protected register() {
-    console.log(this._registerForm);
   }
 
   protected get registerForm(): FormGroup {

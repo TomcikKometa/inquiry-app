@@ -3,7 +3,7 @@
 
 .placeholder-style::placeholder {
   text-align: center;
-  background:#EFEFF1;
+  background:#D2D6D9;
   height: 100%;
   padding-top: 10px;
   margin-top: 10px;
@@ -18,20 +18,6 @@
   width: 380px;
   height: 53%;
   margin-bottom: 48%;
-}
-
-abbr[title]:hover::before {
-  background: rgb(2, 2, 2);
-  background: rgba(241, 240, 240, 0.521); /* Black background with 0.5 opacity */
-  border-radius: 6px;
-  bottom: -6x;
-  content: "Length: 8-20 | min: 1 - [!@#$ ...] and 1 - [0-9] and 1 - [a-z] and 1 - [A-Z]";
-  display: block;
-  left: 130%;
-  padding: 5px;
-  position: absolute;    
-  width: 490px;
-  z-index: 1;
 }
 
 mat-card {
@@ -72,18 +58,26 @@ abbr {
   animation: 2s slidein;
 }
 
-.tooltip3:after {
-  display: flex;
-  left: -135px;
-  position:absolute;    
-  text-align: center;
-  align-items: center;
-  align-content: center;
+.tooltip_confirmed:hover::after, .tooltip_password:hover::after {
+  background: rgb(2, 2, 2);
+  background: rgba(241, 240, 240, 0.521); /* Black background with 0.5 opacity */
+  border-radius: 6px;
+  bottom: -6x;
+  display: block;
+  padding: 5px;
+  position: absolute;    
   z-index: 1;
-  height: 35px;
-  animation: 2s slidein;
-  content: attr(title);
-  width: 280px;
+  left:85%;
+}
+
+.tooltip_password:hover::after {
+  content: "Length: 8-20 | min: 1 - [!@#$ ...] and 1 - [0-9] and 1 - [a-z] and 1 - [A-Z]";
+  width: 490px;
+}
+
+.tooltip_confirmed:hover::after {
+  content: "Match value from password above";
+  width: 260px;
 }
 
 @keyframes slidein {
@@ -91,10 +85,18 @@ abbr {
       top: -220px;opacity: 0.1;
   }
   20% {
-      top: 177px;opacity: 0.4;
+      top: 177px;opacity: 0.3;
   }
   30%{
-    top:180px;opacity: 0.7;
+    top:180px ;opacity: 0.5;
+  }
+
+  70%{
+    opacity: 0.6;
+  }
+
+  90%{
+   opacity: 0.8;
   }
 
   100% {
