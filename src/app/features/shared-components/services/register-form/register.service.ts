@@ -1,6 +1,14 @@
 import { Injectable, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  NonNullableFormBuilder,
+  ValidatorFn,
+  Validators
+} from '@angular/forms';
 import { debounceTime, Observable, Subject, Subscription, takeUntil } from 'rxjs';
+import { matchPassword } from './password-validator';
 export enum RegisterFormName {
   USERNAME = 'userName',
   EMAIL = 'email',
@@ -34,29 +42,34 @@ export class RegisterFormService {
   setWarnings(): void {
     this._registerForm
       .get(RegisterFormName.PASSWORD)
-      ?.valueChanges.pipe(takeUntil(this._destroy), debounceTime(1500))
+      ?.valueChanges.pipe(takeUntil(this._destroy), debounceTime(4000))
       .subscribe(() => {
         if (this._registerForm.controls[RegisterFormName.PASSWORD]?.invalid) {
           this.isPassowrdValid.next(true);
         } else this.isPassowrdValid.next(false);
 
         setTimeout(() => {
-          this.isPassowrdValid.next(false)
-        },4500)
+          this.isPassowrdValid.next(false);
+        }, 4500);
       });
-
-      
   }
 
   private createForm(): FormGroup {
-    return this.formBuilder.group({
-      [RegisterFormName.USERNAME]: this.formBuilder.control<string>('', { validators: this.validateLogin() }),
-      [RegisterFormName.EMAIL]: this.formBuilder.control<string>('', { validators: Validators.pattern(RegisterFormService.EMAIL_PATTERN) }),
-      [RegisterFormName.PASSWORD]: this.formBuilder.control<string>('', { validators: this.validatePassword() }),
-      [RegisterFormName.PASSWORD_CONFIRMED]: this.formBuilder.control<string>('', { validators: this.validConfirmedPassword() }),
-      [RegisterFormName.FIRST_NAME]: this.formBuilder.control<string>('', { validators: this.validateFirstLastName() }),
-      [RegisterFormName.LAST_NAME]: this.formBuilder.control<string>('', { validators: this.validateFirstLastName() })
-    });
+    return this.formBuilder.group(
+      {
+        [RegisterFormName.USERNAME]: this.formBuilder.control<string>('', { validators: this.validateLogin() }),
+        [RegisterFormName.EMAIL]: this.formBuilder.control<string>('', {
+          validators: Validators.pattern(RegisterFormService.EMAIL_PATTERN)
+        }),
+        [RegisterFormName.PASSWORD]: this.formBuilder.control<string>('', { validators: this.validatePassword() }),
+        [RegisterFormName.PASSWORD_CONFIRMED]: this.formBuilder.control<string>(''),
+        [RegisterFormName.FIRST_NAME]: this.formBuilder.control<string>('', {
+          validators: this.validateFirstLastName()
+        }),
+        [RegisterFormName.LAST_NAME]: this.formBuilder.control<string>('', { validators: this.validateFirstLastName() })
+      },
+      { validators: matchPassword }
+    );
   }
 
   private validatePassword(): ValidatorFn {
@@ -69,7 +82,10 @@ export class RegisterFormService {
       const regexNumbers = /[0-9].{0,20}$/.test(passwordControl.value);
       const noBlankSpace = /^$|[\s]/.test(passwordControl.value);
 
-      if (passwordControl.value.length <= this.minPasswordLength || passwordControl.value.length > this.maxPasswordLength) {
+      if (
+        passwordControl.value.length <= this.minPasswordLength ||
+        passwordControl.value.length > this.maxPasswordLength
+      ) {
         return { error: 'Error password length' };
       }
       if (!regexLowerLetters) {
@@ -118,23 +134,6 @@ export class RegisterFormService {
 
       if (name.value.length > this.nameLength) {
         return { error: 'Error login lentgh' };
-      }
-      return null;
-    };
-  }
-
-  private validConfirmedPassword() {
-    return (control: AbstractControl) => {
-      const passwordConfirmed: FormControl<string> = control as FormControl;
-      const password = this._registerForm?.controls['password'] as FormControl;
-
-      if (!passwordConfirmed.value) {
-        return { error: 'Error login lentgh' };
-      }
-      if (!(password?.value == passwordConfirmed.value)) {
-        return { error: 'Error login lentgh' };
-        
-        
       }
       return null;
     };
