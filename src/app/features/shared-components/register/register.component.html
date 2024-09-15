@@ -1,6 +1,6 @@
-<mat-card class="container">
-  <div class="mt-5 mb-5">
-    <div class="flex justify-center">
+<div class="flex justify-center">
+<mat-card class="mt-28 flex">
+    <div class="flex justify-center pt-5">
       <img src="../assets/images/register.svg" width="50" height="40" class="" alt="" />
     </div>
     <div><span class="flex justify-center text-2xl text-gray-400 font-extralight">Register</span></div>
@@ -8,7 +8,7 @@
     <div class="flex flex-row justify-center">
       <form [formGroup]="registerForm" class="w-full max-w-sm flex flex-row justify-center novalidate" id="form">
         <div class="justify-center">
-          <div class="mt-3 mb-3 flex justify-center">
+          <div class="mt-2 mb-2 flex justify-center">
             <input
               class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
               type="text"
@@ -18,7 +18,7 @@
             />
           </div>
 
-          <div class="mt-3 mb-3 flex justify-center items-center">
+          <div class="mt-2 mb-2 flex justify-center items-center">
             <input
               class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
               type="email"
@@ -30,7 +30,7 @@
             />
           </div>
 
-          <div class="mt-3 mb-3 flex flex-row justify-center ml-7 items-center">
+          <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
             <input
               class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
               placeholder="Password *"
@@ -47,7 +47,7 @@
             </div>
           </div>
 
-          <div class="mt-3 mb-3 flex flex-row justify-center ml-7 items-center">
+          <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
             <input
               class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
               type="password"
@@ -60,7 +60,7 @@
             </div>
           </div>
 
-          <div class="mt-3 mb-3 flex justify-center">
+          <div class="mt-2 mb-2 flex justify-center">
             <input
               class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
               type="text"
@@ -70,7 +70,7 @@
             />
           </div>
 
-          <div class="mt-3 mb-3 flex justify-center">
+          <div class="mt-2 mb-2 flex justify-center">
             <input
               class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
               type="text"
@@ -82,9 +82,9 @@
         </div>
       </form>
     </div>
-    <div class="mt-2 mb-2 flex justify-center">
+    <div class="mb-2 flex justify-center">
       <button
-        class="h-8 bg-gray-500 hover:bg-gray-600 rounded-md hover:border-gray-400 border-gray-400 border-4 w-48 border-t border-b border-r border-l leading-tight text-white cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
+        class="h-8 bg-gray-700 hover:bg-green-500 rounded-md hover:border-gray-400 border-gray-400 border-4 w-48 border-t border-b border-r border-l leading-tight text-white cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
         type="submit"
         (click)="register()"
         [disabled]="registerForm.invalid || registerForm.errors?.['passwordMatchError']"
@@ -100,5 +100,5 @@
         <span>Back to home page</span>
       </button>
     </div>
-  </div>
 </mat-card>
+</div>
