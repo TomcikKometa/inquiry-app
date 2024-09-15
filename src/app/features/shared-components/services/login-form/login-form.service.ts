@@ -44,15 +44,16 @@ export class LoginFormService {
     return (control: AbstractControl) => {
       const passwordControl: FormControl = control as FormControl;
 
-      const regexSpecialSigns = /^[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/]$|[\s]/.test(passwordControl.value);
-      const regexRegularLetters = /^[a-z]$|[\s]/.test(passwordControl.value);
-      const regexCapitalLetters = /^[A-Z]|[\s]$/.test(passwordControl.value);
-      const regexNumbers = /^[0-9]$|[\s]/.test(passwordControl.value);
+      const regexSpecialSigns = /[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/].{0,20}$/.test(passwordControl.value);
+      const regexLowLetters = /[a-z].{0,20}$/.test(passwordControl.value);
+      const regexCapitalLetters = /[A-Z].{0,20}$/.test(passwordControl.value);
+      const regexNumbers = /[0-9].{0,20}$/.test(passwordControl.value);
+      const noBlankSpace = /^$|[\s]/.test(passwordControl.value);
 
       if (passwordControl.value.length < 8 || passwordControl.value.length > 15) {
         return { error: 'Error password length' };
       }
-      if (!regexRegularLetters) {
+      if (!regexLowLetters) {
         return { error: 'Error password length' };
       }
       if (!regexCapitalLetters) {
@@ -62,6 +63,9 @@ export class LoginFormService {
         return { error: 'Error password length' };
       }
       if (!regexNumbers) {
+        return { error: 'Error password length' };
+      }
+      if (noBlankSpace) {
         return { error: 'Error password length' };
       }
       return null;
