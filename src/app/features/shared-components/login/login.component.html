@@ -1,5 +1,5 @@
-<div class="container">
-  <mat-card class="">
+<div class="flex justify-center">
+  <mat-card class="mt-28">
     <div class="flex justify-center pt-10">
       <img src="../assets/images/sign-in2.svg" width="150" height="60" class="" alt="" />
     </div>
@@ -7,10 +7,10 @@
 
     <div class="flex flex-row justify-center">
       <form [formGroup]="loginForm" class="w-full max-w-sm flex flex-row justify-center">
-        <div class="justify-center-center py-2 justify-center">
+        <div class="justify-center-center justify-center">
           <div class="mt-2 mb-2">
             <input
-            class="placeholder-style w-48 leading-tight focus:outline-none border-stone-300 text-gray-400 font-normal text-center bg-stone-200 rounded-md h-8"
+              class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
               placeholder="Login"
               aria-label="Full name"
               formControlName="login"
@@ -19,7 +19,7 @@
 
           <div class="bordder-b border-gray-200 mt-2 mb-2">
             <input
-            class="placeholder-style w-48 leading-tight focus:outline-none border-stone-300 text-gray-400 font-normal text-center bg-stone-200 rounded-md h-8"
+              class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
               type="text"
               placeholder="Password"
               aria-label="Full name"
@@ -29,16 +29,25 @@
         </div>
       </form>
     </div>
-      <div class="flex pt-4 justify-center mt-22 col-6">
-        <button
-          (click)="signIn()"
-          class="flex-shrink-0 bg-gray-400 hover:bg-gray-500 border-gray-400 hover:border-gray-500 text-sm border-4 text-white py-1 rounded w-48"
-          type="button"
-        >
-          Sign in
-        </button>
-        
+    <div class="flex justify-center col-6">
+      <button
+        class="h-8 bg-gray-700 hover:bg-green-500 rounded-md hover:border-gray-400 border-gray-400 border-4 w-48 border-t border-b border-r border-l leading-tight text-white cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
+        type="submit"
+        (click)="signIn()"
+        [disabled]="_loginForm.invalid"
+      >
+        Register
+      </button>
+    </div>
+    <div class="justify-center flex flex-row items-center mt-4">
+      <div class="flex items-center">
+        <span class="flex justify-center text-sm text-gray-400 font-extralight">Don't have an account yet?</span>
       </div>
-      <div><span class="flex justify-center text-sm text-gray-400 font-extralight mt-4">Don't have an account yet? <span class="text-fuchsia-700 ml-2">Sign up.</span></span></div>
+      <div class="cursor-pointer w-16 flex items-center justify-center" (click)="navigateToRegister()">
+        <span class="text-gray-400 text-sm font-extralight hover:text-gray-600 hover:font-medium flex items-center"
+          >Sign up.</span
+        >
+      </div>
+    </div>
   </mat-card>
 </div>

@@ -4,6 +4,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { MatButtonModule } from '@angular/material/button';
 import { LoginFormService } from '../services/login-form/login-form.service';
 import { debounceTime,Subject, Subscription, takeUntil } from 'rxjs';
+import { NaviationService } from '../../../@core/navigation/naviation.service';
 
 @Component({
   selector: 'inq-login',
@@ -15,6 +16,7 @@ import { debounceTime,Subject, Subscription, takeUntil } from 'rxjs';
 export class LoginComponent implements OnInit, OnDestroy {
   protected _loginForm!: FormGroup;
 
+  private readonly navigationService: NaviationService = inject(NaviationService);
   private readonly loginService: LoginFormService = inject(LoginFormService);
   private readonly _destroy: Subject<boolean> = new Subject<boolean>();
   private _subscription: Subscription | undefined;
@@ -45,5 +47,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this._subscription?.unsubscribe();
+  }
+
+  protected navigateToRegister():void{
+    this.navigationService.navitatoToRegisterComponent()
   }
 }

@@ -1,25 +1,21 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,300");
 
-.placeholder-style::placeholder {
-  text-align: center;
-  color:black;
-}
-
-.container {
-  margin: 0;
-  padding: 0;
-  width: 380px;
-  height: 520px;
-  padding-top: 30%;
+.x {
+  width: 100%;
 }
 
 mat-card {
-  width: 100%;
-  height: 100%;
+  width: 20%;
+  height: 400px;
   background: rgb(255, 255, 255);
   border-radius: 15px;
-  background: linear-gradient(312deg, rgba(255, 255, 255, 1) 8%, rgba(238, 238, 241, 1) 17%, rgba(217, 217, 220, 1) 75%);
+  background: linear-gradient(
+    312deg,
+    rgba(255, 255, 255, 1) 8%,
+    rgba(238, 238, 241, 1) 17%,
+    rgba(217, 217, 220, 1) 75%
+  );
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
 }
 .settingPageCard {
@@ -58,4 +54,14 @@ mat-card {
   width: 140px;
   margin-left: 100px;
   margin-top: 35px;
+}
+
+.placeholder-style::placeholder {
+  text-align: center;
+  background: #d2d6d9;
+  height: 100%;
+  padding-top: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: black;
 }
