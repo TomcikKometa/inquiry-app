@@ -3,7 +3,8 @@ import { Routes } from '@angular/router';
 export enum RoutesPaths {
   POLLSTER_PANEL = 'pollster-panel',
   USER_PANEL = 'user_panel',
-  LOGIN = 'login'
+  LOGIN = 'login',
+  REGISTER = 'register'
 }
 
 export const routes: Routes = [
@@ -24,6 +25,9 @@ export const routes: Routes = [
       import('./features/pollster-panel/containers/pollster-panel/pollster-panel-container.component').then(
         c => c.PollsterPanelContainerComponent
       )
+  },
+  {path:RoutesPaths.REGISTER,
+    loadComponent: () => import('./features/shared-components/register/register.component').then(c => c.RegisterComponent)
   },
   {
     path: '**',

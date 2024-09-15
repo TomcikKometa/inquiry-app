@@ -14,10 +14,7 @@ html {
   overflow: hidden;
 }
 
-app-root {
-  height: 100%;
-  width: 100%;
-}
+
 
 :root {
   /* Colors: */
