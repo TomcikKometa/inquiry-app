@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { LoginFormService } from '../services/login-form/login-form.service';
 import { debounceTime,Subject, Subscription, takeUntil } from 'rxjs';
 import { NaviationService } from '../../../@core/navigation/naviation.service';
+import { UserApiService } from '../../../@api/services/user-service/user-api.service';
 
 @Component({
   selector: 'inq-login',
@@ -17,24 +18,28 @@ export class LoginComponent implements OnInit, OnDestroy {
   protected _loginForm!: FormGroup;
 
   private readonly navigationService: NaviationService = inject(NaviationService);
-  private readonly loginService: LoginFormService = inject(LoginFormService);
+  private readonly loginFormService: LoginFormService = inject(LoginFormService);
   private readonly _destroy: Subject<boolean> = new Subject<boolean>();
+  private readonly loginApiService:UserApiService = inject(UserApiService);
   private _subscription: Subscription | undefined;
 
   public ngOnInit(): void {
-    this._loginForm = this.loginService._loginForm;
+    this._loginForm = this.loginFormService._loginForm;
     this._subscription = this._loginForm
       .get('login')
       ?.valueChanges.pipe(takeUntil(this._destroy), debounceTime(200))
       .subscribe((value: string) => {
         if (value) {
           const valueToLowerCase = value.toLowerCase();
-          this._loginForm.controls['login']?.setValue(valueToLowerCase);
+          // this._loginForm.controls['login']?.setValue(valueToLowerCase);
         }
       });
   }
 
   protected signIn(): void {
+    this.loginApiService.login(this._loginForm).subscribe();
+    // console.log(this._loginForm);
+    
   }
 
   protected get loginForm(): FormGroup {
