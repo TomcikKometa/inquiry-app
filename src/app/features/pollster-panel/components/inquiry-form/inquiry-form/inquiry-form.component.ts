@@ -12,7 +12,7 @@ import { SingleSelectComponent } from '../../single-select/single-select.compone
 import { ScaleSelectComponent } from '../../scale-select/scale-select.component';
 import { Inquiry } from '../../../../../@models/inquiry';
 import { QuestionType } from '../../../../../@enums/question-type';
-import { InquiryMapper } from '../../../../../@api/services/mapper/inquiry-mapper';
+import { InquiryMapper } from '../../../../../@api/services/inquiry-service/inquairy-mapper/inquiry-mapper';
 import { InquiryService } from '../../../../../@api/services/inquiry-service/inquiry.service';
 import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs';
