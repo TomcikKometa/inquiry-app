@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
+import { RegisterFormName } from '../register-form/register.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class LoginFormService {
 
   private createForm(): FormGroup {
     return this.formBuilder.group({
-      ['login']: this.formBuilder.control<string>('', { validators: this.validateLogin(),updateOn:'blur' }),
-      ['password']: this.formBuilder.control<string>('',{validators:this.validatePassword()})
+      [RegisterFormName.USERNAME]: this.formBuilder.control<string>('', { validators: this.validateLogin(),updateOn:'blur' }),
+      [RegisterFormName.PASSWORD]: this.formBuilder.control<string>('',{validators:this.validatePassword()})
     });
   }
 
