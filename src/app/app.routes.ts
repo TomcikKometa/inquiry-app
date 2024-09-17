@@ -4,7 +4,8 @@ export enum RoutesPaths {
   POLLSTER_PANEL = 'pollster-panel',
   USER_PANEL = 'user_panel',
   LOGIN = 'login',
-  REGISTER = 'register'
+  REGISTER = 'register',
+  POLLSTER_MAIN_DASHBOARD = 'pollsterMainDashboard'
 }
 
 export const routes: Routes = [

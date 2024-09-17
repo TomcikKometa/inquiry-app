@@ -12,4 +12,9 @@ export class NaviationService {
   public navitatoToRegisterComponent():void{
     this.router.navigate([RoutesPaths.REGISTER])
   }
+
+  public navigateToPollsterMainDashboard():void{
+    this.router.navigate([RoutesPaths.POLLSTER_MAIN_DASHBOARD])
+  
+  }
 }
