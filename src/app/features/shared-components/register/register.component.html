@@ -8,7 +8,7 @@
     <div class="flex flex-row justify-center">
       <form [formGroup]="registerForm" class="w-full max-w-sm flex flex-row justify-center novalidate" id="form">
         <div class="justify-center">
-          <div class="mt-2 mb-2 flex justify-center">
+          <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
             <input
               class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
               type="text"
@@ -16,9 +16,12 @@
               aria-label="Login name"
               formControlName="{{ registerFormName.USERNAME }}"
             />
+            <div class="flex items-center h-4 pl-2 tooltip_login" title="">
+              <img src="../assets/images/info.svg" width="20" height="20" class="" alt="" />
+            </div>
           </div>
 
-          <div class="mt-2 mb-2 flex justify-center items-center">
+          <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
             <input
               class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
               type="email"
@@ -28,6 +31,9 @@
               formControlName="{{ registerFormName.EMAIL }}"
               required
             />
+            <div class="flex items-center h-4 pl-2 tooltip_email" title="">
+              <img src="../assets/images/info.svg" width="20" height="20" class="" alt="" />
+            </div>
           </div>
 
           <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
@@ -98,7 +104,7 @@
         type="button"
         (click)="navigateToLogin()"
       >
-        <span>Back to login form</span>
+        <span>Back to login</span>
       </button>
     </div>
 </mat-card>

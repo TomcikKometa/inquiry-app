@@ -3,7 +3,7 @@
 
 .placeholder-style::placeholder {
   text-align: center;
-  background:#D2D6D9;
+  background: #d2d6d9;
   height: 100%;
   padding-top: 10px;
   margin-top: 10px;
@@ -25,7 +25,12 @@ mat-card {
   height: 460px;
   background: rgb(255, 255, 255);
   border-radius: 15px;
-  background: linear-gradient(312deg, rgba(255, 255, 255, 1) 8%, rgba(238, 238, 241, 1) 17%, rgba(217, 217, 220, 1) 75%);
+  background: linear-gradient(
+    312deg,
+    rgba(255, 255, 255, 1) 8%,
+    rgba(238, 238, 241, 1) 17%,
+    rgba(217, 217, 220, 1) 75%
+  );
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
 }
 
@@ -38,7 +43,7 @@ mat-card {
 
 abbr {
   font-style: normal;
-  position: relative
+  position: relative;
 }
 
 .tooltip:after {
@@ -50,7 +55,7 @@ abbr {
   left: -195px;
   padding: 5px;
   padding-right: 25px;
-  position: absolute;    
+  position: absolute;
   width: 280px;
   z-index: 1;
   content: attr(title);
@@ -58,16 +63,19 @@ abbr {
   animation: 2s slidein;
 }
 
-.tooltip_confirmed:hover::after, .tooltip_password:hover::after {
+.tooltip_confirmed:hover::after,
+.tooltip_password:hover::after,
+.tooltip_email:hover::after,
+.tooltip_login:hover::after {
   background: rgb(2, 2, 2);
   background: rgba(241, 240, 240, 0.521); /* Black background with 0.5 opacity */
   border-radius: 6px;
   bottom: -6x;
   display: block;
   padding: 5px;
-  position: absolute;    
+  position: absolute;
   z-index: 1;
-  left:85%;
+  left: 86%;
 }
 
 .tooltip_password:hover::after {
@@ -80,29 +88,40 @@ abbr {
   width: 260px;
 }
 
+.tooltip_email:hover::after {
+  content: "example@example.example";
+  width: 210px;
+}
+
+.tooltip_login:hover::after {
+  content: "Length:4 - 20 | min: 1 - [0-9] and 1 - [a-z] and 1 - [A-Z]";
+  width: 380px;
+}
+
 @keyframes slidein {
   0% {
-      top: -220px;opacity: 0.1;
+    top: -220px;
+    opacity: 0.1;
   }
   20% {
-      top: 177px;opacity: 0.3;
+    top: 177px;
+    opacity: 0.3;
   }
-  30%{
-    top:180px ;opacity: 0.5;
+  30% {
+    top: 180px;
+    opacity: 0.5;
   }
 
-  70%{
+  70% {
     opacity: 0.6;
   }
 
-  90%{
-   opacity: 0.8;
+  90% {
+    opacity: 0.8;
   }
 
   100% {
-      top:207px;
-      opacity: 1;
+    top: 207px;
+    opacity: 1;
   }
 }
-
-
