@@ -8,16 +8,19 @@
     <div class="flex flex-row justify-center">
       <form [formGroup]="loginForm" class="w-full max-w-sm flex flex-row justify-center">
         <div class="justify-center-center justify-center">
-          <div class="mt-2 mb-2">
+          <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
             <input
               class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
               placeholder="Login"
               aria-label="Full name"
               formControlName="userName"
             />
+            <div class="flex items-center h-4 pl-2 tooltip_login" title="">
+              <img src="../assets/images/info.svg" width="20" height="20" class="" alt="" />
+            </div>
           </div>
 
-          <div class="bordder-b border-gray-200 mt-2 mb-2">
+          <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
             <input
               class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
               type="text"
@@ -25,18 +28,25 @@
               aria-label="Full name"
               formControlName="password"
             />
+            <div class="flex items-center h-4 pl-2 tooltip_password" title="">
+              <img src="../assets/images/info.svg" width="20" height="20" class="" alt="" />
+            </div>
           </div>
         </div>
       </form>
     </div>
     <div class="flex justify-center col-6">
+      @if (_showLoginError) {
+        <div class="flex flex-row text-center items-center">
+          <div class="tooltip flex items-center" title="Sign in has failed"></div>
+        </div>
+      }
       <button
         class="h-8 bg-gray-700 hover:bg-green-500 rounded-md hover:border-gray-400 border-gray-400 border-4 w-48 border-t border-b border-r border-l leading-tight text-white cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
         type="submit"
         (click)="signIn()"
-        
       >
-        Register
+        Sign in
       </button>
     </div>
     <div class="justify-center flex flex-row items-center mt-4">
