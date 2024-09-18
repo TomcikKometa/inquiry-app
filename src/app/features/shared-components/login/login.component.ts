@@ -4,11 +4,11 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { MatButtonModule } from '@angular/material/button';
 import { LoginFormService } from '../services/login-form/login-form.service';
 import { debounceTime, Subject, Subscription, takeUntil } from 'rxjs';
-import { NaviationService } from '../../../@core/navigation/naviation.service';
 import { UserApiService } from '../../../@api/services/user-service/user-api.service';
 import { UserLoginResponse } from '../../../@api/services/user-service/models/user-login-response';
 import { StoreService } from '../../../@core/services/store/store.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NavigationService } from '../../../@core/services/navigation/navigation.service';
 
 @Component({
   selector: 'inq-login',
@@ -21,10 +21,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   protected _loginForm!: FormGroup;
   protected _showLoginError:boolean = false;
 
-  private readonly navigationService: NaviationService = inject(NaviationService);
+  private readonly navigationService:NavigationService  = inject(NavigationService);
   private readonly loginFormService: LoginFormService = inject(LoginFormService);
   private readonly _destroy: Subject<boolean> = new Subject<boolean>();
-  private readonly loginApiService: UserApiService = inject(UserApiService);
+  private readonly userApiService: UserApiService = inject(UserApiService);
   private _subscription: Subscription | undefined;
   private readonly storeService: StoreService = inject(StoreService);
 
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   protected signIn(): void {
-    this.loginApiService.login(this._loginForm).subscribe({
+    this.userApiService.login(this._loginForm).subscribe({
       next: (response: UserLoginResponse) => {
         this.navigationService.navigateToPollsterMainDashboard();
         this.storeService.saveUserToken(response.token);

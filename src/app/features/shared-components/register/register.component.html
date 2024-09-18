@@ -1,5 +1,5 @@
 <div class="flex justify-center">
-<mat-card class="mt-28 flex">
+  <mat-card class="mt-28 flex">
     <div class="flex justify-center pt-5">
       <img src="../assets/images/register.svg" width="50" height="40" class="" alt="" />
     </div>
@@ -89,6 +89,11 @@
       </form>
     </div>
     <div class="mb-2 flex justify-center">
+      @if (_showRegisterError) {
+        <div class="flex flex-row text-center items-center">
+          <div class="tooltip flex items-center" title="Register has failed"></div>
+        </div>
+      }
       <button
         class="h-8 bg-gray-700 hover:bg-green-500 rounded-md hover:border-gray-400 border-gray-400 border-4 w-48 border-t border-b border-r border-l leading-tight text-white cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
         type="submit"
@@ -107,5 +112,5 @@
         <span>Back to login</span>
       </button>
     </div>
-</mat-card>
+  </mat-card>
 </div>
