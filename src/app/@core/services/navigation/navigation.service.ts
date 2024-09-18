@@ -19,4 +19,13 @@ export class NavigationService {
   public navigateToLogin(): void {
     this.router.navigate([RoutesPaths.LOGIN]);
   }
+
+  public navitatoToRegisterComponent():void{
+    this.router.navigate([RoutesPaths.REGISTER])
+  }
+
+  public navigateToPollsterMainDashboard():void{
+    this.router.navigate([RoutesPaths.POLLSTER_MAIN_DASHBOARD])
+  
+  }
 }
