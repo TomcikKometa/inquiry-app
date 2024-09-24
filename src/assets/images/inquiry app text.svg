@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="300mm"
-   height="27.628mm"
-   viewBox="0 0 299.99999 27.628001"
+   width="160mm"
+   height="40mm"
+   viewBox="0 0 159.99999 40.000001"
    version="1.1"
    id="svg1"
    inkscape:export-filename="..\..\..\..\..\zadanieRekrutacyjneAtipera\recruitment\public\images\table.svg"
@@ -26,9 +26,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="0.82948102"
-     inkscape:cx="553.35805"
-     inkscape:cy="286.32361"
+     inkscape:zoom="0.41474051"
+     inkscape:cx="177.21924"
+     inkscape:cy="-92.829128"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -44,17 +44,16 @@
      transform="translate(-36.772965,-77.053653)">
     <text
        xml:space="preserve"
-       style="font-size:16.9333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI, Normal';white-space:pre;inline-size:237.643;fill:#666666;stroke:#cccccc;stroke-width:0.264999"
+       style="font-size:16.9333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI, Normal';white-space:pre;inline-size:237.643;fill:#b3b3b3;stroke:#b3b3b3;stroke-width:0.187902"
        x="35.715202"
        y="89.563667"
        id="text3"
-       transform="matrix(1.1909112,-0.00524437,-0.0043469,1.1925707,25.714884,-9.422631)"
+       transform="matrix(1.703948,-0.00729007,-0.0062195,1.6577606,-20.130429,-41.422033)"
        inkscape:export-filename="inquiry app text.svg"
        inkscape:export-xdpi="95.163605"
        inkscape:export-ydpi="95.163605"><tspan
          x="35.715202"
          y="89.563667"
-         id="tspan1">Table of periodic elements          
-</tspan></text>
+         id="tspan1">inquary app</tspan></text>
   </g>
 </svg>
