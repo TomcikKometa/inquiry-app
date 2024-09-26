@@ -1,13 +1,13 @@
 import { Component, Input, inject } from '@angular/core';
 import { FormGroup, AbstractControl, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
-import { QuestionType } from '../../../../@enums/question-type';
-import { ScaleSelectAnswerFormName, InquiryAnswersFormName } from '../@enums/inquiry-form-to-fill-enums';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { CommonModule } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { QuestionType } from '../../../../enums/question-type';
+import { InquiryAnswersFormName, ScaleSelectAnswerFormName } from '../@enums/inquiry-form-to-fill-enums';
 
 @Component({
   selector: 'inq-scale-answer',

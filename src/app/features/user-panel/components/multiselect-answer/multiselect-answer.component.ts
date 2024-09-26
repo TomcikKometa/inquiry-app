@@ -7,9 +7,8 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { QuestionType } from '../../../../@enums/question-type';
 import { TypeQuestion } from '../../../pollster-panel/components/inquiry-form/@enum/form-enum';
-import { MultiSelectFormCheckbox } from '../@models/inquiry-form-to-fill-model'
+import { QuestionType } from '../../../../enums/question-type';
 @Component({
   selector: 'inq-multiselect-answer',
   standalone: true,

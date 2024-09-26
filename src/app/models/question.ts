@@ -1,4 +1,5 @@
-import { QuestionType } from '../@enums/question-type';
+import { QuestionType } from "../enums/question-type";
+
 
 export interface Question {
   label: string;

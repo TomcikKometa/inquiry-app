@@ -1,14 +1,14 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
-import { DIALOG_OPTIONS_FORM_TO_FILL } from '../../../../@config/form-config';
-import { NavigationService } from '../../../../@core/services/navigation/navigation.service';
-import { ResponseUser } from '../../../../@core/services/token-enums';
 import { InquiryTableListUserComponent } from '../../components/inquiry-table-list-user/inquiry-table-list-user.component';
-import { InquiryFormToFillComponent } from '../../components/inquiry-form-to-fill/inquiry-form-to-fill.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { DatePipe } from '@angular/common';
+import { ResponseUser } from '../../../../core/services/token-enums';
+import { NavigationService } from '../../../../core/services/navigation/navigation.service';
+import { DIALOG_OPTIONS_FORM_TO_FILL } from '../../../../config/form-config';
+import { InquiryFormToFillComponent } from '../../components/inquiry-form-to-fill/inquiry-form-to-fill.component';
 
 export interface TimeClock {
   hours: string;

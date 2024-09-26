@@ -3,11 +3,11 @@ import { MatCardModule } from '@angular/material/card';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginFormService } from '../services/login-form/login-form.service';
 import { debounceTime, Subject, Subscription, takeUntil } from 'rxjs';
-import { UserApiService } from '../../../@api/services/user-service/user-api.service';
-import { UserLoginResponse } from '../../../@api/services/user-service/models/user-login-response';
-import { StoreService } from '../../../@core/services/store/store.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { NavigationService } from '../../../@core/services/navigation/navigation.service';
+import { UserLoginResponse } from '../../../api/services/user-service/models/user-login-response';
+import { UserApiService } from '../../../api/services/user-service/user-api.service';
+import { NavigationService } from '../../../core/services/navigation/navigation.service';
+import { StoreService } from '../../../core/services/store/store.service';
 
 @Component({
   selector: 'inq-login',

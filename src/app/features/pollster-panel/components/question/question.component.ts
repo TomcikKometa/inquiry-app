@@ -4,7 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { InquiryQuestionsFormName, ShortTextQuestionFormName, TypeQuestion } from '../inquiry-form/@enum/form-enum';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { QuestionType } from '../../../../@enums/question-type';
+import { QuestionType } from '../../../../enums/question-type';
 
 @Component({
   selector: 'inq-question',

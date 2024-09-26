@@ -1,21 +1,20 @@
 import { Component, inject } from '@angular/core';
-import { ResponseUser } from '../../../../@core/services/token-enums';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { InquiryFormComponent } from '../../components/inquiry-form/inquiry-form/inquiry-form.component';
-import { ToastrServiceMesseges } from '../../../../@enums/toastr-messeges';
 import { InquiryTableListPollsterComponent } from '../../components/inquiry-table-list/inquiry-table-list.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { NavigationService } from '../../../../@core/services/navigation/navigation.service';
 import { DatePipe, registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import { MatCardModule } from '@angular/material/card';
-import { InquirySavedInfo } from '../@models/pollster-containers-models';
-import { DIALOG_OPTIONS_FORM } from '../../../../@config/form-config';
-import { Inquiry } from '../../../../@models/inquiry';
 import { first } from 'rxjs';
-import { InquiryApiService } from '../../../../@api/services/inquiry-service/inquiry-api.service';
+import { InquiryApiService } from '../../../../api/services/inquiry-service/inquiry-api.service';
+import { DIALOG_OPTIONS_FORM } from '../../../../config/form-config';
+import { NavigationService } from '../../../../core/services/navigation/navigation.service';
+import { ResponseUser } from '../../../../core/services/token-enums';
+import { ToastrServiceMesseges } from '../../../../enums/toastr-messeges';
+import { Inquiry } from '../../../../models/inquiry';
 registerLocaleData(localePl);
 
 @Component({
