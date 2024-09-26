@@ -1,7 +1,6 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { LoginFormService } from '../services/login-form/login-form.service';
 import { debounceTime, Subject, Subscription, takeUntil } from 'rxjs';
 import { UserApiService } from '../../../@api/services/user-service/user-api.service';
@@ -45,7 +44,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.userApiService.login(this._loginForm).subscribe({
       next: (response: UserLoginResponse) => {
         this.navigationService.navigateToPollsterMainDashboard();
-        this.storeService.saveUserToken(response.token);
       },
       error:(error:HttpErrorResponse) =>{
         if(error.status === 403 || error.status === 401){

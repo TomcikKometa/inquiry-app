@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { DIALOG_OPTIONS_FORM_TO_FILL } from '../../../../@config/form-config';
 import { NavigationService } from '../../../../@core/services/navigation/navigation.service';
-import { AccountsKey, AccountsToken } from '../../../../@core/services/token-enums';
+import { ResponseUser } from '../../../../@core/services/token-enums';
 import { InquiryTableListUserComponent } from '../../components/inquiry-table-list-user/inquiry-table-list-user.component';
 import { InquiryFormToFillComponent } from '../../components/inquiry-form-to-fill/inquiry-form-to-fill.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -36,8 +36,8 @@ export class UserPanelContainerComponent implements OnInit {
   public ngOnInit(): void {
     this.clock();
     setInterval(() => this.clock(), 1000);
-    this.sessionStorageUser = window.sessionStorage.getItem(AccountsKey.TOKEN_KEY)!;
-    window.sessionStorage.getItem(AccountsKey.TOKEN_KEY)! === 'pollsterToken' ? (this.userType = 'Pollster') : (this.userType = 'User');
+    this.sessionStorageUser = window.sessionStorage.getItem(ResponseUser.TOKEN_KEY)!;
+    window.sessionStorage.getItem(ResponseUser.TOKEN_KEY)! === 'pollsterToken' ? (this.userType = 'Pollster') : (this.userType = 'User');
   }
 
   private clock(): void {
@@ -53,7 +53,7 @@ export class UserPanelContainerComponent implements OnInit {
     this.navigationService.navigateToLogin();
   }
 
-  get accountsToken(): typeof AccountsToken {
-    return AccountsToken;
+  get responseUser(): typeof ResponseUser {
+    return ResponseUser;
   }
 }

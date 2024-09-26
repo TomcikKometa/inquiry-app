@@ -3,7 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { map } from 'rxjs';
-import { AccountsKey } from '../../../../@core/services/token-enums';
+import { ResponseUser } from '../../../../@core/services/token-enums';
 import { Inquiry } from '../../../../@models/inquiry';
 import { InquiryService } from '../../../../@api/services/inquiry-service/inquiry.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -32,7 +32,7 @@ export class InquiryTableListUserComponent implements OnInit {
   private readonly destroyReference: DestroyRef = inject(DestroyRef);
 
   public ngOnInit(): void {
-    this.sessionStorageUser = window.sessionStorage.getItem(AccountsKey.TOKEN_KEY)!;
+    this.sessionStorageUser = window.sessionStorage.getItem(ResponseUser.TOKEN_KEY)!;
 
     this.inquiryService.inquiries$
       .pipe(

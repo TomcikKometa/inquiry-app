@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { AccountsKey, AccountsToken } from '../../../../@core/services/token-enums';
+import { ResponseUser } from '../../../../@core/services/token-enums';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { InquiryFormComponent } from '../../components/inquiry-form/inquiry-form/inquiry-form.component';
@@ -40,8 +40,8 @@ export class PollsterPanelContainerComponent {
 
   public ngOnInit(): void {
     this.clock();
-    this.sessionStorageUser = window.sessionStorage.getItem(AccountsKey.TOKEN_KEY)!;
-    window.sessionStorage.getItem(AccountsKey.TOKEN_KEY)! === 'pollsterToken' ? (this.userType = 'Pollster') : (this.userType = 'User');
+    this.sessionStorageUser = window.sessionStorage.getItem(ResponseUser.TOKEN_KEY)!;
+    window.sessionStorage.getItem(ResponseUser.TOKEN_KEY)! === 'pollsterToken' ? (this.userType = 'Pollster') : (this.userType = 'User');
     setInterval(() => this.clock(), 1000);
   }
 
@@ -87,7 +87,7 @@ export class PollsterPanelContainerComponent {
       closeButton: true
     });
   }
-  get accountsToken(): typeof AccountsToken {
-    return AccountsToken;
+  get accountsToken(): typeof ResponseUser {
+    return ResponseUser;
   }
 }
