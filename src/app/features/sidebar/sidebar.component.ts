@@ -25,8 +25,10 @@ export class SidebarComponent {
   ];
 
   protected inquiryDetailList = [
-    { id: 1, text: 'To fill' },
-    { id: 2, text: 'Done' }
+    { id: 1, text: 'Create inquiry' },
+    { id: 2, text: 'Edit inquiry' },
+    { id: 3, text: 'Fill inquiry' },
+    { id: 3, text: 'Approve inquiry' },
   ];
 
   protected tablesList = [
