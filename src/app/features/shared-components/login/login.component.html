@@ -23,7 +23,7 @@
           <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
             <input
               class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
-              type="text"
+              type="password"
               placeholder="Password"
               aria-label="Full name"
               formControlName="password"
@@ -42,6 +42,7 @@
         </div>
       }
       <button
+        [disabled]="loginForm.invalid"
         class="h-8 bg-gray-700 hover:bg-green-500 rounded-md hover:border-gray-400 border-gray-400 border-4 w-48 border-t border-b border-r border-l leading-tight text-white cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
         type="submit"
         (click)="signIn()"

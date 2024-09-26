@@ -1,13 +1,11 @@
 import { Component, DestroyRef, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { InquiryService } from '../../../../@api/services/inquiry-service/inquiry.service';
 import { map } from 'rxjs';
 import { Inquiry } from '../../../../@models/inquiry';
 import { MatPaginator } from '@angular/material/paginator';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { AccountsKey, AccountsToken } from '../../../../@core/services/token-enums';
-import { MatDialog } from '@angular/material/dialog';
+import { ResponseUser } from '../../../../@core/services/token-enums';
 import { InquiryApiService } from '../../../../@api/services/inquiry-service/inquiry-api.service';
 
 interface InquiryDataSource {
@@ -35,7 +33,7 @@ export class InquiryTableListPollsterComponent implements OnInit {
   private readonly destroyReference: DestroyRef = inject(DestroyRef);
 
   public ngOnInit(): void {
-    this.sessionStorageUser = window.sessionStorage.getItem(AccountsKey.TOKEN_KEY)!;
+    this.sessionStorageUser = window.sessionStorage.getItem(ResponseUser.TOKEN_KEY)!;
 
     this.inquiryService.inquiries$
       .pipe(
@@ -65,7 +63,7 @@ export class InquiryTableListPollsterComponent implements OnInit {
     this.editInquiryEvent.emit(id);
   }
 
-  get accountsToken(): typeof AccountsToken {
-    return AccountsToken;
+  get accountsToken(): typeof ResponseUser {
+    return ResponseUser;
   }
 }
