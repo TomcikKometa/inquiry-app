@@ -15,13 +15,14 @@ import { NavigationService } from '../../../../core/services/navigation/navigati
 import { ResponseUser } from '../../../../core/services/token-enums';
 import { ToastrServiceMesseges } from '../../../../enums/toastr-messeges';
 import { Inquiry } from '../../../../models/inquiry';
+import { InquiriesComponent } from '../../components/inquiries/inquiries.component';
 registerLocaleData(localePl);
 
 @Component({
   selector: 'inq-admin-panel-container',
   standalone: true,
   providers: [DatePipe,InquiryApiService],
-  imports: [InquiryTableListPollsterComponent, MatButtonModule, MatIconModule, MatCardModule],
+  imports: [InquiryTableListPollsterComponent, MatButtonModule, MatIconModule, MatCardModule,InquiriesComponent],
   templateUrl: './pollster-panel-container.component.html',
   styleUrl: './pollster-panel-container.component.css'
 })

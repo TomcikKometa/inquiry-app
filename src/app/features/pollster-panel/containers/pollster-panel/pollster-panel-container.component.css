@@ -3,6 +3,8 @@
 
 .container {
   height: 100%;
+  width: 100%;
+  margin-top:10px;
 }
 
 .setButtons {
@@ -96,10 +98,10 @@
 
 .button-63 {
   align-items: center;
-  background-image: linear-gradient(45deg, #a2bddc, #f4f4fc 190%, #a2bddc);
+  background-image: linear-gradient(45deg, #D2D6D9, #f0eded 190%, #D2D6D9);
   border: 0;
   border-radius: 8px;
-  box-shadow: rgba(217, 222, 240) 0px 0px 5px 5px;
+  box-shadow: rgb(198, 202, 206) 0px 0px 5px 5px;
   box-sizing: border-box;
   color: black;
   display: flex;
@@ -125,7 +127,7 @@
 .button-63:active,
 .button-63:hover {
   outline: 0;
-  box-shadow: #9fa6cf 0px 0px 5px 5px;
+  box-shadow: #e9e1e1 0px 0px 5px 5px;
 }
 
 @media (min-width: 768px) {
