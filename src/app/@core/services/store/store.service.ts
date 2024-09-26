@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AccountsKey, AccountsToken } from '../token-enums';
+import { ResponseUser, AccountsToken } from '../token-enums';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +10,15 @@ export class StoreService {
 
   public saveUserToken(token: string): void {
     sessionStorage.clear();
-    window.sessionStorage.setItem(AccountsKey.TOKEN_KEY, token);
+    window.sessionStorage.setItem(ResponseUser.TOKEN_KEY, token);
   }
 
   public getUserToken(): string | null {
-    return window.localStorage.getItem(AccountsKey.TOKEN_KEY);
+    return window.localStorage.getItem(ResponseUser.TOKEN_KEY);
   }
 
   public deleteUserToken(): void {
-    window.localStorage.removeItem(AccountsKey.TOKEN_KEY);
+    window.localStorage.removeItem(ResponseUser.TOKEN_KEY);
   }
 
   public isLoggedIn$(): Observable<boolean> {

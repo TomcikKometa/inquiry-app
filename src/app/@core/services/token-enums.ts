@@ -1,4 +1,4 @@
-export enum AccountsKey {
+export enum ResponseUser {
   TOKEN_KEY = 'tokenKey'
 }
 
