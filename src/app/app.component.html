@@ -1,7 +1,7 @@
 <header><inq-inquiry-header (openSidebar)="getSidenavEvent($event)"></inq-inquiry-header></header>
 
 <section class="sidebar_container flex">
-  <div class=" basis-1/12  flex flex-row">
+  <div class="flex flex-row">
     <div class="side_container">
       @if (isSidebar) {
         <div [ngClass]="{ sidebar_show: isSidebar }"><inq-sidebar></inq-sidebar></div>
@@ -11,9 +11,5 @@
       }
     </div>
   </div>
-  <!-- <router-outlet></router-outlet> -->
-  <!-- <inq-login></inq-login> -->
-   <div  class="basis-11/12"><router-outlet></router-outlet></div>
-
-   <!-- <inq-login  ></inq-login> -->
+  <div [ngClass]="{ widthContainer: !isSidebar, widthContainer2:isSidebar}"><router-outlet></router-outlet></div>
 </section>
