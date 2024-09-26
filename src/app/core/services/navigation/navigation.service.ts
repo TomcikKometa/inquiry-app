@@ -25,7 +25,7 @@ export class NavigationService {
   }
 
   public navigateToPollsterMainDashboard():void{
-    this.router.navigate([RoutesPaths.POLLSTER_MAIN_DASHBOARD])
+    this.router.navigate([RoutesPaths.POLLSTER_PANEL])
   
   }
 }
