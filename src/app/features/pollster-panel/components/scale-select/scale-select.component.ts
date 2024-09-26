@@ -5,7 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatSliderModule} from '@angular/material/slider';
 import { InquiryQuestionsFormName, ScaleSelectQuestionFormName } from '../inquiry-form/@enum/form-enum';
-import { QuestionType } from '../../../../@enums/question-type';
+import { QuestionType } from '../../../../enums/question-type';
 
 @Component({
   selector: 'inq-scale-select',

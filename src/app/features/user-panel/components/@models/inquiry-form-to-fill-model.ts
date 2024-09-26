@@ -1,5 +1,5 @@
 import { FormArray, FormControl } from '@angular/forms';
-import { QuestionType } from '../../../../@enums/question-type';
+import { QuestionType } from '../../../../enums/question-type';
 import {
   InquiryAnswersFormName,
   MultiSelectAnswerFormName,

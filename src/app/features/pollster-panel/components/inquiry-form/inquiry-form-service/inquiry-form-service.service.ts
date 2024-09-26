@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { QuestionType } from '../../../../../@enums/question-type';
-import { SingleSelectAnswer, MultiSelectQuestion, Question, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../../../@models/question';
+import { QuestionType } from '../../../../../enums/question-type';
+import { SingleSelectAnswer, MultiSelectQuestion, Question, ScaleQuestion, ShortTextQuestion, SingleSelectQuestion } from '../../../../../models/question';
 import { Validators, FormArray, FormGroup, NonNullableFormBuilder, AbstractControl, ValidatorFn } from '@angular/forms';
 import {
   InquiryQuestionsFormName,
@@ -17,7 +17,7 @@ import {
   ShortTextQuestionForm,
   SingleSelectQuestionForm
 } from '../@models/questions-forms';
-import { Inquiry } from '../../../../../@models/inquiry';
+import { Inquiry } from '../../../../../models/inquiry';
 
 @Injectable()
 export class InquiryFormService {
