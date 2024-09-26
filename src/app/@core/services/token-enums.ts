@@ -1,5 +1,6 @@
 export enum ResponseUser {
-  TOKEN_KEY = 'tokenKey'
+  TOKEN_KEY = 'tokenKey',
+  USER_ID = 'userId'
 }
 
 export enum AccountsToken {

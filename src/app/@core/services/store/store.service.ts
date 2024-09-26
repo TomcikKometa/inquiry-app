@@ -28,4 +28,8 @@ export class StoreService {
   public setLoggedIn(value: boolean): void {
     this._isLoggedIn.next(value);
   }
+
+  public saveUserId(id:number):void{
+    return window.sessionStorage.setItem(ResponseUser.USER_ID,id.toString())
+  }
 }
