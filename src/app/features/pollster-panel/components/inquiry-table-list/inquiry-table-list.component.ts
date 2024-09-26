@@ -2,7 +2,7 @@ import { Component, DestroyRef, EventEmitter, OnInit, Output, inject } from '@an
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { map } from 'rxjs';
-import { Inquiry } from '../../../../@models/inquiry';
+import { Inquiry } from '../../../../models/inquiry';
 import { MatPaginator } from '@angular/material/paginator';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ResponseUser } from '../../../../@core/services/token-enums';
