@@ -1,4 +1,5 @@
-import { Question } from "../../../../../@models/question";
+import { Question } from "../../../../../models/question";
+
 
 export interface EditInquiryRequest {
     id:number;

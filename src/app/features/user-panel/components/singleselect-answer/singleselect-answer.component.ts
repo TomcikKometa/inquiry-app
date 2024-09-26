@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, inject, input } from '@angular/core';
 import { AbstractControl, FormArray, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { QuestionType } from '../../../../@enums/question-type';
 import { InquiryAnswersFormName, ScaleSelectAnswerFormName, SingleSelectAnswerFormName } from '../@enums/inquiry-form-to-fill-enums';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -9,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { TypeQuestion } from '../../../pollster-panel/components/inquiry-form/@enum/form-enum';
+import { QuestionType } from '../../../../enums/question-type';
 
 @Component({
   selector: 'inq-singleselect-answer',

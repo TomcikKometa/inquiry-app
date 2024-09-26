@@ -1,4 +1,5 @@
-import { Inquiry } from "../../../../../@models/inquiry";
+import { Inquiry } from "../../../../../models/inquiry";
+
 
 export interface GetOneInquiryResponse {
     inquiry: Inquiry;

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { InquiryApiInterface } from './inquiry-api-interface';
 import { BehaviorSubject, Observable, first, map, switchMap, tap } from 'rxjs';
-import { Inquiry } from '../../../@models/inquiry';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-import { ToastrServiceMesseges } from '../../../@enums/toastr-messeges';
 import { PollsterUrls } from './api-pollster-urls';
 import { CreateInquiryRequest } from './models/pollster-request/create-inquiry-request';
 import { EditInquiryRequest } from './models/pollster-request/edit-inquiry-request';
 import { GetAllInquiryResponse } from './models/pollster-response/get-all-inquiry-response';
 import { GetOneInquiryResponse } from './models/pollster-response/get-one-inquiry-response';
+import { ToastrServiceMesseges } from '../../../enums/toastr-messeges';
+import { Inquiry } from '../../../models/inquiry';
 @Injectable()
 export class InquiryApiService implements InquiryApiInterface {
   private inquiries: BehaviorSubject<Inquiry[]> = new BehaviorSubject<Inquiry[]>([]);

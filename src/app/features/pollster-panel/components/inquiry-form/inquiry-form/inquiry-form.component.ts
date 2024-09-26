@@ -10,16 +10,16 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { QuestionComponent } from '../../question/question.component';
 import { SingleSelectComponent } from '../../single-select/single-select.component';
 import { ScaleSelectComponent } from '../../scale-select/scale-select.component';
-import { Inquiry } from '../../../../../@models/inquiry';
-import { QuestionType } from '../../../../../@enums/question-type';
-import { InquiryMapper } from '../../../../../@api/services/inquiry-service/inquairy-mapper/inquiry-mapper';
-import { InquiryService } from '../../../../../@api/services/inquiry-service/inquiry.service';
 import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs';
 import { MultiSelectComponent } from '../../multi-select/multi-select.component';
-import { ToastrServiceMesseges } from '../../../../../@enums/toastr-messeges';
 import { ButtonAddAnswerComponent } from '../../../../shared-components/button-add-answer/button-add-answer.component';
 import { InquiryFormService } from '../inquiry-form-service/inquiry-form-service.service';
+import { InquiryMapper } from '../../../../../api/services/inquiry-service/inquairy-mapper/inquiry-mapper';
+import { InquiryService } from '../../../../../api/services/inquiry-service/inquiry.service';
+import { QuestionType } from '../../../../../enums/question-type';
+import { ToastrServiceMesseges } from '../../../../../enums/toastr-messeges';
+import { Inquiry } from '../../../../../models/inquiry';
 
 @Component({
   selector: 'inq-inquiry-form',

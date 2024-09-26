@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { Inquiry } from '../../../@models/inquiry';
 import { v4 as uuidv4 } from 'uuid';
-import { SingleSelectAnswer, MultiSelectQuestion, Question, SingleSelectQuestion } from '../../../@models/question';
-import { QuestionType } from '../../../@enums/question-type';
 import { InquiryApiInterface } from './inquiry-api-interface';
+import { QuestionType } from '../../../enums/question-type';
+import { Inquiry } from '../../../models/inquiry';
+import { Question, MultiSelectQuestion, SingleSelectAnswer, SingleSelectQuestion } from '../../../models/question';
 
 @Injectable()
 export class InquiryService implements InquiryApiInterface{

@@ -4,11 +4,10 @@ import { MatCardModule } from '@angular/material/card';
 import { RegisterFormName, RegisterFormService } from '../services/register-form/register.service';
 import { debounceTime, first, Observable, Subject, Subscription, takeUntil } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { NavigationService } from '../../../@core/services/navigation/navigation.service';
-import { UserApiService } from '../../../@api/services/user-service/user-api.service';
-import { UserLoginResponse } from '../../../@api/services/user-service/models/user-login-response';
-import { StoreService } from '../../../@core/services/store/store.service';
 import { HttpErrorResponse, HttpResponse, HttpStatusCode } from '@angular/common/http';
+import { UserApiService } from '../../../api/services/user-service/user-api.service';
+import { NavigationService } from '../../../core/services/navigation/navigation.service';
+import { StoreService } from '../../../core/services/store/store.service';
 
 @Component({
   selector: 'inq-register',

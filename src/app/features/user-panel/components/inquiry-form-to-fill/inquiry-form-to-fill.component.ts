@@ -1,8 +1,6 @@
 import { AfterContentChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { InquiryService } from '../../../../@api/services/inquiry-service/inquiry.service';
 import { first } from 'rxjs';
-import { Inquiry } from '../../../../@models/inquiry';
 import { InquiryFormToFillServiceService } from './ingiry-form-to-fill-service/inquiry-form-to-fill-service.service';
 import { FormArray, FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, getLocaleFirstDayOfWeek } from '@angular/common';
@@ -20,7 +18,9 @@ import { TabGroupComponent } from '../../../shared-components/tab-group/tab-grou
 import { TabComponent } from '../../../shared-components/tab/tab.component';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ToastrService } from 'ngx-toastr';
-import { ToastrServiceMesseges } from '../../../../@enums/toastr-messeges';
+import { Inquiry } from '../../../../models/inquiry';
+import { InquiryService } from '../../../../api/services/inquiry-service/inquiry.service';
+import { ToastrServiceMesseges } from '../../../../enums/toastr-messeges';
 
 @Component({
   selector: 'inq-inquiry-form-to-fill',

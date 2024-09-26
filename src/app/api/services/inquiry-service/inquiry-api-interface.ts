@@ -1,5 +1,5 @@
 import { Observable } from "rxjs";
-import { Inquiry } from "../../../@models/inquiry"
+import { Inquiry } from "../../../models/inquiry";
 
 export interface InquiryApiInterface {
     get inquiries$(): Observable<Inquiry[]>

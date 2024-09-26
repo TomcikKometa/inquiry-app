@@ -6,10 +6,10 @@ import { provideToastr } from 'ngx-toastr';
 import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import localeGb from '@angular/common/locales/en-GB';
-import { InquiryApiService } from './@api/services/inquiry-service/inquiry-api.service';
-import { InquiryService } from './@api/services/inquiry-service/inquiry.service';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { addUrlInterceptor } from './@core/interceptors/add-url.interceptor';
+import { InquiryApiService } from './api/services/inquiry-service/inquiry-api.service';
+import { InquiryService } from './api/services/inquiry-service/inquiry.service';
+import { addUrlInterceptor } from './core/interceptors/add-url.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
