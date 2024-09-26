@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
-import { DIALOG_OPTIONS_FORM_TO_FILL } from '../../../../config/form-config';
+import { DIALOG_OPTIONS_FORM_TO_FILL } from '../../../../@config/form-config';
 import { NavigationService } from '../../../../@core/services/navigation/navigation.service';
 import { ResponseUser } from '../../../../@core/services/token-enums';
 import { InquiryTableListUserComponent } from '../../components/inquiry-table-list-user/inquiry-table-list-user.component';

@@ -1,6 +1,6 @@
 import { Component, Input, inject } from '@angular/core';
 import { FormGroup, AbstractControl, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
-import { QuestionType } from '../../../../enums/question-type';
+import { QuestionType } from '../../../../@enums/question-type';
 import { ScaleSelectAnswerFormName, InquiryAnswersFormName } from '../@enums/inquiry-form-to-fill-enums';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';

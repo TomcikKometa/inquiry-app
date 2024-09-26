@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { map } from 'rxjs';
 import { ResponseUser } from '../../../../@core/services/token-enums';
-import { Inquiry } from '../../../../models/inquiry';
+import { Inquiry } from '../../../../@models/inquiry';
 import { InquiryService } from '../../../../@api/services/inquiry-service/inquiry.service';
 import { MatButtonModule } from '@angular/material/button';
 

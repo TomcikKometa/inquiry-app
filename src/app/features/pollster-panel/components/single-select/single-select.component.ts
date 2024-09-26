@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { InquiryQuestionsFormName, SingleSelectQuestionFormName, TypeQuestion } from '../inquiry-form/@enum/form-enum';
-import { QuestionType } from '../../../../enums/question-type';
+import { QuestionType } from '../../../../@enums/question-type';
 
 @Component({
   selector: 'inq-single-select',

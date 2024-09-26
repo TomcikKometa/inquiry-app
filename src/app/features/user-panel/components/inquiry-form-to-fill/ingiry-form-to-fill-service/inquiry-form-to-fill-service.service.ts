@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, NonNullableFormBuilder, ValidatorFn, Validators } from '@angular/forms';
-import { Inquiry } from '../../../../../models/inquiry';
+import { Inquiry } from '../../../../../@models/inquiry';
 import {
   SingleSelectAnswer,
   MultiSelectQuestion,
@@ -8,8 +8,8 @@ import {
   ScaleQuestion,
   ShortTextQuestion,
   SingleSelectQuestion
-} from '../../../../../models/question';
-import { QuestionType } from '../../../../../enums/question-type';
+} from '../../../../../@models/question';
+import { QuestionType } from '../../../../../@enums/question-type';
 import {
   MultiSelectAnswerFormName,
   SingleSelectAnswerFormName,

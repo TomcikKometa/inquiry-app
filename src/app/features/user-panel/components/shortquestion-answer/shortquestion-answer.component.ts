@@ -3,7 +3,7 @@ import { AbstractControl, FormGroup, FormGroupDirective, ReactiveFormsModule } f
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { QuestionType } from '../../../../enums/question-type';
+import { QuestionType } from '../../../../@enums/question-type';
 import { TypeQuestion } from '../../../pollster-panel/components/inquiry-form/@enum/form-enum';
 import { InquiryAnswersFormName, ShortTextQuestionAnswerFormName } from '../@enums/inquiry-form-to-fill-enums';
 

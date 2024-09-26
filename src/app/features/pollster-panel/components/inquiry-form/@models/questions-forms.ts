@@ -7,7 +7,7 @@ import {
   SingleSelectQuestionFormName,
   TypeQuestion
 } from '../@enum/form-enum';
-import { QuestionType } from '../../../../../enums/question-type';
+import { QuestionType } from '../../../../../@enums/question-type';
 
 export interface QuestionsForm {
   [InquiryQuestionsFormName.INQUIRY_NAME]: FormControl<string>;

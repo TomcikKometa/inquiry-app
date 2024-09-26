@@ -1,4 +1,4 @@
-import { QuestionType } from '../../../../../../enums/question-type';
+import { QuestionType } from '../../../../../../@enums/question-type';
 
 export class InquiryAnswerMapper {
   public static map(answerInquiry: any) {
