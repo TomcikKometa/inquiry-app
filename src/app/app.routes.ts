@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authenticationGuard } from './core/guard/authentication.guard';
 
 export enum RoutesPaths {
   POLLSTER_PANEL = 'pollster-panel',
@@ -24,7 +25,8 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/pollster-panel/containers/pollster-panel/pollster-panel-container.component').then(
         c => c.PollsterPanelContainerComponent
-      )
+      ),
+      // canActivate:[authenticationGuard]
   },
   {path:RoutesPaths.REGISTER,
     loadComponent: () => import('./features/shared-components/register/register.component').then(c => c.RegisterComponent)
