@@ -20,9 +20,7 @@ export class InquiryApiService implements InquiryApiInterface {
   constructor(
     private readonly httpClient: HttpClient,
     private readonly toastService: ToastrService
-  ) {
-    this.getAllInquiry();
-  }
+  ) {}
 
   public createInquiry(inquiry: Inquiry): void {
     const createInquiryRequest: CreateInquiryRequest = {
