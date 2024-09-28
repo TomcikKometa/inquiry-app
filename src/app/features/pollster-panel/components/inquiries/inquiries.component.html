@@ -1,32 +1,22 @@
-<div class="w-1/5 h-1/4 rounded-xl bg-gray-100 border-2 border-gray-300 box">
+<div class="w-1/4 h-1/4 rounded-xl bg-gray-100 border-2 border-gray-300 box">
   <div class="">
     <div class="flex justify-between w-full shadow p-1">
-      <div class="flex flex-row  w-3/6 h-8 pl-1">
+      <div class="flex flex-row w-3/6 h-8 pl-1">
         <div class="w-24 text-xl"><span class="h-6 inline-block align-middle">Inquiries</span></div>
         <div class="w-6">
           <img src="../assets/images/questionnaire-kopia.svg" width="22" height="25" class="pt-1" alt="" />
         </div>
       </div>
-      <div class="text-lg w-1/2 flex justify-between">
-        <span class="w-1/2 pt-5 box2 text-xs align-bottom items-center content-baseline">Action</span
-        ><span class="w-1/2 pt-5 pr-2 box2 text-xs align-bottom items-center content-baseline">Value</span>
+      <div class="text-lg w-1/2 flex justify-between font-medium">
+        <span class="w-1/2 pt-5 box2 text-xs align-bottom items-center content-baseline">View</span
+        ><span class="w-1/2 pt-5 pr-2 box2 text-xs align-bottom items-center content-baseline ">Value</span>
       </div>
     </div>
     <div class="pt-4 pl-3 pr-2">
-      <div class="flex justify-between w-full">
-        <div class="w-1/2 inline align-middle"><span class="h-6 inline-block align-middle">Filled inquiry</span></div>
-        <div class="text-lg w-1/2 flex justify-between">
-          <div class="h-6 w-1/2 flex justify-end pl-2">
-            <img src="../assets/images/action-viewing.svg" width="25" height="25" class="" alt="" />
-          </div>
-
-          <div class="w-5"><span class="text-lg text-gray-600">78</span></div>
-        </div>
-      </div>
-      <div class="flex justify-between w-full">
+      @for (inquiryDetail of inquiryDetails; track $index) {
         <div class="flex justify-between w-full">
           <div class="w-1/2 inline align-middle">
-            <span class="h-6 inline-block align-middle">Approved inquiry</span>
+            <span class="h-6 inline-block align-middle">{{ inquiryDetail.detail }}</span>
           </div>
           <div class="text-lg w-1/2 flex justify-between">
             <div class="h-6 w-1/2 flex justify-end pl-2">
@@ -36,17 +26,7 @@
             <div class="w-5"><span class="text-lg text-gray-600">78</span></div>
           </div>
         </div>
-      </div>
-      <div class="flex justify-between w-full">
-        <div class="w-1/2 inline align-middle"><span class="h-6 inline-block align-middle">On production</span></div>
-        <div class="w-1/2 flex justify-between">
-          <div class="h-6 w-1/2 flex justify-end pl-2">
-            <img src="../assets/images/action-viewing.svg" width="25" height="25" class="" alt="" />
-          </div>
-
-          <div class="w-5"><span class="text-lg text-gray-600">78</span></div>
-        </div>
-      </div>
+      }
     </div>
   </div>
 </div>
