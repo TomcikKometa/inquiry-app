@@ -19,43 +19,6 @@
     <div class="pt-1">
       <div
         class="col-start-1 flex flex-row gap-16 justify-between mr-4 rounded mt-1 h-7 cursor-pointer component_row_hover"
-        [ngClass]="{ component_row: isComponentUser && isComponentUserHoover }"
-        (click)="showComponent('userDetail')"
-      >
-        <div class="flex flex-row items-center gap-2 h-6 pt-1">
-          <img src="../assets/images/userSVG.svg" width="23" height="30" class="" alt="" />
-          <span class="font-normal text-sm w-full">User</span>
-        </div>
-
-        <svg
-          class="h-6 w-4 pt-1 text-black"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
-      </div>
-
-      @if (isComponentUser) {
-        <ul class="text-sm">
-          @for (detail of userDatailList; track $index) {
-            <li
-              class="li_hover mt-1 w-64 rounded"
-              [ngClass]="{ li_details: detail.id == componentUserId && isComponentUserHoover }"
-              (click)="setHoover('user', $index + 1)"
-            >
-              <span>{{ detail.text }}</span>
-            </li>
-          }
-        </ul>
-      }
-
-      <div
-        class="col-start-1 flex flex-row gap-16 justify-between mr-4 rounded mt-1 h-7 cursor-pointer component_row_hover"
         [ngClass]="{ component_row: isInquiryDetail && isComponentInquiryHoover }"
         (click)="showComponent('inquiryDetail')"
       >
@@ -91,6 +54,8 @@
         </ul>
       }
 
+     
+
       <div
         class="col-start-1 flex flex-row gap-16 justify-between mr-4 rounded mt-1 h-7 component_row_hover"
         [ngClass]="{ component_row: isTableDetail && isComponentTableHoover }"
@@ -115,7 +80,7 @@
 
       @if (isTableDetail) {
         <ul class="text-sm">
-          @for (detail of inquiryDetailList; track $index) {
+          @for (detail of tablesList; track $index) {
             <li
               class="li_hover mt-1 w-64 rounded"
               [ngClass]="{ li_details: detail.id == componentTableId && isComponentTableHoover }"
@@ -143,6 +108,42 @@
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </div>
+      <div
+      class="col-start-1 flex flex-row gap-16 justify-between mr-4 rounded mt-1 h-7 cursor-pointer component_row_hover"
+      [ngClass]="{ component_row: isComponentUser && isComponentUserHoover }"
+      (click)="showComponent('userDetail')"
+    >
+      <div class="flex flex-row items-center gap-2 h-6 pt-1">
+        <img src="../assets/images/userSVG.svg" width="23" height="30" class="" alt="" />
+        <span class="font-normal text-sm w-full">User</span>
+      </div>
+
+      <svg
+        class="h-6 w-4 pt-1 text-black"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="6 9 12 15 18 9" />
+      </svg>
+    </div>
+
+    @if (isComponentUser) {
+      <ul class="text-sm">
+        @for (detail of userDatailList; track $index) {
+          <li
+            class="li_hover mt-1 w-64 rounded"
+            [ngClass]="{ li_details: detail.id == componentUserId && isComponentUserHoover }"
+            (click)="setHoover('user', $index + 1)"
+          >
+            <span>{{ detail.text }}</span>
+          </li>
+        }
+      </ul>
+    }
     </div>
   </div>
 </div>

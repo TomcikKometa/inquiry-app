@@ -2,9 +2,30 @@
     border: 1px;
     border-color: #c2c3c4;
     border-style: solid;
+    color: white;
+    background: linear-gradient(
+    90deg,
+    #808080 50%,
+    rgb(177, 177, 177) 10%,
+    #f7f7f7 0%
+  );
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 
 .box1{
-    border-color: #c0bcbc;
+    border-color: #050505;
     border-style: solid;
+}
+
+.box2{
+    border-color: #d1d0d0;
+    border-style: solid;
+    color:black;
+    text-align: end;
+    align-items: first baseline;
+}
+
+.shadow{
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 3px 5px;
+    border-radius: 6px;
 }
