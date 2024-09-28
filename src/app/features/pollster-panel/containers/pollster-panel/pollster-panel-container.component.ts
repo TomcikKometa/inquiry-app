@@ -40,8 +40,6 @@ export class PollsterPanelContainerComponent {
 
   public ngOnInit(): void {
     this.clock();
-    this.sessionStorageUser = window.sessionStorage.getItem(ResponseUser.TOKEN_KEY)!;
-    window.sessionStorage.getItem(ResponseUser.TOKEN_KEY)! === 'pollsterToken' ? (this.userType = 'Pollster') : (this.userType = 'User');
     setInterval(() => this.clock(), 1000);
   }
 
