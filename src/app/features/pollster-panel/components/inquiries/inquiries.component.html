@@ -1,28 +1,27 @@
 <div class="w-1/4 h-1/4 rounded-xl bg-gray-100 border-2 border-gray-300 box">
   <div class="">
-    <div class="flex justify-between w-full shadow p-1">
-      <div class="flex flex-row w-3/6 h-8 pl-1">
-        <div class="w-24 text-xl"><span class="h-6 inline-block align-middle">Inquiries</span></div>
-        <div class="w-6">
-          <img src="../assets/images/questionnaire-kopia.svg" width="22" height="25" class="pt-1" alt="" />
+    <div class="flex justify-between w-full shadow">
+      <div class="inline-block h-10 justify-start ">
+        <div class="flex flex-row w-3/6 pl-2 h-10 gap-4">
+          <img src="../assets/images/5.svg" width="150" height="25" class="pt-2" alt="" />
+          <img src="../assets/images/inquiry-box.svg" width="25" height="25" class="pt-2" alt="" />
         </div>
       </div>
       <div class="text-lg w-1/2 flex justify-between font-medium">
-        <span class="w-1/2 pt-5 box2 text-xs align-bottom items-center content-baseline">View</span
-        ><span class="w-1/2 pt-5 pr-2 box2 text-xs align-bottom items-center content-baseline ">Value</span>
+        <span class="w-2/3 pt-5  box2 text-xs flex justify-center pl-1">View</span
+        ><span class="w-1/2 pt-5 box2 text-xs align-bottom items-center content-baseline pr-2">Value</span>
       </div>
     </div>
-    <div class="pt-4 pl-3 pr-2">
+    <div class="pt-4 pl-2 pr-2">
       @for (inquiryDetail of inquiryDetails; track $index) {
         <div class="flex justify-between w-full">
-          <div class="w-1/2 inline align-middle">
-            <span class="h-6 inline-block align-middle">{{ inquiryDetail.detail }}</span>
+          <div class="w-1/2 mt-2">
+            <span class="h-7 inline-block align-center text-gray-100">{{ inquiryDetail.detail }}</span>
           </div>
-          <div class="text-lg w-1/2 flex justify-between">
-            <div class="h-6 w-1/2 flex justify-end pl-2">
-              <img src="../assets/images/action-viewing.svg" width="25" height="25" class="" alt="" />
+          <div class="text-lg w-1/2 flex justify-between h-6 mb-1">
+            <div class="w-2/3 flex justify-center h-7 pt-1">
+               <button mat-raised-button  class="mat-button bg-gray-400" [style.background]="'#DEE2E6'" [style.width.px]="'45'">view</button>
             </div>
-
             <div class="w-5"><span class="text-lg text-gray-600">78</span></div>
           </div>
         </div>
