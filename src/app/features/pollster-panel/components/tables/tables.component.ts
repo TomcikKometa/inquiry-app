@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './tables.component.css'
 })
 export class TablesComponent {
-
+  inquiryDetails = [
+    {detail:'Filled inquiry',data:[]},
+    {detail:'Approved inquiry',data:[]},
+    {detail:'On production',data:[]},
+  ]
 }
