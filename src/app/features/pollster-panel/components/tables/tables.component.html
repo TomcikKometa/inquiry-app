@@ -1,1 +1,37 @@
-<p>tables works!</p>
+
+
+<div class="w-1/5 h-1/4 rounded-xl bg-gray-100 border-2 border-gray-300 box fixed">
+    <div class="">
+      <div class="flex justify-between w-full shadow">
+        <div class="inline-block h-10 justify-start ">
+          <div class="flex flex-row w-3/6 pl-2 h-10 gap-4">
+            <img src="../assets/images/5.svg" width="150" height="25" class="pt-2" alt="" />
+            <img src="../assets/images/inquiry-box.svg" width="25" height="25" class="pt-2" alt="" />
+          </div>
+        </div>
+        <div class="text-lg w-1/2 flex justify-between font-medium">
+          <span class="w-2/3 pt-5  box2 text-xs flex justify-center pl-1">Action</span
+          ><span class="w-1/2 pt-5 box2 text-xs align-bottom items-center content-baseline pr-2">Value</span>
+        </div>
+      </div>
+      <div class="pt-4 pl-2 pr-2">
+        @for (inquiryDetail of inquiryDetails; track $index) {
+          <div class="flex justify-between w-full">
+            <div class="w-1/2">
+              <span class="h-6 inline-block align-center text-gray-100">{{ inquiryDetail.detail }}</span>
+            </div>
+            <div class="text-lg w-1/2 flex justify-between h-6 mb-1">
+              <div class="w-2/3 flex justify-center h-6 ">
+                 <div class="cursor-pointer w-16 flex items-center justify-center" >
+                  <span class="text-gray-400 text-base font-normal hover:text-gray-600 hover:font-medium flex items-center"
+                    >Preview</span
+                  >
+                </div>
+              </div>
+              <div class="w-5 flex justify-center"><span class="text-base text-gray-600">78</span></div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>

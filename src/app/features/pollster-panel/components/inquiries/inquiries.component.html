@@ -1,4 +1,4 @@
-<div class="w-1/4 h-1/4 rounded-xl bg-gray-100 border-2 border-gray-300 box">
+<div class="w-1/5 h-1/4 rounded-xl bg-gray-100 border-2 border-gray-300 box fixed">
   <div class="">
     <div class="flex justify-between w-full shadow">
       <div class="inline-block h-10 justify-start ">
@@ -8,21 +8,25 @@
         </div>
       </div>
       <div class="text-lg w-1/2 flex justify-between font-medium">
-        <span class="w-2/3 pt-5  box2 text-xs flex justify-center pl-1">View</span
+        <span class="w-2/3 pt-5  box2 text-xs flex justify-center pl-1">Action</span
         ><span class="w-1/2 pt-5 box2 text-xs align-bottom items-center content-baseline pr-2">Value</span>
       </div>
     </div>
     <div class="pt-4 pl-2 pr-2">
       @for (inquiryDetail of inquiryDetails; track $index) {
         <div class="flex justify-between w-full">
-          <div class="w-1/2 mt-2">
-            <span class="h-7 inline-block align-center text-gray-100">{{ inquiryDetail.detail }}</span>
+          <div class="w-1/2">
+            <span class="h-6 inline-block align-center text-black">{{ inquiryDetail.detail }}</span>
           </div>
           <div class="text-lg w-1/2 flex justify-between h-6 mb-1">
-            <div class="w-2/3 flex justify-center h-7 pt-1">
-               <button mat-raised-button  class="mat-button bg-gray-400" [style.background]="'#DEE2E6'" [style.width.px]="'45'">view</button>
+            <div class="w-2/3 flex justify-center h-6 ">
+               <div class="cursor-pointer w-16 flex items-center justify-center" >
+                <span class="text-black text-base font-normal hover:text-gray-600 hover:font-medium flex items-center"
+                  >Preview</span
+                >
+              </div>
             </div>
-            <div class="w-5"><span class="text-lg text-gray-600">78</span></div>
+            <div class="w-5 flex justify-center"><span class="text-base text-gray-600">78</span></div>
           </div>
         </div>
       }

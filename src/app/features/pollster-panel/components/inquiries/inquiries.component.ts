@@ -17,8 +17,5 @@ export class InquiriesComponent {
     {detail:'On production',data:[]},
   ]
 
-  protected userDatailList = [
-    { id: 1, text: 'Profile' },
-    { id: 2, text: 'Settings' }
-  ];
+  
 }
