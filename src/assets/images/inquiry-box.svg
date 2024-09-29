@@ -9,7 +9,7 @@
    viewBox="0 0 51.2 51.2"
    xml:space="preserve"
    fill="#000000"
-   sodipodi:docname="questionnaire — kopia.svg"
+   sodipodi:docname="questionnaire.svg"
    inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
    inkscape:export-filename="questionnaire.svg"
    inkscape:export-xdpi="96"
@@ -29,7 +29,7 @@
    inkscape:deskcolor="#d1d1d1"
    inkscape:zoom="4.105"
    inkscape:cx="38.367844"
-   inkscape:cy="60.535932"
+   inkscape:cy="60.779537"
    inkscape:window-width="1920"
    inkscape:window-height="1017"
    inkscape:window-x="-8"
@@ -58,15 +58,15 @@
    id="path2"
    style="fill:#cccccc;stroke:#cccccc" /> <polygon
    class="st0"
-   points="176.872,193.355 156.728,173.204 145.214,184.719 176.872,216.386 188.387,204.871 220.046,173.204 208.538,161.696 "
+   points="145.214,184.719 176.872,216.386 188.387,204.871 220.046,173.204 208.538,161.696 176.872,193.355 156.728,173.204 "
    id="polygon2"
    style="fill:#cccccc;stroke:#cccccc" /> <polygon
    class="st0"
-   points="176.872,276.116 156.728,255.965 145.214,267.48 176.872,299.147 188.387,287.632 220.046,255.965 208.538,244.458 "
+   points="145.214,267.48 176.872,299.147 188.387,287.632 220.046,255.965 208.538,244.458 176.872,276.116 156.728,255.965 "
    id="polygon3"
    style="fill:#cccccc;stroke:#cccccc" /> <polygon
    class="st0"
-   points="156.728,338.726 145.214,350.241 188.387,370.393 220.046,338.726 208.538,327.219 176.872,358.878 "
+   points="188.387,370.393 220.046,338.726 208.538,327.219 176.872,358.878 156.728,338.726 145.214,350.241 "
    id="polygon4"
    style="fill:#cccccc;stroke:#cccccc" /> </g> </g>
 
