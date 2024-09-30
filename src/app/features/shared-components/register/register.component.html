@@ -1,116 +1,153 @@
-<div class="flex justify-center">
-  <mat-card class="mt-28 flex">
-    <div class="flex justify-center pt-5">
-      <img src="../assets/images/register.svg" width="50" height="40" class="" alt="" />
-    </div>
-    <div><span class="flex justify-center text-2xl text-gray-400 font-extralight">Register</span></div>
+<div class="w-full">
+  <mat-card class="flex mt-28">
+    <div class="inline-flex m-4">
+      <div class="w-1/4">
+        <div class="row flex justify-center">
+          <img src="../assets/images/user/user-register.svg" width="60" height="60" class="" alt="" />
+        </div>
+        <div class="row flex justify-center">
+          <span class="text-2xl text-gray-200 font-extralight mt-1">Register</span>
+        </div>
+      </div>
 
-    <div class="flex flex-row justify-center">
-      <form [formGroup]="registerForm" class="w-full max-w-sm flex flex-row justify-center novalidate" id="form">
-        <div class="justify-center">
-          <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
-            <input
-              class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
-              type="text"
-              placeholder="Login name *"
-              aria-label="Login name"
-              formControlName="{{ registerFormName.USERNAME }}"
-            />
-            <div class="flex items-center h-4 pl-2 tooltip_login" title="">
-              <img src="../assets/images/info.svg" width="20" height="20" class="" alt="" />
+      <div class="w-2/3">
+        <div class="flex w-full justify-center">
+          <img src="../assets/images/inquiry-app-text/inquiry-app-text.svg" width="250" height="80" class="" alt="" />
+        </div>
+
+        <div class="flex flex-row justify-center">
+          <form [formGroup]="registerForm" class="w-full max-w-sm flex flex-row justify-center novalidate" id="form">
+            <div class="justify-center">
+              <div class="flex flex-row pt-3">
+                <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
+                  <input
+                    class="box1 placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-9"
+                    type="text"
+                    placeholder="Login name *"
+                    aria-label="Login name"
+                    formControlName="{{ registerFormName.USERNAME }}"
+                  />
+                  <div class="flex items-center h-4 pl-2 tooltip_login" title="">
+                    <img src="../assets/images/info.svg" width="20" height="20" class="" alt="" />
+                  </div>
+                </div>
+
+                <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
+                  <input
+                    class="box1 placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-9"
+                    type="email"
+                    placeholder="Email address *"
+                    aria-label="Full name"
+                    name="email"
+                    formControlName="{{ registerFormName.EMAIL }}"
+                    required
+                  />
+                  <div class="flex items-center h-4 pl-2 tooltip_email" title="">
+                    <img src="../assets/images/info.svg" width="20" height="20" class="" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-row pt-3 pb-3">
+                <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
+                  <input
+                    class="box1 placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-9"
+                    placeholder="Password *"
+                    type="password"
+                    formControlName="{{ registerFormName.PASSWORD }}"
+                  />
+                  @if (isPasswordValid) {
+                    <div class="flex flex-row mb-8 text-center">
+                      <div class="tooltip" title="Email pattern not valid"></div>
+                    </div>
+                  }
+                  <div class="flex items-center h-4 pl-2 tooltip_password" title="">
+                    <img src="../assets/images/info.svg" width="20" height="20" class="" alt="" />
+                  </div>
+                </div>
+
+                <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
+                  <input
+                    class="box1 placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-9"
+                    type="password"
+                    placeholder="Confirm Password *"
+                    aria-label="Confirm Password"
+                    formControlName="{{ registerFormName.PASSWORD_CONFIRMED }}"
+                  />
+                  <div class="flex items-center h-4 pl-2 tooltip_confirmed" title="">
+                    <img src="../assets/images/info.svg" width="20" height="20" class="" alt="" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-row">
+                <div class="flex flex-row">
+                  <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
+                    <input
+                      class="box1 placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-9"
+                      placeholder="First name"
+                      aria-label="First name"
+                      formControlName="{{ registerFormName.FIRST_NAME }}"
+                    />
+                    <div class="flex items-center h-4 pl-2 tooltip_login" title="">
+                      <img src="../assets/images/info.svg" width="20" height="20" class="" alt="" />
+                    </div>
+                  </div>
+
+                  <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
+                    <input
+                      class="box1 placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-9"
+                      type="text"
+                      placeholder="Last name"
+                      aria-label="Last name"
+                      formControlName="{{ registerFormName.LAST_NAME }}"
+                    />
+                    <div class="flex items-center h-4 pl-2 tooltip_email" title="">
+                      <img src="../assets/images/info.svg" width="20" height="20" class="" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
-            <input
-              class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
-              type="email"
-              placeholder="Email address *"
-              aria-label="Full name"
-              name="email"
-              formControlName="{{ registerFormName.EMAIL }}"
-              required
-            />
-            <div class="flex items-center h-4 pl-2 tooltip_email" title="">
-              <img src="../assets/images/info.svg" width="20" height="20" class="" alt="" />
-            </div>
-          </div>
-
-          <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
-            <input
-              class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
-              placeholder="Password *"
-              type="password"
-              formControlName="{{ registerFormName.PASSWORD }}"
-            />
-            @if (isPasswordValid) {
-              <div class="flex flex-row mb-8 text-center">
-                <div class="tooltip" title="Email pattern not valid"></div>
+          </form>
+        </div>
+        <div class="border-t-0 border-r-0 border-l-0 border box11 mt-28 inline-flex"></div>
+        <div class="flex row pt-2 gap-4 justify-between">
+          <div class="mb-2 flex-row flex">
+            @if (_showRegisterError) {
+              <div class="flex flex-row text-center items-center">
+                <div class="tooltip flex items-center" title="Register has failed"></div>
               </div>
             }
-            <div class="flex items-center h-4 pl-2 tooltip_password" title="">
-              <img src="../assets/images/info.svg" width="20" height="20" class="" alt="" />
-            </div>
+            <button
+              class="h-9 bg-gray-500 hover:bg-gray-700 rounded-md hover:border-gray-400 border-gray-400 border-4 w-48 border-t border-b border-r border-l leading-tight text-white cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-9 text-sm"
+              type="button"
+              (click)="navigateToLogin()"
+            >
+              <span>Back to login</span>
+            </button>
           </div>
-
-          <div class="mt-2 mb-2 flex flex-row justify-center ml-7 items-center">
-            <input
-              class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
-              type="password"
-              placeholder="Confirm Password *"
-              aria-label="Confirm Password"
-              formControlName="{{ registerFormName.PASSWORD_CONFIRMED }}"
-            />
-            <div class="flex items-center h-4 pl-2 tooltip_confirmed" title="">
-              <img src="../assets/images/info.svg" width="20" height="20" class="" alt="" />
-            </div>
-          </div>
-
-          <div class="mt-2 mb-2 flex justify-center">
-            <input
-              class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
-              type="text"
-              placeholder="First name"
-              aria-label="First name"
-              formControlName="{{ registerFormName.FIRST_NAME }}"
-            />
-          </div>
-
-          <div class="mt-2 mb-2 flex justify-center">
-            <input
-              class="placeholder-style border-2 w-48 border-t border-b border-r border-l leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-8"
-              type="text"
-              placeholder="Last name"
-              aria-label="Last name"
-              formControlName="{{ registerFormName.LAST_NAME }}"
-            />
+          <div class="flex-row flex justify-end">
+            <button
+              class="h-9 bg-gray-700 hover:bg-green-500 rounded-md hover:border-gray-400 border-gray-400 border-4 w-48 border-t border-b border-r border-l leading-tight text-white cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-9 text-normal"
+              type="submit"
+              (click)="register()"
+              [disabled]="registerForm.invalid || registerForm.errors?.['passwordMatchError']"
+            >
+              Register
+            </button>
           </div>
         </div>
-      </form>
-    </div>
-    <div class="mb-2 flex justify-center">
-      @if (_showRegisterError) {
-        <div class="flex flex-row text-center items-center">
-          <div class="tooltip flex items-center" title="Register has failed"></div>
-        </div>
-      }
-      <button
-        class="h-8 bg-gray-700 hover:bg-green-500 rounded-md hover:border-gray-400 border-gray-400 border-4 w-48 border-t border-b border-r border-l leading-tight text-white cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
-        type="submit"
-        (click)="register()"
-        [disabled]="registerForm.invalid || registerForm.errors?.['passwordMatchError']"
-      >
-        Register
-      </button>
-    </div>
-    <div class="flex justify-center">
-      <button
-        class="h-8 bg-gray-400 hover:bg-gray-600 rounded-md hover:border-gray-400 border-gray-400 border-4 w-48 border-t border-b border-r border-l leading-tight text-white cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-sm"
-        type="button"
-        (click)="navigateToLogin()"
-      >
-        <span>Back to login</span>
-      </button>
+      </div>
     </div>
   </mat-card>
 </div>
+
+<!-- type="text"
+                    placeholder="First name"
+                    aria-label="First name"
+                    formControlName="{{ registerFormName.FIRST_NAME }}"
+
+                    type="text"
+                    placeholder="Last name"
+                    aria-label="Last name"
+                    formControlName="{{ registerFormName.LAST_NAME }}" -->

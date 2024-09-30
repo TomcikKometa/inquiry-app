@@ -8,6 +8,7 @@ import { HttpErrorResponse, HttpResponse, HttpStatusCode } from '@angular/common
 import { UserApiService } from '../../../api/services/user-service/user-api.service';
 import { NavigationService } from '../../../core/services/navigation/navigation.service';
 import { StoreService } from '../../../core/services/store/store.service';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'inq-register',
@@ -30,6 +31,7 @@ export class RegisterComponent implements OnInit {
   public ngOnInit(): void {
     this.registerFormService.isPasswordValid$.subscribe((x: boolean) => (this.isPasswordValid = x));
     this._registerForm = this.registerFormService._registerForm;
+
   }
 
   protected register(): void {

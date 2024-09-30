@@ -3,7 +3,7 @@
 
 .placeholder-style::placeholder {
   text-align: center;
-  background: #d2d6d9;
+  background: #ececec;
   height: 100%;
   padding-top: 10px;
   margin-top: 10px;
@@ -21,17 +21,12 @@
 }
 
 mat-card {
-  width: 20%;
-  height: 460px;
+  width: 660px;
+  height: 470px;
   background: rgb(255, 255, 255);
   border-radius: 15px;
-  background: linear-gradient(
-    312deg,
-    rgba(255, 255, 255, 1) 8%,
-    rgba(238, 238, 241, 1) 17%,
-    rgba(217, 217, 220, 1) 75%
-  );
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+  background-color: rgb(70, 70, 70);
+  box-shadow: rgba(136, 136, 136, 0.561) 0px 10px 60px 20px;
 }
 
 .button {
@@ -124,4 +119,21 @@ abbr {
     top: 207px;
     opacity: 1;
   }
+}
+
+
+.box1{
+  /* border-color: #fcfcfc 0px;
+  border-style: solid;
+  text-align: end;
+  align-items: first baseline; */
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  z-index: 1;
+}
+
+.box11{
+  border-color: #c7c7c7;
+  border-style: solid;
+  width: 100%;
 }

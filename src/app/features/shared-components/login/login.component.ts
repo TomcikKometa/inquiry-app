@@ -17,6 +17,10 @@ import { StoreService } from '../../../core/services/store/store.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit, OnDestroy {
+  protected isRegister:Subject<boolean> = new Subject<boolean>()
+  public get isRewgister$() {
+    return this.isRegister.asObservable()
+  }
   protected _loginForm!: FormGroup;
   protected _showLoginError:boolean = false;
 
@@ -67,6 +71,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   protected navigateToRegister(): void {
+    this.isRegister.next(true)
     this.navigationService.navitatoToRegisterComponent();
   }
 }
