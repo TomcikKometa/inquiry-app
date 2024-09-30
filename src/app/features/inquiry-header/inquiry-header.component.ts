@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'inq-inquiry-header',
@@ -8,8 +9,14 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './inquiry-header.component.css'
 })
 export class InquiryHeaderComponent {
+  @Output() public openSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() public isLogin: EventEmitter<boolean> = new EventEmitter<boolean>();
+  opened: boolean = false;
 
-  @Output() public openSidebar:EventEmitter<boolean> = new EventEmitter<boolean>();
-opened : boolean = false
+  private readonly router:Router = inject(Router);
 
+  protected login():void{
+    this.isLogin.next(true);
+    this.router.navigate(['login'])
+  }
 }
