@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'inq-tables',
+  selector: 'inq-charts',
   standalone: true,
   imports: [],
-  templateUrl: './tables.component.html',
-  styleUrl: './tables.component.css'
+  templateUrl: './charts.component.html',
+  styleUrl: './charts.component.css'
 })
-export class TablesComponent {
+export class ChartsComponent {
   protected inquiryDetails = [
     { detail: 'Filled inquiry', data: [] },
     { detail: 'Approved inquiry', data: [] },
