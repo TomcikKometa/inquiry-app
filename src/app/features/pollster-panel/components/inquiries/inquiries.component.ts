@@ -5,17 +5,14 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'inq-inquiries',
   standalone: true,
-  imports: [MatIconModule,MatButtonModule],
+  imports: [MatIconModule, MatButtonModule],
   templateUrl: './inquiries.component.html',
   styleUrl: './inquiries.component.css'
 })
 export class InquiriesComponent {
-
-  inquiryDetails = [
-    {detail:'Filled inquiry',data:[]},
-    {detail:'Approved inquiry',data:[]},
-    {detail:'On production',data:[]},
-  ]
-
-  
+  protected inquiryDetails = [
+    { detail: 'Filled inquiry', data: [] },
+    { detail: 'Approved inquiry', data: [] },
+    { detail: 'On production', data: [] }
+  ];
 }
