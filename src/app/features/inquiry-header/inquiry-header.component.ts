@@ -1,5 +1,6 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { StoreService } from '../../core/services/store/store.service';
 
 @Component({
   selector: 'inq-inquiry-header',
@@ -11,12 +12,12 @@ import { Router } from '@angular/router';
 export class InquiryHeaderComponent {
   @Output() public openSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() public isLogin: EventEmitter<boolean> = new EventEmitter<boolean>();
-  opened: boolean = false;
 
   private readonly router:Router = inject(Router);
+  private readonly storeService: StoreService = inject(StoreService);
 
   protected login():void{
-    this.isLogin.next(true);
+    this.storeService.setLoggedIn(false);
     this.router.navigate(['login'])
   }
 }

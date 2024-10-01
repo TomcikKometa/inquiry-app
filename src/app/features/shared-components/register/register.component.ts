@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
         .pipe(first())
         .subscribe({
           next: (response) => {
-            // this.navigationService.navigateToPollsterMainDashboard();
+            this.navigationService.navigateToPollsterMainDashboard();
             // this.storeService.saveUserToken(response.token);
             console.log(response);
             
