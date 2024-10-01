@@ -16,22 +16,15 @@ import { StoreService } from './core/services/store/store.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   protected isSidebar: boolean = true;
   protected isRegister: boolean = false;
   private readonly storeService: StoreService = inject(StoreService);
-  isLogin$ = this.storeService.isLoggedIn$();
-
-  ngOnInit(): void {
-   this.isLogin$.pipe().subscribe(x => console.log(x)
-   )
-   
-  }
+  protected isLogin$ = this.storeService.isLoggedIn$();
 
   protected getSidenavEvent(event: boolean) {
     if (event) {
       this.isSidebar = !this.isSidebar;
     }
   }
-
 }

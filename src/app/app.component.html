@@ -14,8 +14,8 @@
     </div>
   </div>
   @if (!(isLogin$ | async))  {
-    <div [ngClass]="{ widthContainer3: !(isLogin$ | async)}"><router-outlet> {{ isLogin$ | async }} </router-outlet></div>
+    <div [ngClass]="{ widthContainer3: !(isLogin$ | async)}"><router-outlet></router-outlet></div>
   } @else {
-    <div [ngClass]="{ widthContainer: !isSidebar, widthContainer2: isSidebar }"><router-outlet>{{ isLogin$ | async }}</router-outlet></div>
+    <div [ngClass]="{ widthContainer: !isSidebar, widthContainer2: isSidebar }"><router-outlet></router-outlet></div>
   }
 </section>
