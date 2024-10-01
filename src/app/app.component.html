@@ -1,4 +1,6 @@
-<header><inq-inquiry-header (openSidebar)="getSidenavEvent($event)" (isLogin)="login($event)"></inq-inquiry-header></header>
+<header>
+  <inq-inquiry-header (openSidebar)="getSidenavEvent($event)"></inq-inquiry-header>
+</header>
 
 <section class="sidebar_container flex">
   <div class="flex flex-row">
@@ -11,5 +13,9 @@
       }
     </div>
   </div>
-  <div [ngClass]="{ widthContainer: !isSidebar && !isLogin, widthContainer2:isSidebar  && !isLogin, widthContainer3:isLogin || isRegister}"><router-outlet></router-outlet></div>
+  @if (!(isLogin$ | async))  {
+    <div [ngClass]="{ widthContainer3: !(isLogin$ | async)}"><router-outlet> {{ isLogin$ | async }} </router-outlet></div>
+  } @else {
+    <div [ngClass]="{ widthContainer: !isSidebar, widthContainer2: isSidebar }"><router-outlet>{{ isLogin$ | async }}</router-outlet></div>
+  }
 </section>
