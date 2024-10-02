@@ -41,11 +41,10 @@ export class RegisterComponent implements OnInit {
         .registerUser(this.registerForm)
         .pipe(first())
         .subscribe({
-          next: (response:HttpResponse<UserLoginResponse>) => {
+          next: (response:UserLoginResponse) => {
             this.navigationService.navigateToPollsterMainDashboard();
             // this.storeService.saveUserToken(response.token);
              ;
-            console.log(response.headers);
             
           },
           error: (error: HttpErrorResponse) => {
