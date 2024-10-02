@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot } from '@angular/router';
+import {  CanActivateFn } from '@angular/router';
 import { NavigationService } from '../services/navigation/navigation.service';
 import { StoreService } from '../services/store/store.service';
 
