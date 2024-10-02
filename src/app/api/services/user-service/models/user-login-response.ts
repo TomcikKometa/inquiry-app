@@ -1,4 +1,4 @@
 export interface UserLoginResponse {
-    token:string;
-    id:number;
+  access_token: string;
+  userId: number;
 }
