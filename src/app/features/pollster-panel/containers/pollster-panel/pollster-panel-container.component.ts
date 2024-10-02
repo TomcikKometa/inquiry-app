@@ -1,25 +1,24 @@
-import { Component, inject } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
-import { InquiryFormComponent } from '../../components/inquiry-form/inquiry-form/inquiry-form.component';
-import { InquiryTableListPollsterComponent } from '../../components/inquiry-table-list/inquiry-table-list.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { DatePipe, registerLocaleData } from '@angular/common';
+import { registerLocaleData, DatePipe } from "@angular/common";
+import { Component, inject } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
+import { MatDialog } from "@angular/material/dialog";
+import { MatIconModule } from "@angular/material/icon";
+import { ToastrService } from "ngx-toastr";
+import { first } from "rxjs";
+import { InquiryApiService } from "../../../../api/services/inquiry-service/inquiry-api.service";
+import { DIALOG_OPTIONS_FORM } from "../../../../config/form-config";
+import { NavigationService } from "../../../../core/services/navigation/navigation.service";
+import { ResponseUser } from "../../../../core/services/token-enums";
+import { ToastrServiceMesseges } from "../../../../enums/toastr-messeges";
+import { Inquiry } from "../../../../models/inquiry";
+import { ChartsComponent } from "../../components/charts/charts.component";
+import { InquiriesComponent } from "../../components/inquiries/inquiries.component";
+import { InquiryFormComponent } from "../../components/inquiry-form/inquiry-form/inquiry-form.component";
+import { InquiryTableListPollsterComponent } from "../../components/inquiry-table-list/inquiry-table-list.component";
+import { TablesComponent } from "../../components/tables/tables.component";
 import localePl from '@angular/common/locales/pl';
-import { MatCardModule } from '@angular/material/card';
-import { first } from 'rxjs';
-import { InquiryApiService } from '../../../../api/services/inquiry-service/inquiry-api.service';
-import { DIALOG_OPTIONS_FORM } from '../../../../config/form-config';
-import { NavigationService } from '../../../../core/services/navigation/navigation.service';
-import { ResponseUser } from '../../../../core/services/token-enums';
-import { ToastrServiceMesseges } from '../../../../enums/toastr-messeges';
-import { Inquiry } from '../../../../models/inquiry';
-import { InquiriesComponent } from '../../components/inquiries/inquiries.component';
-import { TablesComponent } from '../../components/tables/tables.component';
-import { ChartsComponent } from '../../components/charts/charts.component';
 registerLocaleData(localePl);
-
 @Component({
   selector: 'inq-admin-panel-container',
   standalone: true,
