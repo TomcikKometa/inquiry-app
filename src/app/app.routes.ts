@@ -18,7 +18,8 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/user-panel/containers/user-panel-container/user-panel-container.component').then(
         c => c.UserPanelContainerComponent
-      )
+      ),
+      canActivate:[authenticationGuard]
   },
   {
     path: RoutesPaths.POLLSTER_PANEL,
@@ -26,7 +27,7 @@ export const routes: Routes = [
       import('./features/pollster-panel/containers/pollster-panel/pollster-panel-container.component').then(
         c => c.PollsterPanelContainerComponent
       ),
-      // canActivate:[authenticationGuard]
+      canActivate:[authenticationGuard]
   },
   {path:RoutesPaths.REGISTER,
     loadComponent: () => import('./features/shared-components/register/register.component').then(c => c.RegisterComponent)
