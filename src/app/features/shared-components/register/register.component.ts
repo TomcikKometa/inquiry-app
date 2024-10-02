@@ -9,6 +9,7 @@ import { UserApiService } from '../../../api/services/user-service/user-api.serv
 import { NavigationService } from '../../../core/services/navigation/navigation.service';
 import { StoreService } from '../../../core/services/store/store.service';
 import { LoginComponent } from '../login/login.component';
+import { UserLoginResponse } from '../../../api/services/user-service/models/user-login-response';
 
 @Component({
   selector: 'inq-register',
@@ -40,10 +41,11 @@ export class RegisterComponent implements OnInit {
         .registerUser(this.registerForm)
         .pipe(first())
         .subscribe({
-          next: (response) => {
+          next: (response:HttpResponse<UserLoginResponse>) => {
             this.navigationService.navigateToPollsterMainDashboard();
             // this.storeService.saveUserToken(response.token);
-            console.log(response);
+             ;
+            console.log(response.headers);
             
           },
           error: (error: HttpErrorResponse) => {

@@ -2,8 +2,8 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginFormService } from '../services/login-form/login-form.service';
-import { BehaviorSubject, debounceTime, Observable, Subject, Subscription, takeUntil } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
+import { BehaviorSubject, debounceTime, first, Observable, Subject, Subscription, takeUntil, tap } from 'rxjs';
+import { HttpErrorResponse, HttpEventType, HttpResponse } from '@angular/common/http';
 import { UserLoginResponse } from '../../../api/services/user-service/models/user-login-response';
 import { UserApiService } from '../../../api/services/user-service/user-api.service';
 import { NavigationService } from '../../../core/services/navigation/navigation.service';
@@ -30,8 +30,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   protected _loginForm!: FormGroup;
   protected _showLoginError: boolean = false;
 
-  private readonly navigationService: NavigationService = inject(NavigationService);
   private readonly loginFormService: LoginFormService = inject(LoginFormService);
+  private readonly navigationService: NavigationService = inject(NavigationService);
   private readonly _destroy: Subject<boolean> = new Subject<boolean>();
   private readonly userApiService: UserApiService = inject(UserApiService);
   private _subscription: Subscription | undefined;
@@ -51,20 +51,23 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   protected signIn(): void {
-    this.userApiService.login(this._loginForm).subscribe({
-      next: (response: UserLoginResponse) => {
-        this.storeService.setLoggedIn(true);
-        this.navigationService.navigateToPollsterMainDashboard();
-      },
-      error: (error: HttpErrorResponse) => {
-        if (error.status === 403 || error.status === 401) {
-          this._showLoginError = true;
-          setTimeout(() => {
-            this._showLoginError = false;
-          }, 7000);
+    this.userApiService.login(this._loginForm).pipe(first()).subscribe(
+      {
+        next: () => {
+          this.storeService.setLoggedIn(true);
+          this.navigationService.navigateToPollsterMainDashboard();
+          
+        },
+        error: (error: HttpErrorResponse) => {
+          if (error.status === 403 || error.status === 401) {
+            this._showLoginError = true;
+            setTimeout(() => {
+              this._showLoginError = false;
+            }, 7000);
+          }
         }
       }
-    });
+    );
   }
 
   protected get loginForm(): FormGroup {

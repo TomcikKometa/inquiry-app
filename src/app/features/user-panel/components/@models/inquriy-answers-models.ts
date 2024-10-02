@@ -1,5 +1,4 @@
-import { QuestionType } from '../../../../@enums/question-type';
-import { SingleSelectAnswer } from '../../../../@models/question';
+
 
 export interface Answers {
   [key:string]:Answer
