@@ -32,6 +32,7 @@ export class PollsterPanelContainerComponent {
   protected userType!: string;
   protected timeActual!: string;
   protected currentDate: Date = new Date();
+  protected currentDateTrasformed:string = '';
 
   private readonly dialog: MatDialog = inject(MatDialog);
   private readonly toastService: ToastrService = inject(ToastrService);
@@ -46,7 +47,9 @@ export class PollsterPanelContainerComponent {
 
   private clock(): void {
     this.currentDate.setSeconds(this.currentDate.getSeconds() + 1);
+    
     this.timeActual = this.datePipe.transform(this.currentDate, 'HH:mm:ss') as string;
+    this.currentDateTrasformed = this.datePipe.transform(this.currentDate, 'fullDate') as string
   }
 
   protected openSaveInquiryForm(): void{

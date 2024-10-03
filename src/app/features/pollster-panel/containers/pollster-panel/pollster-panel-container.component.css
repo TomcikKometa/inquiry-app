@@ -1,10 +1,10 @@
-@import 'ngx-toastr/toastr';
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import "ngx-toastr/toastr";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 .container {
   height: 100%;
   width: 100%;
-  margin-top:10px;
+  margin-top: 10px;
 }
 
 .setButtons {
@@ -69,15 +69,14 @@
   & .title {
     width: 580px;
     font-size: 14px;
-    background-image: linear-gradient(45deg, #A2BDDC 30%, #DCE2F2, #DCE2F2);
+    background-image: linear-gradient(45deg, #a2bddc 30%, #dce2f2, #dce2f2);
     border-radius: 5px;
     /* box-shadow: 0px 1px 1px 1px #A3BFD9; */
-  padding-top: 3px;
-  padding-bottom: 3px;
-  font-weight: 500;
-  text-align: center;
-  text-shadow: 0px 0px 10px #8097AB;
-    
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-weight: 500;
+    text-align: center;
+    text-shadow: 0px 0px 10px #8097ab;
   }
 }
 
@@ -87,7 +86,7 @@
   justify-content: center;
   width: 50px;
   height: 50px;
-  background-image: url('/assets/images/icons8-admin-50.png');
+  background-image: url("/assets/images/icons8-admin-50.png");
 }
 
 .setImageRowText {
@@ -98,7 +97,7 @@
 
 .button-63 {
   align-items: center;
-  background-image: linear-gradient(45deg, #D2D6D9, #f0eded 190%, #D2D6D9);
+  background-image: linear-gradient(45deg, #d2d6d9, #f0eded 190%, #d2d6d9);
   border: 0;
   border-radius: 8px;
   box-shadow: rgb(198, 202, 206) 0px 0px 5px 5px;
@@ -138,8 +137,26 @@
   }
 }
 
+.clock {
+  font-family: "Questrial", sans-serif;
+  color: #ffffff;
+  /* transform: translate(-50%, -50%); */
+  color: #a19f9f;
+  text-shadow: 0 0 20px rgb(200, 202, 202),  0 0 20px rgb(175, 174, 174,0.8);
 
-.box1{
+  .date {
+    letter-spacing: 0.1em;
+    font-size: 14px;
+    justify-content: end;
+    display: flex;
+  }
+  .time {
+    letter-spacing: 0.05em;
+    font-size: 20px;
+  }
+}
+
+.box1 {
   border-color: #c7c7c7;
   border-style: solid;
   text-align: end;
