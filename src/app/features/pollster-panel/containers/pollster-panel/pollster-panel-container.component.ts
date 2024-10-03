@@ -1,4 +1,4 @@
-import { registerLocaleData, DatePipe } from "@angular/common";
+import { registerLocaleData, DatePipe, DATE_PIPE_DEFAULT_OPTIONS } from "@angular/common";
 import { Component, inject } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
@@ -17,8 +17,9 @@ import { InquiriesComponent } from "../../components/inquiries/inquiries.compone
 import { InquiryFormComponent } from "../../components/inquiry-form/inquiry-form/inquiry-form.component";
 import { InquiryTableListPollsterComponent } from "../../components/inquiry-table-list/inquiry-table-list.component";
 import { TablesComponent } from "../../components/tables/tables.component";
-import localePl from '@angular/common/locales/pl';
-registerLocaleData(localePl);
+import localeGb from '@angular/common/locales/en-GB';
+registerLocaleData(localeGb);
+
 @Component({
   selector: 'inq-admin-panel-container',
   standalone: true,
@@ -49,7 +50,7 @@ export class PollsterPanelContainerComponent {
     this.currentDate.setSeconds(this.currentDate.getSeconds() + 1);
     
     this.timeActual = this.datePipe.transform(this.currentDate, 'HH:mm:ss') as string;
-    this.currentDateTrasformed = this.datePipe.transform(this.currentDate, 'fullDate') as string
+    this.currentDateTrasformed = this.datePipe.transform(this.currentDate, 'fullDate','pl','en-Gb') as string
   }
 
   protected openSaveInquiryForm(): void{
