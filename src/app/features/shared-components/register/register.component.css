@@ -121,19 +121,34 @@ abbr {
   }
 }
 
-
-.box1{
-  /* border-color: #fcfcfc 0px;
-  border-style: solid;
-  text-align: end;
-  align-items: first baseline; */
+.box1 {
   border-radius: 6px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  box-shadow:
+    rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
   z-index: 1;
 }
 
-.box11{
+
+.box11 {
   border-color: #c7c7c7;
   border-style: solid;
   width: 435px;
+}
+
+
+
+
+.registered{
+  animation: 2s registredAnimation;
+  visibility: hidden;
+}
+
+
+.register_complited {
+  height: 233px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 }

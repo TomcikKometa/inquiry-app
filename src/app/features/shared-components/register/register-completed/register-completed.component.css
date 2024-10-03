@@ -1,0 +1,13 @@
+.show{
+  display: flex;
+    visibility: hidden;
+    justify-items: center;
+    align-items: center;
+    height: 380px;
+    align-content: center;
+  }
+
+  .hide{
+    height: 0px;
+  }
+  
