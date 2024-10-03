@@ -15,7 +15,7 @@ import { MAT_TABS_CONFIG } from '@angular/material/tabs';
     trigger('fadeIn', [
       state('out', style({ opacity: '0' })),
       state('in', style({ opacity: '1' })),
-      transition('* => *', [animate(2005)])
+      transition('* => *', [animate(2500)])
     ])
   ]
 })

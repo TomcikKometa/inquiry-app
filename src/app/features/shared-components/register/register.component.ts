@@ -24,7 +24,7 @@ import { RegisterCompletedComponent } from './register-completed/register-comple
     trigger('fadeIn', [
       state('in', style({ opacity: '1' })),
       state('out', style({ opacity: '0' })),
-      transition('* => *', [animate(2000)])
+      transition('* => *', [animate(2500)])
     ])
   ]
 })
@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
             this.isRegistred = true;
             setTimeout(() => {
               (this.animationState = 'in')
-            }, 2000);
+            }, 100);
             
           },
           error: (error: HttpErrorResponse) => {
