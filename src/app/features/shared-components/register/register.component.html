@@ -9,14 +9,15 @@
           <div class="flex justify-center">
             <span class="text-2xl text-gray-200 font-extralight mt-1">Register</span>
           </div>
-          <div class="flex justify-center">
-            <img src="../assets/images/Completed.svg" width="150" height="80" class="" alt="" />
+          <div [ngClass]="{ show: !isRegistred }">
+            <div class="flex justify-center" [@fadeIn]="animationState">
+              @if (isRegistred) {
+                <img src="../assets/images/Completed.svg" width="150" height="80" class="" alt="" />
+              }
+            </div>
           </div>
         </div>
       </div>
-
-      
-
 
       <div class="w-2/3 h-full items-center flex">
         <div class="inline-block h-full">
@@ -124,13 +125,16 @@
                 </div>
               </form>
             </div>
-          } @else {
-            <div class="text-white items-center justify-center h-2/3 mb-5">
-              <div class="flex items-center h-full">
-                <img src="../assets/images/registred.svg" width="450" height="60" class="" alt="" />
-              </div>
-            </div>
           }
+          
+
+          <div [ngClass]="{ 'register_complited': isRegistred }">
+            <inq-register-completed
+            [animationState]="animationState"
+            [isRegistred]="isRegistred"
+          ></inq-register-completed>
+          </div>
+
           <div class="border-t-0 border-r-0 border-l-0 border box11 mt-12 inline-flex ml-1"></div>
           @if (!isRegistred) {
             <div class="inline-flex justify-between w-full pl-3 pt-4">
