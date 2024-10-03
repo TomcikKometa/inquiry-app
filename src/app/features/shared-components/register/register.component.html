@@ -3,19 +3,25 @@
     <div class="inline-flex m-4">
       <div class="w-1/4 h-80 items-center flex">
         <div class="inline-block w-full">
-          <div class="row flex justify-center">
-            <img src="../assets/images/user/user-register.svg" width="60" height="60" class="" alt="" />
+          @if(!isRegistred){
+            <div class="row flex justify-center items-center">
+              <img src="../assets/images/user/user-register.svg" width="60" height="60" class="" alt="" />
+            </div>
+            <div class="flex justify-center">
+              <span class="text-2xl text-gray-200 font-extralight mt-1">Register</span>
+            </div>
+          }
+          <div class="flex justify-center pt-1" [@fadeIn]="animationState">
+            @if (isRegistred) {
+              <img src="../assets/images/fade-in/user-register.svg" width="60" height="60" class="" alt="" />
+            }
           </div>
-          <div class="flex justify-center">
-            <span class="text-2xl text-gray-200 font-extralight mt-1">Register</span>
-          </div>
-          <div [ngClass]="{ show: !isRegistred }">
+          
             <div class="flex justify-center" [@fadeIn]="animationState">
               @if (isRegistred) {
                 <img src="../assets/images/Completed.svg" width="150" height="80" class="" alt="" />
               }
             </div>
-          </div>
         </div>
       </div>
 
