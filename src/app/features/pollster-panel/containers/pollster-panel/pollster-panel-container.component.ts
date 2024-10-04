@@ -48,7 +48,6 @@ export class PollsterPanelContainerComponent {
 
   private clock(): void {
     this.currentDate.setSeconds(this.currentDate.getSeconds() + 1);
-    
     this.timeActual = this.datePipe.transform(this.currentDate, 'HH:mm:ss') as string;
     this.currentDateTrasformed = this.datePipe.transform(this.currentDate, 'fullDate','pl','en-Gb') as string
   }

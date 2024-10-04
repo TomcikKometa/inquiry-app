@@ -20,6 +20,7 @@ import { InquiryService } from '../../../../../api/services/inquiry-service/inqu
 import { QuestionType } from '../../../../../enums/question-type';
 import { ToastrServiceMesseges } from '../../../../../enums/toastr-messeges';
 import { Inquiry } from '../../../../../models/inquiry';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'inq-inquiry-form',
@@ -36,7 +37,9 @@ import { Inquiry } from '../../../../../models/inquiry';
     SingleSelectComponent,
     ScaleSelectComponent,
     ButtonAddAnswerComponent,
-    MultiSelectComponent
+    MultiSelectComponent,
+    MatCardModule,
+    MatMenuModule
   ],
   providers: [ToastrService, InquiryFormService],
   templateUrl: './inquiry-form.component.html',
