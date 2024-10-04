@@ -1,14 +1,15 @@
 import { MatDialogConfig } from '@angular/material/dialog';
 
 export const DIALOG_OPTIONS_FORM: MatDialogConfig = {
-  width: '48vw',
-  maxHeight: '34vw',
   enterAnimationDuration: '500ms',
   exitAnimationDuration: '500ms',
   position: {
     top: '100px'
   },
-  autoFocus:false
+  autoFocus:false,
+  disableClose:false,
+  backdropClass : 'inquiry_form',
+  width:'60vw'
 };
 
 export const DIALOG_OPTIONS_FORM_TO_FILL: MatDialogConfig = {
