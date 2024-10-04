@@ -1,4 +1,25 @@
-.inquiry_input {
+/* mat-card{
+  border-radius: 30px;
+  background-color: blue;
+} */
+
+.box{
+  background-color: #454545;
+}
+
+.placeholder-style::placeholder {
+  text-align: center;
+  background-color: rgb(55 65 81);
+  height: 100%;
+  padding-top: 10px;
+  margin-top: 10px;
+  font-size: 20px;
+  color: white;
+  border: none;
+  
+}
+
+/* .inquiry_input {
   text-align: center;
   margin-top: 20px;
 }
@@ -16,4 +37,13 @@
   text-align: center;
   gap: 10px;
   margin: 10px;
+} */
+
+.button-cutsom { 
+  border: 1px solid;
+  border-color: coral;
+}
+
+.shadow{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

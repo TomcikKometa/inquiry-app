@@ -1,65 +1,93 @@
 @if (inquiryForm) {
-  <ng-container [formGroup]="inquiryForm">
-    <div class="inquiry_input">
-      <mat-form-field class="inquiry_input_width" appearance="outline">
-        <mat-label>Inquiry name</mat-label>
-        <input matInput type="text" formControlName="{{ inquiryFormName.INQUIRY_NAME }}" />
-      </mat-form-field>
-    </div>
-    <div class="forms_section" formArrayName="{{ inquiryFormName.QUESTIONS }}">
-      @for (item of questionsFormArray.controls; track trackItem(item); let index = $index) {
-        <div class="row">
+  <mat-dialog-content class="box w-full">
+    <ng-container class="flex-row" [formGroup]="inquiryForm">
+      <div class="w-full justify-center inline-flex">
+        <input
+          class="placeholder-style w-72 leading-tight focus:outline-none text-white font-normal text-center bg-zinc-800 rounded-md h-12 button-cutsom border-l border-r border-t border-b shadow text-xl"
+          type="text"
+          placeholder="Inquiry name"
+          aria-label="Login name"
+          formControlName="{{ inquiryFormName.INQUIRY_NAME }}"
+        />
+      </div>
+      <div class="forms_section" formArrayName="{{ inquiryFormName.QUESTIONS }}">
+        @for (item of questionsFormArray.controls; track trackItem(item); let index = $index) {
+          <div class="row">
+            <inq-question
+              [itemIndex]="index"
+              [item]="item"
+              (removeQuestionEvent)="removeQuestion($event)"
+            ></inq-question>
 
-          <inq-question [itemIndex]="index" [item]="item" (removeQuestionEvent)="removeQuestion($event)"></inq-question>
-
-          <inq-multi-select
-            [itemIndex]="index"
-            [item]="item"
-            (removeAnswerEvent)="removeAnswer($event, index)"
-            (removeQuestionEvent)="removeQuestion($event)"
-          ></inq-multi-select>
-          @if (item.get(typeQuestion.TYPE)?.value === questionType.MULTISELECT) {
-            @if (index + 1 === lastIDquestionsArrayReverse) {
-              @if (isAnswerToMultiSelect) {
-                <inq-button-add-answer (addAnswer)="addAnswerInSelectForm(index,'multiSelect')"></inq-button-add-answer>
+            <inq-multi-select
+              [itemIndex]="index"
+              [item]="item"
+              (removeAnswerEvent)="removeAnswer($event, index)"
+              (removeQuestionEvent)="removeQuestion($event)"
+            ></inq-multi-select>
+            @if (item.get(typeQuestion.TYPE)?.value === questionType.MULTISELECT) {
+              @if (index + 1 === lastIDquestionsArrayReverse) {
+                @if (isAnswerToMultiSelect) {
+                  <inq-button-add-answer
+                    (addAnswer)="addAnswerInSelectForm(index, 'multiSelect')"
+                  ></inq-button-add-answer>
+                }
               }
             }
-          }
 
-          <inq-single-select
-            [itemIndex]="index"
-            [item]="item"
-            (removeAnswerEvent)="removeAnswer($event, index)"
-            (removeQuestionEvent)="removeQuestion($event)"
-          ></inq-single-select>
-          @if (item.get(typeQuestion.TYPE)?.value === questionType.SINGLE_SELECT) {
-            @if (index + 1 === lastIDquestionsArrayReverse) {
-              @if (isAnswerToSingleSelect) {
-                <inq-button-add-answer (addAnswer)="addAnswerInSelectForm(index,'singleSelect')"></inq-button-add-answer>
+            <inq-single-select
+              [itemIndex]="index"
+              [item]="item"
+              (removeAnswerEvent)="removeAnswer($event, index)"
+              (removeQuestionEvent)="removeQuestion($event)"
+            ></inq-single-select>
+            @if (item.get(typeQuestion.TYPE)?.value === questionType.SINGLE_SELECT) {
+              @if (index + 1 === lastIDquestionsArrayReverse) {
+                @if (isAnswerToSingleSelect) {
+                  <inq-button-add-answer
+                    (addAnswer)="addAnswerInSelectForm(index, 'singleSelect')"
+                  ></inq-button-add-answer>
+                }
               }
             }
-          }
 
-          <inq-scale-select [itemIndex]="index" [item]="item" (removeQuestionEvent)="removeQuestion($event)"></inq-scale-select>
+            <inq-scale-select
+              [itemIndex]="index"
+              [item]="item"
+              (removeQuestionEvent)="removeQuestion($event)"
+            ></inq-scale-select>
+          </div>
+        }
+      </div>
+      <div class="inline-flex justify-center w-full mt-4">
+        <button
+          [matMenuTriggerFor]="menu"
+          class="h-9 button-cutsom bg-gray-700 hover:bg-green-500 rounded-md hover:border-gray-400 w-48 leading-tight text-white cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
+          type="submit"
+        >
+          Add question
+        </button>
+        <mat-menu #menu="matMenu" class="user-menu text-white" yPosition="below">
+          <div class=" hover:bg-slate-500 w-full flex justify-center items-center h-8 hover:rounded-sm">  <button  (click)="addSingleSelectForm()" >
+            <img src="../assets/images/mat-menu/multiselect.svg" width="50" height="40" class="w-full h-8" alt="" />
+          </button></div>
+            <div class=" hover:bg-slate-500 w-full flex justify-center items-center h-8 hover:rounded-sm">  <button  (click)="addSingleSelectForm()" >
+              <img src="../assets/images/mat-menu/singleselect.svg" width="50" height="40" class="w-full h-8" alt="" />
+            </button></div>
           
-        </div>
-      }
-    </div>
-    <div class="footer_botton">
-      <button mat-button [matMenuTriggerFor]="menu" class="button" color="primary" mat-raised-button>Add question</button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="addMultiSelectForm()">Multi scelect</button>
-        <button mat-menu-item (click)="addSingleSelectForm()">Single select</button>
-        <button mat-menu-item (click)="addScaleSelectForm()">Scale</button>
-        <button mat-menu-item (click)="addShortTextQuestionForm()">ShortTextQuestion</button>
-      </mat-menu>
-    </div>
-  </ng-container>
-  @if (questionsFormArray.length > 0) {
-    <span style="text-align: center" class="question_margin">Number of questions {{ questionsFormArray.length }}</span>
-  }
-  <mat-dialog-actions style="justify-content: end">
-    <button mat-button mat-dialog-close mat-raised-button>Cancel</button>
-    <button mat-button (click)="saveInquary()" mat-raised-button>Save</button>
-  </mat-dialog-actions>
+            <button mat-menu-item (click)="addScaleSelectForm()">Scale</button>
+            <button mat-menu-item (click)="addShortTextQuestionForm()">ShortTextQuestion</button>
+        </mat-menu>
+      </div>
+    </ng-container>
+    @if (questionsFormArray.length > 0) {
+      <span style="text-align: center" class="question_margin"
+        >Number of questions {{ questionsFormArray.length }}</span
+      >
+    }
+    <mat-dialog-actions style="justify-content: end">
+      <button mat-button mat-dialog-close mat-raised-button>Cancel</button>
+      <button mat-button (click)="saveInquary()" mat-raised-button>Save</button>
+    </mat-dialog-actions>
+  </mat-dialog-content>
 }

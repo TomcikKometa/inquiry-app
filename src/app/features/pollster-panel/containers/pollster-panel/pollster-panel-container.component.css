@@ -138,11 +138,8 @@
 }
 
 .clock {
-  font-family: "Questrial", sans-serif;
-  color: #ffffff;
-  /* transform: translate(-50%, -50%); */
   color: #a19f9f;
-  text-shadow: 0 0 20px rgb(200, 202, 202),  0 0 20px rgb(175, 174, 174,0.8);
+  text-shadow: 0 0 20px rgb(200, 202, 202);
 
   .date {
     letter-spacing: 0.1em;

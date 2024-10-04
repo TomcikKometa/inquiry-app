@@ -46,7 +46,7 @@
             <li
               class="li_hover mt-1 w-64 rounded"
               [ngClass]="{ li_details: detail.id == componentInquiryId && isComponentInquiryHoover }"
-              (click)="setHoover('inquiry', $index + 1)"
+              (click)="setDetail('inquiry', $index + 1,detail.action)"
             >
               <span>{{ detail.text }}</span>
             </li>
@@ -84,7 +84,7 @@
             <li
               class="li_hover mt-1 w-64 rounded"
               [ngClass]="{ li_details: detail.id == componentTableId && isComponentTableHoover }"
-              (click)="setHoover('table', $index + 1)"
+              (click)="setDetail('table', $index + 1)"
             >
               <span>{{ detail.text }}</span>
             </li>
@@ -137,7 +137,7 @@
           <li
             class="li_hover mt-1 w-64 rounded"
             [ngClass]="{ li_details: detail.id == componentUserId && isComponentUserHoover }"
-            (click)="setHoover('user', $index + 1)"
+            (click)="setDetail('user', $index + 1)"
           >
             <span>{{ detail.text }}</span>
           </li>
