@@ -28,7 +28,37 @@ html {
   --tableThree-color-cfdae9: #cfdae9;
   --tableFour-color-edf1f7: #edf1f7;
   --tableTitle-color-7699bb: #7699bb;
+  
 }
+
+.custom-container mat-dialog-container {
+  border-radius: 20px !important;
+  background-color: #f50202;
+  width: 600px;
+  height: 450px;
+}
+
+.inquiry_form{
+  background: rgb(221, 219, 219);
+  background: rgba(126, 125, 125, 0.678); /* Black background with 0.5 opacity */
+}
+
+.boxMenu mat-menu {
+  background-color: blue;
+}
+
+.mat-mdc-menu-panel.user-menu {
+  background-color: rgb(55, 65, 81);
+  border-radius: 5px;
+  width: 195px;
+  border:  1x solid;
+  border-color: coral;
+}
+
+.mat-mdc-menu-panel.trigger{
+  color: white;
+}
+
 
 .button_app {
   align-items: center;
