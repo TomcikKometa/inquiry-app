@@ -1,18 +1,16 @@
 import { CommonModule, DatePipe } from '@angular/common';
-import { ChangeDetectorRef, Component, inject, ViewEncapsulation  } from '@angular/core';
+import { Component, inject  } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { InquiryHeaderComponent } from './features/inquiry-header/inquiry-header.component';
 import { SidebarComponent } from './features/sidebar/sidebar.component';
 import { LoginComponent } from './features/shared-components/login/login.component';
 import { RegisterComponent } from './features/shared-components/register/register.component';
-import { first, Observable } from 'rxjs';
 import { StoreService } from './core/services/store/store.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   providers: [LoginComponent],
-  encapsulation: ViewEncapsulation.None,
   imports: [RegisterComponent, RouterOutlet, InquiryHeaderComponent, SidebarComponent, CommonModule ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
