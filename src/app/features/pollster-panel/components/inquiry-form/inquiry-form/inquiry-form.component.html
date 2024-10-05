@@ -1,9 +1,9 @@
 @if (inquiryForm) {
   <mat-dialog-content class="box w-full">
     <ng-container class="flex-row" [formGroup]="inquiryForm">
-      <div class="w-full justify-center inline-flex">
+      <div class="w-full justify-center inline-flex mb-">
         <input
-          class="placeholder-style w-72 leading-tight focus:outline-none text-white font-normal text-center bg-zinc-800 rounded-md h-12 button-cutsom border-l border-r border-t border-b shadow text-xl"
+          class="placeholder-style w-72 leading-tight focus:border-none text-white font-normal text-center bg-zinc-800 rounded-md h-12 button-cutsom border-l border-r border-t border-b shadow text-xl"
           type="text"
           placeholder="Inquiry name"
           aria-label="Login name"
@@ -68,15 +68,34 @@
           Add question
         </button>
         <mat-menu #menu="matMenu" class="user-menu text-white" yPosition="below">
-          <div class=" hover:bg-slate-500 w-full flex justify-center items-center h-8 hover:rounded-sm">  <button  (click)="addSingleSelectForm()" >
-            <img src="../assets/images/mat-menu/multiselect.svg" width="50" height="40" class="w-full h-8" alt="" />
-          </button></div>
-            <div class=" hover:bg-slate-500 w-full flex justify-center items-center h-8 hover:rounded-sm">  <button  (click)="addSingleSelectForm()" >
-              <img src="../assets/images/mat-menu/singleselect.svg" width="50" height="40" class="w-full h-8" alt="" />
-            </button></div>
-          
-            <button mat-menu-item (click)="addScaleSelectForm()">Scale</button>
-            <button mat-menu-item (click)="addShortTextQuestionForm()">ShortTextQuestion</button>
+          <div
+            class="hover:bg-slate-900 w-full flex justify-center items-center h-8 hover:rounded-xl shadow-sm"
+          >
+            <button (click)="addSingleSelectForm()" class="w-full">
+              <img src="../assets/images/mat-menu/singleselect.svg" width="70" height="50" class="w-full h-8" alt="" />
+            </button>
+          </div>
+          <div class="hover:bg-slate-900 w-full flex justify-center items-center h-8 hover:rounded-xl shadow-sm">
+            <button (click)="addMultiSelectForm()" class="w-full">
+              <img src="../assets/images/mat-menu/multiselect.svg" width="50" height="50" class="w-full h-8" alt="" />
+            </button>
+          </div>
+          <div class="hover:bg-slate-900 w-full flex justify-center items-center h-8 hover:rounded-xl shadow-sm">
+            <button (click)="addScaleSelectForm()" class="w-full">
+              <img src="../assets/images/mat-menu/scaleselect.svg" width="50" height="50" class="w-full h-8" alt="" />
+            </button>
+          </div>
+          <div class="hover:bg-slate-900 w-full flex justify-center items-center h-8 hover:rounded-xl shadow-sm">
+            <button (click)="addShortTextQuestionForm()" class="w-full">
+              <img
+                src="../assets/images/mat-menu/shorttextquestion.svg"
+                width="80"
+                height="50"
+                class="w-full h-8"
+                alt=""
+              />
+            </button>
+          </div>
         </mat-menu>
       </div>
     </ng-container>
