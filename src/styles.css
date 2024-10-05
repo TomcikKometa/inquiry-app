@@ -52,7 +52,30 @@ html {
   border-radius: 5px;
   width: 195px;
   border:  1x solid;
+  
   border-color: coral;
+  overflow-y: hidden;
+}
+
+.mat-mdc-input-element.text_area  {
+  display: flex;
+  border: 1px solid;
+  border-color:black;
+ text-align: start;
+ padding-left: 10px;
+  height: 100%;
+  color: lavenderblush;
+  box-shadow: rgba(53, 73,88, 0.95) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.textarea-mdc--panel.textareapanel{
+  background-color: rgb(55, 65, 81);
+  border-radius: 5px;
+  width: 195px;
+  border:  1x solid;
+  border-color: coral;
+  overflow-y: hidden;
+  max-height: 24px;
 }
 
 .mat-mdc-menu-panel.trigger{
