@@ -2,17 +2,48 @@
   <form [formGroup]="form">
     <div formArrayName="{{ inquiryFormName.QUESTIONS }}">
       <div [formGroupName]="itemIndex">
-        <span class="question_margin">Question no. {{ itemIndex + 1 }}</span>
-        <mat-form-field appearance="outline" class="question_input_width">
-          <mat-label>Text of the Question</mat-label>
-          <input matInput type="text" formControlName="{{ shortTextQuestionFormName.QUESTION }}" />
-        </mat-form-field>
+        <div class="w-full flex items-center align-middle mt-4">
+          <div class="w-1/6 flex justify-center">
+            <span class="text-white">Question no. {{ itemIndex + 1 }}</span>
+          </div>
+          <div class="w-5/6 inline-flex justify-center">
+            <textarea
+              type="textarea"
+              style="resize: none; align-items: center; display: flex; align-content: center"
+              #area
+              placeholder="Question"
+              maxlength="350"
+              matInput
+              class="w-5/6 h-10 text_area leading-tight focus:border-none text-white font-normal text-center bg-gray-700 rounded-md  shadow text-sm"
+              formControlName="{{ shortTextQuestionFormName.QUESTION }}"
+              matInput
+            ></textarea>
+            <div class="w-24 justify-center flex">
+              <span class="text-normal text-white items-center flex">
+                {{ 350 - area.value.length + '/' + 350 }}
+              </span>
+            </div>
+          </div>
 
-        <button class="question_margin" color="primary" mat-raised-button (click)="removeQuestion()">Remove question</button>
-        <mat-form-field appearance="outline" class="answer_input_width" ngDefaultControl>
-          <mat-label>Text of the Answer</mat-label>
-          <input matInput type="text" formControlName="{{ shortTextQuestionFormName.ANSWER }}" />
+          <button
+            class="h-9 hover:bg-red-600 rounded w-44 text-white cursor-pointer text-normal bg-red-500"
+            type="submit"
+            (click)="removeQuestion()"
+          >
+            Remove question
+          </button>
+          <!-- <mat-form-field appearance="outline" class="answer_input_width" ngDefaultControl>
+          <input matInput type="text" />
         </mat-form-field>
+        <mat-label class="mt-5">Text of the Answer</mat-label>
+        <input
+          class="box1 placeholder-style w-48 border-t border-b border-r border-l input_border leading-tight focus:outline-none text-white font-normal text-center bg-gray-500 rounded-md h-9"
+          type="text"
+          placeholder="Login name *"
+          aria-label="Login name"
+          formControlName="{{ shortTextQuestionFormName.ANSWER }}"
+        /> -->
+        </div>
       </div>
     </div>
   </form>

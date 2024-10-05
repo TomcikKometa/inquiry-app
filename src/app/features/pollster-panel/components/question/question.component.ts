@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
-import { AbstractControl, FormGroup, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { InquiryQuestionsFormName, ShortTextQuestionFormName, TypeQuestion } from '../inquiry-form/@enum/form-enum';
 import { MatInputModule } from '@angular/material/input';
@@ -9,7 +9,7 @@ import { QuestionType } from '../../../../enums/question-type';
 @Component({
   selector: 'inq-question',
   standalone: true,
-  imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule],
+  imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule,FormsModule],
   templateUrl: './question.component.html',
   styleUrl: './question.component.css'
 })
