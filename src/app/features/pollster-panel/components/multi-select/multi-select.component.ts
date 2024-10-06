@@ -7,11 +7,12 @@ import { InquiryQuestionsFormName, MultiSelectQuestionFormName, TypeQuestion } f
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MultiSelectAnswerFormName } from '../../../user-panel/components/@enums/inquiry-form-to-fill-enums';
 import { QuestionType } from '../../../../enums/question-type';
+import { ButtonAddAnswerComponent } from '../../../shared-components/button-add-answer/button-add-answer.component';
 
 @Component({
   selector: 'inq-multi-select',
   standalone: true,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatCheckboxModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatCheckboxModule,ButtonAddAnswerComponent],
   templateUrl: './multi-select.component.html',
   styleUrl: './multi-select.component.css'
 })
@@ -48,7 +49,7 @@ export class MultiSelectComponent implements OnInit {
     this.removeQuestionEvent.emit(this.itemIndex);
   }
 
-  protected addAnswerInItem(): void {
+  protected addAnswerInSelectForm(): void {
     this.addAnswerEvent.emit(true);
   }
 

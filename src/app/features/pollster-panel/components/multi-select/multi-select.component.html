@@ -1,36 +1,98 @@
 @if (isViewed) {
   <form [formGroup]="form">
     <div formArrayName="{{ inquiryFormName.QUESTIONS }}">
-      <div [formGroupName]="itemIndex">
-        <span class="question_margin">Question no. {{ itemIndex + 1 }}</span>
-        <mat-form-field appearance="outline" class="question_input_width">
-          <mat-label>Text of the Question</mat-label>
-          <input matInput type="text" formControlName="{{ multiSelectQuestionFormName.QUESTION }}" />
-        </mat-form-field>
-        <button class="question_margin" color="primary" mat-raised-button (click)="removeQuestion()">Remove question</button>
-        <div class="row" formArrayName="{{ multiSelectQuestionFormName.ANSWERS }}">
+      <div [formGroupName]="itemIndex" class="w-full inline-flex">
+        <div class="w-1/12 h-12 flex items-center mr-2">
+          <span class="text-gray-500 align-middle flex h-5">no. {{ itemIndex + 1 }}</span>
+        </div>
+        <div class="w-4/5 h-full">
+          <div class="inline-block w-full">
+            <textarea
+              type="textarea"
+              style="resize: none"
+              #areaQuestion
+              placeholder="Question"
+              maxlength="350"
+              matInput
+              class="w-full bg-gray-100 text_area rounded-md focus:border-0"
+              formControlName="{{ multiSelectQuestionFormName.QUESTION }}"
+              matInput
+            ></textarea>
+          </div>
+
+          <div class="w-full justify-end flex">
+            <span class="text-xs text-gray-500 items-center flex">
+              {{ 350 - areaQuestion.value.length + '/' + 350 }}
+            </span>
+          </div>
+        </div>
+
+        <div class="row w-full" formArrayName="{{ multiSelectQuestionFormName.ANSWERS }}">
           @for (answers of answersFormArray.controls; track answers; let index = $index) {
             @if (isEditedControl) {
               <div class="d-flex row" [formGroupName]="index">
-                  <mat-checkbox></mat-checkbox>
+                <!-- <mat-checkbox></mat-checkbox>
                   <mat-form-field appearance="outline" class="answer_input_width" >
                     <mat-label>Answer</mat-label>
                     <input matInput type="text" formControlName="{{ 'label' }}" />
-                  </mat-form-field>
-                  <button class="question_margin" color="primary" mat-raised-button (click)="removeAnswerAtForm(index)">Remove</button>
-                </div>
+                  </mat-form-field> -->
+                <button class="question_margin" color="primary" mat-raised-button (click)="removeAnswerAtForm(index)">
+                  Remove
+                </button>
+              </div>
             }
             @if (isEmptyQuestion) {
-              <div class="d-flex row">
+              <div class="flex flex-row justify-start items-center w-full">
+                <input
+                  class="w-1/6 border-2 border-t border-b border-r border-l mb-3 leading-tight focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-4"
+                  id="vue-checkbox"
+                  type="checkbox"
+                  value=""
+                  placeholder="Password"
+                  aria-label="Full name"
+                  formControlName="password"
+                />
+                <input
+                  class="w-5/6 bg-gray-200 multiselect rounded-md mb-2"
+                  type="text"
+                  for="vue-checkbox"
+                  placeholder=""
+                  aria-label="Full name"
+                  formControlName="password"
+                />
+              </div>
+              <!-- <div class="d-flex row">
                 <mat-checkbox></mat-checkbox>
                 <mat-form-field appearance="outline" class="answer_input_width">
                   <mat-label>Answer</mat-label>
                   <input matInput type="text" formControlName="{{ index }}" class="answer_input_width"/>
                 </mat-form-field>
                 <button class="question_margin" color="primary" mat-raised-button (click)="removeAnswerAtForm(index)">Remove</button>
-              </div>
+              </div> -->
             }
           }
+        </div>
+        <div class="w-1/6 mb-1 ml-2">
+          <div>
+            <button
+              style="width: 130px"
+              class="h-7 hover:bg-red-500 rounded-md text-white cursor-pointer text-sm bg-red-200 shadow-2xl mb-1"
+              type="submit"
+              (click)="removeQuestion()"
+            >
+              Remove ques.
+            </button>
+          </div>
+          <div>
+            <button
+              style="width: 130px"
+              class="h-7 hover:bg-gray-500 rounded-md text-white cursor-pointer text-sm bg-gray-400 shadow-2xl"
+              type="submit"
+              (click)="addAnswerInSelectForm()"
+            >
+              Add answer
+            </button>
+          </div>
         </div>
       </div>
     </div>

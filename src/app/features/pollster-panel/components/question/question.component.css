@@ -16,11 +16,13 @@
     
   }
 
-  /* .text_area {
-    
-  } */
+
   .button-cutsom2 { 
     background: #ffabab;
   background: rgb(223, 11, 11);
   background: rgba(243, 96, 96, 0.678); /* Black background with 0.5 opacity */
   }
+
+  input:focus, textarea:focus, select:focus{
+    outline: none;
+}
