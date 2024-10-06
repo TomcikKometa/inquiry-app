@@ -3,7 +3,7 @@
 
 .placeholder-style::placeholder {
   text-align: center;
-  background: #ececec;
+  background: rgb(238, 238, 238);
   height: 100%;
   padding-top: 10px;
   margin-top: 10px;
@@ -124,9 +124,7 @@ abbr {
 
 .box1 {
   border-radius: 6px;
-  box-shadow:
-    rgba(0, 0, 0, 0.3) 0px 19px 38px,
-    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  box-shadow: rgba(207, 207, 207, 0.1) 0px 5px 40px 19px, rgba(255, 255, 255, 0.5) 0px 8px 10px -8px;
   z-index: 1;
 }
 

@@ -1,3 +1,8 @@
+input:focus, textarea:focus, select:focus{
+  outline: none;
+}
+
+
 .question_margin {
   margin: 10px;
 }

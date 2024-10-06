@@ -3,7 +3,7 @@
     <ng-container class="flex-row" [formGroup]="inquiryForm">
       <div class="w-full justify-center inline-flex mb-3">
         <input
-          class="placeholder-style w-72 leading-tight focus:border-none text-white font-normal text-center bg-zinc-800 rounded-xl h-12 button-cutsom border-l border-r border-t border-b shadow text-xl"
+          class="placeholder-style w-72 leading-tight focus:border-none text- font-normal  text-center  bg-gray-100  rounded-xl h-12 button-cutsom border-l border-r border-t border-b shadow text-xl"
           type="text"
           placeholder="Inquiry name"
           aria-label="Login name"
@@ -24,7 +24,7 @@
               [item]="item"
               (removeAnswerEvent)="removeAnswer($event, index)"
               (removeQuestionEvent)="removeQuestion($event)"
-              (addAnswerEvent)="addAnswerInSelectForm(index,'multiSelect')"
+              (addAnswerEvent)="addAnswerInSelectForm(index, 'multiSelect')"
             ></inq-multi-select>
 
             <inq-single-select
@@ -32,6 +32,7 @@
               [item]="item"
               (removeAnswerEvent)="removeAnswer($event, index)"
               (removeQuestionEvent)="removeQuestion($event)"
+              (addAnswerEvent)="addAnswerInSelectForm(index, 'singleSelect')"
             ></inq-single-select>
             @if (item.get(typeQuestion.TYPE)?.value === questionType.SINGLE_SELECT) {
               @if (index + 1 === lastIDquestionsArrayReverse) {
@@ -54,15 +55,13 @@
       <div class="inline-flex justify-center w-full mt-4">
         <button
           [matMenuTriggerFor]="menu"
-          class="h-9 button-cutsom bg-gray-700 hover:bg-green-500 rounded-md hover:border-gray-400 w-48 leading-tight text-white cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
+          class="h-9 shadow bg-gray-700 hover:bg-green-500 rounded-md hover:border-gray-400 w-48 leading-tight text-white cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
           type="submit"
         >
           Add question
         </button>
         <mat-menu #menu="matMenu" class="user-menu text-white" yPosition="below">
-          <div
-            class="hover:bg-slate-900 w-full flex justify-center items-center h-8 hover:rounded-xl shadow-sm"
-          >
+          <div class="hover:bg-slate-900 w-full flex justify-center items-center h-8 hover:rounded-xl shadow-sm">
             <button (click)="addSingleSelectForm()" class="w-full">
               <img src="../assets/images/mat-menu/singleselect.svg" width="70" height="50" class="w-full h-8" alt="" />
             </button>
@@ -96,9 +95,27 @@
         >Number of questions {{ questionsFormArray.length }}</span
       >
     }
-    <mat-dialog-actions style="justify-content: end">
-      <button mat-button mat-dialog-close mat-raised-button>Cancel</button>
-      <button mat-button (click)="saveInquary()" mat-raised-button>Save</button>
+    <mat-dialog-actions class="" style="display: flex;justify-content: end;">
+      <div class="flex justify-between" style="justify-items: end;width: 150px;align-content: center;">
+        <button
+        mat-dialog-close
+        style="width: 120px;padding: 5px;"
+        class="h-10 m-2 p-2 bg-white shadow text-black hover:bg-green-500 rounded-md hover:border-gray-400 w-36  cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
+        type="submit"
+      >
+        Close
+      </button>
+      </div>
+      <div class="flex justify-between">
+      <button
+        style="width: 120px;padding: 5px;"
+        class="h-10 m-2 p-2 bg-gray-700 shadow hover:bg-green-500 rounded-md hover:border-gray-400 w-36 leading-tight text-white cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
+        type="submit"
+      >
+        Save
+      </button>
+      </div>
+        
     </mat-dialog-actions>
   </mat-dialog-content>
 }
