@@ -1,9 +1,9 @@
 @if (inquiryForm) {
   <mat-dialog-content class="box w-full">
     <ng-container class="flex-row" [formGroup]="inquiryForm">
-      <div class="w-full justify-center inline-flex mb-">
+      <div class="w-full justify-center inline-flex mb-3">
         <input
-          class="placeholder-style w-72 leading-tight focus:border-none text-white font-normal text-center bg-zinc-800 rounded-md h-12 button-cutsom border-l border-r border-t border-b shadow text-xl"
+          class="placeholder-style w-72 leading-tight focus:border-none text-white font-normal text-center bg-zinc-800 rounded-xl h-12 button-cutsom border-l border-r border-t border-b shadow text-xl"
           type="text"
           placeholder="Inquiry name"
           aria-label="Login name"
@@ -12,7 +12,7 @@
       </div>
       <div class="forms_section" formArrayName="{{ inquiryFormName.QUESTIONS }}">
         @for (item of questionsFormArray.controls; track trackItem(item); let index = $index) {
-          <div class="row">
+          <div class="row mt-4">
             <inq-question
               [itemIndex]="index"
               [item]="item"
@@ -24,16 +24,8 @@
               [item]="item"
               (removeAnswerEvent)="removeAnswer($event, index)"
               (removeQuestionEvent)="removeQuestion($event)"
+              (addAnswerEvent)="addAnswerInSelectForm(index,'multiSelect')"
             ></inq-multi-select>
-            @if (item.get(typeQuestion.TYPE)?.value === questionType.MULTISELECT) {
-              @if (index + 1 === lastIDquestionsArrayReverse) {
-                @if (isAnswerToMultiSelect) {
-                  <inq-button-add-answer
-                    (addAnswer)="addAnswerInSelectForm(index, 'multiSelect')"
-                  ></inq-button-add-answer>
-                }
-              }
-            }
 
             <inq-single-select
               [itemIndex]="index"
