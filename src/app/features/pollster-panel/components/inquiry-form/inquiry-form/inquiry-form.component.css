@@ -1,7 +1,6 @@
-/* mat-card{
-  border-radius: 30px;
-  background-color: blue;
-} */
+input:focus, textarea:focus, select:focus{
+  outline: none;
+}
 
 .box{
   background: rgb(255, 255, 255);
@@ -14,31 +13,10 @@
   height: 100%;
   padding-top: 10px;
   margin-top: 10px;
-  font-size: 20px;
+  font-size: 22px;
   color: white;
   border: none;
-  
 }
-
-/* .inquiry_input {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.inquiry_input_width {
-  width: 320px;
-}
-
-.forms_section {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.footer_botton {
-  text-align: center;
-  gap: 10px;
-  margin: 10px;
-} */
 
 .button-cutsom { 
   border: 1px solid;

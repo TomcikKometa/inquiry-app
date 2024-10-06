@@ -22,6 +22,7 @@ export class SingleSelectComponent {
 
   @Input({ required: true }) public itemIndex!: number;
   @Input({ required: true }) public item!: AbstractControl;
+  @Output() public addAnswerEvent: EventEmitter<boolean> = new EventEmitter();
   @Output() public removeAnswerEvent: EventEmitter<number> = new EventEmitter();
   @Output() public removeQuestionEvent: EventEmitter<number> = new EventEmitter();
 
@@ -42,6 +43,10 @@ export class SingleSelectComponent {
 
   protected removeQuestion(): void {
     this.removeQuestionEvent.emit(this.itemIndex);
+  }
+
+  protected addAnswerInSelectForm(): void {
+    this.addAnswerEvent.emit(true);
   }
 
   protected get answersFormArray(): FormArray {

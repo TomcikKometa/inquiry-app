@@ -2,11 +2,11 @@
   <form [formGroup]="form">
     <div formArrayName="{{ inquiryFormName.QUESTIONS }}">
       <div [formGroupName]="itemIndex" class="w-full inline-flex">
-        <div class="w-1/12 h-12 flex items-center">
+        <div class="w-20 h-12 flex items-center">
           <span class="text-gray-500 align-middle flex h-5">no. {{ itemIndex + 1 }}</span>
         </div>
-        <div class="w-4/5 h-full mr-2">
-          <div class="inline-block w-full">
+        <div class="w-3/5 h-full mr-16 pr-2">
+          <div class="inline-flex w-full justify-start">
             <textarea
               type="textarea"
               style="resize: none"
@@ -25,7 +25,8 @@
             </span>
           </div>
         </div>
-        <div class="w-4/6 h-full ml-2">
+        <div class="w-4"></div>
+        <div class="w-3/5 h-full mr-2">
           <div class="inline-block w-full justify-end">
             <textarea
               type="textarea"

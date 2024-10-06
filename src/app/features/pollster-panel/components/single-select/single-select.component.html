@@ -1,54 +1,84 @@
 @if (isViewed) {
   <form [formGroup]="form">
     <div formArrayName="{{ inquiryFormName.QUESTIONS }}">
-      <div [formGroupName]="itemIndex">
+      <div [formGroupName]="itemIndex" class="w-full inline-flex">
         <div class="w-1/12 h-12 flex items-center mr-2">
           <span class="text-gray-500 align-middle flex h-5">no. {{ itemIndex + 1 }}</span>
         </div>
-      </div>
-      <div class="w-4/5 h-full">
-        <div class="inline-block w-full">
-          <textarea
-            type="textarea"
-            style="resize: none"
-            #areaQuestion
-            placeholder="Question"
-            maxlength="350"
-            matInput
-            class="w-full bg-gray-100 text_area rounded-md focus:border-0"
-            formControlName="{{ singleSelectQuestionFormName.QUESTION }}"
-            matInput
-          ></textarea>
-        </div>
-        
 
-        <div class="w-full justify-end flex">
-          <span class="text-xs text-gray-500 items-center flex">
-            {{ 350 - areaQuestion.value.length + '/' + 350 }}
-          </span>
+        <div class="w-4/5 h-full">
+          <div class="inline-block w-full">
+            <textarea
+              type="textarea"
+              style="resize: none"
+              #areaQuestion
+              placeholder="Question"
+              maxlength="350"
+              matInput
+              class="w-full bg-gray-100 text_area rounded-md focus:border-0"
+              formControlName="{{ singleSelectQuestionFormName.QUESTION }}"
+              matInput
+            ></textarea>
+          </div>
+          <div class="w-full justify-end flex">
+            <span class="text-xs text-gray-500 items-center flex">
+              {{ 350 - areaQuestion.value.length + '/' + 350 }}
+            </span>
+          </div>
+        </div>
+
+        <div class="w-full" formArrayName="{{ singleSelectQuestionFormName.ANSWERS }}">
+          @for (answers of answersFormArray.controls; track answers; let index = $index) {
+            <div class="items-center h-8 flex">
+              <input
+                id="radio1"
+                type="radio"
+                value=""
+                name="default-radio"
+                class="w-1/6 focus:outline-none border-gray-400 text-white font-normal text-center bg-gray-500 rounded-md h-4 items-baseline"
+              />
+
+              <div class="w-5/6 inline-block items-center h-4 mb-3 mr-1">
+                <label
+                  class="w-full bg-gray-200 rounded-md"
+                  for="radio1"
+                  type="text"
+                >
+                  <input
+                    class="w-full singleselect bg-gray-200 rounded-md h-5"
+                    type="text"
+                    placeholder=""
+                    aria-label="Full name"
+                    formControlName="{{ index }}"
+                  />
+                </label>
+              </div>
+            </div>
+          }
+        </div>
+        <div class="w-1/6 mb-1 ml-2">
+          <div>
+            <button
+              style="width: 130px"
+              class="h-7 hover:bg-red-500 rounded-md text-white cursor-pointer text-sm bg-red-200 shadow-2xl mb-1"
+              type="submit"
+              (click)="removeQuestion()"
+            >
+              Remove ques.
+            </button>
+          </div>
+          <div>
+            <button
+              style="width: 130px"
+              class="h-7 hover:bg-gray-500 rounded-md text-white cursor-pointer text-sm bg-gray-400 shadow-2xl"
+              type="submit"
+              (click)="addAnswerInSelectForm()"
+            >
+              Add answer
+            </button>
+          </div>
         </div>
       </div>
-
     </div>
   </form>
 }
-
-
-<!-- <span class="question_margin">Question no. {{ itemIndex + 1 }}</span>
-<mat-form-field appearance="outline" class="question_input_width">
-  <mat-label>Text of the Question</mat-label>
-  <input matInput type="text" formControlName="{{ singleSelectQuestionFormName.QUESTION }}" />
-</mat-form-field>
-<button class="question_margin" color="primary" mat-raised-button (click)="removeQuestion()">Remove question</button>
-<div class="row" formArrayName="{{ singleSelectQuestionFormName.ANSWERS }}">
-  @for (answers of answersFormArray.controls; track answers; let index = $index) {
-    <div class="row">
-      <mat-radio-button></mat-radio-button>
-      <mat-form-field appearance="outline" class="answer_input_width">
-        <mat-label>Answer</mat-label>
-        <input matInput type="text" formControlName="{{ index }}" />
-      </mat-form-field>
-      <button class="question_margin" color="primary" mat-raised-button (click)="removeAnswerAtForm(index)">Remove</button>
-    </div>
-  }
-</div> -->
