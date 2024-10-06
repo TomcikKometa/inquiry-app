@@ -1,5 +1,5 @@
 import { CommonModule, DatePipe } from '@angular/common';
-import { Component, inject  } from '@angular/core';
+import { Component, inject, ViewEncapsulation  } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { InquiryHeaderComponent } from './features/inquiry-header/inquiry-header.component';
 import { SidebarComponent } from './features/sidebar/sidebar.component';
@@ -10,6 +10,7 @@ import { StoreService } from './core/services/store/store.service';
 @Component({
   selector: 'app-root',
   standalone: true,
+  encapsulation:ViewEncapsulation.None,
   providers: [LoginComponent],
   imports: [RegisterComponent, RouterOutlet, InquiryHeaderComponent, SidebarComponent, CommonModule ],
   templateUrl: './app.component.html',

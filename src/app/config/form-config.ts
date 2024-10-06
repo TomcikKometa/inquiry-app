@@ -9,7 +9,7 @@ export const DIALOG_OPTIONS_FORM: MatDialogConfig = {
   autoFocus:false,
   disableClose:false,
   backdropClass : 'inquiry_form',
-  width:'60vw'
+  width:'64vw',
 };
 
 export const DIALOG_OPTIONS_FORM_TO_FILL: MatDialogConfig = {
