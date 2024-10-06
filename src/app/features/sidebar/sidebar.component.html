@@ -19,7 +19,7 @@
     <div class="pt-1">
       <div
         class="col-start-1 flex flex-row gap-16 justify-between mr-4 rounded mt-1 h-7 cursor-pointer component_row_hover"
-        [ngClass]="{ component_row: isInquiryDetail && isComponentInquiryHoover }"
+        [ngClass]="{ component_row: isInquiryDetail}"
         (click)="showComponent('isInquiryDetail')"
       >
         <div class="flex flex-row items-center gap-2 h-6 pt-1">
@@ -45,8 +45,8 @@
           @for (detail of inquiryDetailList; track $index) {
             <li
               class="li_hover mt-1 w-64 rounded"
-              [ngClass]="{ li_details: detail.id == componentInquiryId && isComponentInquiryHoover }"
-              (click)="setDetail('inquiry', $index + 1,detail.action)"
+              [ngClass]="{ li_details: detail.id == componentId }"
+              (click)="setDetail('isInquiryDetail', $index + 1,detail.action)"
             >
               <span>{{ detail.text }}</span>
             </li>
@@ -58,7 +58,7 @@
 
       <div
         class="col-start-1 flex flex-row gap-16 justify-between mr-4 rounded mt-1 h-7 component_row_hover"
-        [ngClass]="{ component_row: isTableDetail && isComponentTableHoover }"
+        [ngClass]="{ component_row: isTableDetail}"
         (click)="showComponent('isTableDetail')"
       >
         <div class="flex flex-row items-center gap-2 h-6 pt-1">
@@ -83,8 +83,8 @@
           @for (detail of tablesList; track $index) {
             <li
               class="li_hover mt-1 w-64 rounded"
-              [ngClass]="{ li_details: detail.id == componentTableId && isComponentTableHoover }"
-              (click)="setDetail('table', $index + 1)"
+              [ngClass]="{ li_details: detail.id == componentId }"
+              (click)="setDetail('isTableDetail', $index + 1)"
             >
               <span>{{ detail.text }}</span>
             </li>
@@ -92,7 +92,7 @@
         </ul>
       }
       <div class="col-start-1 flex flex-row gap-16 justify-between mr-4 rounded mt-1 h-7 component_row_hover"
-      [ngClass]="{ component_row: isChartsDetail && isComponentChartsHover }"
+      [ngClass]="{ component_row: isChartsDetail }"
       (click)="showComponent('isChartsDetail')">
         <div class="flex flex-row items-center gap-2 h-6 pt-1"
        >
@@ -118,8 +118,8 @@
           @for (detail of chartsList; track $index) {
             <li
               class="li_hover mt-1 w-64 rounded"
-              [ngClass]="{ li_details: detail.id == componentChartsId && isComponentChartsHover}"
-              (click)="setDetail('inquiry', $index + 1)"
+              [ngClass]="{ li_details: detail.id == componentId }"
+              (click)="setDetail('isChartsDetail', $index + 1)"
             >
               <span>{{ detail.text }}</span>
             </li>
@@ -129,7 +129,7 @@
     
       <div
       class="col-start-1 flex flex-row gap-16 justify-between mr-4 rounded mt-1 h-7 cursor-pointer component_row_hover"
-      [ngClass]="{ component_row: isComponentUser && isComponentUserHoover }"
+      [ngClass]="{ component_row: isComponentUser }"
       (click)="showComponent('userDetail')"
     >
       <div class="flex flex-row items-center gap-2 h-6 pt-1">
@@ -155,7 +155,7 @@
         @for (detail of userDatailList; track $index) {
           <li
             class="li_hover mt-1 w-64 rounded"
-            [ngClass]="{ li_details: detail.id == componentUserId && isComponentUserHoover }"
+            [ngClass]="{ li_details: detail.id == componentId }"
             (click)="setDetail('user', $index + 1)"
           >
             <span>{{ detail.text }}</span>

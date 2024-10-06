@@ -22,14 +22,7 @@ export class SidebarComponent {
   protected isInquiryDetail = false;
   protected isTableDetail = false;
   protected isChartsDetail = false;
-  protected isComponentUserHoover = false;
-  protected isComponentInquiryHoover = false;
-  protected isComponentTableHoover = false;
-  protected isComponentChartsHover = false;
-  protected componentUserId: number = 0;
-  protected componentInquiryId: number = 0;
-  protected componentTableId: number = 0;
-  protected componentChartsId: number = 0;
+  protected componentId: number = 0;
 
   protected userDatailList = [
     { id: 1, text: 'Profile - TODO' },
@@ -54,90 +47,40 @@ export class SidebarComponent {
   ];
 
   private readonly dialog: MatDialog = inject(MatDialog);
-  private readonly toastService: ToastrService = inject(ToastrService);
-  private readonly navigationService: NavigationService = inject(NavigationService);
   private readonly inquiryApiService: InquiryApiService = inject(InquiryApiService);
 
-  protected showComponent(mainDetails: string, rowDetails?: string) {
+  protected showComponent(mainDetails: string) {
+    this.componentId = 0;
     if (mainDetails === 'isInquiryDetail') {
       this.isInquiryDetail = !this.isInquiryDetail;
-      this.isComponentTableHoover = false;
-      this.isComponentUserHoover = false;
-      this.isComponentChartsHover = false;
-      this.isComponentInquiryHoover = true;
-      this.componentUserId = 0;
-      this.componentTableId = 0;
-      this.componentChartsId = 0;
+      this.isTableDetail = false;
+      this.isChartsDetail = false;
     }
 
     if (mainDetails === 'isTableDetail') {
       this.isTableDetail = !this.isTableDetail;
-      this.isComponentUserHoover = false;
-      this.isComponentInquiryHoover = false;
-      this.isComponentTableHoover = true;
-      this.componentUserId = 0;
-      this.componentInquiryId = 0;
-      this.componentChartsId = 0;
+      this.isInquiryDetail = false;
+      this.isChartsDetail = false;
     }
+
     if (mainDetails === 'isChartsDetail') {
       this.isChartsDetail = !this.isChartsDetail;
-      this.isComponentUserHoover = false;
-      this.isComponentInquiryHoover = false;
-      this.isComponentTableHoover = false;
-      this.isComponentChartsHover = true;
-      this.componentUserId = 0;
-      this.componentInquiryId = 0;
-      this.componentTableId = 0;
+      this.isInquiryDetail = false;
+      this.isTableDetail = false;
     }
 
     if (mainDetails === 'userDetail') {
       this.isComponentUser = !this.isComponentUser;
-      this.isComponentTableHoover = false;
-      this.isComponentInquiryHoover = false;
-      this.isComponentChartsHover = false;
-      this.isComponentUserHoover = true;
-      this.componentUserId = 0;
-      this.componentChartsId = 0;
+      this.isInquiryDetail = false;
+      this.isTableDetail = false;
+      this.isChartsDetail = false;
     }
   }
 
-  setDetail(componentRow: string, id: number, action?: string) {
-    if (componentRow === 'inquiry') {
-      this.componentInquiryId = id;
-      this.componentUserId = 0;
-      this.componentChartsId = 0;
-      this.isComponentUserHoover = false;
-      this.isComponentTableHoover = false;
-      this.isComponentChartsHover = false;
-      this.isComponentInquiryHoover = true;
+  protected setDetail(componentRow: string, id: number, action?: string) {
+    this.componentId = id;
+    if (componentRow === 'isInquiryDetail') {
       action == 'create' ? this.openCreateInquiryForm() : 0;
-    }
-    if (componentRow === 'user') {
-      this.componentUserId = id;
-      this.componentInquiryId = 0;
-      this.componentChartsId = 0;
-      this.isComponentInquiryHoover = false;
-      this.isComponentUserHoover = true;
-      this.isComponentTableHoover = false;
-    }
-
-    if (componentRow === 'table') {
-      this.componentUserId = 0;
-      this.componentInquiryId = 0;
-      this.componentChartsId = 0;
-      this.componentTableId = id;
-      this.isComponentTableHoover = true;
-      this.isComponentInquiryHoover = false;
-      this.isComponentUserHoover = false;
-    }
-    if (componentRow === 'charts') {
-      this.componentInquiryId = 0;
-      this.componentUserId = 0;
-      this.componentChartsId = id;
-      this.isComponentUserHoover = false;
-      this.isComponentTableHoover = false;
-      this.isComponentInquiryHoover = false;
-      this.isComponentChartsHover = true;
     }
   }
 
