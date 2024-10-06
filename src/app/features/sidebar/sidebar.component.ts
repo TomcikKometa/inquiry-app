@@ -12,7 +12,7 @@ import { NavigationService } from '../../core/services/navigation/navigation.ser
 @Component({
   selector: 'inq-sidebar',
   standalone: true,
-  providers:[InquiryApiService],
+  providers: [InquiryApiService],
   imports: [CommonModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
@@ -21,33 +21,36 @@ export class SidebarComponent {
   protected isComponentUser = false;
   protected isInquiryDetail = false;
   protected isTableDetail = false;
+  protected isChartsDetail = false;
   protected isComponentUserHoover = false;
   protected isComponentInquiryHoover = false;
   protected isComponentTableHoover = false;
+  protected isComponentChartsHover = false;
   protected componentUserId: number = 0;
   protected componentInquiryId: number = 0;
   protected componentTableId: number = 0;
+  protected componentChartsId: number = 0;
 
   protected userDatailList = [
-    { id: 1, text: 'Profile' },
-    { id: 2, text: 'Settings' }
+    { id: 1, text: 'Profile - TODO' },
+    { id: 2, text: 'Settings - TODO' }
   ];
 
   protected inquiryDetailList = [
     { id: 1, text: 'Create inquiry', action: 'create' },
-    { id: 2, text: 'Edit inquiry', action: 'edit' },
-    { id: 3, text: 'Fill inquiry', action: 'fill' },
-    { id: 4, text: 'Approve inquiry', action: 'approve' }
+    { id: 2, text: 'Edit inquiry - TODO', action: 'edit' },
+    { id: 3, text: 'Fill inquiry  - TODO', action: 'fill' },
+    { id: 4, text: 'Approve inquiry - TODO', action: 'approve' }
   ];
 
   protected tablesList = [
-    { id: 1, text: 'To fill' },
-    { id: 2, text: 'Done' }
+    { id: 1, text: 'To fill - TODO' },
+    { id: 2, text: 'Done -TODO' }
   ];
 
   protected chartsList = [
-    { id: 1, text: 'Done' },
-    { id: 2, text: 'Scores' }
+    { id: 1, text: 'Done - TODO' },
+    { id: 2, text: 'Scores - TODO' }
   ];
 
   private readonly dialog: MatDialog = inject(MatDialog);
@@ -56,46 +59,63 @@ export class SidebarComponent {
   private readonly inquiryApiService: InquiryApiService = inject(InquiryApiService);
 
   protected showComponent(mainDetails: string, rowDetails?: string) {
-    if (mainDetails === 'userDetail') {
-      this.componentUserId = 0;
-      this.isComponentUser = !this.isComponentUser;
-      this.isComponentUserHoover = true;
-      this.isComponentTableHoover = false;
-      this.isComponentInquiryHoover = false;
-    }
-
-    if (mainDetails === 'inquiryDetail') {
-      this.isComponentUserHoover = false;
-      this.componentUserId = 0;
+    if (mainDetails === 'isInquiryDetail') {
       this.isInquiryDetail = !this.isInquiryDetail;
-      this.isComponentInquiryHoover = true;
-      this.componentInquiryId = 0;
       this.isComponentTableHoover = false;
+      this.isComponentUserHoover = false;
+      this.isComponentChartsHover = false;
+      this.isComponentInquiryHoover = true;
+      this.componentUserId = 0;
+      this.componentTableId = 0;
+      this.componentChartsId = 0;
     }
 
-    if (mainDetails === 'tableDetail') {
+    if (mainDetails === 'isTableDetail') {
+      this.isTableDetail = !this.isTableDetail;
       this.isComponentUserHoover = false;
       this.isComponentInquiryHoover = false;
       this.isComponentTableHoover = true;
       this.componentUserId = 0;
       this.componentInquiryId = 0;
+      this.componentChartsId = 0;
+    }
+    if (mainDetails === 'isChartsDetail') {
+      this.isChartsDetail = !this.isChartsDetail;
+      this.isComponentUserHoover = false;
+      this.isComponentInquiryHoover = false;
+      this.isComponentTableHoover = false;
+      this.isComponentChartsHover = true;
+      this.componentUserId = 0;
+      this.componentInquiryId = 0;
       this.componentTableId = 0;
-      this.isTableDetail = !this.isTableDetail;
+    }
+
+    if (mainDetails === 'userDetail') {
+      this.isComponentUser = !this.isComponentUser;
+      this.isComponentTableHoover = false;
+      this.isComponentInquiryHoover = false;
+      this.isComponentChartsHover = false;
+      this.isComponentUserHoover = true;
+      this.componentUserId = 0;
+      this.componentChartsId = 0;
     }
   }
 
-  setDetail(componentRow: string, id: number,action?:string) {
+  setDetail(componentRow: string, id: number, action?: string) {
     if (componentRow === 'inquiry') {
       this.componentInquiryId = id;
       this.componentUserId = 0;
-      this.isComponentInquiryHoover = true;
+      this.componentChartsId = 0;
       this.isComponentUserHoover = false;
       this.isComponentTableHoover = false;
-      action == 'create' ? this.openCreateInquiryForm() : 0; 
+      this.isComponentChartsHover = false;
+      this.isComponentInquiryHoover = true;
+      action == 'create' ? this.openCreateInquiryForm() : 0;
     }
     if (componentRow === 'user') {
       this.componentUserId = id;
       this.componentInquiryId = 0;
+      this.componentChartsId = 0;
       this.isComponentInquiryHoover = false;
       this.isComponentUserHoover = true;
       this.isComponentTableHoover = false;
@@ -104,14 +124,24 @@ export class SidebarComponent {
     if (componentRow === 'table') {
       this.componentUserId = 0;
       this.componentInquiryId = 0;
+      this.componentChartsId = 0;
       this.componentTableId = id;
       this.isComponentTableHoover = true;
       this.isComponentInquiryHoover = false;
       this.isComponentUserHoover = false;
     }
+    if (componentRow === 'charts') {
+      this.componentInquiryId = 0;
+      this.componentUserId = 0;
+      this.componentChartsId = id;
+      this.isComponentUserHoover = false;
+      this.isComponentTableHoover = false;
+      this.isComponentInquiryHoover = false;
+      this.isComponentChartsHover = true;
+    }
   }
 
-  protected openCreateInquiryForm(): void{
+  protected openCreateInquiryForm(): void {
     const dialogRef = this.dialog.open(InquiryFormComponent, { ...DIALOG_OPTIONS_FORM });
 
     dialogRef
