@@ -135,22 +135,22 @@ export class InquiryFormService {
       const stepSize = control.get(ScaleSelectQuestionFormName.STEP_SIZE)?.value;
 
       if (maxValue === null || minValue === null || stepSize === null) {
-        return { error: 'Error values' };
+        return { error: '401' };
       }
 
       if (maxValue <= 0 || minValue < 0 || stepSize < 1) {
-        return { error: 'Error values' };
+        return { error: '401' };
       }
 
       if (maxValue <= minValue) {
-        return { error: 'Error values' };
+        return { error: '401' };
       }
       if ((maxValue - minValue) % stepSize !== 0) {
-        return { error: 'Error value' };
+        return { error: '401' };
       }
 
       if (stepSize > (maxValue - minValue) / 2) {
-        return { error: 'Error value' };
+        return { error: '401' };
       }
       return null;
     };

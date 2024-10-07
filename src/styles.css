@@ -107,7 +107,26 @@ input.singleselect:focus {
   box-shadow: rgba(14, 63, 126, 0.06) 0px 0px 0px 1px, rgba(42, 51, 70, 0.03) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 2px 2px -1px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.03) 0px 5px 5px -2.5px, rgba(42, 51, 70, 0.03) 0px 10px 10px -5px, rgba(42, 51, 70, 0.03) 0px 24px 24px -8px;
 }
 
+input.scaleselect {
+  display: flex;
+  text-align: center;
+  text-align: start;
+  padding-left: 10px;
+  width: 70px;
+  color: black;
+  height: 25px;
+}
 
+input.scaleselect:focus {
+  display: flex;
+  text-align: start;
+  padding-left: 10px;
+  height: 100%;
+  height: 25px;
+  color: rgb(107 114 128);
+  background-color: rgb(238, 238, 238);
+  box-shadow: rgba(14, 63, 126, 0.06) 0px 0px 0px 1px, rgba(42, 51, 70, 0.03) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 2px 2px -1px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.03) 0px 5px 5px -2.5px, rgba(42, 51, 70, 0.03) 0px 10px 10px -5px, rgba(42, 51, 70, 0.03) 0px 24px 24px -8px;
+}
 
 .button_app {
   align-items: center;
