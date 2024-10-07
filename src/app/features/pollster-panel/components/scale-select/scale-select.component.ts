@@ -7,7 +7,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { InquiryQuestionsFormName, ScaleSelectQuestionFormName } from '../inquiry-form/@enum/form-enum';
 import { QuestionType } from '../../../../enums/question-type';
 import { ToastrService } from 'ngx-toastr';
-import { of } from 'rxjs';
+import { debounce, debounceTime, of } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -37,14 +37,14 @@ export class ScaleSelectComponent {
       }
     }
 
-    this.item.valueChanges.pipe(takeUntilDestroyed(this.destroyReference)).subscribe(() => {
+    this.item.valueChanges.pipe(takeUntilDestroyed(this.destroyReference),debounceTime(5000)).subscribe(() => {
       let itemErrors = '';
       this.item.errors ? (itemErrors = Object.values(this.item.errors as Object)[0]) : undefined;
       
       if (itemErrors === '401') {
         if (this.item.get('stepSize')?.value && this.item.get('minValue')?.value && this.item.get('maxValue')?.value) {
           this.toastService.error('Not correct value of scale inputs', '', {
-            positionClass: 'toast-top-right',
+            positionClass: 'toast-config',
             tapToDismiss: true,
             closeButton: true
           });

@@ -2,11 +2,10 @@
   <form [formGroup]="form">
     <div formArrayName="{{ inquiryFormName.QUESTIONS }}">
       <div class="w-full inline-flex" [formGroupName]="itemIndex">
-        <div class="w-16 h-12 flex items-center mr-2">
+        <div class="w-1/12 h-12 flex items-center mr-2">
           <span class="text-gray-500 align-middle flex h-5">no. {{ itemIndex + 1 }}</span>
         </div>
-
-        <div class="w-6/12 h-full">
+        <div class="w-4/5 h-full">
           <div class="inline-block w-full">
             <textarea
               type="textarea"
@@ -20,7 +19,6 @@
               matInput
             ></textarea>
           </div>
-
           <div class="w-full justify-end flex">
             <span class="text-xs text-gray-500 items-center flex">
               {{ 350 - areaQuestion.value.length + '/' + 350 }}
@@ -28,12 +26,10 @@
           </div>
         </div>
 
-        <div class="w-6/12 h-16 inline-flex">
+        <div class="row w-full">
           <div class="flex justify-between">
-            <div class="w-14 justify-center flex mr-2 ml-2">
+            <div class="w-24 inline-flex  items-centermr-2 ml-2">
               <span class="text-xs text-gray-500 items-center flex"> Min value </span>
-            </div>
-            <div class="w-30 h-16 items-center flex">
               <input
                 class="w-6 bg-gray-200 rounded-md scaleselect"
                 type="number"
@@ -43,23 +39,22 @@
               />
             </div>
 
-            <div class="w-14 justify-center flex mr-2 ml-2">
+            <div class="w-24 inline-flex  items-centermr-2 ml-2">
               <span class="text-xs text-gray-500 items-center flex"> Max value</span>
-            </div>
-            <div class="w-30 h-16 items-center flex">
               <input
-                style="width: 60px"
-                class="w-6 bg-gray-200 rounded-md scaleselect"
-                type="number"
-                aria-label="Full name"
-                #maxValue
-                formControlName="{{ scaleSelectQuestionFormName.MAX_VALUE }}"
-              />
+              style="width: 60px"
+              class="w-6 bg-gray-200 rounded-md scaleselect"
+              type="number"
+              aria-label="Full name"
+              #maxValue
+              formControlName="{{ scaleSelectQuestionFormName.MAX_VALUE }}"
+            />
             </div>
-            <div class="w-14 justify-center flex mr-2 ml-2">
+             
+            <div class="w-10 justify-center flex mr-2 ml-2">
               <span class="text-xs text-gray-500 items-center flex"> Step size </span>
             </div>
-            <div class="w-30 h-16 items-center flex">
+            <div class="w-16 h-16 items-center flex">
               <input
                 style="width: 60px"
                 class="w-6 bg-gray-200 rounded-md scaleselect"
@@ -69,28 +64,29 @@
                 formControlName="{{ scaleSelectQuestionFormName.STEP_SIZE }}"
               />
             </div>
+            <div class="inline-flex items-center ml-2 h-16">
+              <mat-slider
+                class="h-16 cursor-pointer"
+                [min]="minValue.value"
+                [max]="maxValue.value"
+                [step]="stepSize.value"
+                [disabled]="item.invalid"
+              >
+                  <input matSliderThumb #slider  />
+                  @if (item.valid) {
+                    <div class="flex justify-center w-22 mb-2">
+                    <span class=" text-sm">{{ slider.value }}</span>
+                  </div>
+                  }
+              </mat-slider>
+            </div>
           </div>
-          <div class="inline-flex items-center ml-2 mr-2 h-16">
-            <mat-slider
-              class="h-16 cursor-pointer"
-              [min]="minValue.value"
-              [max]="maxValue.value"
-              [step]="stepSize.value"
-              [disabled]="item.invalid"
-            >
-                <input matSliderThumb #slider  />
-                @if (item.valid) {
-                  <div class="flex justify-center w-22 mb-2">
-                  <span class=" text-sm">{{ slider.value }}</span>
-                </div>
-                }
-            </mat-slider>
-          </div>
+         
 
           <div class="w-22">
           </div>
         </div>
-        <div class="w-2/12 mb-1 ml-2 flex items-center justify-end">
+        <div class="w-2/12 mb-1 ml-4 flex items-center justify-end">
           <div>
             <button
               style="width: 130px"

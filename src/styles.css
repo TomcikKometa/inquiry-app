@@ -109,10 +109,11 @@ input.singleselect:focus {
 
 input.scaleselect {
   display: flex;
-  text-align: center;
   text-align: start;
   padding-left: 10px;
-  width: 70px;
+  width: 55px;
+  justify-items: center;
+  align-self: center;
   color: black;
   height: 25px;
 }
@@ -121,7 +122,6 @@ input.scaleselect:focus {
   display: flex;
   text-align: start;
   padding-left: 10px;
-  height: 100%;
   height: 25px;
   color: rgb(107 114 128);
   background-color: rgb(238, 238, 238);
@@ -213,4 +213,10 @@ input.scaleselect:focus {
 
 .answer_form_iterator {
   margin-top: 15px;
+}
+
+.toast-config {
+  margin: 50px;
+  top:9%;
+  left: 80%;
 }
