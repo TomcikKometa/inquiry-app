@@ -1,36 +1,108 @@
 @if (this.isViewed) {
   <form [formGroup]="form">
     <div formArrayName="{{ inquiryFormName.QUESTIONS }}">
-      <div class="row" [formGroupName]="itemIndex">
-        <span class="question_margin">Question no. {{ itemIndex + 1 }}</span>
-        <mat-form-field appearance="outline" class="question_input_width">
-          <mat-label>Text of the Question</mat-label>
-          <input matInput type="text" formControlName="{{ scaleSelectQuestionFormName.QUESTION }}"/>
-        </mat-form-field>
-        <button class="question_margin" color="primary" mat-raised-button (click)="removeQuestion()">Remove question</button>
-        <div></div>
-        <mat-form-field class="scale_inputs" appearance="outline">
-          <mat-label>Min value</mat-label>
-          <input matInput type="number" formControlName="{{ scaleSelectQuestionFormName.MIN_VALUE }}" #minValue />
-        </mat-form-field>
-        <mat-form-field class="scale_inputs" appearance="outline">
-          <mat-label>Max value</mat-label>
-          <input matInput type="number" formControlName="{{ scaleSelectQuestionFormName.MAX_VALUE }}" #maxValue />
-        </mat-form-field>
-        <mat-form-field class="scale_inputs" appearance="outline">
-          <mat-label>Step size</mat-label>
-          <input matInput type="number" formControlName="{{ scaleSelectQuestionFormName.STEP_SIZE }}" #stepSize />
-        </mat-form-field>
+      <div class="w-full inline-flex" [formGroupName]="itemIndex">
+        <div class="w-16 h-12 flex items-center mr-2">
+          <span class="text-gray-500 align-middle flex h-5">no. {{ itemIndex + 1 }}</span>
+        </div>
+
+        <div class="w-6/12 h-full">
+          <div class="inline-block w-full">
+            <textarea
+              type="textarea"
+              style="resize: none"
+              #areaQuestion
+              placeholder="Question"
+              maxlength="350"
+              matInput
+              class="w-full bg-gray-100 text_area rounded-md focus:border-0"
+              formControlName="{{ scaleSelectQuestionFormName.QUESTION }}"
+              matInput
+            ></textarea>
+          </div>
+
+          <div class="w-full justify-end flex">
+            <span class="text-xs text-gray-500 items-center flex">
+              {{ 350 - areaQuestion.value.length + '/' + 350 }}
+            </span>
+          </div>
+        </div>
+
+        <div class="w-6/12 h-16 inline-flex">
+          <div class="flex justify-between">
+            <div class="w-14 justify-center flex mr-2 ml-2">
+              <span class="text-xs text-gray-500 items-center flex"> Min value </span>
+            </div>
+            <div class="w-30 h-16 items-center flex">
+              <input
+                class="w-6 bg-gray-200 rounded-md scaleselect"
+                type="number"
+                aria-label="Full name"
+                #minValue
+                formControlName="{{ scaleSelectQuestionFormName.MIN_VALUE }}"
+              />
+            </div>
+
+            <div class="w-14 justify-center flex mr-2 ml-2">
+              <span class="text-xs text-gray-500 items-center flex"> Max value</span>
+            </div>
+            <div class="w-30 h-16 items-center flex">
+              <input
+                style="width: 60px"
+                class="w-6 bg-gray-200 rounded-md scaleselect"
+                type="number"
+                aria-label="Full name"
+                #maxValue
+                formControlName="{{ scaleSelectQuestionFormName.MAX_VALUE }}"
+              />
+            </div>
+            <div class="w-14 justify-center flex mr-2 ml-2">
+              <span class="text-xs text-gray-500 items-center flex"> Step size </span>
+            </div>
+            <div class="w-30 h-16 items-center flex">
+              <input
+                style="width: 60px"
+                class="w-6 bg-gray-200 rounded-md scaleselect"
+                type="number"
+                aria-label="Full name"
+                #stepSize
+                formControlName="{{ scaleSelectQuestionFormName.STEP_SIZE }}"
+              />
+            </div>
+          </div>
+          <div class="inline-flex items-center ml-2 mr-2 h-16">
+            <mat-slider
+              class="h-16 cursor-pointer"
+              [min]="minValue.value"
+              [max]="maxValue.value"
+              [step]="stepSize.value"
+              [disabled]="item.invalid"
+            >
+                <input matSliderThumb #slider  />
+                @if (item.valid) {
+                  <div class="flex justify-center w-22 mb-2">
+                  <span class=" text-sm">{{ slider.value }}</span>
+                </div>
+                }
+            </mat-slider>
+          </div>
+
+          <div class="w-22">
+          </div>
+        </div>
+        <div class="w-2/12 mb-1 ml-2 flex items-center justify-end">
+          <div>
+            <button
+              style="width: 130px"
+              class="h-7 hover:bg-red-500 rounded-md text-white cursor-pointer text-sm bg-red-200 shadow-2xl mb-1"
+              type="submit"
+              (click)="removeQuestion()"
+            >
+              Remove ques.
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-    <mat-slider class="example-margin" [min]="minValue.value" [max]="maxValue.value" [step]="stepSize.value" [disabled]="item.invalid">
-      <input matSliderThumb #slider />
-    </mat-slider>
-    @if (item.valid) {
-      <span>{{ slider.value }}</span>
-    }
-    @if (item.invalid && item.touched) {
-      <span>Not correct value of scale inputs</span>
-    }
   </form>
 }

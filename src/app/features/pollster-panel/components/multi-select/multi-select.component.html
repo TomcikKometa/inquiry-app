@@ -36,9 +36,6 @@
                     <mat-label>Answer</mat-label>
                     <input matInput type="text" formControlName="{{ 'label' }}" />
                   </mat-form-field> -->
-                <button class="question_margin" color="primary" mat-raised-button (click)="removeAnswerAtForm(index)">
-                  Remove
-                </button>
               </div>
             }
             @if (isEmptyQuestion) {
@@ -49,30 +46,20 @@
                   value=""
                   placeholder="Password"
                   aria-label="Full name"
-                  formControlName="password"
                 />
                 <input
                   class="w-5/6 bg-gray-200 multiselect rounded-md mb-2"
                   type="text"
-                  for="vue-checkbox"
+                  for="checkbox"
                   placeholder=""
                   aria-label="Full name"
-                  formControlName="password"
+                  formControlName="{{ index }}"
                 />
               </div>
-              <!-- <div class="d-flex row">
-                <mat-checkbox></mat-checkbox>
-                <mat-form-field appearance="outline" class="answer_input_width">
-                  <mat-label>Answer</mat-label>
-                  <input matInput type="text" formControlName="{{ index }}" class="answer_input_width"/>
-                </mat-form-field>
-                <button class="question_margin" color="primary" mat-raised-button (click)="removeAnswerAtForm(index)">Remove</button>
-              </div> -->
             }
           }
         </div>
         <div class="w-1/6 mb-1 ml-2">
-          <div>
             <button
               style="width: 130px"
               class="h-7 hover:bg-red-500 rounded-md text-white cursor-pointer text-sm bg-red-200 shadow-2xl mb-1"
@@ -81,7 +68,6 @@
             >
               Remove ques.
             </button>
-          </div>
           <div>
             <button
               style="width: 130px"
