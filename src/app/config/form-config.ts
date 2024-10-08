@@ -4,7 +4,7 @@ export const DIALOG_OPTIONS_FORM: MatDialogConfig = {
   enterAnimationDuration: '500ms',
   exitAnimationDuration: '500ms',
   position: {
-    top: '100px'
+    top: '105px'
   },
   autoFocus:false,
   disableClose:false,

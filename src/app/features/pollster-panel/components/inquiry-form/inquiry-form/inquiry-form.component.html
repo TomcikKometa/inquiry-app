@@ -34,15 +34,6 @@
               (removeQuestionEvent)="removeQuestion($event)"
               (addAnswerEvent)="addAnswerInSelectForm(index, 'singleSelect')"
             ></inq-single-select>
-            @if (item.get(typeQuestion.TYPE)?.value === questionType.SINGLE_SELECT) {
-              @if (index + 1 === lastIDquestionsArrayReverse) {
-                @if (isAnswerToSingleSelect) {
-                  <inq-button-add-answer
-                    (addAnswer)="addAnswerInSelectForm(index, 'singleSelect')"
-                  ></inq-button-add-answer>
-                }
-              }
-            }
 
             <inq-scale-select
               [itemIndex]="index"
