@@ -91,8 +91,6 @@ export class SidebarComponent {
       .afterClosed()
       .pipe(first())
       .subscribe((inquiry: Inquiry) => {
-        console.log(inquiry);
-        
         if (inquiry) {
           this.inquiryApiService.createInquiry(inquiry);
         }
