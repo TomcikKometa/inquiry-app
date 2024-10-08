@@ -28,10 +28,13 @@
 
         <div class="row w-full">
           <div class="flex justify-between">
-            <div class="w-24 inline-flex  items-centermr-2 ml-2">
-              <span class="text-xs text-gray-500 items-center flex"> Min value </span>
+            <div class="w-24 inline-flex items-center ml-14">
+              <div class="items-center inline-block">
+                <span class="text-xs text-gray-500 justify-center flex w-full">Min</span>
+                <span class="text-xs text-gray-500 items-center flex">value</span>
+              </div>
               <input
-                class="w-6 bg-gray-200 rounded-md scaleselect"
+                class="w-6 bg-gray-200 rounded-md scaleselect ml-2"
                 type="number"
                 aria-label="Full name"
                 #minValue
@@ -39,22 +42,26 @@
               />
             </div>
 
-            <div class="w-24 inline-flex  items-centermr-2 ml-2">
-              <span class="text-xs text-gray-500 items-center flex"> Max value</span>
+            <div class="w-24 inline-flex items-center mr-8 ml-2">
+              <div class="items-center inline-block mr-2 ">
+                <span class="text-xs text-gray-500 justify-center flex w-full">Max</span>
+                <span class="text-xs text-gray-500 items-center flex">value</span>
+              </div>
               <input
-              style="width: 60px"
-              class="w-6 bg-gray-200 rounded-md scaleselect"
-              type="number"
-              aria-label="Full name"
-              #maxValue
-              formControlName="{{ scaleSelectQuestionFormName.MAX_VALUE }}"
-            />
+                style="width: 60px"
+                class="w-6 bg-gray-200 rounded-md scaleselect"
+                type="number"
+                aria-label="Full name"
+                #maxValue
+                formControlName="{{ scaleSelectQuestionFormName.MAX_VALUE }}"
+              />
             </div>
-             
-            <div class="w-10 justify-center flex mr-2 ml-2">
-              <span class="text-xs text-gray-500 items-center flex"> Step size </span>
-            </div>
-            <div class="w-16 h-16 items-center flex">
+
+            <div class="w-10 justify-center items-center flex mr-2 ml-2">
+              <div class="items-center inline-block">
+                <span class="text-xs text-gray-500 justify-center flex w-full">Step</span>
+                <span class="text-xs text-gray-500 items-center flex">&nbsp;&nbsp;size&nbsp;&nbsp;</span>
+              </div>
               <input
                 style="width: 60px"
                 class="w-6 bg-gray-200 rounded-md scaleselect"
@@ -64,6 +71,7 @@
                 formControlName="{{ scaleSelectQuestionFormName.STEP_SIZE }}"
               />
             </div>
+
             <div class="inline-flex items-center ml-2 h-16">
               <mat-slider
                 class="h-16 cursor-pointer"
@@ -72,19 +80,17 @@
                 [step]="stepSize.value"
                 [disabled]="item.invalid"
               >
-                  <input matSliderThumb #slider  />
-                  @if (item.valid) {
-                    <div class="flex justify-center w-22 mb-2">
-                    <span class=" text-sm">{{ slider.value }}</span>
+                <input matSliderThumb #slider />
+                @if (item.valid) {
+                  <div class="flex justify-center w-22 mb-2">
+                    <span class="text-sm">{{ slider.value }}</span>
                   </div>
-                  }
+                }
               </mat-slider>
             </div>
           </div>
-         
 
-          <div class="w-22">
-          </div>
+          <div class="w-22"></div>
         </div>
         <div class="w-2/12 mb-1 ml-4 flex items-center justify-end">
           <div>
