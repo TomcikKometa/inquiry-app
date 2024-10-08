@@ -75,7 +75,7 @@ export class InquiryMapper {
       };
     });
   }
-  private static mapAnswersMulti(answers: SingleSelectAnswerForm[]): SingleSelectAnswer[] {
-    return answers.map((answer: SingleSelectAnswerForm) => {return {answer: answer.label}});
+  private static mapAnswersMulti(answers: string[]): SingleSelectAnswer[] {
+    return answers.map((answer: string) => {return {answer: answer}});
   }
 }
