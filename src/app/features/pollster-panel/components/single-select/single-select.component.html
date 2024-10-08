@@ -76,6 +76,16 @@
             >
               Add answer
             </button>
+            @if(answersFormArray.length > 2){
+              <button
+              style="width: 130px"
+              class="h-7 hover:bg-gray-500 rounded-md text-white cursor-pointer text-sm bg-gray-400 shadow-2xl mt-1"
+              type="submit"
+              (click)="removeAnswerAtForm()"
+            >
+              Remove answer
+            </button>
+            }
           </div>
         </div>
       </div>

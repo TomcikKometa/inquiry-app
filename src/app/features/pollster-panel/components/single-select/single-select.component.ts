@@ -37,8 +37,8 @@ export class SingleSelectComponent {
     }
   }
 
-  protected removeAnswerAtForm(itemIndex: number): void {
-    this.removeAnswerEvent.emit(itemIndex);
+  protected removeAnswerAtForm(): void {
+    this.removeAnswerEvent.emit();
   }
 
   protected removeQuestion(): void {
