@@ -22,7 +22,7 @@
             <inq-multi-select
               [itemIndex]="index"
               [item]="item"
-              (removeAnswerEvent)="removeAnswer($event, index)"
+              (removeAnswerEvent)="removeAnswer(index)"
               (removeQuestionEvent)="removeQuestion($event)"
               (addAnswerEvent)="addAnswerInSelectForm(index, 'multiSelect')"
             ></inq-multi-select>
@@ -30,7 +30,7 @@
             <inq-single-select
               [itemIndex]="index"
               [item]="item"
-              (removeAnswerEvent)="removeAnswer($event, index)"
+              (removeAnswerEvent)="removeAnswer(index)"
               (removeQuestionEvent)="removeQuestion($event)"
               (addAnswerEvent)="addAnswerInSelectForm(index, 'singleSelect')"
             ></inq-single-select>

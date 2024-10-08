@@ -37,11 +37,11 @@ export class ScaleSelectComponent {
       }
     }
 
-    this.item.valueChanges.pipe(takeUntilDestroyed(this.destroyReference),debounceTime(5000)).subscribe(() => {
+    this.item.valueChanges.pipe(takeUntilDestroyed(this.destroyReference),debounceTime(4000)).subscribe(() => {
       let itemErrors = '';
       this.item.errors ? (itemErrors = Object.values(this.item.errors as Object)[0]) : undefined;
       
-      if (itemErrors === '401') {
+      if (itemErrors === '400') {
         if (this.item.get('stepSize')?.value && this.item.get('minValue')?.value && this.item.get('maxValue')?.value) {
           this.toastService.error('Not correct value of scale inputs', '', {
             positionClass: 'toast-config',

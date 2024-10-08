@@ -112,8 +112,6 @@ export class InquiryFormComponent {
   }
 
   protected saveInquary(): void {
-    console.log(this._inquiryForm);
-    
     const inquiryFormQuestionsForm = this._inquiryForm.get('questions') as FormArray;
     if (this._inquiryForm.valid && inquiryFormQuestionsForm.length > 0) {
       this.dialogRef.close(InquiryMapper.map(this._inquiryForm,this.editInquiryID));
@@ -131,10 +129,10 @@ export class InquiryFormComponent {
     this.questionsFormArray;
   }
 
-  protected removeAnswer(itemIndex: number, index: number): void {
+  protected removeAnswer(index: number): void {
     const formArray = this.questionsFormArray.controls[index].get('answers') as FormArray;
     if (formArray.length > 2) {
-      formArray.removeAt(itemIndex);
+      formArray.removeAt(formArray.length - 1);
     }
   }
 
