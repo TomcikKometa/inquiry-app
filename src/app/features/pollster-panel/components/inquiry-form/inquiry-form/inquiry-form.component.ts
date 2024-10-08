@@ -112,8 +112,6 @@ export class InquiryFormComponent {
   }
 
   protected saveInquary(): void {
-    console.log(this._inquiryForm);
-    
     const inquiryFormQuestionsForm = this._inquiryForm.get('questions') as FormArray;
     if (this._inquiryForm.valid && inquiryFormQuestionsForm.length > 0) {
       this.dialogRef.close(InquiryMapper.map(this._inquiryForm,this.editInquiryID));

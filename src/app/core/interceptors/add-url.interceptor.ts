@@ -1,5 +1,5 @@
 import { HttpErrorResponse, HttpEvent, HttpHandlerFn, HttpRequest, HttpStatusCode } from '@angular/common/http';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { ApiUserUrl } from '../../config/api-adress';
 import { inject } from '@angular/core';
 import { NavigationService } from '../services/navigation/navigation.service';
@@ -19,7 +19,7 @@ export function addUrlInterceptor(request: HttpRequest<unknown>, next: HttpHandl
   if (ApiUserUrl.USER_LOGIN_URL === url || ApiUserUrl.USER_CREATE_URL === url) {
     return next(backandRequest);
   } else {
-    const req: HttpRequest<unknown> = backandRequest.clone({ setParams: { Authorization: authorizationToken } });
+    const req: HttpRequest<unknown> = backandRequest.clone({headers:request.headers.set('Authorization',authorizationToken)});
     return next(req).pipe(
       catchError((error: HttpErrorResponse) => {
         if (HttpStatusCode.Forbidden === error.status || HttpStatusCode.Unauthorized=== error.status) {
