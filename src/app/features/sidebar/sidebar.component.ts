@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { InquiryApiService } from '../../api/services/inquiry-service/inquiry-api.service';
 import { NavigationService } from '../../core/services/navigation/navigation.service';
+import { StoreService } from '../../core/services/store/store.service';
 
 @Component({
   selector: 'inq-sidebar',
@@ -37,8 +38,9 @@ export class SidebarComponent {
   ];
 
   protected tablesList = [
-    { id: 1, text: 'To fill - TODO' },
-    { id: 2, text: 'Done -TODO' }
+    { id: 1, text: 'Edit', action: 'edit' },
+    { id: 2, text: 'Approved -TODO', action: 'approved' },
+    { id: 3, text: 'On production -TODO', action: 'production' }
   ];
 
   protected chartsList = [
@@ -48,6 +50,8 @@ export class SidebarComponent {
 
   private readonly dialog: MatDialog = inject(MatDialog);
   private readonly inquiryApiService: InquiryApiService = inject(InquiryApiService);
+  private readonly navigationService: NavigationService = inject(NavigationService);
+  private readonly storeService:StoreService = inject(StoreService);
 
   protected showComponent(mainDetails: string) {
     this.componentId = 0;
@@ -95,5 +99,9 @@ export class SidebarComponent {
           this.inquiryApiService.createInquiry(inquiry);
         }
       });
+  }
+
+  protected navigateTo(action: string): void {
+    action == 'edit' ? (this.navigationService.navigateToInquiryTableEdit(),this.storeService.setCenterView(true)): 0;
   }
 }

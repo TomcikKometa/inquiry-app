@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { NavigationService } from '../../../../core/services/navigation/navigation.service';
 
 @Component({
   selector: 'inq-tables',
@@ -9,8 +10,14 @@ import { Component } from '@angular/core';
 })
 export class TablesComponent {
   protected inquiryDetails = [
-    { detail: 'Filled inquiry', data: [] },
-    { detail: 'Approved inquiry', data: [] },
-    { detail: 'On production', data: [] }
+    { id: 1, detail: 'Edit inquiry', data: [], action: 'edit' },
+    { id: 2, detail: 'Approved inquiry', data: [], action: 'fill' },
+    { id: 3, detail: 'On production', data: [], action: 'TODO' }
   ];
+
+  private readonly navigationService: NavigationService = inject(NavigationService);
+
+  protected navigate(action: string): void {
+    action == 'edit' ? this.navigationService.navigateToInquiryTableEdit() : 0;
+  }
 }

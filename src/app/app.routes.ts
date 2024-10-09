@@ -6,6 +6,7 @@ export enum RoutesPaths {
   USER_PANEL = 'user_panel',
   LOGIN = 'login',
   REGISTER = 'register',
+  INQUIRY_TABLE_EDIT = 'inquity-table-edit',
 }
 
 export const routes: Routes = [
@@ -31,6 +32,9 @@ export const routes: Routes = [
   },
   {path:RoutesPaths.REGISTER,
     loadComponent: () => import('./features/shared-components/register/register.component').then(c => c.RegisterComponent)
+  },
+  {path:RoutesPaths.INQUIRY_TABLE_EDIT,
+    loadComponent: () => import('./features/pollster-panel/components/inquiry-table-edit/inquiry-table-edit.component').then(c => c.InquiryTableEditComponent)
   },
   {
     path: '**',

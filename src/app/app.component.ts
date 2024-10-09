@@ -21,6 +21,7 @@ export class AppComponent {
   protected isRegister: boolean = false;
   private readonly storeService: StoreService = inject(StoreService);
   protected isLogin$ = this.storeService.isLoggedIn$();
+  protected isCenterView$ = this.storeService.isCenterView$();
 
   protected getSidenavEvent(event: boolean) {
     if (event) {

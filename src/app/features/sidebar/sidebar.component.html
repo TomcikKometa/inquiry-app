@@ -86,7 +86,7 @@
               [ngClass]="{ li_details: detail.id == componentId }"
               (click)="setDetail('isTableDetail', $index + 1)"
             >
-              <span>{{ detail.text }}</span>
+              <span (click)="navigateTo(detail.action)">{{ detail.text }}</span>
             </li>
           }
         </ul>

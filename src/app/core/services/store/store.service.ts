@@ -7,6 +7,7 @@ import { ResponseUser } from '../token-enums';
 })
 export class StoreService {
   private readonly _isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  private readonly _isCenterView: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   public saveUserToken(token: string): void {
     sessionStorage.clear();
@@ -27,8 +28,16 @@ export class StoreService {
     return this._isLoggedIn.asObservable();
   }
 
+  public isCenterView$():Observable<boolean>{
+    return this._isCenterView.asObservable()
+  }
+
   public setLoggedIn(value: boolean): void {
     this._isLoggedIn.next(value);
+  }
+
+  public setCenterView(value: boolean): void {
+    this._isCenterView.next(value);
   }
 
   public saveUserId(id:number):void{
