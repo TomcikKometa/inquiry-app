@@ -86,10 +86,6 @@ export class InquiryFormToFillComponent implements OnInit, AfterViewInit {
     this.ngAfterViewInit()
         }
       });
-
-      console.log(this.formGroup);
-      
-    
   }
 
   private handleViewingButton() {

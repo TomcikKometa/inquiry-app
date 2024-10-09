@@ -4,11 +4,25 @@
       <div class="question_content_form_to_fill">
         <span matInput type="text">{{ questionLabel }}</span>
       </div>
-      <div class="answer_form_iterator">
-        <mat-form-field appearance="outline" class="answer_input_width">
+      <div class="flex justify-center">
+        <!-- <mat-form-field appearance="outline" class="answer_input_width">
           <mat-label>Text of the Answer</mat-label>
           <input matInput type="text" formControlName="{{ shortTextQuestionAnswerFormName.ANSWER }}" />
-        </mat-form-field>
+        </mat-form-field> -->
+
+        <div class="inline-flex w-2/3 justify-start mt-4">
+          <textarea
+            type="textarea"
+            style="resize: none"
+            #areaQuestion
+            placeholder="Question"
+            maxlength="350"
+            matInput
+            class="w-full bg-gray-100 text_area rounded-md focus:border-0"
+            formControlName="{{ shortTextQuestionAnswerFormName.ANSWER }}" 
+            matInput
+          ></textarea>
+        </div>
       </div>
     </form>
   </div>
