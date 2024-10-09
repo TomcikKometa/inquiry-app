@@ -48,8 +48,6 @@ export class InquiryTableListPollsterComponent implements OnInit {
         })
       )
       .subscribe((dataSource: InquiryDataSource[]) => {
-        console.log(dataSource);
-        
         this.dataSource = new MatTableDataSource(dataSource);
       });
   }

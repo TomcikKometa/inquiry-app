@@ -12,8 +12,6 @@ export class StoreService {
   public saveUserToken(token: string): void {
     sessionStorage.clear();
     window.sessionStorage.setItem(ResponseUser.TOKEN_KEY, token);
-    console.log(window.sessionStorage.getItem(ResponseUser.TOKEN_KEY));
-    
   }
 
   public getUserToken(): string | null {
