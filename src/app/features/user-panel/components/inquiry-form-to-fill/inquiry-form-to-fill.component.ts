@@ -78,11 +78,18 @@ export class InquiryFormToFillComponent implements OnInit, AfterViewInit {
       .getInquiryById(this.inquiryID)
       .pipe(first())
       .subscribe((inquiry: Inquiry) => {
-        (this.inquiry = inquiry), (this.formGroup = new FormGroup({ answers: this.inquiryFormService.createFormToFill(inquiry) }));
-      });
-    const answersFormArray: FormArray = this.formGroup.get('answers') as FormArray;
+        if(inquiry){
+          (this.inquiry = inquiry), (this.formGroup = new FormGroup({ answers: this.inquiryFormService.createFormToFill(inquiry) }));
+          const answersFormArray: FormArray = this.formGroup.get('answers') as FormArray;
     this.numberOfQuestions = answersFormArray.length;
     this.handleViewingButton();
+    this.ngAfterViewInit()
+        }
+      });
+
+      console.log(this.formGroup);
+      
+    
   }
 
   private handleViewingButton() {

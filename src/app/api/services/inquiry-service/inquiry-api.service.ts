@@ -14,13 +14,14 @@ import { Inquiry } from '../../../models/inquiry';
 export class InquiryApiService implements InquiryApiInterface {
   private inquiries: BehaviorSubject<Inquiry[]> = new BehaviorSubject<Inquiry[]>([]);
   get inquiries$(): Observable<Inquiry[]> {
+    console.log(8888);
+
     return this.inquiries.asObservable();
   }
 
-  constructor(
-    private readonly httpClient: HttpClient,
-    private readonly toastService: ToastrService
-  ) {}
+  constructor(private readonly httpClient: HttpClient,private readonly toastService: ToastrService) {
+    this.getAllInquiry();
+  }
 
   public createInquiry(inquiry: Inquiry): void {
     const createInquiryRequest: CreateInquiryRequest = {
@@ -76,10 +77,14 @@ export class InquiryApiService implements InquiryApiInterface {
   }
 
   public getAllInquiry(): void {
+    console.log(44444444);
+
     this.fetchInquiryList().subscribe();
   }
 
   private fetchInquiryList(): Observable<GetAllInquiryResponse> {
+    console.log('fetch');
+    
     return this.httpClient.get<GetAllInquiryResponse>(PollsterUrls.prepareGetAllInquiryUrl()).pipe(
       first(),
       tap((value: GetAllInquiryResponse) => this.inquiries.next([...value.inquiryList]))
