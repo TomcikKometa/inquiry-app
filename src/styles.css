@@ -14,16 +14,16 @@ html {
 
 :root {
   /* Colors: */
-  --mainOne-color-dce2f2: #dce2f2;
-  --mainTwo-color-a2bddc: #a2bddc;
-  --mainThree-color-f4f4fc: #f4f4fc;
-  --boxShadowOne-color-a3bfd9: #a3bfd9;
+  --mainOne-color-dce2f2: #D2D6D9;
+  --mainTwo-color-a2bddc: #F2F2F2;
+  --mainThree-color-f4f4fc: #e4e4e4;
+  --boxShadowOne-color-a3bfd9: #ccc9c9;
   --boxShadowTwo-color-BDBBCF: #bdbbcf;
   --tableOne-color-ffffff: #ffffff;
   --tableTwo-color-d9def0: #d9def0;
   --tableThree-color-cfdae9: #cfdae9;
   --tableFour-color-edf1f7: #edf1f7;
-  --tableTitle-color-7699bb: #7699bb;
+  --tableTitle-color-7699bb: #132b42;
 }
 
 .custom-container mat-dialog-container {
@@ -202,6 +202,7 @@ input:focus, textarea:focus, select:focus{
   display: inline-block;
   width: 80%;
   justify-content: center;
+  color: rgb(107 114 128);
 }
 
 .answer_input_width {
