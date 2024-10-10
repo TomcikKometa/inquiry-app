@@ -1,6 +1,7 @@
 export enum ApiUserUrl {
   USER_LOGIN_URL = '/auth/login',
-  USER_CREATE_URL = '/user/create'
+  USER_CREATE_URL = '/user/create',
+  USER_DETALS = '/user/detail'
 }
 
 export enum WorkerUrl {

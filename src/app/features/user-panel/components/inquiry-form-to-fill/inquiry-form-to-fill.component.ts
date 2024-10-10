@@ -51,7 +51,7 @@ import { ToastrServiceMesseges } from '../../../../enums/toastr-messeges';
       state('out', style({ opacity: '0' })),
       state('buttonState', style({ opacity: '0.1' })),
       state('stateSaveButton', style({ opacity: '1' })),
-      transition('* => *', [animate(1000)])
+      transition('* => *', [animate(700)])
     ])
   ]
 })

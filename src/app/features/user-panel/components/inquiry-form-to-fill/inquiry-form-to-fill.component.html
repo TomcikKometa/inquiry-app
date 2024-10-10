@@ -1,4 +1,4 @@
-@if(inquiry){
+@if (inquiry) {
   <div class="container_fom_to_fill">
     <div class="title">Inquiry name: {{ inquiry.name }}</div>
     <form [formGroup]="formGroup" class="formGroup">
@@ -17,19 +17,37 @@
     </form>
     <div class="mat_dialog_actions">
       <mat-dialog-actions style="justify-content: end">
-        <button class="buttonCustom" mat-button mat-dialog-close>Cancel</button>
-  
-        @if (isNoButtonNext) {
-          <button class="buttonCustom" mat-button (click)="changeTabIndex()" [disabled]="!isNoButtonNext">
-            Next
+        <button
+          mat-dialog-close
+          style="width: 120px; padding: 5px"
+          class="h-10 m-2 p-2 bg-white shadow text-black hover:bg-green-500 rounded-md hover:border-gray-400 w-36 cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
+          type="submit"
+        >
+          Close
+        </button>
+
+        @if (isNoButtonSave) {
+          <button
+            style="width: 120px; padding: 5px"
+            class="h-10 m-2 p-2 bg-gray-700 shadow hover:bg-green-500 rounded-md hover:border-gray-400 w-36 leading-tight text-white cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
+            type="submit"
+            (click)="saveAnswerForm()"
+          >
+            Save
           </button>
         }
-  
-        @if (isNoButtonSave) {
-          <button class="buttonCustom" mat-button  (click)="saveAnswerForm()">Save</button>
+
+        @if (isNoButtonNext) {
+          <button
+            style="width: 120px; padding: 5px"
+            class="h-10 m-2 p-2 bg-gray-700 shadow hover:bg-green-500 rounded-md hover:border-gray-400 w-36 leading-tight text-white cursor-pointer disabled:bg-gray-300 disabled:border-0 disabled:h-8 text-normal"
+            type="submit"
+            (click)="changeTabIndex()"
+          >
+            Next
+          </button>
         }
       </mat-dialog-actions>
     </div>
   </div>
 }
-
