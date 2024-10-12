@@ -1,6 +1,6 @@
 import { AfterContentChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { first } from 'rxjs';
+import { first, interval } from 'rxjs';
 import { InquiryFormToFillServiceService } from './ingiry-form-to-fill-service/inquiry-form-to-fill-service.service';
 import { FormArray, FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, getLocaleFirstDayOfWeek } from '@angular/common';
@@ -120,6 +120,7 @@ export class InquiryFormToFillComponent implements OnInit, AfterViewInit {
   }
 
   protected changeTabIndex() {
+  
     if (this.formGroup.get('answers')?.get(this.tabIndex.toString())?.status == 'INVALID') {
       this.toastService.error(ToastrServiceMesseges.NOT_CHOICED_ANSWER, '', {
         positionClass: 'toast-top-right',
