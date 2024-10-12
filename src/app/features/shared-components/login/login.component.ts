@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginFormService } from '../services/login-form/login-form.service';
-import { BehaviorSubject, first, Observable, Subject, Subscription, takeUntil, tap } from 'rxjs';
+import { BehaviorSubject, exhaustMap, first, fromEvent, interval, map, Observable, Subject, Subscription, take, takeUntil, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserLoginResponse } from '../../../api/services/user-service/models/user-login-response';
 import { UserApiService } from '../../../api/services/user-service/user-api.service';
