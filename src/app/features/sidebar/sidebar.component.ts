@@ -1,11 +1,10 @@
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { first } from 'rxjs';
 import { DIALOG_OPTIONS_FORM } from '../../config/form-config';
 import { Inquiry } from '../../models/inquiry';
 import { InquiryFormComponent } from '../pollster-panel/components/inquiry-form/inquiry-form/inquiry-form.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
 import { InquiryApiService } from '../../api/services/inquiry-service/inquiry-api.service';
 import { NavigationService } from '../../core/services/navigation/navigation.service';
 import { StoreService } from '../../core/services/store/store.service';
@@ -59,18 +58,21 @@ export class SidebarComponent {
       this.isInquiryDetail = !this.isInquiryDetail;
       this.isTableDetail = false;
       this.isChartsDetail = false;
+      this.isComponentUser = false;
     }
 
     if (mainDetails === 'isTableDetail') {
       this.isTableDetail = !this.isTableDetail;
       this.isInquiryDetail = false;
       this.isChartsDetail = false;
+      this.isComponentUser = false;
     }
 
     if (mainDetails === 'isChartsDetail') {
       this.isChartsDetail = !this.isChartsDetail;
       this.isInquiryDetail = false;
       this.isTableDetail = false;
+      this.isComponentUser = false;
     }
 
     if (mainDetails === 'userDetail') {
